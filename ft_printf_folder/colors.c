@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:22:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/31 17:41:17 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/31 18:31:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ size_t	colors(char *str)
 {
 	size_t	c;
 
+	c = 0;
 	if (!(strncmp(str, "{eoc}", 5)) && (c = 5) != 0)
 		write(1, "\033[00m", 5);
 	else if (!(strncmp(str, "{black}", 7)) && (c = 7) != 0)
