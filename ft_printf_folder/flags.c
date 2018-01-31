@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test_ft_printf.c                              :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/31 18:58:09 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/01/31 19:00:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		main(int argc, char **argv)
+size_t	flags(char *str, va_list ap)
 {
-	char	*a;
-	int		b;
+	size_t	i;
+	int		d;
 	char	c;
+	char	*s;
 
-	a = "42Born2Code";
-	b = 42;
-	c = 'y';
-	if (argc != 2)
+	i = 0;
+	if (!(strncmp("%d", str, 2)) && (i = 2) != 0)
 	{
-		ft_putstr("Passez en argument au programme la phrase a ecrire");
+		d = va_arg(ap, int);
+		ft_putnbr(d);
 	}
-	else
+	else if (!(strncmp("%c", str, 2)) && (i = 2) != 0)
 	{
-		ft_printf(*(argv + 1), a, b, c);
+		c = (char)va_arg(ap, int);
+		ft_putchar(c);
 	}
-	return (0);
+	else if (!(strncmp("%s", str, 2)) && (i = 2) != 0)
+	{
+		s = va_arg(ap, char *);
+		ft_putstr(s);
+	}
+	return (i);
 }

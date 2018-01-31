@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/01/31 18:07:14 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/01/31 18:54:02 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,15 @@ NAME = test_ft_printf.exe
 
 SRCS = main_test_ft_printf.c\
 	   ft_printf.c\
-	   colors.c
+	   colors.c\
+	   flags.c\
+	   ft_putnbr_base.c
 
 OBJS = main_test_ft_printf.o\
 	   ft_printf.o\
-	   colors.o
+	   colors.o\
+	   flags.o\
+	   ft_putnbr_base.o
 
 all: $(NAME)
 

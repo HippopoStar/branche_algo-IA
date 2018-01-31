@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:58:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/31 18:27:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/31 18:55:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int		ft_printf(const char *format, ...)
 		if (*(format + i) == '{')
 		{
 			i = i + colors((char *)(format + i));
+		}
+		if (*(format + i) == '%')
+		{
+			i = i + flags((char *)(format + i), ap);
 		}
 		write(1, (format + i), 1);
 		i++;
