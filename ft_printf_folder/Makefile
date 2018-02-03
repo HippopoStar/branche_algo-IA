@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/01 14:18:42 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/04 00:01:21 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS = main_test_ft_printf.c\
 	   colors.c\
 	   flags.c\
 	   escape.c\
-	   ft_putnbr_base.c
+	   ft_putnbr_base.c\
+	   error_code.c
 
 OBJS = main_test_ft_printf.o\
 	   ft_printf.o\
@@ -29,7 +30,8 @@ OBJS = main_test_ft_printf.o\
 	   colors.o\
 	   flags.o\
 	   escape.o\
-	   ft_putnbr_base.o
+	   ft_putnbr_base.o\
+	   error_code.o
 
 all: $(NAME)
 
