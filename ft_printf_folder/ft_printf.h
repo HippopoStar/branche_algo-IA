@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 00:21:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 03:28:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,27 @@ typedef struct		s_pn
 }					t_pn;
 
 int				ft_printf(const char *format, ...);
-int				aux_ft_printf(char *format, va_list ap);
+void			aux_ft_printf(char *format, va_list ap, t_pf *cha);
+void			read_and_free_pf(int *ret_val, t_pf *cha);
+t_pf			*nou_mai(void);
+
+void			add_char_mai(char c, t_pf *mai);
+void			add_str_mai(char *str, t_pf *mai);
 
 int				special_char(char c);
-size_t			ft_putstr_un_sc(char *format);
-size_t			ft_putstr_sc(char *format, va_list ap);
+size_t			ft_putstr_un_sc(char *format, t_pf *mai);
+size_t			ft_putstr_sc(char *format, va_list ap, t_pf *mai);
 
-size_t			colors(char *str);
+size_t			colors(char *str, t_pf *mai);
 
-size_t			flags(char *str, va_list ap);
+size_t			flags(char *str, va_list ap, t_pf *mai);
 
-size_t			escape(char *str);
+size_t			escape(char *str, t_pf *mai);
 
-void			ft_putnbr_base(int nbr, char *base, t_pf *mai, ssize_t mnod);
+void			add_int_mai(int nbr, char *base, t_pf *mai, ssize_t mnod);
 void			fill_nbr_base(long int l_n, t_pn *stock, t_pf *aux, ssize_t mnod);
 size_t			is_base_valid(char *base, t_pf *aux);
-t_pf			*from_stock_to_string(t_pn *stock);
+void			from_stock_to_string(t_pn *stock, t_pf *mai);
 
 void			error_code(char *error_message);
 

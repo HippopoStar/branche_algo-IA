@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/03 23:38:41 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 02:33:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		main(int argc, char **argv)
 {
-	t_pf	TEST_PF;
+//	t_pf	TEST_PF;
 	char	*a;
 	int		b;
 	char	c;
@@ -33,8 +33,8 @@ int		main(int argc, char **argv)
 		ft_putchar('\n');
 		printf(*(argv + 1), a, b, c);
 		ft_putchar('\n');
-		ft_putnbr_base(-2147483648, "0123456789", &TEST_PF, 15);
-		ft_putchar('\n');
+//		ft_putnbr_base(-2147483648, "0123456789", &TEST_PF, 15);
+//		ft_putchar('\n');
 		printf("% 20.15ld", -2147483648);
 		ft_putchar('\n');
 	}
