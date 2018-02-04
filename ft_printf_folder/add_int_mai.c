@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 01:54:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 03:27:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:25:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void		from_stock_to_string(t_pn *stock, t_pf *mai)
 {
-	ft_putstr("from_stock_to_string\n");
-
 	size_t	i;
 	t_pn	*tmp;
 
@@ -40,8 +38,6 @@ void		from_stock_to_string(t_pn *stock, t_pf *mai)
 
 size_t		is_base_valid(char *base, t_pf *aux)
 {
-	ft_putstr("is_base_valid\n");
-
 	size_t	i;
 	size_t	j;
 
@@ -70,10 +66,8 @@ size_t		is_base_valid(char *base, t_pf *aux)
 ** l_b : length_base
 */
 
-void		fill_nbr_base(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
+void		fill_nb_bas(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
 {
-	ft_putstr("fill_nbr_base\n");
-
 	t_pn		tmp;
 
 	if (l_n == 0)
@@ -82,7 +76,7 @@ void		fill_nbr_base(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
 		{
 			tmp.c = (mai->next)->str[0];
 			tmp.next = stock;
-			fill_nbr_base(l_n, &tmp, mai, mnod - 1);
+			fill_nb_bas(l_n, &tmp, mai, mnod - 1);
 		}
 		else
 		{
@@ -94,7 +88,7 @@ void		fill_nbr_base(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
 	{
 		tmp.c = ((mai->next)->str)[l_n % (long int)((mai->next)->len)];
 		tmp.next = stock;
-		fill_nbr_base(l_n / (long int)((mai->next)->len), &tmp, mai, mnod - 1);
+		fill_nb_bas(l_n / (long int)((mai->next)->len), &tmp, mai, mnod - 1);
 	}
 }
 
@@ -104,8 +98,6 @@ void		fill_nbr_base(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
 
 void		add_int_mai(int nbr, char *base, t_pf *mai, ssize_t mnod)
 {
-	ft_putstr("add_int_mai\n");
-
 	long int	long_nbr;
 	t_pf		aux;
 
@@ -117,16 +109,16 @@ void		add_int_mai(int nbr, char *base, t_pf *mai, ssize_t mnod)
 	{
 		mai->next = &aux;
 		if (long_nbr == 0)
-			fill_nbr_base(0, NULL, mai, 1);
+			fill_nb_bas(0, NULL, mai, 1);
 		else
 		{
 			if (long_nbr < 0)
 			{
 				ft_putchar('-');
-				fill_nbr_base(-long_nbr, NULL, mai, mnod);
+				fill_nb_bas(-long_nbr, NULL, mai, mnod);
 			}
 			else
-				fill_nbr_base(long_nbr, NULL, mai, mnod);
+				fill_nb_bas(long_nbr, NULL, mai, mnod);
 		}
 	}
 }

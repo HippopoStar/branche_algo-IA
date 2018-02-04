@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 03:07:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:16:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 size_t	flags(char *str, va_list ap, t_pf *mai)
 {
-	ft_putstr("flags\n");
-
 	size_t	i;
 	int		d;
 	char	c;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 03:50:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:19:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		special_char(char c)
 {
-	ft_putstr("special_char\n");
-
 	return ((c == '\0' || c == '{' || c == '%' || c == '\\') ? 1 : 0);
 }
 
@@ -25,8 +23,6 @@ int		special_char(char c)
 
 size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 {
-	ft_putstr("ft_putstr_un_sc\n");
-
 	size_t	i;
 	char	tmp;
 
@@ -44,8 +40,6 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 
 size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
 {
-	ft_putstr("ft_putstr_sc\n");
-
 	size_t	retour;
 	size_t	i;
 	char	c;

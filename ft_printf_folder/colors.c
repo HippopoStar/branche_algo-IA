@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:22:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 02:47:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:18:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 size_t	colors(char *str, t_pf *mai)
 {
-	ft_putstr("colors\n");
-
 	size_t	c;
 
 	c = 0;

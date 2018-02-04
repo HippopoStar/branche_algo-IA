@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:52:21 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 02:48:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:16:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 size_t	escape(char *str, t_pf *mai)
 {
-	ft_putstr("escape\n");
-
 	size_t	i;
 	char	c;
 

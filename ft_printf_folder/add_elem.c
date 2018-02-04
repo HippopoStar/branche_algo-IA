@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 01:28:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 03:23:17 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/04 05:16:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	add_char_mai(char c, t_pf *mai)
 {
-	ft_putstr("add_char_mai\n");
-
 	if (!(mai->str = (char *)malloc(2 * sizeof(char))))
 		error_code("Erreur d'alloc'");
 	mai->len = 1;
@@ -29,8 +27,6 @@ void	add_char_mai(char c, t_pf *mai)
 
 void	add_str_mai(char *str, t_pf *mai)
 {
-	ft_putstr("add_str_mai\n");
-
 	size_t	length;
 	size_t	i;
 
