@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/04 02:37:49 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/06 19:19:06 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = main_test_ft_printf.c\
 	   special_char.c\
 	   colors.c\
 	   flags.c\
+	   valid_flags.c\
 	   escape.c\
 	   add_elem.c\
 	   add_int_mai.c\
@@ -30,6 +31,7 @@ OBJS = main_test_ft_printf.o\
 	   special_char.o\
 	   colors.o\
 	   flags.o\
+	   valid_flags.o\
 	   escape.o\
 	   add_elem.o\
 	   add_int_mai.o\

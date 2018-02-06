@@ -6,13 +6,36 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:16:11 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/06 19:18:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 size_t	flags(char *str, va_list ap, t_pf *mai)
+{
+	size_t	i;
+	char	tmp;
+
+	i = 0;
+	if (*(str + 0) == '%' && *(str + 1) == '%')
+	{
+		add_char_mai('%', mai);
+		i = 2;
+	}
+	else if (!(*(str + 0) == '%' && (i = valid_flags(str + 1))))
+	{
+		error_code("invalid flag for \"ft_printf\"");
+	}
+	convertion_flags(str + 1 + i, ap, mai);
+	tmp = *(str + 1 + i);
+	*(str + 1 + i) = '\0';
+	additionnal_flags(str + 1, mai);
+	*(str + 1 + i) = tmp;
+	return (i);
+}
+
+size_t	convertion_flags(char *str, va_list ap, t_pf *mai)
 {
 	size_t	i;
 	int		d;
