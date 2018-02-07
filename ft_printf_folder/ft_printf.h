@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/06 19:18:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 01:32:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ size_t			flags(char *str, va_list ap, t_pf *mai);
 size_t			convertion_flags(char *str, va_list ap, t_pf *mai);
 size_t			additionnal_flags(char *str, t_pf *mai);
 
-size_t			valid_flags(char *str);
-size_t			occurs(char c, char *str);
+ssize_t			go_to_convert_flags(char *str);
+int				occurs(char c, char *str);
 
 size_t			escape(char *str, t_pf *mai);
 

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 18:53:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/06 19:15:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 01:31:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		occurs(char c, char *str)
 	return (*(str + i) != '\0' ? 1 : 0);
 }
 
-size_t	valid_flags(char *str)
+ssize_t		go_to_convert_flags(char *str)
 {
-	size_t	i;
+	ssize_t	i;
 
 	i = 0;
 	while (*(str + i) != '\0' && !(occurs(*(str + i), "sSpdDioOuUxXcC")))
