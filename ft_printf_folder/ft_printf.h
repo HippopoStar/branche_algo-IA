@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/07 06:05:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 06:37:41 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ t_pf			*moove_cha(t_pf *cha);
 void			add_char_mai(char c, t_pf *mai);
 void			add_str_mai(char *str, t_pf *mai);
 
-int				special_char(char c);
+int				special_char(char *c);
 size_t			ft_putstr_un_sc(char *format, t_pf *mai);
 size_t			ft_putstr_sc(char *format, va_list ap, t_pf *mai);
 
+int				is_color(char *str);
 size_t			colors(char *str, t_pf *mai);
 
 size_t			flags(char *str, va_list ap, t_pf *mai);

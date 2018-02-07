@@ -6,15 +6,15 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:19:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 06:36:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		special_char(char c)
+int		special_char(char *c)
 {
-	return ((c == '\0' || c == '{' || c == '%' || c == '\\') ? 1 : 0);
+	return ((*c == '\0' || (*c == '{' && is_color(c)) || *c == '%') ? 1 : 0);
 }
 
 /*
@@ -27,7 +27,7 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 	char	tmp;
 
 	i = 0;
-	while (!(special_char(*(format + i))))
+	while (!(special_char(format + i)))
 	{
 		i++;
 	}

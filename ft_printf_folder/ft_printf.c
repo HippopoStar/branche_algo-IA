@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:58:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:15:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 06:39:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	aux_ft_printf(char *format, va_list ap, t_pf *cha)
 	i = 0;
 	while ((c = *(format + i)) != '\0')
 	{
-		if (special_char(c))
+		if (special_char(format + i))
 		{
 			if (!(retour = ft_putstr_sc((format + i), ap, cha)))
 			{

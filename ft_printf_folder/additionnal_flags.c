@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/07 06:18:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 06:38:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	additionnal_flags(char *str, t_pf *mai)
 {
 	size_t	i;
+
+	(void)mai;
 
 	i = 0;
 	while (*(str + i) != '\0')

@@ -6,11 +6,26 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:22:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:18:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/07 06:32:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		is_color(char *str)
+{
+	return ((!(strncmp(str, "{eoc}", 5))
+			|| !(strncmp(str, "{black}", 7))
+			|| !(strncmp(str, "{red}", 5))
+			|| !(strncmp(str, "{green}", 7))
+			|| !(strncmp(str, "{yellow}", 8))
+			|| !(strncmp(str, "{blue}", 6))
+			|| !(strncmp(str, "{magenta}", 9))
+			|| !(strncmp(str, "{cyan}", 6))
+			|| !(strncmp(str, "{white}", 7))) ?
+			1
+			: 0);
+}
 
 size_t	colors(char *str, t_pf *mai)
 {
