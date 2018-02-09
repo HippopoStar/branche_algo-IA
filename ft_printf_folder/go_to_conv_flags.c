@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   go_to_convert_flags.c                              :+:      :+:    :+:   */
+/*   go_to_conv_flags.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 06:07:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/07 06:33:56 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/09 01:25:07 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/09 01:25:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		occurs(char c, char *str)
 	return (*(str + i) != '\0' ? 1 : 0);
 }
 
-ssize_t	go_to_convert_flags(char *str)
+ssize_t	go_to_conv_flags(char *str)
 {
 	ssize_t	i;
 

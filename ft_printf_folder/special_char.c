@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/07 06:36:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/09 02:34:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,13 @@ int		special_char(char *c)
 size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 {
 	size_t	i;
-	char	tmp;
 
 	i = 0;
 	while (!(special_char(format + i)))
 	{
 		i++;
 	}
-	tmp = *(format + i);
-	*(format + i) = '\0';
-	add_str_mai(format, mai);
-	*(format + i) = tmp;
+	add_str_mai(format, i, mai);
 	return (i);
 }
 

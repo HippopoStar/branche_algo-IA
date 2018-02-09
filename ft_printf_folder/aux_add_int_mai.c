@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_int_mai.c                                      :+:      :+:    :+:   */
+/*   aux_add_int_mai.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/04 01:54:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:25:38 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/09 02:08:53 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/09 02:11:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,17 @@ size_t		is_base_valid(char *base, t_pf *aux)
 ** l_b : length_base
 */
 
-void		fill_nb_bas(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
+void		fill_nb_bas(llui l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 {
 	t_pn		tmp;
 
 	if (l_n == 0)
 	{
-		if (mnod > 0)
+		if (mnoz > 0)
 		{
 			tmp.c = (mai->next)->str[0];
 			tmp.next = stock;
-			fill_nb_bas(l_n, &tmp, mai, mnod - 1);
+			fill_nb_bas(l_n, &tmp, mai, mnoz - 1);
 		}
 		else
 		{
@@ -86,39 +86,33 @@ void		fill_nb_bas(long int l_n, t_pn *stock, t_pf *mai, ssize_t mnod)
 	}
 	else
 	{
-		tmp.c = ((mai->next)->str)[l_n % (long int)((mai->next)->len)];
+		tmp.c = ((mai->next)->str)[l_n % (llui)((mai->next)->len)];
 		tmp.next = stock;
-		fill_nb_bas(l_n / (long int)((mai->next)->len), &tmp, mai, mnod - 1);
+		fill_nb_bas(l_n / (llui)((mai->next)->len), &tmp, mai, mnoz - 1);
 	}
 }
 
 /*
-** mnod : minimum_number_of_digits
+** mnod : minimum_number_of_zeros
 */
 
-void		add_int_mai(int nbr, char *base, t_pf *mai, ssize_t mnod)
+void		aux_add_int_mai(llui nbr, char *base, t_pf *mai, ssize_t mnoz)
 {
-	long int	long_nbr;
 	t_pf		aux;
 
-	long_nbr = (long int)nbr;
 	is_base_valid(base, &aux);
 	if (aux.len == 0)
 		mai->next = NULL;
 	else
 	{
 		mai->next = &aux;
-		if (long_nbr == 0)
+		if (nbr == 0)
+		{
 			fill_nb_bas(0, NULL, mai, 1);
+		}
 		else
 		{
-			if (long_nbr < 0)
-			{
-				ft_putchar('-');
-				fill_nb_bas(-long_nbr, NULL, mai, mnod);
-			}
-			else
-				fill_nb_bas(long_nbr, NULL, mai, mnod);
+			fill_nb_bas(nbr, NULL, mai, mnoz);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/04 05:27:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/09 02:13:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
+		ft_printf("Patate\n");
 		ft_printf(*(argv + 1), a, b, c);
 		ft_putchar('\n');
 		printf(*(argv + 1), a, b, c);
