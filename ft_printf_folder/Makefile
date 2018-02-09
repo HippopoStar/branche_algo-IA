@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/09 02:12:02 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/09 07:42:03 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS = main_test_ft_printf.c\
 	   additionnal_flags.c\
 	   escape.c\
 	   add_elem.c\
-	   aux_add_int_mai.c\
+	   ls_anm.c\
+	   add_nb_mai.c\
 	   error_code.c
 
 OBJS = main_test_ft_printf.o\
@@ -36,7 +37,8 @@ OBJS = main_test_ft_printf.o\
 	   additionnal_flags.o\
 	   escape.o\
 	   add_elem.o\
-	   aux_add_int_mai.o\
+	   ls_anm.o\
+	   add_nb_mai.o\
 	   error_code.o
 
 all: $(NAME)

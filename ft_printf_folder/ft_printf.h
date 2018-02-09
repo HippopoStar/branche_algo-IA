@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:30:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/09 09:41:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define llui long long unsigned int
+# define ulli unsigned long long int
+# define INT_MIN -2147483648
+# define INT_MAX_PLUS_1 2147483648
+# define LONG_MIN -2147483648
+# define LONG_MAX_PLUS_1 2147483648
+# define LLONG_MIN -9223372036854775808
+# define LLONG_MAX_PLUS_1 9223372036854775808
+
 
 typedef struct	s_pf
 {
@@ -60,8 +67,10 @@ int				occurs(char c, char *str);
 
 size_t			escape(char *str, t_pf *mai);
 
-void			aux_add_int_mai(llui nbr, char *base, t_pf *mai, ssize_t mnoz);
-void			fill_nb_bas(llui l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
+void			ls_anm(va_list ap, char *conv_spec, t_pf *mai, ssize_t mnoz);
+
+void			add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz);
+void			fill_nb_bas(ulli l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
 size_t			is_base_valid(char *base, t_pf *aux);
 void			from_stock_to_string(t_pn *stock, t_pf *mai);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux_add_int_mai.c                                  :+:      :+:    :+:   */
+/*   add_nb_mai.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 02:08:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:11:11 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/09 07:37:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void		from_stock_to_string(t_pn *stock, t_pf *mai)
 {
 	size_t	i;
 	t_pn	*tmp;
+	int		p_o_n;
 
-	mai->len = 0;
+	p_o_n = mai->len;
 	tmp = stock;
 	while (tmp != NULL)
 	{
@@ -27,12 +28,16 @@ void		from_stock_to_string(t_pn *stock, t_pf *mai)
 	if (!(mai->str = (char *)malloc((mai->len + 1) * sizeof(char))))
 		error_code("Erreur d'alloc'");
 	(mai->str)[mai->len] = '\0';
-	i = 0;
+	i = p_o_n;
 	while (stock != NULL)
 	{
 		(mai->str)[i] = stock->c;
 		stock = stock->next;
 		i++;
+	}
+	if (p_o_n == 1)
+	{
+		(mai->str)[0] = '-';
 	}
 }
 
@@ -66,7 +71,7 @@ size_t		is_base_valid(char *base, t_pf *aux)
 ** l_b : length_base
 */
 
-void		fill_nb_bas(llui l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
+void		fill_nb_bas(ulli l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 {
 	t_pn		tmp;
 
@@ -80,15 +85,15 @@ void		fill_nb_bas(llui l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 		}
 		else
 		{
-			mai->next = NULL;
 			from_stock_to_string(stock, mai);
+			mai->next = NULL;
 		}
 	}
 	else
 	{
-		tmp.c = ((mai->next)->str)[l_n % (llui)((mai->next)->len)];
+		tmp.c = ((mai->next)->str)[l_n % (ulli)((mai->next)->len)];
 		tmp.next = stock;
-		fill_nb_bas(l_n / (llui)((mai->next)->len), &tmp, mai, mnoz - 1);
+		fill_nb_bas(l_n / (ulli)((mai->next)->len), &tmp, mai, mnoz - 1);
 	}
 }
 
@@ -96,7 +101,7 @@ void		fill_nb_bas(llui l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 ** mnod : minimum_number_of_zeros
 */
 
-void		aux_add_int_mai(llui nbr, char *base, t_pf *mai, ssize_t mnoz)
+void		add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz)
 {
 	t_pf		aux;
 
@@ -106,13 +111,13 @@ void		aux_add_int_mai(llui nbr, char *base, t_pf *mai, ssize_t mnoz)
 	else
 	{
 		mai->next = &aux;
-		if (nbr == 0)
+		if (nb == 0)
 		{
 			fill_nb_bas(0, NULL, mai, 1);
 		}
 		else
 		{
-			fill_nb_bas(nbr, NULL, mai, mnoz);
+			fill_nb_bas(nb, NULL, mai, mnoz);
 		}
 	}
 }

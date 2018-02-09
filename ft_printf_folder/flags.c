@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:27:16 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/09 07:48:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ size_t	flags(char *str, va_list ap, t_pf *mai)
 size_t	conversion_flags(char *str, va_list ap, t_pf *mai)
 {
 	size_t	i;
-	int		d;
 	char	c;
 	char	*s;
 
 	i = 0;
 	if (!(strncmp("d", str, 1)) && (i = 1) != 0)
 	{
-		d = va_arg(ap, int);
-		aux_add_int_mai(d, "0123456789", mai, 0);
+		ls_anm(ap, "d", mai, 0);
 	}
 	else if (!(strncmp("c", str, 1)) && (i = 1) != 0)
 	{
