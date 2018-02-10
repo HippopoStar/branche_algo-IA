@@ -18,14 +18,16 @@ size_t	skip_length_modifier(char *str)
 {
 	size_t	i;
 
-	i = 1;
-	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
-		i = 3;
-	else if (occurs(*(str + 0), "hljz"))
-		i = 2;
-	if (!(occurs(*(str + i), "diouxX")))
+	if (!(occurs(*(str + i), "hljzdiouxX")))
 		return (0);
-	return (i);
+	i = 0;
+	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
+		i = 2;
+	else if (occurs(*(str + 0), "hljz"))
+		i = 1;
+	if (!(occurs(*(str + i), "diouxX")))
+		error_code("Erreur dans \"ft_printf\"");
+	return (i + 1);
 }
 
 void	fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb)
