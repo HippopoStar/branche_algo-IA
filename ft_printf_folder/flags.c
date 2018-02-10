@@ -41,9 +41,9 @@ size_t	conversion_flags(char *str, va_list ap, t_pf *mai)
 	ulli	nb;
 
 	i = 0;
-	if (!(strncmp("d", str, 1)) && (i = 1) != 0)
+	if ((i = skip_length_modifier(str)) != 0)
 	{
-		ls_anm(ap, "d", mai, &nb);
+		length_modifier_anm(ap, str, mai, &nb);
 		add_nb_mai(nb, "0123456789", mai, 0);
 	}
 	else if (!(strncmp("c", str, 1)) && (i = 1) != 0)

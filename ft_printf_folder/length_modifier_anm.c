@@ -12,79 +12,45 @@
 
 #include "ft_printf.h"
 
-/*
-void	aux_1_fs(va_list ap, size_t i, t_pf *mai, ulli *nb)
-{
-	long long int	c;
+// Changer le header de ce fichier
 
-	(void)i;
-	c = va_arg(ap, long long int);
-	if (c < 0)
+size_t	skip_length_modifier(char *str)
+{
+	size_t	i;
+
+	i = 1;
+	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
+		i = 3;
+	else if (occurs(*(str + 0), "hljz"))
+		i = 2;
+	if (!(occurs(*(str + i), "diouxX")))
+		return (0);
+	return (i);
+}
+
+void	fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb)
+{
+	long long int	l_n;
+
+	if (i == 0)
+		l_n = (long long int)va_arg(ap, int);
+	else if (i == 1)
+		l_n = (long long int)va_arg(ap, long int);
+	else
+		l_n = va_arg(ap, long long int);
+	if (l_n < 0)
 	{
-		if (c == LLONG_MIN)
+		if (l_n == LLONG_MIN)
 		{
 			*nb = LLONG_MAX;
 			(*nb)++;
 		}
 		else
-			*nb = (ulli)(-c);
+			*nb = (ulli)(-l_n);
 		mai->len = 1;
 	}
 	else
-		*nb = (ulli)c;
-}
-*/
-
-void	aux_0_fs(va_list ap, size_t i, t_pf *mai, ulli *nb)
-{
-	long int	b;
-
-	if (i == 1)
-	{
-		b = va_arg(ap, long int);
-		if (b < 0)
-		{
-			if (b == LONG_MIN)
-			{
-				*nb = LONG_MAX;
-				(*nb)++;
-			}
-			else
-				*nb = (ulli)(-b);
-			mai->len = 1;
-		}
-		else
-			*nb = (ulli)b;
-	}
-/*
-	else
-		aux_1_fs(ap, i, mai, nb);
-*/
-}
-
-void	fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb)
-{
-	int		a;
-
-	if (i == 0)
-	{
-		a = va_arg(ap, int);
-		if (a < 0)
-		{
-			if (a == INT_MIN)
-			{
-				*nb = INT_MAX;
-				(*nb)++;
-			}
-			else
-				*nb = (ulli)(-a);
-			mai->len = 1;
-		}
-		else
-			*nb = (ulli)a;
-	}
-	else
-		aux_0_fs(ap, i, mai, nb);
+		*nb = (ulli)l_n;
 }
 
 void	fix_unsigned(va_list ap, size_t i, ulli *nb)
@@ -104,34 +70,26 @@ void	fix_unsigned(va_list ap, size_t i, ulli *nb)
 }
 
 /*
-** ls_aim = length_specificier_add_int_mai
-** c_s    = conversion_specificier
+** _anm = _add_int_mai
+** c_s  = conversion_specifier
 */
 
-size_t	ls_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb)
+size_t	length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb)
 {
 	size_t	i;
 
 	i = 0;
-	if (occurs(*c_s, "di"))
-		fix_signed(ap, i, mai, nb);
-	else if (!(strncmp(c_s, "l", 1)))
+	if (occurs(*(c_s + i), "ldiouxX"))
 	{
-		i++;
-		if (!(strncmp(c_s, "ll", 2)))
-			i++;
-		fix_signed(ap, i, mai, nb);
-	}
-	if (!(strncmp(c_s, "u", 1)))
-	{
-		i++;
-		if (!(strncmp(c_s, "ul", 2)))
+		if (*(c_s + i) == 'l')
 		{
 			i++;
-			if (!(strncmp(c_s, "ull", 3)))
+			if (*(c_s + i) == 'l')
 				i++;
 		}
-		fix_unsigned(ap, i, nb);
+		(occurs(*(c_s + i), "di")) ? fix_signed(ap, i, mai, nb) : fix_unsigned(ap, i, nb);
+		return (i + 1);
 	}
-	return (i);
+	error_code("Flag pas encore gere");
+	return (0);
 }

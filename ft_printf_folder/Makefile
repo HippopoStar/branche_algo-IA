@@ -24,7 +24,7 @@ SRCS = main_test_ft_printf.c\
 	   additionnal_flags.c\
 	   escape.c\
 	   add_elem.c\
-	   ls_anm.c\
+	   length_modifier_anm.c\
 	   add_nb_mai.c\
 	   error_code.c
 
@@ -37,7 +37,7 @@ OBJS = main_test_ft_printf.o\
 	   additionnal_flags.o\
 	   escape.o\
 	   add_elem.o\
-	   ls_anm.o\
+	   length_modifier_anm.o\
 	   add_nb_mai.o\
 	   error_code.o
 

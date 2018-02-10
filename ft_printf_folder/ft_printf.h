@@ -20,12 +20,8 @@
 # include <stdlib.h>
 
 # define ulli unsigned long long int
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
-# define LONG_MIN -2147483648
-# define LONG_MAX 2147483647
-# define LLONG_MIN -9223372036854775808
-# define LLONG_MAX 9223372036854775807
+# define LLONG_MIN (long long int)(-9223372036854775808)
+# define LLONG_MAX (long long int)9223372036854775807
 
 
 typedef struct	s_pf
@@ -67,11 +63,10 @@ int				occurs(char c, char *str);
 
 size_t			escape(char *str, t_pf *mai);
 
-size_t			ls_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb);
+size_t			length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb);
 void			fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb);
-void			aux_0_fs(va_list ap, size_t i, t_pf *mai, ulli *nb);
-void			aux_1_fs(va_list ap, size_t i, t_pf *mai, ulli *nb);
 void			fix_unsigned(va_list ap, size_t i, ulli *nb);
+size_t			skip_length_modifier(char *str);
 
 void			add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz);
 void			fill_nb_bas(ulli l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
