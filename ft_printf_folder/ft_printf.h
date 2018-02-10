@@ -16,13 +16,11 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 # include <string.h>
+# include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
 
 # define ulli unsigned long long int
-# define LLONG_MIN (long long int)(-9223372036854775808)
-# define LLONG_MAX (long long int)9223372036854775807
-
 
 typedef struct	s_pf
 {
@@ -66,7 +64,7 @@ size_t			escape(char *str, t_pf *mai);
 size_t			length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb);
 void			fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb);
 void			fix_unsigned(va_list ap, size_t i, ulli *nb);
-size_t			skip_length_modifier(char *str);
+size_t			skip_length_modifiers_and_conversion_specifier(char *str);
 
 void			add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz);
 void			fill_nb_bas(ulli l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);

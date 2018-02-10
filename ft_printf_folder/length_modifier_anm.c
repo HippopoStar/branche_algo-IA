@@ -14,11 +14,11 @@
 
 // Changer le header de ce fichier
 
-size_t	skip_length_modifier(char *str)
+size_t	skip_length_modifiers_and_conversion_specifier(char *str)
 {
 	size_t	i;
 
-	if (!(occurs(*(str + i), "hljzdiouxX")))
+	if (!(occurs(*(str + 0), "hljzdiouxX")))
 		return (0);
 	i = 0;
 	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
