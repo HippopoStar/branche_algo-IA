@@ -12,43 +12,126 @@
 
 #include "ft_printf.h"
 
-void	ls_aim_bis(void)
+/*
+void	aux_1_fs(va_list ap, size_t i, t_pf *mai, ulli *nb)
 {
+	long long int	c;
+
+	(void)i;
+	c = va_arg(ap, long long int);
+	if (c < 0)
+	{
+		if (c == LLONG_MIN)
+		{
+			*nb = LLONG_MAX;
+			(*nb)++;
+		}
+		else
+			*nb = (ulli)(-c);
+		mai->len = 1;
+	}
+	else
+		*nb = (ulli)c;
+}
+*/
+
+void	aux_0_fs(va_list ap, size_t i, t_pf *mai, ulli *nb)
+{
+	long int	b;
+
+	if (i == 1)
+	{
+		b = va_arg(ap, long int);
+		if (b < 0)
+		{
+			if (b == LONG_MIN)
+			{
+				*nb = LONG_MAX;
+				(*nb)++;
+			}
+			else
+				*nb = (ulli)(-b);
+			mai->len = 1;
+		}
+		else
+			*nb = (ulli)b;
+	}
+/*
+	else
+		aux_1_fs(ap, i, mai, nb);
+*/
+}
+
+void	fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb)
+{
+	int		a;
+
+	if (i == 0)
+	{
+		a = va_arg(ap, int);
+		if (a < 0)
+		{
+			if (a == INT_MIN)
+			{
+				*nb = INT_MAX;
+				(*nb)++;
+			}
+			else
+				*nb = (ulli)(-a);
+			mai->len = 1;
+		}
+		else
+			*nb = (ulli)a;
+	}
+	else
+		aux_0_fs(ap, i, mai, nb);
+}
+
+void	fix_unsigned(va_list ap, size_t i, ulli *nb)
+{
+	if (i == 0)
+	{
+		*nb = (ulli)va_arg(ap, unsigned int);
+	}
+	else if (i == 1)
+	{
+		*nb = (ulli)va_arg(ap, unsigned long int);
+	}
+	else
+	{
+		*nb = va_arg(ap, unsigned long long int);
+	}
 }
 
 /*
 ** ls_aim = length_specificier_add_int_mai
+** c_s    = conversion_specificier
 */
 
-void	ls_anm(va_list ap, char *conv_spec, t_pf *mai, ssize_t mnoz)
+size_t	ls_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb)
 {
-	int						a;
-	unsigned int			b;
-	long int				c;
-	unsigned long int		d;
-	long long int			e;
-	unsigned long long int	f;
+	size_t	i;
 
-	a = (!(strncmp(conv_spec, "d", 1)) || !(strncmp(conv_spec, "i", 1))) ?
-		va_arg(ap, int) : 0;
-	b = (!(strncmp(conv_spec, "ud", 2)) || !(strncmp(conv_spec, "ui", 2))) ?
-		va_arg(ap, unsigned int) : 0;
-	c = (!(strncmp(conv_spec, "ld", 2)) || !(strncmp(conv_spec, "li", 2))) ?
-		va_arg(ap, long int) : 0;
-	d = (!(strncmp(conv_spec, "uld", 3)) || !(strncmp(conv_spec, "uli", 3))) ?
-		va_arg(ap, unsigned long int) : 0;
-	e = (!(strncmp(conv_spec, "lld", 3)) || !(strncmp(conv_spec, "lli", 3))) ?
-		va_arg(ap, long long int) : 0;
-	f = (!(strncmp(conv_spec, "ulld", 4)) || !(strncmp(conv_spec, "ulli", 4))) ?
-		va_arg(ap, unsigned long long int) : 0;
-	((a < 0 && (mai->len = 1) && ((a == INT_MIN && (f = (ulli)(INT_MAX_PLUS_1))) || (f = (ulli)(-a))))
-	|| (a != 0 && (f = (ulli)(a)))
-	|| (b != 0 && (f = (ulli)b))
-	|| (c < 0 && (mai->len = 1) && ((c == LONG_MIN && (f = (ulli)(LONG_MAX_PLUS_1))) || (f = (ulli)(-c))))
-	|| (c != 0 && (f = (ulli)c))
-	|| (d != 0 && (f = (ulli)d))
-/*	|| (e < 0 && (mai->len = 1) && ((e == LLONG_MIN && (f = LLONG_MAX_PLUS_1)) || (f = (ulli)(-e))))
-	|| (e != 0 && (f = (ulli)e))
-	|| f != 0*/) ?
-	add_nb_mai(f, "0123456789", mai, mnoz) : add_char_mai('V', mai) ;
+	i = 0;
+	if (occurs(*c_s, "di"))
+		fix_signed(ap, i, mai, nb);
+	else if (!(strncmp(c_s, "l", 1)))
+	{
+		i++;
+		if (!(strncmp(c_s, "ll", 2)))
+			i++;
+		fix_signed(ap, i, mai, nb);
+	}
+	if (!(strncmp(c_s, "u", 1)))
+	{
+		i++;
+		if (!(strncmp(c_s, "ul", 2)))
+		{
+			i++;
+			if (!(strncmp(c_s, "ull", 3)))
+				i++;
+		}
+		fix_unsigned(ap, i, nb);
+	}
+	return (i);
 }
