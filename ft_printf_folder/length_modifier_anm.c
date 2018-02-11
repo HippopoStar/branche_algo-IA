@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:04:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 16:04:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 16:51:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,13 @@ size_t	length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ULLI *nb)
 			: fix_unsigned(ap, i, nb);
 		return (i + 1);
 	}
-	error_code("Flag pas encore gere");
+	else if (occurs(*(c_s + 0), "hjz"))
+	{
+		i = aux_lm_anm(ap, c_s, mai, nb);
+	}
+	else
+	{
+		error_code("Erreur dans \"ft_printf\"");
+	}
 	return (0);
 }
