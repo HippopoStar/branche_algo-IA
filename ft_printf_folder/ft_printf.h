@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 09:41:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 15:57:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define ulli unsigned long long int
+# define ULLI unsigned long long int
 
 typedef struct	s_pf
 {
@@ -61,13 +61,13 @@ int				occurs(char c, char *str);
 
 size_t			escape(char *str, t_pf *mai);
 
-size_t			length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ulli *nb);
-void			fix_signed(va_list ap, size_t i, t_pf *mai, ulli *nb);
-void			fix_unsigned(va_list ap, size_t i, ulli *nb);
+size_t			length_modifier_anm(va_list ap, char *c_s, t_pf *mai, ULLI *nb);
+void			fix_signed(va_list ap, size_t i, t_pf *mai, ULLI *nb);
+void			fix_unsigned(va_list ap, size_t i, ULLI *nb);
 size_t			skip_length_modifiers_and_conversion_specifier(char *str);
 
-void			add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz);
-void			fill_nb_bas(ulli l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
+void			add_nb_mai(ULLI nb, char *base, t_pf *mai, ssize_t mnoz);
+void			fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
 size_t			is_base_valid(char *base, t_pf *aux);
 void			from_stock_to_string(t_pn *stock, t_pf *mai);
 

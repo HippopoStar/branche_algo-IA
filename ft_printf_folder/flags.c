@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 07:48:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 16:00:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	conversion_flags(char *str, va_list ap, t_pf *mai)
 	size_t	i;
 	char	c;
 	char	*s;
-	ulli	nb;
+	ULLI	nb;
 
 	i = 0;
 	if ((i = skip_length_modifiers_and_conversion_specifier(str)) != 0)

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:22:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:34:13 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 16:02:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ size_t	colors(char *str, t_pf *mai)
 	else if (!(strncmp(str, "{black}", 7)) && (c = 7) != 0)
 		add_str_mai("\033[30m", 5, mai);
 	else if (!(strncmp(str, "{red}", 5)) && (c = 5) != 0)
-		add_str_mai("\033[31m", 5,  mai);
+		add_str_mai("\033[31m", 5, mai);
 	else if (!(strncmp(str, "{green}", 7)) && (c = 7) != 0)
 		add_str_mai("\033[32m", 5, mai);
 	else if (!(strncmp(str, "{yellow}", 8)) && (c = 8) != 0)

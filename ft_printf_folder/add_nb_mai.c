@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 07:37:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 15:58:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ size_t		is_base_valid(char *base, t_pf *aux)
 ** l_b : length_base
 */
 
-void		fill_nb_bas(ulli l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
+void		fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 {
 	t_pn		tmp;
 
@@ -91,9 +91,9 @@ void		fill_nb_bas(ulli l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 	}
 	else
 	{
-		tmp.c = ((mai->next)->str)[l_n % (ulli)((mai->next)->len)];
+		tmp.c = ((mai->next)->str)[l_n % (ULLI)((mai->next)->len)];
 		tmp.next = stock;
-		fill_nb_bas(l_n / (ulli)((mai->next)->len), &tmp, mai, mnoz - 1);
+		fill_nb_bas(l_n / (ULLI)((mai->next)->len), &tmp, mai, mnoz - 1);
 	}
 }
 
@@ -101,7 +101,7 @@ void		fill_nb_bas(ulli l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 ** mnod : minimum_number_of_zeros
 */
 
-void		add_nb_mai(ulli nb, char *base, t_pf *mai, ssize_t mnoz)
+void		add_nb_mai(ULLI nb, char *base, t_pf *mai, ssize_t mnoz)
 {
 	t_pf		aux;
 
