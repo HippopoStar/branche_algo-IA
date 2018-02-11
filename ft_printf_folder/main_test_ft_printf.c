@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 15:48:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/11 16:15:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 		a = *(argv + 2);
 		if (argc > 3)
 		{
-			b = ft_atoi(*(argv + 3));
+			b = ft_atoi(*(argv + 3)); // N'interprete pas les ULLI
 			if (argc > 4)
 			{
 				c = *(*(argv + 4) + 0);
@@ -44,6 +44,8 @@ int		main(int argc, char **argv)
 	printf(*(argv + 1), a, b, c);
 	printf("\n");
 	printf("LLONG_MIN vaut : %lld", LLONG_MIN);
+	printf("\n");
+	printf("ULLONG_MAX vaut : %llu", ULLONG_MAX);
 	printf("\n");
 	return (0);
 }
