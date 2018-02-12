@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 02:46:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 04:39:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 09:26:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,30 @@ void	char_format(va_list ap, char c, t_pf *mai)
 {
 	char	character;
 
-	character = (c == 'c') ?
-		(char)va_arg(ap, int) : unicode_char(ap);
-	add_char_mai(character, mai);
+	if (c == 'c')
+	{
+		character = (char)va_arg(ap, int);
+		add_char_mai(character, mai);
+	}
+	else
+	{
+		add_unicode_mai(ap, mai);
+	}
 }
 
 void	char_star_format(va_list ap, char c, t_pf *mai)
 {
 	char	*string;
 
-	string = (c == 's') ? va_arg(ap, char *) : unicode_string(ap);
-	add_str_mai(string, -1, mai);
+	if (c == 's')
+	{
+		string = va_arg(ap, char *);
+		add_str_mai(string, -1, mai);
+	}
+	else
+	{
+		unicode_string(ap);
+	}
 }
 
 size_t	global_char_format(va_list ap, char *str, t_pf *mai)

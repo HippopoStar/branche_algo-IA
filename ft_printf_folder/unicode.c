@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 05:04:42 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 06:15:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 09:15:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	fill_uni_line(size_t position, char uni_line[9])
 	*(uni_line + 8) = '\0';
 }
 
-void	aux_fill_mask(size_t nb_of_char, char mask[5][9])
+void	aux_fill_mask(size_t nb_of_char, char mask[4][9])
 {
 	size_t	i;
 
@@ -47,24 +47,25 @@ void	aux_fill_mask(size_t nb_of_char, char mask[5][9])
 		fill_uni_line(2, *(mask + i));
 		i++;
 	}
-	*(mask + nb_of_char) = NULL;
+	i = 0;
+	while (i < 4)
+	{
+		*(*(mask + i) + 0) = '\0';
+	}
 }
 
-char	**generate_mask(size_t nb_of_bits)
+void	fill_uni_mask(size_t nb_of_bits, char mask[4][9])
 {
-	char	**mask;
-
 	if (nb_of_bits <= 7)
-		mask = aux_generate_mask(1);
+		aux_fill_mask(1, mask);
 	else if (8 <= nb_of_bits && nb_of_bits <= 11)
-		mask = aux_generate_mask(2);
+		aux_fill_mask(2, mask);
 	else if (12 <= nb_of_bits && nb_of_bits <= 16)
-		mask = aux_generate_mask(3);
+		aux_fill_mask(3, mask);
 	else if (17 <= nb_of_bits && nb_of_bits <= 19)
-		mask = aux_generate_mask(4);
+		aux_fill_mask(4, mask);
 	else
 		error_code("Erreur dans \"ft_printf\"");
-	return (mask);
 }
 
 size_t	count_bits(unsigned int nb)
@@ -89,10 +90,81 @@ size_t	count_bits(unsigned int nb)
 	return (i);
 }
 
-char *unicode_char(wchar_t c)
+void	from_unicode_array_to_string(char mask[4][9])
 {
-	char			mask[5][9]
+	size_t	i;
+	size_t	j;
+	char	c;
+	int		b;
+
+	i = 0;
+	while (i < 4 && mask[i][0] != '\0')
+	{
+		c = '\0';
+		b = 1;
+		j = 0;
+		while (j > 7)
+		{
+			if (mask[i][7 - j] == '1')
+			{
+				c = c + b;
+			}
+			b = b * 2;
+			j++;
+		}
+		mask[0][i] = c;
+		i++;
+	}
+	mask[0][i] = '\0';
+}
+
+void	complete_unicode_array(unsigned int nb, size_t nb_of_bits, char mask[4][9])
+{
+	size_t	i;
+
+	i = 0;
+	while (i < nb_of_bits)
+	{
+		mask[3 - (nb_of_bits / 6)][7 - (nb_of_bits % 6)] = nb % 2;
+		nb = nb / 2;
+		i++;
+	}
+	i = 7 - (nb_of_bits % 6);
+	while (i > 0)
+	{
+		if (mask[3 - (nb_of_bits / 6)][i] == 'x')
+		{
+			mask[3 - (nb_of_bits / 6)][i] = '0';
+		}
+		i--;
+	}
+}
+
+void	take_up_unicode_char(wchar_t c, char unicode[5])
+{
+	char			mask[4][9];
 	unsigned int	nb;
+	size_t			nb_of_bits;
+	size_t			i;
 
 	nb = (unsigned int)c;
+	nb_of_bits = count_bits(nb);
+	fill_uni_mask(nb, mask);
+	complete_unicode_array(nb, nb_of_bits, mask);
+	from_unicode_array_to_string(mask);
+	i = 0;
+	while (i < 4 && *(*(mask + 0) + i) != '\0')
+	{
+		unicode[i] = mask[0][i];
+		i++;
+	}
+	unicode[i] = '\0';
+}
 
+void	add_unicode_mai(va_list ap, t_pf *mai)
+{
+	char	unicode[5];
+
+	take_up_unicode_char(va_arg(ap, wchar_t), unicode);
+	add_str_mai(unicode, -1, mai);
+}
