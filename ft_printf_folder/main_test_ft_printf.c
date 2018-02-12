@@ -6,12 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 16:15:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 04:38:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <locale.h>
 
 int		main(int argc, char **argv)
 {
@@ -47,5 +48,9 @@ int		main(int argc, char **argv)
 	printf("\n");
 	printf("ULLONG_MAX vaut : %llu", ULLONG_MAX);
 	printf("\n");
+	wchar_t uni = L'一';
+	setlocale(LC_ALL, "");
+	ft_printf("the unicode test : %C \n", uni);
+	printf("the unicode test : %C \n", uni);
 	return (0);
 }

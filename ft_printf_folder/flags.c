@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 03:37:03 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 04:50:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ size_t	convers_flags(char *str, va_list ap, t_pf *mai, ssize_t mnoz)
 		;
 	else if ((i = obsolete_convers(ap, *(str + 0), mai, mnoz)) != 0)
 		;
+	else
+		error_code("Erreur dans \"ft_printf\"");
 	return (i);
 }
