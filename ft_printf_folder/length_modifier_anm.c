@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:04:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 16:51:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 02:13:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	skip_length_modifiers_and_conversion_specifier(char *str)
 		i = 2;
 	else if (occurs(*(str + 0), "hljz"))
 		i = 1;
-	if (!(occurs(*(str + i), "diouxX")))
+	if (*(str + 0) != 'l' && !(occurs(*(str + i), "diouxX")))
 		error_code("Erreur dans \"ft_printf\"");
 	return (i + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 16:00:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 03:37:03 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,25 @@ size_t	flags(char *str, va_list ap, t_pf *mai)
 	{
 		error_code("invalid flag for \"ft_printf\"");
 	}
-	i = conversion_flags(str + 1 + f_c_f, ap, mai);
+	i = convers_flags(str + 1 + f_c_f, ap, mai, detect_mnoz((str + 1)));
 //	additionnal_flags(str + 1, i, mai);
 	return (1 + (size_t)f_c_f + i);
 }
 
-size_t	conversion_flags(char *str, va_list ap, t_pf *mai)
+size_t	convers_flags(char *str, va_list ap, t_pf *mai, ssize_t mnoz)
 {
 	size_t	i;
-	char	c;
-	char	*s;
 	ULLI	nb;
 
 	i = 0;
 	if ((i = skip_length_modifiers_and_conversion_specifier(str)) != 0)
 	{
 		length_modifier_anm(ap, str, mai, &nb);
-		add_nb_mai(nb, "0123456789", mai, 0);
+		specify_base(*(str + i - 1), nb, mai, mnoz);
 	}
-	else if (!(strncmp("c", str, 1)) && (i = 1) != 0)
-	{
-		c = (char)va_arg(ap, int);
-		add_char_mai(c, mai);
-	}
-	else if (!(strncmp("s", str, 1)) && (i = 1) != 0)
-	{
-		s = va_arg(ap, char *);
-		add_str_mai(s, -1, mai);
-	}
+	else if ((i = global_char_format(ap, str, mai)) != 0)
+		;
+	else if ((i = obsolete_convers(ap, *(str + 0), mai, mnoz)) != 0)
+		;
 	return (i);
 }

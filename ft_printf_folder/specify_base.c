@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   additionnal_flags.c                                :+:      :+:    :+:   */
+/*   specify_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 03:35:36 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/12 01:52:41 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/12 02:06:04 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	detect_mnoz(char *str)
+void	specify_base(char c, ULLI nb, t_pf *mai, ssize_t mnoz)
 {
-	(void)str;
-
-	return (0);
-}
-
-void	additionnal_flags(char *str, size_t length, t_pf *mai)
-{
-	size_t	i;
-
-	(void)mai;
-	(void)length;
-
-	i = 0;
-	while (*(str + i) != '\0')
+	if (c == 'd' || c == 'i' || c == 'u')
 	{
-
-
-
-
-		i++;
+		add_nb_mai(nb, "0123456789", mai, mnoz);
+	}
+	else if (c == 'o')
+	{
+		add_nb_mai(nb, "01234567", mai, mnoz);
+	}
+	else if (c == 'x')
+	{
+		add_nb_mai(nb, "0123456789abcdef", mai, mnoz);
+	}
+	else if (c == 'X')
+	{
+		add_nb_mai(nb, "0123456789ABCDEF", mai, mnoz);
+	}
+	else
+	{
+		error_code("Erreur dans \"ft_printf\"");
 	}
 }

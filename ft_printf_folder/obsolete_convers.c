@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   additionnal_flags.c                                :+:      :+:    :+:   */
+/*   obsolete_convers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 03:35:36 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/12 03:37:35 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/12 03:37:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	detect_mnoz(char *str)
+size_t	obsolete_convers(va_list ap, char c, t_pf *mai, ssize_t mnoz)
 {
-	(void)str;
+	ULLI	nb;
 
-	return (0);
-}
-
-void	additionnal_flags(char *str, size_t length, t_pf *mai)
-{
-	size_t	i;
-
-	(void)mai;
-	(void)length;
-
-	i = 0;
-	while (*(str + i) != '\0')
+	if (occurs(c, "DOU"))
 	{
-
-
-
-
-		i++;
+		if (c == 'D')
+		{
+			length_modifier_anm(ap, "ld", mai, &nb);
+			specify_base('d', nb, mai, mnoz);
+		}
+		else if (c == 'O')
+		{
+			length_modifier_anm(ap, "lo", mai, &nb);
+			specify_base('o', nb, mai, mnoz);
+		}
+		else
+		{
+			length_modifier_anm(ap, "lu", mai, &nb);
+			specify_base('u', nb, mai, mnoz);
+		}
+		return (1);
 	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 17:10:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/12 03:36:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,16 @@ int				is_color(char *str);
 size_t			colors(char *str, t_pf *mai);
 
 size_t			flags(char *str, va_list ap, t_pf *mai);
-size_t			conversion_flags(char *str, va_list ap, t_pf *mai);
+size_t			convers_flags(char *str, va_list ap, t_pf *mai, ssize_t mnoz);
+
+size_t			global_char_format(va_list ap, char *str, t_pf *mai);
+void			char_star_format(va_list ap, char c, t_pf *mai);
+void			char_format(va_list ap, char c, t_pf *mai);
+
+size_t			obsolete_convers(va_list ap, char c, t_pf *mai, ssize_t mnoz);
 
 void			additionnal_flags(char *str, size_t length, t_pf *mai);
+ssize_t			detect_mnoz(char *str);
 
 ssize_t			go_to_conv_flags(char *str);
 int				occurs(char c, char *str);
@@ -71,6 +78,8 @@ void			lm_h_d(va_list ap, size_t i, t_pf *mai, ULLI *nb);
 void			lm_h_u(va_list ap, size_t i, ULLI *nb);
 void			lm_j(va_list ap, char c, t_pf *mai, ULLI *nb);
 void			lm_z(va_list ap, char c, t_pf *mai, ULLI *nb);
+
+void			specify_base(char c, ULLI nb, t_pf *mai, ssize_t mnoz);
 
 void			add_nb_mai(ULLI nb, char *base, t_pf *mai, ssize_t mnoz);
 void			fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *aux, ssize_t mnoz);
