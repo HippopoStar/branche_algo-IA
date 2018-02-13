@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 02:58:58 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 04:55:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <string.h>
 # include <limits.h>
+# include <wchar.h>
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -62,7 +63,7 @@ void			add_unicode_string_mai(va_list ap, t_pf *mai);
 void			aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai);
 
 void			add_unicode_char_mai(va_list ap, t_pf *mai);
-void			take_up_unicode_char(wchar_t c, char unicode[5]);
+void			take_up_unicode_char(wint_t c, char unicode[5]);
 void			print_uni_mask(char mask[4][9]);
 void			from_unicode_array_to_string(char mask[4][9]);
 

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:34:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 02:19:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 04:57:03 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai)
 	j = 0;
 	while (*(uni_string + j) != '\0')
 	{
-		take_up_unicode_char(*(uni_string + j), unicode_char);
+		take_up_unicode_char((wint_t)(*(uni_string + j)), unicode_char);
 		ft_strcpy((char_array + nb_of_char), unicode_char);
 		nb_of_char = nb_of_char + ft_strlen(unicode_char);
 		j++;
