@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 05:36:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 10:11:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:21:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,24 @@ void	p_plus_sign(t_pf *mai)
 
 void	p_space(t_pf *mai)
 {
-	(void)mai;
+	size_t	i;
+
+	i = 0;
+	while (!(occurs(*(mai->str + i), "-0123456789")))
+	{
+		i++;
+	}
+	if (*(mai->str + i) != '-')
+	{
+		if (i > 0 && *(mai->str + i - 1) != ' ')
+		{
+			insert_a_string_in_another(" ", mai, i - 1);
+		}
+		else
+		{
+			insert_a_string_in_another(" ", mai, 0);
+		}
+	}
 }
 
 void	p_point(size_t retour, t_pf *mai)
