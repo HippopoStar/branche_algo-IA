@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 03:35:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 07:11:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ ssize_t	detect_mnoz(char *str)
 
 void	additionnal_flags(char *str, size_t length, t_pf *mai)
 {
-	size_t	i;
+	size_t	c_v;
+	size_t	r_v;
 
 	(void)mai;
 	(void)length;
 
-	i = 0;
-	while (*(str + i) != '\0')
+	c_v = go_to_conv_flags(str);
+	if ((r_v = find_flag('#', str)) != 0)
 	{
-
-
-
-
-		i++;
+		p_sharp_mark(*(str + c_v), mai);
 	}
 }

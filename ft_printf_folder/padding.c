@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 05:36:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 06:54:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 07:11:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,23 +79,17 @@ void	aux_p_sharp_mark(char c, size_t i, t_pf *mai)
 	free(tmp);
 }
 
-
-void	p_sharp_mark(char *str, t_pf *mai)
+void	p_sharp_mark(char c, t_pf *mai)
 {
 	size_t	i;
-	size_t	c_v;
 
-	(void)str;
-	(void)mai;
-
-	c_v = go_to_conv_flags(str);
 	i = 0;
 	while (!(occurs(*(mai->str + i), "123456789")))
 		i++;
 	if (*(mai->str + i) == '0')
 		;
-	else if (occurs(*(str + c_v), "oxX"))
+	else if (occurs(c, "oxX"))
 	{
-		aux_p_sharp_mark(*(str + c_v), i, mai);
+		aux_p_sharp_mark(c, i, mai);
 	}
 }
