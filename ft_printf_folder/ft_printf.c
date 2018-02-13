@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:58:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:04:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 02:47:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		ft_printf(const char *format, ...)
 	aux_ft_printf((char *)format, ap, &cha);
 	va_end(ap);
 	ret_val = 0;
-	read_pf(cha.next);
+//	read_pf(cha.next); //TEST
 	read_and_free_pf(&ret_val, cha.next);
 	return (ret_val);
 }

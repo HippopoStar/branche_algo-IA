@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:34:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 02:52:57 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 	size_t	i;
 
 	i = 0;
+	if (*(format + 0) == '\0')
+	{
+		return (0);
+	}
 	while (!(special_char(format + i)))
 	{
 		i++;

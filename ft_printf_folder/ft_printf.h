@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 01:52:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 02:58:58 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,19 @@ size_t			global_char_format(va_list ap, char *str, t_pf *mai);
 void			char_star_format(va_list ap, char c, t_pf *mai);
 void			char_format(va_list ap, char c, t_pf *mai);
 
-void	add_unicode_string_mai(va_list ap, t_pf *mai);
-void	aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai);
+void			add_unicode_string_mai(va_list ap, t_pf *mai);
+void			aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai);
 
-void	add_unicode_char_mai(va_list ap, t_pf *mai);
-void	take_up_unicode_char(wchar_t c, char unicode[5]);
-void	print_uni_mask(char mask[4][9]);
-void	from_unicode_array_to_string(char mask[4][9]);
+void			add_unicode_char_mai(va_list ap, t_pf *mai);
+void			take_up_unicode_char(wchar_t c, char unicode[5]);
+void			print_uni_mask(char mask[4][9]);
+void			from_unicode_array_to_string(char mask[4][9]);
 
-void	complete_uni_array(unsigned int nb, size_t nb_of_bits, size_t nb_of_char, char mask[4][9]);
-size_t	count_bits(unsigned int nb);
-void	fill_uni_mask(size_t nb_of_bits, char mask[4][9], size_t *nb_of_char);
-void	aux_fill_mask(size_t nb_of_char, char mask[4][9]);
-void	fill_uni_line(size_t position, char uni_line[9]);
+void			cua(unsigned int nb, size_t nb_b, size_t nb_c, char mask[4][9]);
+size_t			count_bits(unsigned int nb);
+void			fill_uni_mask(size_t nb_of_b, char mask[4][9], size_t *nb_of_c);
+void			aux_fill_mask(size_t nb_of_char, char mask[4][9]);
+void			fill_uni_line(size_t position, char uni_line[9]);
 
 size_t			obsolete_convers(va_list ap, char c, t_pf *mai, ssize_t mnoz);
 

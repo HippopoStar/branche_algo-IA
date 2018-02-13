@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:30:15 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 02:21:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 03:04:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	take_up_unicode_char(wchar_t c, char unicode[5])
 	nb = (unsigned int)c;
 	nb_of_bits = count_bits(nb);
 	fill_uni_mask(nb_of_bits, mask, &nb_of_char);
-	complete_uni_array(nb, nb_of_bits, nb_of_char, mask);
+	cua(nb, nb_of_bits, nb_of_char, mask);
 	from_unicode_array_to_string(mask);
 	i = 0;
 	while (i < 4 && *(*(mask + 0) + i) != '\0')
