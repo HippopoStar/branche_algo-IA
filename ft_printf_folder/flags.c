@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 04:50:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 05:46:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	flags(char *str, va_list ap, t_pf *mai)
 		add_char_mai('%', mai);
 		i = 2;
 	}
-	else if (!(*(str + 0) == '%' && (f_c_f = go_to_conv_flags(str + 1)) != -1))
+	else if (!(*(str + 0) == '%' && (f_c_f = skip_padding(str + 1)) != -1))
 	{
 		error_code("invalid flag for \"ft_printf\"");
 	}

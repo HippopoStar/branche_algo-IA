@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 04:55:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 05:52:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ size_t			obsolete_convers(va_list ap, char c, t_pf *mai, ssize_t mnoz);
 void			additionnal_flags(char *str, size_t length, t_pf *mai);
 ssize_t			detect_mnoz(char *str);
 
-ssize_t			go_to_conv_flags(char *str);
+ssize_t			skip_padding(char *str);
 int				occurs(char c, char *str);
+
+size_t			go_to_conv_flags(char *str);
 
 size_t			escape(char *str, t_pf *mai);
 

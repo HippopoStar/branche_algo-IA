@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/13 03:06:01 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/13 05:53:45 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = main_test_ft_printf.c\
 	   special_char.c\
 	   colors.c\
 	   flags.c\
-	   go_to_conv_flags.c\
+	   skip_padding.c\
 	   additionnal_flags.c\
 	   escape.c\
 	   add_elem.c\
@@ -33,6 +33,7 @@ SRCS = main_test_ft_printf.c\
 	   specify_base.c\
 	   obsolete_convers.c\
 	   add_nb_mai.c\
+	   padding.c\
 	   error_code.c
 
 OBJS = main_test_ft_printf.o\
@@ -40,7 +41,7 @@ OBJS = main_test_ft_printf.o\
 	   special_char.o\
 	   colors.o\
 	   flags.o\
-	   go_to_conv_flags.o\
+	   skip_padding.o\
 	   additionnal_flags.o\
 	   escape.o\
 	   add_elem.o\
@@ -53,6 +54,7 @@ OBJS = main_test_ft_printf.o\
 	   specify_base.o\
 	   obsolete_convers.o\
 	   add_nb_mai.o\
+	   padding.o\
 	   error_code.o
 
 all: $(NAME)
