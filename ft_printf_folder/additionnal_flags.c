@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 07:43:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 08:21:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 ssize_t	detect_mnoz(char *str)
 {
-	(void)str;
+	size_t	retour;
 
-	return (0);
+	if ((retour = find_flag('0', str)) > 0
+		&& find_flag('.', str) == 0 && find_flag('-', str) == 0)
+	{
+		return ((ssize_t)retour);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 size_t	go_to_conv_flags(char *str)
@@ -66,7 +74,7 @@ size_t	find_flag(char c, char *str)
 	}
 	if (*(str + i) == c)
 	{
-		return ((size = (int)((atoi(str + i + 1))) > 0) ? size : 1);
+		return (((size = ft_atoi(str + i + 1)) > 0) ? (size_t)size : 1);
 	}
 	else
 	{
@@ -88,10 +96,6 @@ void	additionnal_flags(char *str, size_t length, t_pf *mai)
 		p_sharp_mark(c_v, mai);
 	}
 	if (find_flag('-', str) > 0)
-	{
-
-	}
-	else if (find_flag('0', str) > 0)
 	{
 
 	}

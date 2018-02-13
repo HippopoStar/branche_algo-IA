@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/11 15:58:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 08:26:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ size_t		is_base_valid(char *base, t_pf *aux)
 /*
 ** l_n : long_nbr
 ** l_b : length_base
+**
+** Astuce : mnoz > mai->len
+**          une place en moins lorsqu'il y a un '-' a placer
 */
 
 void		fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
@@ -77,7 +80,7 @@ void		fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
 
 	if (l_n == 0)
 	{
-		if (mnoz > 0)
+		if (mnoz > (ssize_t)mai->len)
 		{
 			tmp.c = (mai->next)->str[0];
 			tmp.next = stock;
