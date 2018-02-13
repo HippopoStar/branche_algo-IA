@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 09:18:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 10:02:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 	size = ft_strlen(str);
 	if (!(mai->str = (char *)malloc(ft_strlen(tmp) + size + 1)))
 		error_code("Erreur dans \"ft_printf\"");
-	strncpy(mai->str, tmp, posit + 1);
+	strncpy(mai->str, tmp, posit);
 	strcpy((mai->str + posit), str);
 	strcpy((mai->str + posit + size), (tmp + posit));
 	free(tmp);
@@ -98,29 +98,30 @@ size_t	find_flag(char c, char *str)
 	}
 }
 
-void	additionnal_flags(char *str, size_t length, t_pf *mai)
+void	additionnal_flags(char *str, t_pf *mai)
 {
 	char	c_v;
 	size_t	retour;
-
-	(void)mai;
-	(void)length;
 
 	c_v = *(str + go_to_conv_flags(str));
 	if (find_flag('#', str) > 0)
 	{
 		p_sharp_mark(c_v, mai);
 	}
-	if (find_flag('-', str) > 0)
+	if ((retour = find_flag('-', str)) > 0)
 	{
-
+		p_minus_sign(retour, mai);
 	}
 	if ((retour = find_flag('+', str)) > 0)
 	{
-
+		p_plus_sign(mai);
 	}
 	else if ((retour = find_flag(' ', str)) > 0)
 	{
-
+		p_space(mai);
+	}
+	if ((retour = find_flag('.', str)) > 0)
+	{
+		p_point(retour, mai);
 	}
 }
