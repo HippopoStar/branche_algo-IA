@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 09:10:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 09:18:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 	size = ft_strlen(str);
 	if (!(mai->str = (char *)malloc(ft_strlen(tmp) + size + 1)))
 		error_code("Erreur dans \"ft_printf\"");
-	strncpy(mai->str, tmp, posit);
+	strncpy(mai->str, tmp, posit + 1);
 	strcpy((mai->str + posit), str);
 	strcpy((mai->str + posit + size), (tmp + posit));
 	free(tmp);
