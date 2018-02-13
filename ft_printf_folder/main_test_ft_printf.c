@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 02:24:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 03:15:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int argc, char **argv)
 
 	setlocale(LC_ALL, "");
 	a = "42Born2Code";
-	b = LLONG_MIN;
+	b = 42;
 	c = 'y';
 	if (argc < 2)
 	{

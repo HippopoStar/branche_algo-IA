@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:04:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 04:53:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 03:14:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	skip_length_modifiers_and_conversion_specifier(char *str)
 	size_t	i;
 
 	if (!(occurs(*(str + 0), "hljzdiouxX"))
-		|| (*(str + 0) == 'l' && !occurs(*(str + 1), "cs")))
+		|| (*(str + 0) == 'l' && occurs(*(str + 1), "cs")))
 		return (0);
 	i = 0;
 	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
