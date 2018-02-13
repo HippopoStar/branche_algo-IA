@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 11:47:08 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 01:59:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		main(int argc, char **argv)
 	char			c;
 	wchar_t			uni;
 
-	uni = L'α';
-//	uni = L'一';
+//	uni = L'α';
+	uni = L'一';
 //	uni = L'a';
 	setlocale(LC_ALL, "");
 	a = "42Born2Code";

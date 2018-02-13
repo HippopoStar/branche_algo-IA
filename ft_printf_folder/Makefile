@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/12 09:21:35 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/13 01:34:03 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ SRCS = main_test_ft_printf.c\
 	   escape.c\
 	   add_elem.c\
 	   global_char_format.c\
+	   add_unicode_string_mai.c\
+	   add_unicode_char_mai.c\
 	   unicode.c\
 	   length_modifier_anm.c\
 	   aux_lm_anm.c\
@@ -43,6 +45,8 @@ OBJS = main_test_ft_printf.o\
 	   escape.o\
 	   add_elem.o\
 	   global_char_format.o\
+	   add_unicode_string_mai.o\
+	   add_unicode_char_mai.o\
 	   unicode.o\
 	   length_modifier_anm.o\
 	   aux_lm_anm.o\
