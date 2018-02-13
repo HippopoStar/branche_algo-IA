@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 05:04:42 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 01:58:01 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 02:20:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	aux_fill_mask(size_t nb_of_char, char mask[4][9])
 		*(*(mask + i) + 0) = '\0';
 		i++;
 	}
-	ft_putstr("\"aux_fill_mask\"\n");
-	print_uni_mask(mask);
+	print_uni_mask(mask); //TEST
 }
 
 void	fill_uni_mask(size_t nb_of_bits, char mask[4][9], size_t *nb_of_char)
@@ -127,6 +126,5 @@ void	complete_uni_array(unsigned int nb, size_t nb_of_bits, size_t nb_of_char, c
 		}
 		i++;
 	}
-	ft_putstr("\"complete_unicode_array\"\n");
-	print_uni_mask(mask);
+	print_uni_mask(mask); //TEST
 }

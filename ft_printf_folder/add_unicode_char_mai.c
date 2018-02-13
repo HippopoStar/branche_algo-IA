@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:30:15 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 01:30:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 02:21:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void	print_uni_mask(char mask[4][9])
 	while (i < 4 && *(*(mask + i) + 0) != '\0')
 	{
 		ft_putstr(*(mask + i));
-		ft_putchar(' ');
+		if (i < 3)
+		{
+			ft_putchar(' ');
+		}
 		i++;
 	}
 	ft_putchar('\n');
