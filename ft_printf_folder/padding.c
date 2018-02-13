@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 05:36:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 07:24:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/13 07:35:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ size_t	go_to_conv_flags(char *str)
 	i = i - 1;
 	return (i);
 }
+
+/*
+** On renvoie le retour de atoi seulement s'il est positif car :
+** - s'il est nul, c'est que le flag n'est pas suivi par un nombre
+** - s'il est negatif, c'est que le flag est suivi du flag '-'
+*/
+
 
 size_t	find_flag(char c, char *str)
 {
