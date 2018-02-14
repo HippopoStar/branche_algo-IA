@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 19:33:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 20:37:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 ssize_t	detect_mnoz(char *str)
 {
 	size_t	i;
+	size_t	retour;
 
-	if (find_flag('.', str) > 0)
+	if ((retour = find_flag('.', str)) > 0)
 	{
-		return ((ssize_t)field_width_length(str));
+		return ((ssize_t)retour);
 	}
 	else if (find_flag('-', str) == 0)
 	{
@@ -135,12 +136,13 @@ void	additionnal_flags(char *str, t_pf *mai)
 	{
 		p_space(mai);
 	}
-	if ((retour = aux_p_padding(str, &c_v)) > 0 && find_flag('.', str) > 0)
-	{
-		p_padding(retour, mai, c_v);
-	}
-	else if (retour > 0 && (retour = field_width_length(str)) > 0 && !(detect_mnoz(str) > 0))
-	{
-		p_padding(retour, mai, c_v);
-	}
+// Le flag '-' ne sera pas gere, du coup
+//	if ((retour = aux_p_padding(str, &c_v)) > 0 && find_flag('.', str) > 0)
+//	{
+		p_padding(field_width_length(str), mai, c_v);
+//	}
+//	else if (retour > 0 && (retour = field_width_length(str)) > 0 && !(detect_mnoz(str) > 0))
+//	{
+//		p_padding(retour, mai, c_v);
+//	}
 }
