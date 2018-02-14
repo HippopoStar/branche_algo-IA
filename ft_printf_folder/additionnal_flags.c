@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 13:50:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 19:33:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,35 @@
 
 ssize_t	detect_mnoz(char *str)
 {
-	size_t	retour;
-	size_t	retour_bis;
 	size_t	i;
 
-	if ((retour = find_flag('.', str)) > 0)
+	if (find_flag('.', str) > 0)
 	{
-		return ((ssize_t)retour);
+		return ((ssize_t)field_width_length(str));
 	}
-	else if ((retour = find_flag('0', str)) > 0 && find_flag('-', str) == 0)
+	else if (find_flag('-', str) == 0)
 	{
-//START
-		i = go_to_conv_flags(str);
-		retour = 0;
-		while (*(str + i) != '%' && (retour_bis = ft_atoi(str + i)) >= retour)
+		i = 0;
+		while (occurs(*(str + i), "#- +.0123456789"))
 		{
-			retour = retour_bis;
-			i--;
+			if (occurs(*(str + i), "123456789"))
+			{
+				while (occurs(*(str + i), "0123456789"))
+				{
+					i++;
+				}
+			}
+			else if (*(str + i) == '0')
+			{
+				return ((ssize_t)field_width_length(str));
+			}
+			else
+			{
+				i++;
+			}
 		}
-//END
-		return ((ssize_t)retour);
 	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }
 
 void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
@@ -131,7 +135,11 @@ void	additionnal_flags(char *str, t_pf *mai)
 	{
 		p_space(mai);
 	}
-	if ((retour = aux_p_padding(str, &c_v)) > 0)
+	if ((retour = aux_p_padding(str, &c_v)) > 0 && find_flag('.', str) > 0)
+	{
+		p_padding(retour, mai, c_v);
+	}
+	else if (retour > 0 && (retour = field_width_length(str)) > 0 && !(detect_mnoz(str) > 0))
 	{
 		p_padding(retour, mai, c_v);
 	}

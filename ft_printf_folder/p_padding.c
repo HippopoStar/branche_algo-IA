@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 13:01:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:42:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,11 @@ void	p_plus_sign(t_pf *mai)
 	{
 		i++;
 	}
-	if (*(mai->str + i) != '-')
+	if (*(mai->str + i) == '0')
+	{
+		*(mai->str + i) = '+';
+	}
+	else if (*(mai->str + i) != '-')
 	{
 		if (i > 0 && *(mai->str + i - 1) == ' ')
 		{
@@ -108,7 +112,11 @@ void	p_space(t_pf *mai)
 	{
 		i++;
 	}
-	if (*(mai->str + i) != '-')
+	if (*(mai->str + i) == '0')
+	{
+		*(mai->str + i) = ' ';
+	}
+	else if (*(mai->str + i) != '-')
 	{
 		if (i > 0 && *(mai->str + i - 1) != ' ')
 		{

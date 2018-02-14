@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/14 13:02:33 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/14 19:00:37 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = main_test_ft_printf.c\
 	   flags.c\
 	   skip_padding.c\
 	   additionnal_flags.c\
+	   field_width_length.c\
 	   escape.c\
 	   add_elem.c\
 	   global_char_format.c\
@@ -43,6 +44,7 @@ OBJS = main_test_ft_printf.o\
 	   flags.o\
 	   skip_padding.o\
 	   additionnal_flags.o\
+	   field_width_length.o\
 	   escape.o\
 	   add_elem.o\
 	   global_char_format.o\

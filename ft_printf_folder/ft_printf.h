@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 12:30:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:58:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ size_t			go_to_conv_flags(char *str);
 size_t			find_flag(char c, char *str);
 void			insert_a_string_in_another(char *str, t_pf *mai, size_t posit);
 ssize_t			detect_mnoz(char *str);
+
+size_t			field_width_length(char *str);
 
 ssize_t			skip_padding(char *str);
 int				occurs(char c, char *str);
