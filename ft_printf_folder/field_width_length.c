@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 18:59:37 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 20:45:03 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 21:39:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ size_t	field_width_length(char *str)
 	size_t	retour_bis;
 
 	i = go_to_conv_flags(str);
+	ft_putchar(*(str + i)); //TEST
+	ft_putchar('\n');//TEST
 	while (i > 0)
 	{
 		retour = 0;

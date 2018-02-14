@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 20:58:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 21:42:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ size_t	go_to_conv_flags(char *str)
 
 	i = 0;
 	i = i + skip_padding(str + i);
-	i = i + skip_length_modifiers_and_conversion_specifier(str + i);
-	i = i - 1;
-	return (i);
+	i = i + skip_length_modifiers_and_conversion_specifier(str + i);;
+	return (i > 1 ? i - 1 : i);
 }
 
 /*
