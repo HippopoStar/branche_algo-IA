@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 21:42:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 21:48:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ ssize_t	detect_mnoz(char *str)
 			}
 			else if (*(str + i) == '0')
 			{
-				return ((ssize_t)field_width_length(str));
+				return ((retour = ft_atoi(str + i)) > 0 ?
+					retour : (ssize_t)field_width_length(str));
 			}
 			else
 			{
