@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 12:57:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 13:50:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 ssize_t	detect_mnoz(char *str)
 {
 	size_t	retour;
+	size_t	retour_bis;
+	size_t	i;
 
 	if ((retour = find_flag('.', str)) > 0)
 	{
@@ -22,6 +24,15 @@ ssize_t	detect_mnoz(char *str)
 	}
 	else if ((retour = find_flag('0', str)) > 0 && find_flag('-', str) == 0)
 	{
+//START
+		i = go_to_conv_flags(str);
+		retour = 0;
+		while (*(str + i) != '%' && (retour_bis = ft_atoi(str + i)) >= retour)
+		{
+			retour = retour_bis;
+			i--;
+		}
+//END
 		return ((ssize_t)retour);
 	}
 	else
@@ -87,7 +98,8 @@ size_t	find_flag(char c, char *str)
 	}
 	flags[5] = '\0';
 	i = 0;
-	while (occurs(*(str + i), flags) || occurs(*(str + i), "0123456789"))
+	while (occurs(*(str + i), flags) || occurs(*(str + i), "123456789")
+			|| (*(str + i) == '0' && c != '0'))
 	{
 		i++;
 	}
