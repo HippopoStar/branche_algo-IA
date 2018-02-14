@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 10:02:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 12:57:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ ssize_t	detect_mnoz(char *str)
 {
 	size_t	retour;
 
-	if ((retour = find_flag('0', str)) > 0
-		&& find_flag('.', str) == 0 && find_flag('-', str) == 0)
+	if ((retour = find_flag('.', str)) > 0)
+	{
+		return ((ssize_t)retour);
+	}
+	else if ((retour = find_flag('0', str)) > 0 && find_flag('-', str) == 0)
 	{
 		return ((ssize_t)retour);
 	}
@@ -84,7 +87,7 @@ size_t	find_flag(char c, char *str)
 	}
 	flags[5] = '\0';
 	i = 0;
-	while (occurs(*(str + i), flags) == 1)
+	while (occurs(*(str + i), flags) || occurs(*(str + i), "0123456789"))
 	{
 		i++;
 	}
@@ -108,10 +111,6 @@ void	additionnal_flags(char *str, t_pf *mai)
 	{
 		p_sharp_mark(c_v, mai);
 	}
-	if ((retour = find_flag('-', str)) > 0)
-	{
-		p_minus_sign(retour, mai);
-	}
 	if ((retour = find_flag('+', str)) > 0)
 	{
 		p_plus_sign(mai);
@@ -120,8 +119,8 @@ void	additionnal_flags(char *str, t_pf *mai)
 	{
 		p_space(mai);
 	}
-	if ((retour = find_flag('.', str)) > 0)
+	if ((retour = aux_p_padding(str, &c_v)) > 0)
 	{
-		p_point(retour, mai);
+		p_padding(retour, mai, c_v);
 	}
 }

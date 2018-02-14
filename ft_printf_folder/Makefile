@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/13 05:53:45 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/14 13:02:33 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS = main_test_ft_printf.c\
 	   specify_base.c\
 	   obsolete_convers.c\
 	   add_nb_mai.c\
-	   padding.c\
+	   p_padding.c\
 	   error_code.c
 
 OBJS = main_test_ft_printf.o\
@@ -54,7 +54,7 @@ OBJS = main_test_ft_printf.o\
 	   specify_base.o\
 	   obsolete_convers.o\
 	   add_nb_mai.o\
-	   padding.o\
+	   p_padding.o\
 	   error_code.o
 
 all: $(NAME)

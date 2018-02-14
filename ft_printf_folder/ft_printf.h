@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 10:01:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 12:30:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ ssize_t			skip_padding(char *str);
 int				occurs(char c, char *str);
 
 void			p_sharp_mark(char c, t_pf *mai);
-void			p_minus_sign(size_t retour, t_pf *mai);
+void			p_padding(size_t retour, t_pf *mai, char minus_sign);
+size_t			aux_p_padding(char *str, char *minus_sign);
 void			p_plus_sign(t_pf *mai);
 void			p_space(t_pf *mai);
-void			p_point(size_t retour, t_pf *mai);
 
 size_t			escape(char *str, t_pf *mai);
 

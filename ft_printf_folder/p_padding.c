@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   p_padding.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 05:36:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 10:21:33 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/14 13:01:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,32 @@ void	p_sharp_mark(char c, t_pf *mai)
 	}
 }
 
-void	p_minus_sign(size_t retour, t_pf *mai)
+size_t	aux_p_padding(char *str, char *minus_sign)
+{
+	size_t	retour;
+	size_t	i;
+
+	if ((retour = find_flag('-', str)) > 0)
+	{
+		*minus_sign = '-';
+		if (retour > 1)
+			return (retour);
+		else
+		{
+			i = 0;
+			while (*(str + i) != '-')
+				i++;
+			if (ft_atoi(str + i + 1) == 1)
+				return (retour);
+			else
+				return (((retour = (size_t)ft_atoi(str + 0)) > 0) ? retour : 1);
+		}
+	}
+	else
+		return (((retour = (size_t)ft_atoi(str + 0)) > 0) ? retour : 0);
+}
+
+void	p_padding(size_t retour, t_pf *mai, char minus_sign)
 {
 	char	blanks[retour + 1];
 	size_t	size;
@@ -46,7 +71,9 @@ void	p_minus_sign(size_t retour, t_pf *mai)
 			i++;
 		}
 		blanks[retour - size] = '\0';
-		insert_a_string_in_another(blanks, mai, size);
+		(minus_sign == '-') ?
+		insert_a_string_in_another(blanks, mai, size)
+		: insert_a_string_in_another(blanks, mai, 0);
 	}
 }
 
@@ -92,10 +119,4 @@ void	p_space(t_pf *mai)
 			insert_a_string_in_another(" ", mai, 0);
 		}
 	}
-}
-
-void	p_point(size_t retour, t_pf *mai)
-{
-	(void)retour;
-	(void)mai;
 }
