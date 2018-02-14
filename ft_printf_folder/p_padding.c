@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 18:42:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 20:54:05 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ size_t	aux_p_padding(char *str, char *minus_sign)
 			if (ft_atoi(str + i + 1) == 1)
 				return (retour);
 			else
-				return (((retour = (size_t)ft_atoi(str + 0)) > 0) ? retour : 1);
+				return ((retour = field_width_length(str)) > 0 ? retour : 1);
 		}
 	}
 	else
-		return (((retour = (size_t)ft_atoi(str + 0)) > 0) ? retour : 0);
+		return ((retour = field_width_length(str)) > 0 ? retour : 0);
 }
 
 void	p_padding(size_t retour, t_pf *mai, char minus_sign)
