@@ -6,17 +6,16 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/14 19:00:37 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/15 03:13:49 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./
 
-NAME = test_ft_printf.exe
+NAME = libftprintf.a
 
-SRCS = main_test_ft_printf.c\
-	   ft_printf.c\
+SRCS = ft_printf.c\
 	   special_char.c\
 	   colors.c\
 	   flags.c\
@@ -37,8 +36,7 @@ SRCS = main_test_ft_printf.c\
 	   p_padding.c\
 	   error_code.c
 
-OBJS = main_test_ft_printf.o\
-	   ft_printf.o\
+OBJS = ft_printf.o\
 	   special_char.o\
 	   colors.o\
 	   flags.o\
@@ -63,7 +61,8 @@ all: $(NAME)
 
 $(NAME):
 	gcc -c $(CFLAGS) $(SRCS)
-	gcc -o $(NAME) $(OBJS) -L./libft/ -lft
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -73,4 +72,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY	:				all clean fclean re
+test: re
+	rm -f test_ft_printf.exe
+	gcc -o test_ft_printf.exe $(CFLAGS) main_test_ft_printf.c -L./ -lftprintf -L./libft/ -lft
+
+.PHONY	:				all clean fclean re test
