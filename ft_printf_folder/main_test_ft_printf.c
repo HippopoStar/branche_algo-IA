@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:52:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 22:30:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/15 03:21:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		main(int argc, char **argv)
 	printf("\n");
 	printf("ULLONG_MAX vaut : %llu", ULLONG_MAX);
 	printf("\n");
-//	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 //	uni_char = L'α';
 	uni_char = L'一';
 //	uni_char = L'a';

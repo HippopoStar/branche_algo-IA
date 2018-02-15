@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/15 02:55:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/15 03:53:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,10 @@ void	additionnal_flags(char *str, t_pf *mai)
 		if (detect_mnoz(str) && !(find_flag('.', str)))
 		{
 			replace_left_spaces_by_zeros(mai);
+		}
+		if ((retour = find_flag('.', str)) && retour < ft_strlen(str))
+		{
+			*(mai->str + retour) = '\0';
 		}
 	}
 }
