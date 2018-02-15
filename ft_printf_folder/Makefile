@@ -6,12 +6,12 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/15 03:13:49 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/15 03:18:34 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
-CFLAGS	+=		-I./
+CFLAGS	+=		-I./ -I./libft/
 
 NAME = libftprintf.a
 
