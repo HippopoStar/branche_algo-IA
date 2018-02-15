@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 20:21:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 22:05:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			aux_fill_mask(size_t nb_of_char, char mask[4][9]);
 void			fill_uni_line(size_t position, char uni_line[9]);
 
 size_t			obsolete_convers(va_list ap, char c, t_pf *mai, ssize_t mnoz);
+void			replace_left_spaces_by_zeros(t_pf *mai);
 
 void			additionnal_flags(char *str, t_pf *mai);
 size_t			go_to_conv_flags(char *str);

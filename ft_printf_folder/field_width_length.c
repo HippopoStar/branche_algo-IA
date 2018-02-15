@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 18:59:37 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 21:39:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/15 02:52:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,20 @@ size_t	fwl_bis(char *str)
 
 size_t	field_width_length(char *str)
 {
-	size_t	i;
+	ssize_t	i;
 	size_t	retour;
 	size_t	retour_bis;
 
-	i = go_to_conv_flags(str);
-	ft_putchar(*(str + i)); //TEST
-	ft_putchar('\n');//TEST
+	i = (ssize_t)go_to_conv_flags(str);
 	while (i > 0)
 	{
 		retour = 0;
-		while ((retour_bis = (size_t)ft_atoi(str + i - 1)) >= retour)
+		while (i > 0 && (retour_bis = (size_t)ft_atoi(str + i - 1)) >= retour)
 		{
 			retour = retour_bis;
 			i--;
 		}
-		if (*(str + i - 1) != '.' && *(str + i - 1) != '0' && *(str + i) != '0')
+		if (*(str + i - 1) != '.' && *(str + i) != '0')
 		{
 			return (retour);
 		}

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 21:01:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/15 02:57:05 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,7 @@ size_t	flags(char *str, va_list ap, t_pf *mai)
 	{
 		error_code("invalid flag for \"ft_printf\"");
 	}
-
-	ssize_t	nb; //TEST
-	nb = detect_mnoz((str + 1)); //TEST
-	ft_putnbr((int)nb); //TEST
-	ft_putchar('\n'); //TEST
-
-	i = convers_flags(str + 1 + f_c_f, ap, mai, nb/*detect_mnoz((str + 1))*/);
+	i = convers_flags(str + 1 + f_c_f, ap, mai, detect_mnoz((str + 1)));
 	additionnal_flags(str + 1, mai);
 	return (1 + (size_t)f_c_f + i);
 }

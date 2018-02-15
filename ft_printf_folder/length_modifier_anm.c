@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:04:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 03:14:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/14 22:58:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	skip_length_modifiers_and_conversion_specifier(char *str)
 {
 	size_t	i;
 
-	if (!(occurs(*(str + 0), "hljzdiouxX"))
+	if (!(occurs(*(str + 0), "hljzdiouxXDOU"))
 		|| (*(str + 0) == 'l' && occurs(*(str + 1), "cs")))
 		return (0);
 	i = 0;
@@ -24,7 +24,7 @@ size_t	skip_length_modifiers_and_conversion_specifier(char *str)
 		i = 2;
 	else if (occurs(*(str + 0), "hljz"))
 		i = 1;
-	if (*(str + 0) != 'l' && !(occurs(*(str + i), "diouxX")))
+	if (*(str + 0) != 'l' && !(occurs(*(str + i), "diouxXDOU")))
 		error_code("Erreur dans \"ft_printf\"");
 	return (i + 1);
 }

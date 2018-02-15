@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 21:48:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/15 02:55:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ssize_t	detect_mnoz(char *str)
 			}
 			else if (*(str + i) == '0')
 			{
-				return ((retour = ft_atoi(str + i)) > 0 ?
+				return ((retour = (ssize_t)ft_atoi(str + i)) > 0 ?
 					retour : (ssize_t)field_width_length(str));
 			}
 			else
@@ -69,8 +69,8 @@ size_t	go_to_conv_flags(char *str)
 
 	i = 0;
 	i = i + skip_padding(str + i);
-	i = i + skip_length_modifiers_and_conversion_specifier(str + i);;
-	return (i > 1 ? i - 1 : i);
+	i = i + skip_length_modifiers_and_conversion_specifier(str + i);
+	return ((i > 0 && occurs(*(str + i - 1), "diouxXDOU")) ? i - 1 : i);
 }
 
 /*
@@ -120,24 +120,39 @@ size_t	find_flag(char c, char *str)
 
 void	additionnal_flags(char *str, t_pf *mai)
 {
-	char	c_v;
+	char	co_sp;
+	char	minus_sign;
 	size_t	retour;
 
-	c_v = *(str + go_to_conv_flags(str));
-	if (find_flag('#', str) > 0)
+	co_sp = *(str + go_to_conv_flags(str));
+	if (occurs(co_sp, "diouxXDOU"))
 	{
-		p_sharp_mark(c_v, mai);
+		if (find_flag('#', str) > 0)
+		{
+			p_sharp_mark(co_sp, mai);
+		}
+		if ((retour = find_flag('+', str)) > 0)
+		{
+			p_plus_sign(mai);
+		}
+		else if ((retour = find_flag(' ', str)) > 0)
+		{
+			p_space(mai);
+		}
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0 && (!(detect_mnoz(str)) || find_flag('.', str) > 0))
+		{
+			p_padding(retour, mai, minus_sign);
+		}
 	}
-	if ((retour = find_flag('+', str)) > 0)
+	else
 	{
-		p_plus_sign(mai);
-	}
-	else if ((retour = find_flag(' ', str)) > 0)
-	{
-		p_space(mai);
-	}
-	if ((retour = aux_p_padding(str, &c_v)) > 0 && (!(detect_mnoz(str)) || find_flag('.', str) > 0))
-	{
-		p_padding(retour, mai, c_v);
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0 || (retour = (size_t)detect_mnoz(str)) > 0)
+		{
+			p_padding(retour, mai, minus_sign);
+		}
+		if (detect_mnoz(str) && !(find_flag('.', str)))
+		{
+			replace_left_spaces_by_zeros(mai);
+		}
 	}
 }
