@@ -104,7 +104,7 @@ size_t	find_flag(char c, char *str)
 	flags[5] = '\0';
 	i = 0;
 	while (occurs(*(str + i), flags) || occurs(*(str + i), "123456789")
-			|| (*(str + i) == '0' && c != '0'))
+			|| (*(str + i) == '0' && !(occurs(*(str + i - 1), "0123456789")) && c != '0'))
 	{
 		i++;
 	}
