@@ -35,8 +35,8 @@ ssize_t	detect_mnoz(char *str)
 			}
 			else if (*(str + i) == '0')
 			{
-				return ((retour = (ssize_t)ft_atoi(str + i)) > 0 ?
-					retour : (ssize_t)field_width_length(str));
+				return ((retour = (size_t)ft_atoi(str + i)) > 0 ?
+					(ssize_t)retour : (ssize_t)field_width_length(str));
 			}
 			else
 			{
