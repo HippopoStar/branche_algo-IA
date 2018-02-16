@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/16 21:15:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 21:25:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ size_t	find_flag(char c, char *str)
 		return (0);
 	}
 }
+
+/*
+** Remarque : on ne doit pas avoir de conflit entre l'utilisation du flag '#'
+**            et celle du flag '0' malgre le critere "la chaine de caractere
+**            representant le nombre ne doit pas debuter par '0' "
+*/
 
 void	optionnal_flags(char *str, t_pf *mai)
 {
