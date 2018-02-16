@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:30:15 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 04:56:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:39:41 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,5 @@ void	add_unicode_char_mai(va_list ap, t_pf *mai)
 
 	take_up_unicode_char(va_arg(ap, wint_t), unicode);
 	add_str_mai(unicode, -1, mai);
+	mai->len = 1;
 }

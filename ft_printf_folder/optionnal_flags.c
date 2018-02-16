@@ -1,51 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   additionnal_flags.c                                :+:      :+:    :+:   */
+/*   optionnal_flags.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 06:03:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/15 03:53:24 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/02/16 21:15:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-ssize_t	detect_mnoz(char *str)
-{
-	size_t	i;
-	size_t	retour;
-
-	if ((retour = find_flag('.', str)) > 0)
-	{
-		return ((ssize_t)retour);
-	}
-	else if (find_flag('-', str) == 0)
-	{
-		i = 0;
-		while (occurs(*(str + i), "#- +.0123456789"))
-		{
-			if (occurs(*(str + i), "123456789"))
-			{
-				while (occurs(*(str + i), "0123456789"))
-				{
-					i++;
-				}
-			}
-			else if (*(str + i) == '0')
-			{
-				return ((retour = (size_t)ft_atoi(str + i)) > 0 ?
-					(ssize_t)retour : (ssize_t)field_width_length(str));
-			}
-			else
-			{
-				i++;
-			}
-		}
-	}
-	return (0);
-}
 
 void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 {
@@ -61,16 +26,6 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 	strcpy((mai->str + posit + size), (tmp + posit));
 	free(tmp);
 	mai->len = mai->len + size;
-}
-
-size_t	go_to_conv_flags(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	i = i + skip_padding(str + i);
-	i = i + skip_length_modifiers_and_conversion_specifier(str + i);
-	return ((i > 0 && occurs(*(str + i - 1), "diouxXDOU")) ? i - 1 : i);
 }
 
 /*
@@ -104,7 +59,8 @@ size_t	find_flag(char c, char *str)
 	flags[5] = '\0';
 	i = 0;
 	while (occurs(*(str + i), flags) || occurs(*(str + i), "123456789")
-			/*|| (*(str + i) == '0' && !(occurs(*(str + i - 1), "0123456789")) && c != '0')*/)
+			|| (c == '0'
+			&& i > 0 && occurs(*(str + i - 1), "0123456789")))
 	{
 		i++;
 	}
@@ -118,7 +74,7 @@ size_t	find_flag(char c, char *str)
 	}
 }
 
-void	additionnal_flags(char *str, t_pf *mai)
+void	optionnal_flags(char *str, t_pf *mai)
 {
 	char	co_sp;
 	char	minus_sign;
@@ -139,14 +95,16 @@ void	additionnal_flags(char *str, t_pf *mai)
 		{
 			p_space(mai);
 		}
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0 && (!(detect_mnoz(str)) || find_flag('.', str) > 0))
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0
+				&& (!(detect_mnoz(str)) || find_flag('.', str) > 0))
 		{
 			p_padding(retour, mai, minus_sign);
 		}
 	}
 	else
 	{
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0 || (retour = (size_t)detect_mnoz(str)) > 0)
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0
+				|| (retour = (size_t)detect_mnoz(str)) > 0)
 		{
 			p_padding(retour, mai, minus_sign);
 		}
@@ -157,6 +115,7 @@ void	additionnal_flags(char *str, t_pf *mai)
 		if ((retour = find_flag('.', str)) && retour < ft_strlen(str))
 		{
 			*(mai->str + retour) = '\0';
+			mai->len = retour;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/15 03:18:34 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/16 20:42:49 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ SRCS = ft_printf.c\
 	   special_char.c\
 	   colors.c\
 	   flags.c\
-	   skip_padding.c\
-	   additionnal_flags.c\
+	   go_to_conv_flag.c\
+	   occurs.c\
+	   optionnal_flags.c\
+	   detect_mnoz.c\
 	   field_width_length.c\
 	   escape.c\
 	   add_elem.c\
@@ -40,8 +42,10 @@ OBJS = ft_printf.o\
 	   special_char.o\
 	   colors.o\
 	   flags.o\
-	   skip_padding.o\
-	   additionnal_flags.o\
+	   go_to_conv_flag.o\
+	   occurs.o\
+	   optionnal_flags.o\
+	   detect_mnoz.o\
 	   field_width_length.o\
 	   escape.o\
 	   add_elem.o\

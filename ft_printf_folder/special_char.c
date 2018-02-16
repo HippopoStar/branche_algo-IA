@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 02:52:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:45:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 	add_str_mai(format, i, mai);
 	return (i);
 }
+
+/*
+** Les caracteres d'echappement ne sont a prendre en consideration que dans
+** l'eventualite d'une utilisation future de "ft_printf" depuis un terminal
+** par l'intermediaire de argc/argv
+*/
 
 size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
 {

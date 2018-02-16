@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/15 02:51:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:52:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	p_sharp_mark(char c, t_pf *mai)
 	i = 0;
 	while (!(occurs(*(mai->str + i), "0123456789")))
 		i++;
-	if (*(mai->str + i) != '0' && occurs(c, "oxX"))
+	if (*(mai->str + i) != '0' && occurs(c, "oxXO"))
 	{
-		if (c == 'o')
+		if (c == 'o' || c == 'O')
 			insert_a_string_in_another("0", mai, i);
 		else if (c == 'x')
 			insert_a_string_in_another("0x", mai, i);

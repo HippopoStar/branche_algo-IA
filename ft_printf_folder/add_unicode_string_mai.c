@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:34:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 04:57:03 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:40:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void	add_unicode_string_mai(va_list ap, t_pf *mai)
 		i++;
 	}
 	aux_ausm(uni_string, i, mai);
+	mai->len = i;
 }

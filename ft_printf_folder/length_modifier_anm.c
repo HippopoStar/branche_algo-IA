@@ -6,28 +6,11 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:04:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 22:58:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:12:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-size_t	skip_length_modifiers_and_conversion_specifier(char *str)
-{
-	size_t	i;
-
-	if (!(occurs(*(str + 0), "hljzdiouxXDOU"))
-		|| (*(str + 0) == 'l' && occurs(*(str + 1), "cs")))
-		return (0);
-	i = 0;
-	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
-		i = 2;
-	else if (occurs(*(str + 0), "hljz"))
-		i = 1;
-	if (*(str + 0) != 'l' && !(occurs(*(str + i), "diouxXDOU")))
-		error_code("Erreur dans \"ft_printf\"");
-	return (i + 1);
-}
 
 void	fix_signed(va_list ap, size_t i, t_pf *mai, ULLI *nb)
 {
