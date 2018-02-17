@@ -6,11 +6,19 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/16 18:45:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/17 23:42:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Concernant le caractere special '\\' :
+**
+** Les caracteres d'echappement ne sont a prendre en consideration que dans
+** l'eventualite d'une utilisation future de "ft_printf" depuis un terminal
+** par l'intermediaire de argc/argv
+*/
 
 int		special_char(char *c)
 {
@@ -39,9 +47,10 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 }
 
 /*
-** Les caracteres d'echappement ne sont a prendre en consideration que dans
-** l'eventualite d'une utilisation future de "ft_printf" depuis un terminal
-** par l'intermediaire de argc/argv
+** Concernant le caractere special '\\' :
+**
+**	else if (c == '\\' && (retour = escape((format + i), mai)))
+**		i = i + retour;
 */
 
 size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
@@ -52,9 +61,7 @@ size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
 
 	c = *(format + 0);
 	i = 0;
-	if (c == '\\' && (retour = escape((format + i), mai)))
-		i = i + retour;
-	else if (c == '{' && (retour = colors((format + i), mai)))
+	if (c == '{' && (retour = colors((format + i), mai)))
 		i = i + retour;
 	else if (c == '%' && (retour = flags((format + i), ap, mai)))
 		i = i + retour;

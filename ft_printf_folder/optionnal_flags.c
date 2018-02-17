@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 22:18:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/18 00:27:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,19 @@ void	optionnal_flags(char *str, t_pf *mai)
 	}
 	else
 	{
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				|| (retour = (size_t)detect_mnoz(str)) > 0)
-		{
-			p_padding(retour, mai, minus_sign);
-		}
-		if (detect_mnoz(str) && !(find_flag('.', str)))
-		{
-			replace_left_spaces_by_zeros(mai);
-		}
-		if ((retour = find_flag('.', str)) && retour < ft_strlen(str))
+		if ((retour = point_flag_value(str)) > 0  && retour < ft_strlen(str))
 		{
 			*(mai->str + retour) = '\0';
 			mai->len = retour;
+		}
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0
+				|| (retour = zero_flag_value(str)) > 0)
+		{
+			p_padding(retour, mai, minus_sign);
+		}
+		if (find_flag('0', str) > 0)
+		{
+			replace_left_spaces_by_zeros(mai);
 		}
 	}
 }
