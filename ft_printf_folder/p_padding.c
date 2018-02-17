@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 22:01:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:48:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Remarque : les flag '0' ne peut pas etre combine a une indication de largeur
 **            minimale de champ
+** Idee :     utiliser " i - (occurs(c, "xX") ? 2 : 1) "
 */
 
 void	p_sharp_mark(char c, t_pf *mai)
@@ -43,13 +44,10 @@ void	p_sharp_mark(char c, t_pf *mai)
 		}
 		else
 		{
-			if (occurs(c, "xX") && !(strncmp(mai->str + 0, "00", 2)))
+			if (occurs(c, "xX") && !(strncmp(mai->str, "00", 2)))
 				*(mai->str + 1) = c;
 			else
 			{
-				i = 0;
-				while (*(mai->str + i) == ' ')
-					i++;
 				*(mai->str + i - 1) = (occurs(c, "xX") ? c : '0');
 				*(mai->str + i - 2) = (occurs(c, "xX") ? '0' : ' ');
 			}
