@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 18:43:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/17 20:01:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,11 @@ void	optionnal_flags(char *str, t_pf *mai)
 	co_sp = *(str + go_to_conv_flags(str));
 	if (occurs(co_sp, "diouxXDOU"))
 	{
-		if (find_flag('#', str) > 0)
-		{
-			p_sharp_mark(co_sp, mai);
-		}
-		if ((retour = find_flag('+', str)) > 0)
+		if (((retour = find_flag('+', str)) > 0) && occurs(co_sp, "diD"))
 		{
 			p_plus_sign(mai);
 		}
-		else if ((retour = find_flag(' ', str)) > 0)
+		else if (((retour = find_flag(' ', str)) > 0) && occurs(co_sp, "diD"))
 		{
 			p_space(mai);
 		}
@@ -105,6 +101,10 @@ void	optionnal_flags(char *str, t_pf *mai)
 				&& (!(detect_mnoz(str)) || find_flag('.', str) > 0))
 		{
 			p_padding(retour, mai, minus_sign);
+		}
+		if (find_flag('#', str) > 0)
+		{
+			p_sharp_mark(co_sp, mai);
 		}
 	}
 	else
