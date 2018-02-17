@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 08:26:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:29:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void		add_nb_mai(ULLI nb, char *base, t_pf *mai, ssize_t mnoz)
 		mai->next = &aux;
 		if (nb == 0)
 		{
-			fill_nb_bas(0, NULL, mai, 1);
+			fill_nb_bas(0, NULL, mai, (mnoz > 0 ? mnoz : 1));
 		}
 		else
 		{

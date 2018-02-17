@@ -6,38 +6,53 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 19:40:30 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/17 22:01:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Remarque : les flag '0' ne peut pas etre combine a une indication de largeur
+**            minimale de champ
+*/
 
 void	p_sharp_mark(char c, t_pf *mai)
 {
 	size_t	i;
 
 	i = 0;
-	while (*(mai->str + i) == '0')
+	while (*(mai->str + i) == ' ' || *(mai->str + i) == '0')
 		i++;
-	if (occurs(c, "oxXO") && i < 2 && i != ft_strlen(mai->str))
+	if (occurs(c, "oxXO") && i != ft_strlen(mai->str))
 	{
-		if (c == 'o' || c == 'O')
-			insert_a_string_in_another("0", mai, i);
-		else if (c == 'x')
-			insert_a_string_in_another("0x", mai, i);
-		else
-			insert_a_string_in_another("0X", mai, i);
-	}
-	else if (occurs(c, "xX") && i != ft_strlen(mai->str))
-	{
-		if (!(strncmp(mai->str + 0, "00", 2)))
+		if (i == 0)
 		{
-			*(mai->str + 1) = c;
+			if (c == 'o' || c == 'O')
+				insert_a_string_in_another("0", mai, i);
+			else if (c == 'x')
+				insert_a_string_in_another("0x", mai, i);
+			else
+				insert_a_string_in_another("0X", mai, i);
 		}
-		else if (*(mai->str + 0) == '0')
+		else if (i == 1)
 		{
-			*(mai->str + 0) = c;
-			insert_a_string_in_another("0", mai, i);
+			*(mai->str + 0) = (occurs(c, "xX") ? c : '0');
+			if (occurs(c, "xX"))
+				insert_a_string_in_another("0", mai, 0);
+		}
+		else
+		{
+			if (occurs(c, "xX") && !(strncmp(mai->str + 0, "00", 2)))
+				*(mai->str + 1) = c;
+			else
+			{
+				i = 0;
+				while (*(mai->str + i) == ' ')
+					i++;
+				*(mai->str + i - 1) = (occurs(c, "xX") ? c : '0');
+				*(mai->str + i - 2) = (occurs(c, "xX") ? '0' : ' ');
+			}
 		}
 	}
 }
