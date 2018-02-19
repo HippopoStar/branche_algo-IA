@@ -6,11 +6,18 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 19:52:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/19 18:15:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/19 18:53:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+/*
+** Note a moi-meme :
+** En effet, si la precision est expressement de zero,
+** le retour de 'point_flag_value' le sera egalement,
+** et cela ne sera par consequent pas detecte par la fonction antecedente
+*/
 
 size_t	point_flag_value(char *str)
 {
@@ -30,8 +37,8 @@ size_t	point_flag_value(char *str)
 		{
 			i++;
 		}
-		retour = (size_t)ft_atoi(str + i);
-		return ((retour == 1 || (retour == 0 && *(str + i) == '0')) ?
+		retour = (size_t)ft_atoi(str + i + 1);
+		return ((retour == 1 || (retour == 0 && *(str + i + 1) == '0')) ?
 				retour : field_width_length(str));
 	}
 }
@@ -62,7 +69,7 @@ size_t	zero_flag_value(char *str)
 				break;
 			}
 		}
-		return ((ft_atoi(str + i) == 1) ? 1 : field_width_length(str));
+		return ((ft_atoi(str + i + 1) == 1) ? 1 : field_width_length(str));
 	}
 }
 
