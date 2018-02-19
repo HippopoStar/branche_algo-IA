@@ -80,6 +80,6 @@ test: re
 	rm -f main_test_ft_printf.o
 	rm -f test_ft_printf.exe
 	gcc -c $(CFLAGS) main_test_ft_printf.c
-	gcc -o test_ft_printf.exe -I./ -I./libft/ -L./ -L./libft main_test_ft_printf.o -lftprintf -lft
+	gcc -o test_ft_printf.exe $(CFLAGS) -L./ -L./libft/ main_test_ft_printf.o -lftprintf -lft
 
 .PHONY	:				all clean fclean re test
