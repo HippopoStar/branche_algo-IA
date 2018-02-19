@@ -14,11 +14,12 @@
 # define FT_PRINTF_H
 
 # include "libft.h"
-# include "libft/libft.h"
 # include <stdarg.h>
 # include <string.h>
 # include <limits.h>
+# include <locale.h>
 # include <wchar.h>
+# include <stdint.h>
 # include <unistd.h>
 # include <stdlib.h>
 
