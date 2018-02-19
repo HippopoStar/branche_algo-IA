@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 19:52:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/16 21:18:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/19 18:15:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ size_t	point_flag_value(char *str)
 		{
 			i++;
 		}
-		return ((ft_atoi(str + i) == 1) ? 1 : field_width_length(str));
+		retour = (size_t)ft_atoi(str + i);
+		return ((retour == 1 || (retour == 0 && *(str + i) == '0')) ?
+				retour : field_width_length(str));
 	}
 }
 
@@ -50,7 +52,8 @@ size_t	zero_flag_value(char *str)
 		while (occurs(*(str + i), OPTIONNAL_FLAGS)
 				|| occurs(*(str + i), "123456789"))
 		{
-			if (i > 0 && occurs(*(str + i - 1), "0123456789"))
+			if ((i > 0 && occurs(*(str + i - 1), ".0123456789"))
+				|| (i == 0 && *(str + 0) != '0'))
 			{
 				i++;
 			}
