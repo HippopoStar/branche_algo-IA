@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:58:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/14 16:12:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:51:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,13 @@ void	aux_ft_printf(char *format, va_list ap, t_pf *cha)
 	}
 }
 
+/*
+** On peut ajouter "read_pf(cha.next);"
+** avant l'appel de "read_and_free_pf(&ret_val, cha.next);"
+** dans la fonction "ft_printf"
+** afin d'avoir un apercu de l'emploi de la liste chainee
+*/
+
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
@@ -89,7 +96,6 @@ int		ft_printf(const char *format, ...)
 	aux_ft_printf((char *)format, ap, &cha);
 	va_end(ap);
 	ret_val = 0;
-//	read_pf(cha.next); //TEST
 	read_and_free_pf(&ret_val, cha.next);
 	return (ret_val);
 }

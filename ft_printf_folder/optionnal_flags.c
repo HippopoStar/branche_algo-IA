@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 15:05:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:42:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 ** - s'il est nul, c'est que le flag n'est pas suivi par un nombre
 ** - s'il est negatif, c'est que le flag est suivi du flag '-'
 */
-
 
 ssize_t	find_flag(char c, char *str)
 {
@@ -98,7 +97,7 @@ void	optionnal_flags(char *str, t_pf *mai)
 			p_space(mai);
 		}
 		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				&& (!(detect_mnoz(str)) || find_flag('.', str) > 0))
+				&& (!(detect_mnoz(str) >= 0) || find_flag('.', str) >= 0))
 		{
 			p_padding((size_t)retour, mai, minus_sign);
 		}
@@ -109,14 +108,14 @@ void	optionnal_flags(char *str, t_pf *mai)
 	}
 	else
 	{
-		if ((retour = point_flag_value(str)) >= 0  &&
-				retour < (ssize_t)ft_strlen(str))
+		if ((retour = point_flag_value(str)) >= 0
+				&& retour < (ssize_t)ft_strlen(str))
 		{
 			*(mai->str + retour) = '\0';
 			mai->len = retour;
 		}
 		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				|| (retour = zero_flag_value(str)) > 0)
+				|| (retour = zero_flag_value(str)) >= 0)
 		{
 			p_padding((size_t)retour, mai, minus_sign);
 		}

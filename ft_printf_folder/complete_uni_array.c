@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 03:05:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/13 03:05:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:48:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ void	fill_uni_line(size_t position, char uni_line[9])
 	}
 	*(uni_line + 8) = '\0';
 }
+
+/*
+** On peut ajouter "print_uni_mask(mask);"
+** a la fin de la fonction "aux_fill_mask"
+** afin d'avoir un apercu du traitement des caracteres unicodes
+*/
 
 void	aux_fill_mask(size_t nb_of_char, char mask[4][9])
 {
@@ -53,7 +59,6 @@ void	aux_fill_mask(size_t nb_of_char, char mask[4][9])
 		*(*(mask + i) + 0) = '\0';
 		i++;
 	}
-//	print_uni_mask(mask); //TEST
 }
 
 void	fill_uni_mask(size_t nb_of_b, char mask[4][9], size_t *nb_of_c)
@@ -106,6 +111,9 @@ size_t	count_bits(unsigned int nb)
 
 /*
 ** cua = complete_uni_array
+** On peut ajouter "print_uni_mask(mask);"
+** a la fin de la fonction "cua"
+** afin d'avoir un apercu du traitement des caracteres unicodes
 */
 
 void	cua(unsigned int nb, size_t nb_b, size_t nb_c, char mask[4][9])
@@ -130,5 +138,4 @@ void	cua(unsigned int nb, size_t nb_b, size_t nb_c, char mask[4][9])
 		}
 		i++;
 	}
-//	print_uni_mask(mask); //TEST
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 19:52:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 14:38:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:46:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ ssize_t	zero_flag_value(char *str)
 			}
 			else
 			{
-				break;
+				break ;
 			}
 		}
 		return ((ft_atoi(str + i + 1) == 0 && *(str + i + 1) == '0') ?
@@ -77,16 +77,16 @@ ssize_t	detect_mnoz(char *str)
 {
 	ssize_t	retour;
 
-	if ((retour = (ssize_t)find_flag('.', str)) != 0)
+	if ((retour = find_flag('.', str)) >= 0)
 	{
 		return (retour);
 	}
-	else if (!(find_flag('-', str)))
+	else if (!(find_flag('-', str) >= 0))
 	{
-		return ((ssize_t)zero_flag_value(str));
+		return (zero_flag_value(str));
 	}
 	else
 	{
-		return (0);
+		return (-1);
 	}
 }

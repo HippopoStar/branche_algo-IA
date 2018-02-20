@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 15:03:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 17:27:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	p_sharp_mark(char c, t_pf *mai)
 			else
 			{
 				*(mai->str + i - 1) = (occurs(c, "xX") ? c : '0');
-				*(mai->str + i - 2) = (occurs(c, "xX") ? '0' : ' ');
+				*(mai->str + i - 2) = (occurs(c, "xX") ?
+						'0' : *(mai->str + i - 2));
 			}
 		}
 	}
