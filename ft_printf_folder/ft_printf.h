@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/16 20:40:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 14:28:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void			replace_left_spaces_by_zeros(t_pf *mai);
 */
 
 void			optionnal_flags(char *str, t_pf *mai);
-size_t			find_flag(char c, char *str);
+ssize_t			find_flag(char c, char *str);
 void			insert_a_string_in_another(char *str, t_pf *mai, size_t posit);
 
 /*
@@ -100,8 +100,8 @@ void			insert_a_string_in_another(char *str, t_pf *mai, size_t posit);
 */
 
 ssize_t			detect_mnoz(char *str);
-size_t			zero_flag_value(char *str);
-size_t			point_flag_value(char *str);
+ssize_t			zero_flag_value(char *str);
+ssize_t			point_flag_value(char *str);
 
 /*
 ** A REVISER : go_to_conv_flags.c

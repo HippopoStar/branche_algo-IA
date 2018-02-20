@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/19 18:20:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 14:43:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 */
 
 
-size_t	find_flag(char c, char *str)
+ssize_t	find_flag(char c, char *str)
 {
 	size_t	i;
 	char	flags[6];
-	int		size;
 
 	flags[0] = '#';
 	flags[1] = '0';
@@ -66,11 +65,11 @@ size_t	find_flag(char c, char *str)
 	}
 	if (*(str + i) == c)
 	{
-		return (((size = ft_atoi(str + i + 1)) > 0) ? (size_t)size : 1);
+		return ((ssize_t)(ft_atoi(str + i + 1)));
 	}
 	else
 	{
-		return (0);
+		return (-1);
 	}
 }
 
@@ -84,42 +83,43 @@ void	optionnal_flags(char *str, t_pf *mai)
 {
 	char	co_sp;
 	char	minus_sign;
-	size_t	retour;
+	ssize_t	retour;
 
 	co_sp = *(str + go_to_conv_flags(str));
 	if (occurs(co_sp, "diouxXDOU"))
 	{
-		if (((retour = find_flag('+', str)) > 0) && occurs(co_sp, "diD"))
+		if (((retour = find_flag('+', str)) >= 0) && occurs(co_sp, "diD"))
 		{
 			p_plus_sign(mai);
 		}
-		else if (((retour = find_flag(' ', str)) > 0) && occurs(co_sp, "diD"))
+		else if (((retour = find_flag(' ', str)) >= 0) && occurs(co_sp, "diD"))
 		{
 			p_space(mai);
 		}
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				&& (!(detect_mnoz(str)) || find_flag('.', str) > 0))
+		if ((retour = (ssize_t)aux_p_padding(str, &minus_sign)) > 0
+				&& (!(detect_mnoz(str)) || find_flag('.', str) >= 0))
 		{
-			p_padding(retour, mai, minus_sign);
+			p_padding((size_t)retour, mai, minus_sign);
 		}
-		if (find_flag('#', str) > 0)
+		if (find_flag('#', str) >= 0)
 		{
 			p_sharp_mark(co_sp, mai);
 		}
 	}
 	else
 	{
-		if ((retour = point_flag_value(str)) > 0  && retour < ft_strlen(str))
+		if ((retour = point_flag_value(str)) >= 0  &&
+				retour < (ssize_t)ft_strlen(str))
 		{
 			*(mai->str + retour) = '\0';
 			mai->len = retour;
 		}
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				|| (retour = zero_flag_value(str)) > 0)
+		if ((retour = (ssize_t)aux_p_padding(str, &minus_sign)) > 0
+				|| (retour = zero_flag_value(str)) >= 0)
 		{
-			p_padding(retour, mai, minus_sign);
+			p_padding((size_t)retour, mai, minus_sign);
 		}
-		if (find_flag('0', str) > 0)
+		if (find_flag('0', str) >= 0)
 		{
 			replace_left_spaces_by_zeros(mai);
 		}
