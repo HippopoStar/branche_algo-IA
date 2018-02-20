@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 22:48:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 15:03:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	p_sharp_mark(char c, t_pf *mai)
 	}
 }
 
-size_t	aux_p_padding(char *str, char *minus_sign)
+ssize_t	aux_p_padding(char *str, char *minus_sign)
 {
-	size_t	retour;
+	ssize_t	retour;
 	size_t	i;
 
-	if ((retour = find_flag('-', str)) > 0)
+	if ((retour = find_flag('-', str)) >= 0)
 	{
 		*minus_sign = '-';
-		if (retour != 1)
+		if (retour > 0)
 		{
 			return (retour);
 		}
@@ -74,7 +74,8 @@ size_t	aux_p_padding(char *str, char *minus_sign)
 			{
 				i++;
 			}
-			return ((ft_atoi(str + i + 1) == 1) ? 1 : field_width_length(str));
+			return ((ft_atoi(str + i + 1) == 0 && *(str + i + 1) == '0') ?
+					0 : field_width_length(str));
 		}
 	}
 	else

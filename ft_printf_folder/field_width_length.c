@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 18:59:37 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/19 18:06:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 14:57:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ size_t	field_width_length(char *str)
 			retour = retour_bis;
 			i--;
 		}
-		if (!((*str + i == '0') || (i > 0 && *(str + i - 1) == '.')))
+		if (!(*(str + i) == '0' || (i > 0 && *(str + i - 1) == '.')))
 		{
 			return (retour);
 		}

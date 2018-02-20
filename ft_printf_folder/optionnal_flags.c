@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 14:43:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/02/20 15:05:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ ssize_t	find_flag(char c, char *str)
 {
 	size_t	i;
 	char	flags[6];
+	int		size;
 
 	flags[0] = '#';
 	flags[1] = '0';
@@ -65,7 +66,7 @@ ssize_t	find_flag(char c, char *str)
 	}
 	if (*(str + i) == c)
 	{
-		return ((ssize_t)(ft_atoi(str + i + 1)));
+		return ((size = ft_atoi(str + i + 1)) >= 0 ? (ssize_t)size : 0);
 	}
 	else
 	{
@@ -96,8 +97,8 @@ void	optionnal_flags(char *str, t_pf *mai)
 		{
 			p_space(mai);
 		}
-		if ((retour = (ssize_t)aux_p_padding(str, &minus_sign)) > 0
-				&& (!(detect_mnoz(str)) || find_flag('.', str) >= 0))
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0
+				&& (!(detect_mnoz(str)) || find_flag('.', str) > 0))
 		{
 			p_padding((size_t)retour, mai, minus_sign);
 		}
@@ -114,8 +115,8 @@ void	optionnal_flags(char *str, t_pf *mai)
 			*(mai->str + retour) = '\0';
 			mai->len = retour;
 		}
-		if ((retour = (ssize_t)aux_p_padding(str, &minus_sign)) > 0
-				|| (retour = zero_flag_value(str)) >= 0)
+		if ((retour = aux_p_padding(str, &minus_sign)) > 0
+				|| (retour = zero_flag_value(str)) > 0)
 		{
 			p_padding((size_t)retour, mai, minus_sign);
 		}
