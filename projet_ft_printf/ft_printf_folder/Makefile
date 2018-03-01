@@ -11,32 +11,32 @@
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
-CFLAGS	+=		-I./ -I./libft/
+CFLAGS	+=		-I./ -I./libft/includes/
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c\
-	   special_char.c\
-	   colors.c\
-	   flags.c\
-	   go_to_conv_flag.c\
-	   occurs.c\
-	   optionnal_flags.c\
-	   detect_mnoz.c\
-	   field_width_length.c\
-	   escape.c\
-	   add_elem.c\
-	   global_char_format.c\
-	   add_unicode_string_mai.c\
-	   add_unicode_char_mai.c\
-	   complete_uni_array.c\
-	   length_modifier_anm.c\
-	   aux_lm_anm.c\
-	   specify_base.c\
-	   obsolete_convers.c\
-	   add_nb_mai.c\
-	   p_padding.c\
-	   error_code.c
+SRCS = ./srcs_libftprintf/ft_printf.c\
+	   ./srcs_libftprintf/special_char.c\
+	   ./srcs_libftprintf/colors.c\
+	   ./srcs_libftprintf/flags.c\
+	   ./srcs_libftprintf/go_to_conv_flag.c\
+	   ./srcs_libftprintf/occurs.c\
+	   ./srcs_libftprintf/optionnal_flags.c\
+	   ./srcs_libftprintf/detect_mnoz.c\
+	   ./srcs_libftprintf/field_width_length.c\
+	   ./srcs_libftprintf/escape.c\
+	   ./srcs_libftprintf/add_elem.c\
+	   ./srcs_libftprintf/global_char_format.c\
+	   ./srcs_libftprintf/add_unicode_string_mai.c\
+	   ./srcs_libftprintf/add_unicode_char_mai.c\
+	   ./srcs_libftprintf/complete_uni_array.c\
+	   ./srcs_libftprintf/length_modifier_anm.c\
+	   ./srcs_libftprintf/aux_lm_anm.c\
+	   ./srcs_libftprintf/specify_base.c\
+	   ./srcs_libftprintf/obsolete_convers.c\
+	   ./srcs_libftprintf/add_nb_mai.c\
+	   ./srcs_libftprintf/p_padding.c\
+	   ./srcs_libftprintf/error_code.c
 
 OBJS = ft_printf.o\
 	   special_char.o\
@@ -64,22 +64,19 @@ OBJS = ft_printf.o\
 all: $(NAME)
 
 $(NAME):
+	@make -C ./libft/ all
 	gcc -c $(CFLAGS) $(SRCS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
+	@make -C ./libft/ clean
 	rm -f $(OBJS)
 
 fclean: clean
+	@make -C ./libft/ fclean
 	rm -f $(NAME)
 
 re: fclean all
 
-test: re
-	rm -f main_test_ft_printf.o
-	rm -f test_ft_printf.exe
-	gcc -c $(CFLAGS) main_test_ft_printf.c
-	gcc -o test_ft_printf.exe $(CFLAGS) -L./ -L./libft/ main_test_ft_printf.o -lftprintf -lft
-
-.PHONY	:				all clean fclean re test
+.PHONY	:				all clean fclean re

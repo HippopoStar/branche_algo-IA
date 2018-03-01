@@ -6,75 +6,75 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2017/11/17 01:13:56 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/28 18:28:58 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
-CFLAGS	+=		-I./
+CFLAGS	+=		-I./includes/
 
 NAME = libft.a
 
-SRCS = ft_memset.c\
-		ft_bzero.c\
-		ft_memcpy.c\
-		ft_memccpy.c\
-		ft_memmove.c\
-		ft_memchr.c\
-		ft_memcmp.c\
-		ft_strlen.c\
-		ft_strdup.c\
-		ft_strcpy.c\
-		ft_strncpy.c\
-		ft_strcat.c\
-		ft_strncat.c\
-		ft_strlcat.c\
-		ft_strchr.c\
-		ft_strrchr.c\
-		ft_strstr.c\
-		ft_strnstr.c\
-		ft_strcmp.c\
-		ft_strncmp.c\
-		ft_atoi.c\
-		ft_isalpha.c\
-		ft_isdigit.c\
-		ft_isalnum.c\
-		ft_isascii.c\
-		ft_isprint.c\
-		ft_toupper.c\
-		ft_tolower.c\
+SRCS = ./srcs_libft/ft_memset.c\
+		./srcs_libft/ft_bzero.c\
+		./srcs_libft/ft_memcpy.c\
+		./srcs_libft/ft_memccpy.c\
+		./srcs_libft/ft_memmove.c\
+		./srcs_libft/ft_memchr.c\
+		./srcs_libft/ft_memcmp.c\
+		./srcs_libft/ft_strlen.c\
+		./srcs_libft/ft_strdup.c\
+		./srcs_libft/ft_strcpy.c\
+		./srcs_libft/ft_strncpy.c\
+		./srcs_libft/ft_strcat.c\
+		./srcs_libft/ft_strncat.c\
+		./srcs_libft/ft_strlcat.c\
+		./srcs_libft/ft_strchr.c\
+		./srcs_libft/ft_strrchr.c\
+		./srcs_libft/ft_strstr.c\
+		./srcs_libft/ft_strnstr.c\
+		./srcs_libft/ft_strcmp.c\
+		./srcs_libft/ft_strncmp.c\
+		./srcs_libft/ft_atoi.c\
+		./srcs_libft/ft_isalpha.c\
+		./srcs_libft/ft_isdigit.c\
+		./srcs_libft/ft_isalnum.c\
+		./srcs_libft/ft_isascii.c\
+		./srcs_libft/ft_isprint.c\
+		./srcs_libft/ft_toupper.c\
+		./srcs_libft/ft_tolower.c\
 		\
-		ft_memalloc.c\
-		ft_memdel.c\
-		ft_strnew.c\
-		ft_strdel.c\
-		ft_strclr.c\
-		ft_striter.c\
-		ft_striteri.c\
-		ft_strmap.c\
-		ft_strmapi.c\
-		ft_strequ.c\
-		ft_strnequ.c\
-		ft_strsub.c\
-		ft_strjoin.c\
-		ft_strtrim.c\
-		ft_strsplit.c\
-		ft_itoa.c\
-		ft_putchar.c\
-		ft_putstr.c\
-		ft_putendl.c\
-		ft_putnbr.c\
-		ft_putchar_fd.c\
-		ft_putstr_fd.c\
-		ft_putendl_fd.c\
-		ft_putnbr_fd.c\
+		./srcs_libft/ft_memalloc.c\
+		./srcs_libft/ft_memdel.c\
+		./srcs_libft/ft_strnew.c\
+		./srcs_libft/ft_strdel.c\
+		./srcs_libft/ft_strclr.c\
+		./srcs_libft/ft_striter.c\
+		./srcs_libft/ft_striteri.c\
+		./srcs_libft/ft_strmap.c\
+		./srcs_libft/ft_strmapi.c\
+		./srcs_libft/ft_strequ.c\
+		./srcs_libft/ft_strnequ.c\
+		./srcs_libft/ft_strsub.c\
+		./srcs_libft/ft_strjoin.c\
+		./srcs_libft/ft_strtrim.c\
+		./srcs_libft/ft_strsplit.c\
+		./srcs_libft/ft_itoa.c\
+		./srcs_libft/ft_putchar.c\
+		./srcs_libft/ft_putstr.c\
+		./srcs_libft/ft_putendl.c\
+		./srcs_libft/ft_putnbr.c\
+		./srcs_libft/ft_putchar_fd.c\
+		./srcs_libft/ft_putstr_fd.c\
+		./srcs_libft/ft_putendl_fd.c\
+		./srcs_libft/ft_putnbr_fd.c\
 		\
-		ft_lstnew.c\
-		ft_lstdelone.c\
-		ft_lstdel.c\
-		ft_lstadd.c\
-		ft_lstiter.c\
-		ft_lstmap.c
+		./srcs_libft/ft_lstnew.c\
+		./srcs_libft/ft_lstdelone.c\
+		./srcs_libft/ft_lstdel.c\
+		./srcs_libft/ft_lstadd.c\
+		./srcs_libft/ft_lstiter.c\
+		./srcs_libft/ft_lstmap.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
