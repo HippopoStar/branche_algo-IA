@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/19 17:13:22 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/03/22 01:53:41 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,8 @@ all: $(NAME)
 $(NAME):
 	@make -C ./libft/ all
 	gcc -c $(CFLAGS) $(SRCS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	libtool -static -o $(NAME) $(OBJS) ./libft/libft.a
+	ranlib -f $(NAME)
 
 clean:
 	@make -C ./libft/ clean
