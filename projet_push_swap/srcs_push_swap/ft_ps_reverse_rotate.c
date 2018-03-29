@@ -11,6 +11,7 @@ void	ft_ps_reverse_rotate(t_nb **stacks, char c)
 		{
 			stack = stack->next;
 		}
+		(stack->next)->next = *(stacks + (c - 'a'));
 		*(stacks + (c - 'a')) = stack->next;
 		stack->next = NULL;
 	}

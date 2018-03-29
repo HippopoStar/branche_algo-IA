@@ -23,10 +23,11 @@ void	ft_ps_display_stacks(t_nb **stacks)
 	t_nb	*a;
 	t_nb	*b;
 
+	ft_putchar('\n');
 	a = *(stacks + 0);
 	b = *(stacks + 1);
 	oversize = ft_ps_stack_length(b) - ft_ps_stack_length(a);
-	while (!(a == NULL || b == NULL))
+	while (!(a == NULL && b == NULL))
 	{
 		if (oversize > 0)
 			oversize--;
@@ -45,5 +46,5 @@ void	ft_ps_display_stacks(t_nb **stacks)
 		}
 		ft_putchar('\n');
 	}
-	ft_putstr("_________________\n\ta\t|\tb\t\n");
+	ft_putstr("_________________\n    a\t|    b\n");
 }

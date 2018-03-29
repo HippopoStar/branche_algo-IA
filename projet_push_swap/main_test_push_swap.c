@@ -16,7 +16,7 @@ void	ft_ps_fill_stacks(t_nb **stacks)
 		if (a != 0)
 			ft_ps_add_elem(stacks, 'a', a);
 		if (b != 0)
-			ft_ps_add_elem(stacks, 'b', a);
+			ft_ps_add_elem(stacks, 'b', b);
 		ft_ps_display_stacks(stacks);
 		ft_putstr("Donnez successivement les prochains elements de A et de B :\n");
 		ft_putstr("un zero etant interprete comme un etage vide\n");
