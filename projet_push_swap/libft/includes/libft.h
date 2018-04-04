@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include "get_next_line.h"
+# include "additionnal_functions.h"
 
 typedef struct		s_list
 {
