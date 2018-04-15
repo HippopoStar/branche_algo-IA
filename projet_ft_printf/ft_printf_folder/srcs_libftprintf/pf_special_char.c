@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 12:54:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/17 23:42:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 14:48:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 ** par l'intermediaire de argc/argv
 */
 
-int		special_char(char *c)
+int		pf_special_char(char *c)
 {
-	return ((*c == '\0' || (*c == '{' && is_color(c)) || *c == '%') ? 1 : 0);
+	return ((*c == '\0' || (*c == '{' && pf_is_color(c)) || *c == '%') ? 1 : 0);
 }
 
 /*
 ** un_sc : untill_next_special_char
 */
 
-size_t	ft_putstr_un_sc(char *format, t_pf *mai)
+size_t	pf_ft_putstr_un_sc(char *format, t_pf *mai)
 {
 	size_t	i;
 
@@ -38,11 +38,11 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 	{
 		return (0);
 	}
-	while (!(special_char(format + i)))
+	while (!(pf_special_char(format + i)))
 	{
 		i++;
 	}
-	add_str_mai(format, i, mai);
+	pf_add_str_mai(format, i, mai);
 	return (i);
 }
 
@@ -53,7 +53,7 @@ size_t	ft_putstr_un_sc(char *format, t_pf *mai)
 **		i = i + retour;
 */
 
-size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
+size_t	pf_ft_putstr_sc(char *format, va_list ap, t_pf *mai)
 {
 	size_t	retour;
 	size_t	i;
@@ -61,9 +61,9 @@ size_t	ft_putstr_sc(char *format, va_list ap, t_pf *mai)
 
 	c = *(format + 0);
 	i = 0;
-	if (c == '{' && (retour = colors((format + i), mai)))
+	if (c == '{' && (retour = pf_colors((format + i), mai)))
 		i = i + retour;
-	else if (c == '%' && (retour = flags((format + i), ap, mai)))
+	else if (c == '%' && (retour = pf_flags((format + i), ap, mai)))
 		i = i + retour;
 	return (i);
 }

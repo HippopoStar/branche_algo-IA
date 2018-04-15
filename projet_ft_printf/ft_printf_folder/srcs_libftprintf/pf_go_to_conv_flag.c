@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 18:21:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/16 19:48:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 14:37:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 ** non obsolete
 */
 
-size_t	skip_leng_modi_and_conv_spec_for_integers(char *str)
+size_t	pf_skip_leng_modi_and_conv_spec_for_integers(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	if (!(strncmp(str, "hh", 2)) || !(strncmp(str, "ll", 2)))
+	if (!(ft_strncmp(str, "hh", 2)) || !(ft_strncmp(str, "ll", 2)))
 	{
 		i = 2;
 	}
-	else if (occurs(*(str + 0), "hljz"))
+	else if (pf_occurs(*(str + 0), "hljz"))
 	{
 		i = 1;
 	}
-	if (occurs(*(str + i), "diouxX"))
+	if (pf_occurs(*(str + i), "diouxX"))
 	{
 		return (i + 1);
 	}
@@ -41,42 +41,42 @@ size_t	skip_leng_modi_and_conv_spec_for_integers(char *str)
 	}
 }
 
-size_t	skip_length_modifiers(char *str)
+size_t	pf_skip_length_modifiers(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (occurs(*(str + i), LENGTH_MODIFIERS))
+	while (pf_occurs(*(str + i), LENGTH_MODIFIERS))
 	{
 		i++;
 	}
 	return (i);
 }
 
-size_t	skip_padding(char *str)
+size_t	pf_skip_padding(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (*(str + i) != '\0' && !(occurs(*(str + i), LENGTH_MODIFIERS)
-		|| occurs(*(str + i), CONVERSION_SPECIFIERS)))
+	while (*(str + i) != '\0' && !(pf_occurs(*(str + i), LENGTH_MODIFIERS)
+		|| pf_occurs(*(str + i), CONVERSION_SPECIFIERS)))
 	{
-		if (!(occurs(*(str + i), OPTIONNAL_FLAGS)
-				|| occurs(*(str + i), "123456789")))
+		if (!(pf_occurs(*(str + i), OPTIONNAL_FLAGS)
+				|| pf_occurs(*(str + i), "123456789")))
 		{
-			error_code("Erreur dans \"ft_printf\"");
+			pf_error_code("Erreur dans \"ft_printf\"");
 		}
 		i++;
 	}
 	return (i);
 }
 
-size_t	go_to_conv_flags(char *str)
+size_t	pf_go_to_conv_flags(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	i = i + skip_padding(str + i);
-	i = i + skip_length_modifiers(str + i);
+	i = i + pf_skip_padding(str + i);
+	i = i + pf_skip_length_modifiers(str + i);
 	return (i);
 }

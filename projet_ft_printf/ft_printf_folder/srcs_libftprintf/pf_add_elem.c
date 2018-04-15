@@ -6,16 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 01:28:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/09 02:30:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 14:17:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	add_char_mai(char c, t_pf *mai)
+void	pf_add_char_mai(char c, t_pf *mai)
 {
 	if (!(mai->str = (char *)malloc(2 * sizeof(char))))
-		error_code("Erreur d'alloc'");
+		pf_error_code("Erreur d'alloc'");
 	mai->len = 1;
 	*(mai->str + 0) = c;
 	*(mai->str + 1) = '\0';
@@ -25,14 +25,14 @@ void	add_char_mai(char c, t_pf *mai)
 ** /!\ 'add_str_mai' ne remplit pas la donnee 'mai->len'
 */
 
-void	add_str_mai(char *str, ssize_t p_length, t_pf *mai)
+void	pf_add_str_mai(char *str, ssize_t p_length, t_pf *mai)
 {
 	size_t	length;
 	size_t	i;
 
 	length = ((p_length < 0) ? ft_strlen(str) : (size_t)p_length);
 	if (!(mai->str = (char *)malloc((length + 1) * sizeof(char))))
-		error_code("Erreur d'alloc'");
+		pf_error_code("Erreur d'alloc'");
 	*(mai->str + length) = '\0';
 	i = 0;
 	while (i < length)

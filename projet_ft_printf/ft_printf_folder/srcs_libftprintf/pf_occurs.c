@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specify_base.c                                     :+:      :+:    :+:   */
+/*   occurs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 01:52:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/12 02:06:04 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/02/16 18:17:07 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/04/15 14:39:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	specify_base(char c, ULLI nb, t_pf *mai, ssize_t mnoz)
+int		pf_occurs(char c, char *str)
 {
-	if (c == 'd' || c == 'i' || c == 'u')
+	size_t	i;
+
+	i = 0;
+	while (*(str + i) != '\0' && *(str + i) != c)
 	{
-		add_nb_mai(nb, "0123456789", mai, mnoz);
+		i++;
 	}
-	else if (c == 'o')
-	{
-		add_nb_mai(nb, "01234567", mai, mnoz);
-	}
-	else if (c == 'x')
-	{
-		add_nb_mai(nb, "0123456789abcdef", mai, mnoz);
-	}
-	else if (c == 'X')
-	{
-		add_nb_mai(nb, "0123456789ABCDEF", mai, mnoz);
-	}
-	else
-	{
-		error_code("Erreur dans \"ft_printf\"");
-	}
+	return (*(str + i) != '\0' ? 1 : 0);
 }

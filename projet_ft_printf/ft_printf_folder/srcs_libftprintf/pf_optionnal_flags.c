@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 17:42:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 15:04:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
+void	pf_insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 {
 	char	*tmp;
 	size_t	size;
@@ -20,10 +20,10 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 	tmp = mai->str;
 	size = ft_strlen(str);
 	if (!(mai->str = (char *)malloc(ft_strlen(tmp) + size + 1)))
-		error_code("Erreur dans \"ft_printf\"");
-	strncpy(mai->str, tmp, posit);
-	strcpy((mai->str + posit), str);
-	strcpy((mai->str + posit + size), (tmp + posit));
+		pf_error_code("Erreur dans \"ft_printf\"");
+	ft_strncpy(mai->str, tmp, posit);
+	ft_strcpy((mai->str + posit), str);
+	ft_strcpy((mai->str + posit + size), (tmp + posit));
 	free(tmp);
 	mai->len = mai->len + size;
 }
@@ -34,7 +34,7 @@ void	insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 ** - s'il est negatif, c'est que le flag est suivi du flag '-'
 */
 
-ssize_t	find_flag(char c, char *str)
+ssize_t	pf_find_flag(char c, char *str)
 {
 	size_t	i;
 	char	flags[6];
@@ -57,9 +57,9 @@ ssize_t	find_flag(char c, char *str)
 	}
 	flags[5] = '\0';
 	i = 0;
-	while (occurs(*(str + i), flags) || occurs(*(str + i), "123456789")
+	while (pf_occurs(*(str + i), flags) || pf_occurs(*(str + i), "123456789")
 			|| (c == '0'
-			&& i > 0 && occurs(*(str + i - 1), ".0123456789")))
+			&& i > 0 && pf_occurs(*(str + i - 1), ".0123456789")))
 	{
 		i++;
 	}
@@ -79,49 +79,49 @@ ssize_t	find_flag(char c, char *str)
 **            representant le nombre ne doit pas debuter par '0' "
 */
 
-void	optionnal_flags(char *str, t_pf *mai)
+void	pf_optionnal_flags(char *str, t_pf *mai)
 {
 	char	co_sp;
 	char	minus_sign;
 	ssize_t	retour;
 
-	co_sp = *(str + go_to_conv_flags(str));
-	if (occurs(co_sp, "diouxXDOU"))
+	co_sp = *(str + pf_go_to_conv_flags(str));
+	if (pf_occurs(co_sp, "diouxXDOU"))
 	{
-		if (((retour = find_flag('+', str)) >= 0) && occurs(co_sp, "diD"))
+		if (((retour = pf_find_flag('+', str)) >= 0) && pf_occurs(co_sp, "diD"))
 		{
-			p_plus_sign(mai);
+			pf_p_plus_sign(mai);
 		}
-		else if (((retour = find_flag(' ', str)) >= 0) && occurs(co_sp, "diD"))
+		else if (((retour = pf_find_flag(' ', str)) >= 0) && pf_occurs(co_sp, "diD"))
 		{
-			p_space(mai);
+			pf_p_space(mai);
 		}
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				&& (!(detect_mnoz(str) >= 0) || find_flag('.', str) >= 0))
+		if ((retour = pf_aux_p_padding(str, &minus_sign)) > 0
+				&& (!(pf_detect_mnoz(str) >= 0) || pf_find_flag('.', str) >= 0))
 		{
-			p_padding((size_t)retour, mai, minus_sign);
+			pf_p_padding((size_t)retour, mai, minus_sign);
 		}
-		if (find_flag('#', str) >= 0)
+		if (pf_find_flag('#', str) >= 0)
 		{
-			p_sharp_mark(co_sp, mai);
+			pf_p_sharp_mark(co_sp, mai);
 		}
 	}
 	else
 	{
-		if ((retour = point_flag_value(str)) >= 0
+		if ((retour = pf_point_flag_value(str)) >= 0
 				&& retour < (ssize_t)ft_strlen(str))
 		{
 			*(mai->str + retour) = '\0';
 			mai->len = retour;
 		}
-		if ((retour = aux_p_padding(str, &minus_sign)) > 0
-				|| (retour = zero_flag_value(str)) >= 0)
+		if ((retour = pf_aux_p_padding(str, &minus_sign)) > 0
+				|| (retour = pf_zero_flag_value(str)) >= 0)
 		{
-			p_padding((size_t)retour, mai, minus_sign);
+			pf_p_padding((size_t)retour, mai, minus_sign);
 		}
-		if (find_flag('0', str) >= 0)
+		if (pf_find_flag('0', str) >= 0)
 		{
-			replace_left_spaces_by_zeros(mai);
+			pf_replace_left_spaces_by_zeros(mai);
 		}
 	}
 }

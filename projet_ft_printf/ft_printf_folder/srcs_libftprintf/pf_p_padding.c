@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/02/20 17:27:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 14:47:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,50 +18,50 @@
 ** Idee :     utiliser " i - (occurs(c, "xX") ? 2 : 1) "
 */
 
-void	p_sharp_mark(char c, t_pf *mai)
+void	pf_p_sharp_mark(char c, t_pf *mai)
 {
 	size_t	i;
 
 	i = 0;
 	while (*(mai->str + i) == ' ' || *(mai->str + i) == '0')
 		i++;
-	if (occurs(c, "oxXO") && i != ft_strlen(mai->str))
+	if (pf_occurs(c, "oxXO") && i != ft_strlen(mai->str))
 	{
 		if (i == 0)
 		{
 			if (c == 'o' || c == 'O')
-				insert_a_string_in_another("0", mai, i);
+				pf_insert_a_string_in_another("0", mai, i);
 			else if (c == 'x')
-				insert_a_string_in_another("0x", mai, i);
+				pf_insert_a_string_in_another("0x", mai, i);
 			else
-				insert_a_string_in_another("0X", mai, i);
+				pf_insert_a_string_in_another("0X", mai, i);
 		}
 		else if (i == 1)
 		{
-			*(mai->str + 0) = (occurs(c, "xX") ? c : '0');
-			if (occurs(c, "xX"))
-				insert_a_string_in_another("0", mai, 0);
+			*(mai->str + 0) = (pf_occurs(c, "xX") ? c : '0');
+			if (pf_occurs(c, "xX"))
+				pf_insert_a_string_in_another("0", mai, 0);
 		}
 		else
 		{
-			if (occurs(c, "xX") && !(strncmp(mai->str, "00", 2)))
+			if (pf_occurs(c, "xX") && !(ft_strncmp(mai->str, "00", 2)))
 				*(mai->str + 1) = c;
 			else
 			{
-				*(mai->str + i - 1) = (occurs(c, "xX") ? c : '0');
-				*(mai->str + i - 2) = (occurs(c, "xX") ?
+				*(mai->str + i - 1) = (pf_occurs(c, "xX") ? c : '0');
+				*(mai->str + i - 2) = (pf_occurs(c, "xX") ?
 						'0' : *(mai->str + i - 2));
 			}
 		}
 	}
 }
 
-ssize_t	aux_p_padding(char *str, char *minus_sign)
+ssize_t	pf_aux_p_padding(char *str, char *minus_sign)
 {
 	ssize_t	retour;
 	size_t	i;
 
-	if ((retour = find_flag('-', str)) >= 0)
+	if ((retour = pf_find_flag('-', str)) >= 0)
 	{
 		*minus_sign = '-';
 		if (retour > 0)
@@ -76,16 +76,21 @@ ssize_t	aux_p_padding(char *str, char *minus_sign)
 				i++;
 			}
 			return ((ft_atoi(str + i + 1) == 0 && *(str + i + 1) == '0') ?
-					0 : field_width_length(str));
+					0 : pf_field_width_length(str));
 		}
 	}
 	else
 	{
-		return (field_width_length(str));
+		return (pf_field_width_length(str));
 	}
 }
 
-void	p_padding(size_t retour, t_pf *mai, char minus_sign)
+/*
+** NOTE :
+** L'emploi de 'variable_length_array' est proscrite par la Norme
+*/
+
+void	pf_p_padding(size_t retour, t_pf *mai, char minus_sign)
 {
 	char	blanks[retour + 1];
 	size_t	size;
@@ -102,17 +107,17 @@ void	p_padding(size_t retour, t_pf *mai, char minus_sign)
 		}
 		blanks[retour - size] = '\0';
 		(minus_sign == '-') ?
-		insert_a_string_in_another(blanks, mai, size)
-		: insert_a_string_in_another(blanks, mai, 0);
+		pf_insert_a_string_in_another(blanks, mai, size)
+		: pf_insert_a_string_in_another(blanks, mai, 0);
 	}
 }
 
-void	p_plus_sign(t_pf *mai)
+void	pf_p_plus_sign(t_pf *mai)
 {
 	size_t	i;
 
 	i = 0;
-	while (!(occurs(*(mai->str + i), "-0123456789")))
+	while (!(pf_occurs(*(mai->str + i), "-0123456789")))
 	{
 		i++;
 	}
@@ -128,17 +133,17 @@ void	p_plus_sign(t_pf *mai)
 		}
 		else
 		{
-			insert_a_string_in_another("+", mai, i);
+			pf_insert_a_string_in_another("+", mai, i);
 		}
 	}
 }
 
-void	p_space(t_pf *mai)
+void	pf_p_space(t_pf *mai)
 {
 	size_t	i;
 
 	i = 0;
-	while (!(occurs(*(mai->str + i), "-0123456789")))
+	while (!(pf_occurs(*(mai->str + i), "-0123456789")))
 	{
 		i++;
 	}
@@ -150,11 +155,11 @@ void	p_space(t_pf *mai)
 	{
 		if (i > 0 && *(mai->str + i - 1) != ' ')
 		{
-			insert_a_string_in_another(" ", mai, i - 1);
+			pf_insert_a_string_in_another(" ", mai, i - 1);
 		}
 		else
 		{
-			insert_a_string_in_another(" ", mai, 0);
+			pf_insert_a_string_in_another(" ", mai, 0);
 		}
 	}
 }
