@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/04/15 18:32:54 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/04/15 20:22:23 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,28 +76,28 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_lstiter.c\
 		./srcs_libft/ft_lstmap.c\
 		\
-		./srcs_libftprintf/ft_printf.c\
-		./srcs_libftprintf/pf_special_char.c\
-		./srcs_libftprintf/pf_colors.c\
-		./srcs_libftprintf/pf_flags.c\
-		./srcs_libftprintf/pf_go_to_conv_flag.c\
-		./srcs_libftprintf/pf_occurs.c\
-		./srcs_libftprintf/pf_optionnal_flags.c\
-		./srcs_libftprintf/pf_detect_mnoz.c\
-		./srcs_libftprintf/pf_field_width_length.c\
-		./srcs_libftprintf/pf_escape.c\
-		./srcs_libftprintf/pf_add_elem.c\
-		./srcs_libftprintf/pf_global_char_format.c\
-		./srcs_libftprintf/pf_add_unicode_string_mai.c\
-		./srcs_libftprintf/pf_add_unicode_char_mai.c\
-		./srcs_libftprintf/pf_complete_uni_array.c\
-		./srcs_libftprintf/pf_length_modifier_anm.c\
-		./srcs_libftprintf/pf_aux_lm_anm.c\
-		./srcs_libftprintf/pf_specify_base.c\
-		./srcs_libftprintf/pf_obsolete_convers.c\
-		./srcs_libftprintf/pf_add_nb_mai.c\
-		./srcs_libftprintf/pf_p_padding.c\
-		./srcs_libftprintf/pf_error_code.c
+		./srcs_libftprintf/glob/ft_printf.c\
+		./srcs_libftprintf/glob/pf_special_char.c\
+		./srcs_libftprintf/glob/pf_colors.c\
+		./srcs_libftprintf/glob/pf_flags.c\
+		./srcs_libftprintf/glob/pf_go_to_conv_flag.c\
+		./srcs_libftprintf/glob/pf_occurs.c\
+		./srcs_libftprintf/glob/pf_escape.c\
+		./srcs_libftprintf/glob/pf_error_code.c\
+		./srcs_libftprintf/char/pf_add_elem.c\
+		./srcs_libftprintf/char/pf_global_char_format.c\
+		./srcs_libftprintf/char/pf_add_unicode_string_mai.c\
+		./srcs_libftprintf/char/pf_add_unicode_char_mai.c\
+		./srcs_libftprintf/char/pf_complete_uni_array.c\
+		./srcs_libftprintf/numb/pf_specify_base.c\
+		./srcs_libftprintf/numb/pf_obsolete_convers.c\
+		./srcs_libftprintf/numb/pf_add_nb_mai.c\
+		./srcs_libftprintf/addi/pf_optionnal_flags.c\
+		./srcs_libftprintf/addi/pf_detect_mnoz.c\
+		./srcs_libftprintf/addi/pf_field_width_length.c\
+		./srcs_libftprintf/addi/pf_length_modifier_anm.c\
+		./srcs_libftprintf/addi/pf_aux_lm_anm.c\
+		./srcs_libftprintf/addi/pf_p_padding.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -166,22 +166,22 @@ OBJS = ft_memset.o\
 		pf_flags.o\
 		pf_go_to_conv_flag.o\
 		pf_occurs.o\
-		pf_optionnal_flags.o\
-		pf_detect_mnoz.o\
-		pf_field_width_length.o\
 		pf_escape.o\
+		pf_error_code.o\
 		pf_add_elem.o\
 		pf_global_char_format.o\
 		pf_add_unicode_string_mai.o\
 		pf_add_unicode_char_mai.o\
 		pf_complete_uni_array.o\
-		pf_length_modifier_anm.o\
-		pf_aux_lm_anm.o\
 		pf_specify_base.o\
 		pf_obsolete_convers.o\
 		pf_add_nb_mai.o\
-		pf_p_padding.o\
-		pf_error_code.o
+		pf_optionnal_flags.o\
+		pf_detect_mnoz.o\
+		pf_field_width_length.o\
+		pf_length_modifier_anm.o\
+		pf_aux_lm_anm.o\
+		pf_p_padding.o
 
 all: $(NAME)
 
