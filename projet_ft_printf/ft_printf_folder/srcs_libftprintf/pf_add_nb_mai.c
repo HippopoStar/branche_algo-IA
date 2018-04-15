@@ -6,16 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:19:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 18:09:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		pf_from_stock_to_string(t_pn *stock, t_pf *mai)
+void		pf_from_stock_to_string(t_pf_pn *stock, t_pf *mai)
 {
 	size_t	i;
-	t_pn	*tmp;
+	t_pf_pn	*tmp;
 	int		p_o_n;
 
 	p_o_n = mai->len;
@@ -74,9 +74,9 @@ size_t		pf_is_base_valid(char *base, t_pf *aux)
 **          une place en moins lorsqu'il y a un '-' a placer
 */
 
-void		pf_fill_nb_bas(ULLI l_n, t_pn *stock, t_pf *mai, ssize_t mnoz)
+void		pf_fill_nb_bas(ULLI l_n, t_pf_pn *stock, t_pf *mai, ssize_t mnoz)
 {
-	t_pn		tmp;
+	t_pf_pn		tmp;
 
 	if (l_n == 0)
 	{
