@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:47:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 17:51:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,17 @@ ssize_t	pf_aux_p_padding(char *str, char *minus_sign)
 /*
 ** NOTE :
 ** L'emploi de 'variable_length_array' est proscrite par la Norme
+** (dans la declaration de variable 'blanks[retour + 1]')
 */
 
 void	pf_p_padding(size_t retour, t_pf *mai, char minus_sign)
 {
-	char	blanks[retour + 1];
+	char	*blanks;
 	size_t	size;
 	size_t	i;
 
+	if (!(blanks = (char *)malloc((retour + 1) * sizeof(char))))
+		pf_error_code("Erreur dans \"ft_printf\"");
 	size = ft_strlen(mai->str);
 	if (retour > size)
 	{
@@ -110,6 +113,7 @@ void	pf_p_padding(size_t retour, t_pf *mai, char minus_sign)
 		pf_insert_a_string_in_another(blanks, mai, size)
 		: pf_insert_a_string_in_another(blanks, mai, 0);
 	}
+	free(blanks);
 }
 
 void	pf_p_plus_sign(t_pf *mai)

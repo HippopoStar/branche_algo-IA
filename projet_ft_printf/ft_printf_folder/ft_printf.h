@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:41:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 15:02:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/15 17:40:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void			pf_char_star_format(va_list ap, char c, t_pf *mai);
 void			pf_char_format(va_list ap, char c, t_pf *mai);
 /*
 ** add_unicode_string_mai.c
+** VARIABLE_LENGTH_ARRAY dans 'aux_ausm'
 */
 void			pf_add_unicode_string_mai(va_list ap, t_pf *mai);
 void			pf_aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai);
@@ -133,6 +134,7 @@ size_t			pf_aux_fwl(char *str);
 int				pf_occurs(char c, char *str);
 /*
 ** p_padding.c
+** VARIABLE_LENGTH_ARRAY dans 'p_padding'
 */
 void			pf_p_sharp_mark(char c, t_pf *mai);
 void			pf_p_padding(size_t retour, t_pf *mai, char minus_sign);
