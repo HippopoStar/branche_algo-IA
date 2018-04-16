@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 13:01:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 17:51:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:21:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	pf_p_padding(size_t retour, t_pf *mai, char minus_sign)
 	size_t	i;
 
 	if (!(blanks = (char *)malloc((retour + 1) * sizeof(char))))
-		pf_error_code("Erreur dans \"ft_printf\"");
+		pf_error_code("Erreur dans \"p_padding.c\\p_padding\"");
 	size = ft_strlen(mai->str);
 	if (retour > size)
 	{

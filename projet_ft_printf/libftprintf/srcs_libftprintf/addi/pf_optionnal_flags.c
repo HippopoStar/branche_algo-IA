@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 15:04:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:25:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	pf_insert_a_string_in_another(char *str, t_pf *mai, size_t posit)
 	tmp = mai->str;
 	size = ft_strlen(str);
 	if (!(mai->str = (char *)malloc(ft_strlen(tmp) + size + 1)))
-		pf_error_code("Erreur dans \"ft_printf\"");
+		pf_error_code("Erreur dans \"optionnal_flags.c\\insert_a_strin[...]\"");
 	ft_strncpy(mai->str, tmp, posit);
 	ft_strcpy((mai->str + posit), str);
 	ft_strcpy((mai->str + posit + size), (tmp + posit));

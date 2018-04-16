@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/04/15 18:37:56 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/04/17 01:11:14 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,4 +36,11 @@ fclean: clean
 
 re: fclean all
 
-.PHONY	:				all clean fclean re
+quick:
+	@make -C ./libftprintf/ all
+	gcc -o quick_test.out $(CFLAGS) -L./libftprintf/ quick_main.c -lftprintf
+	./quick_test.out
+	@make -C ./libftprintf/ fclean
+	rm -f quick_test.out
+
+.PHONY	:				all clean fclean re quick

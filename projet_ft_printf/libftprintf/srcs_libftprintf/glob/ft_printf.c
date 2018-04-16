@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 17:58:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:35:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:17:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_pf	*pf_moove_cha(t_pf *cha)
 	char	c;
 
 	if (!(nouveau = (t_pf *)malloc(sizeof(t_pf))))
-		pf_error_code("Erreur d'alloc'");
+		pf_error_code("Erreur dans \"ft_printf.c\\moove_cha\"");
 	nouveau->len = 0;
 	c = '\0';
 	nouveau->str = &c;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 03:05:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:27:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:29:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	pf_fill_uni_mask(size_t nb_of_b, char mask[4][9], size_t *nb_of_c)
 		pf_aux_fill_mask(4, mask);
 	}
 	else
-		pf_error_code("Erreur dans \"ft_printf\"");
+		pf_error_code("Erreur dans \"complete_uni_array.c\\fill_uni_mask\"");
 }
 
 size_t	pf_count_bits(unsigned int nb)

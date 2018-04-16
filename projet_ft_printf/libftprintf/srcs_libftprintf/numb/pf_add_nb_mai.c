@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 07:35:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 18:09:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:22:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		pf_from_stock_to_string(t_pf_pn *stock, t_pf *mai)
 		(mai->len)++;
 	}
 	if (!(mai->str = (char *)malloc((mai->len + 1) * sizeof(char))))
-		pf_error_code("Erreur d'alloc'");
+		pf_error_code("Erreur dans \"add_nb_mai.c\\from_stock_to_string\"");
 	(mai->str)[mai->len] = '\0';
 	i = p_o_n;
 	while (stock != NULL)

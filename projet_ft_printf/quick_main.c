@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_code.c                                       :+:      :+:    :+:   */
+/*   quick_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/03 23:59:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/17 01:30:47 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/04/17 00:54:20 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/04/17 01:05:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void	pf_error_code(char *error_message)
+int		main(void)
 {
-	ft_putstr("Erreur dans \"ft_printf\" :\n");
-	ft_putstr(error_message);
-	ft_putchar('\n');
-	exit(-1);
+	char	*p;
+
+	if (!(p = (char *)malloc(sizeof(char))))
+		exit(-1);
+	ft_putstr("\"ft_printf\" renvoie : ");
+	ft_printf("%p\n", p);
+	ft_putstr("\"printf\"    renvoie : ");
+	printf("%p\n", p);
+	free(p);
+	return (0);
 }

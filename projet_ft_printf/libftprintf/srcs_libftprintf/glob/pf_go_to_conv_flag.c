@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 18:21:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:37:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:50:55 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	pf_skip_leng_modi_and_conv_spec_for_integers(char *str)
 	{
 		i = 1;
 	}
-	if (pf_occurs(*(str + i), "diouxX"))
+	if (pf_occurs(*(str + i), "diouxXp"))
 	{
 		return (i + 1);
 	}
@@ -64,7 +64,7 @@ size_t	pf_skip_padding(char *str)
 		if (!(pf_occurs(*(str + i), OPTIONNAL_FLAGS)
 				|| pf_occurs(*(str + i), "123456789")))
 		{
-			pf_error_code("Erreur dans \"ft_printf\"");
+			pf_error_code("Erreur dans \"go_to_conv_flag.c\\skip_padding\"");
 		}
 		i++;
 	}

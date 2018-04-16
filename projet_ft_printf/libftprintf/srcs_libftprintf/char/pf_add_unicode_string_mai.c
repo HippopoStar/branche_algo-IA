@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 01:34:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 17:49:16 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:28:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	pf_aux_ausm(wchar_t *uni_string, size_t i, t_pf *mai)
 	size_t	j;
 
 	if (!(char_array = (char *)malloc(((i * 4) + 1) * sizeof(char))))
-		pf_error_code("Erreur dans \"ft_printf\"");
+		pf_error_code("Erreur dans \"add_unicode_string_mai.c\\aux_ausm\"");
 	nb_of_char = 0;
 	j = 0;
 	while (*(uni_string + j) != '\0')

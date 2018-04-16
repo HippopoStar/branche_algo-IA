@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 18:44:25 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/15 14:32:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 01:17:09 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ size_t	pf_lm_cs_flags(char *str, va_list ap, t_pf *mai, ssize_t mnoz)
 	else if ((i = pf_obsolete_convers(ap, *(str + 0), mai, mnoz)) != 0)
 		;
 	else
-		pf_error_code("Erreur dans \"ft_printf\"");
+		pf_error_code("Erreur dans \"flags.c\\lm_cs_flags\"");
 	return (i);
 }

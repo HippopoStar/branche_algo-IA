@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/04/15 20:22:23 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/04/17 01:36:30 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,14 +89,14 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libftprintf/char/pf_add_unicode_string_mai.c\
 		./srcs_libftprintf/char/pf_add_unicode_char_mai.c\
 		./srcs_libftprintf/char/pf_complete_uni_array.c\
+		./srcs_libftprintf/numb/pf_length_modifier_anm.c\
+		./srcs_libftprintf/numb/pf_aux_lm_anm.c\
 		./srcs_libftprintf/numb/pf_specify_base.c\
 		./srcs_libftprintf/numb/pf_obsolete_convers.c\
 		./srcs_libftprintf/numb/pf_add_nb_mai.c\
 		./srcs_libftprintf/addi/pf_optionnal_flags.c\
 		./srcs_libftprintf/addi/pf_detect_mnoz.c\
 		./srcs_libftprintf/addi/pf_field_width_length.c\
-		./srcs_libftprintf/addi/pf_length_modifier_anm.c\
-		./srcs_libftprintf/addi/pf_aux_lm_anm.c\
 		./srcs_libftprintf/addi/pf_p_padding.c
 
 OBJS = ft_memset.o\
