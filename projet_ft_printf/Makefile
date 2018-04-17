@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:42:57 by lcabanes          #+#    #+#              #
-#    Updated: 2018/04/17 01:11:14 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/04/17 02:25:00 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ re: fclean all
 quick:
 	@make -C ./libftprintf/ all
 	gcc -o quick_test.out $(CFLAGS) -L./libftprintf/ quick_main.c -lftprintf
+	@echo "\033[36m_____\033[00m"
 	./quick_test.out
+	@echo "\033[36m_____\033[00m"
 	@make -C ./libftprintf/ fclean
 	rm -f quick_test.out
 

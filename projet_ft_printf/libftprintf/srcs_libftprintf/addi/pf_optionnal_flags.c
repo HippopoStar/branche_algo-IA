@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 20:41:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/04/17 01:25:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/04/17 02:15:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	pf_optionnal_flags(char *str, t_pf *mai)
 	ssize_t	retour;
 
 	co_sp = *(str + pf_go_to_conv_flags(str));
-	if (pf_occurs(co_sp, "diouxXDOU"))
+	if (pf_occurs(co_sp, "diouxXDOUp"))
 	{
 		if (((retour = pf_find_flag('+', str)) >= 0) && pf_occurs(co_sp, "diD"))
 		{
@@ -101,7 +101,7 @@ void	pf_optionnal_flags(char *str, t_pf *mai)
 		{
 			pf_p_padding((size_t)retour, mai, minus_sign);
 		}
-		if (pf_find_flag('#', str) >= 0)
+		if (pf_find_flag('#', str) >= 0 || co_sp == 'p')
 		{
 			pf_p_sharp_mark(co_sp, mai);
 		}
