@@ -76,11 +76,9 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_lstiter.c\
 		./srcs_libft/ft_lstmap.c\
 		\
-		./srcs_additionnal_functions/get_next_line.c\
-		./srcs_additionnal_functions/ft_atoulli.c\
-		./srcs_additionnal_functions/ft_atolli.c\
-		./srcs_additionnal_functions/ft_putnbr_base.c\
-		./srcs_additionnal_functions/ft_split_whitespaces.c
+		./srcs_common_functions/get_next_line.c\
+		./srcs_common_functions/ft_putnbr_base.c\
+		./srcs_common_functions/ft_split_whitespaces.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -144,8 +142,6 @@ OBJS = ft_memset.o\
 		ft_lstmap.o\
 		\
 		get_next_line.o\
-		ft_atoulli.o\
-		ft_atolli.o\
 		ft_putnbr_base.o\
 		ft_split_whitespaces.o
 

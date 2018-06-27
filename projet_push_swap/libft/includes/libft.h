@@ -16,8 +16,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <limits.h>
 # include "get_next_line.h"
-# include "additionnal_functions.h"
+# include "common_functions.h"
+
+/*
+** Le header <limits.h> contient les macro' suivantes utilisees dans 'ft_atoi' :
+** INT_MIN = -2147483648
+** INT_MAX = 2147483647
+** UINT_MAX = 4294967295
+** LONG_MIN = -9223372036854775808
+** LONG_MAX = 9223372036854775807
+** ULONG_MAX = 18446744073709551615
+*/
 
 typedef struct		s_list
 {

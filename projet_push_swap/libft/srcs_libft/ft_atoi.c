@@ -20,14 +20,58 @@
 ** '/r' correspond a 'retour chariot'
 ** ' '  correspond a un espace
 **
-** 'p_o_n' correspond a 'positive_or_negative' dans la fonction 'aux_ft_atoi'
+** 'a % b' donne le reste de la division euclidienne de 'a' par 'b'
+** | par consequent, dans le cas ou 'a' est negatif, cela ne donne pas	|
+** | l'element de la classe d'equivalence de 'a' pour la congruence	|
+** | modulo 'b' compris entre 0 et b-1					|
+**
+** Aux yeux de l'ordinateur, on a :
+** INT_MIN 	= -INT_MIN
+**		= -1 * INT_MIN
+**
+** [0111 1111 1111 1111]		= 2147483647	(INT_MAX)
+** [1111 1111 1111 1111]		= -2147483647	(-INT_MAX)
+** [1000 0000 0000 0000]		= -2147483648	(INT_MIN)
 */
 
-static long long int	aux_ft_atoi(const char *str)
+static void	ft_atoi_initialize(int *n, int neg, int *a, int *b)
+{
+	*n = 0;
+	*a = !neg ? (INT_MAX / 10) : (-(INT_MIN / 10));
+	*b = !neg ? (INT_MAX % 10) : (-(INT_MIN % 10));
+}
+
+static int	ft_atoi_add(int *n, char c, int a, int b)
+{
+	int	to_add;
+
+	if ('0' <= c && c <= '9')
+	{
+		to_add = c - '0';
+		if (*n < a || (*n == a && to_add <= b))
+		{
+			*n = (*n * 10) + to_add;
+			return (1);
+		}
+		else
+		{
+			*n = 0;
+			return (0);
+		}
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+int		ft_atoi(const char *str)
 {
 	size_t		i;
-	long long int	n;
-	int		p_o_n;
+	int		n;
+	int		neg;
+	int		a;
+	int		b;
 
 	i = 0;
 	while (*(str + i) == '\t' || *(str + i) == '\n' || *(str + i) == '\v'
@@ -35,26 +79,17 @@ static long long int	aux_ft_atoi(const char *str)
 	{
 		i++;
 	}
-	p_o_n = 1;
+	neg = 0;
 	if (*(str + i) == '+' || *(str + i) == '-')
 	{
 		if (*(str + i) == '-')
-			p_o_n = -1;
+			neg = 1;
 		i++;
 	}
-	n = 0;
-	while ('0' <= *(str + i) && *(str + i) <= '9')
+	ft_atoi_initialize(&n, neg, &a, &b);
+	while (ft_atoi_add(&n, *(str + i), a, b))
 	{
-		n = (n * 10) + (*(str + i) - '0');
 		i++;
 	}
-	return ((long long int)p_o_n * n);
-}
-
-int			ft_atoi(const char *str)
-{
-	long long int	n;
-
-	n = aux_ft_atoi(str);
-	return ((-2147483648 <= n && n <= 2147483647) ? (int)n : 0);
+	return (!neg ? n : -n);
 }
