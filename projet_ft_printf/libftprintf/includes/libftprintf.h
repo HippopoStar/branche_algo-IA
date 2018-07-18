@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 09:50:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 10:04:09 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@
 ** C	-> wint_t
 ** S	-> wchar *
 */
+
+# define END_OF_COLOR				"\033[00m"
+# define BLACK						"\033[30m"
+# define RED						"\033[31m"
+# define GREEN						"\033[32m"
+# define YELLOW						"\033[33m"
+# define BLUE						"\033[34m"
+# define MAGENTA					"\033[35m"
+# define CYAN						"\033[36m"
+# define WHITE						"\033[37m"
 
 # define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcC"
 # define PF_FORMAT_SPECIFIERS		"hljz"

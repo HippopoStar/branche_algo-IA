@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 09:51:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 10:04:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	aux0_ft_printf(const char *format, va_list ap,\
 	}
 }
 
-int				ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		ret_val;

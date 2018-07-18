@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/07/18 09:26:28 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/07/18 10:24:35 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_common_functions/ft_strndup.c\
 		\
 		./srcs_libftprintf/ft_printf.c\
-		./srcs_libftprintf/pf_check.c
+		./srcs_libftprintf/pf_check.c\
+		./srcs_libftprintf/pf_color.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -167,7 +168,8 @@ OBJS = ft_memset.o\
 		ft_strndup.o\
 		\
 		ft_printf.o\
-		pf_check.o
+		pf_check.o\
+		pf_color.o
 
 all: $(NAME)
 
