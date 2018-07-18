@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 08:09:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 08:36:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 int		ft_printf(const char *format, ...);
 size_t	pf_check_convers(const char *format);
 size_t	pf_check_color(const char *format);
-void	pf_convers(const char *format, va_list ap, t_list *mai);
-void	pf_color(const char *format, t_list *mai);
+int		pf_convers(const char *format, va_list ap, t_list *mai);
+int		pf_color(const char *format, t_list *mai);
 
 #endif

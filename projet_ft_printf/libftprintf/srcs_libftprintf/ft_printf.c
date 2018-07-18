@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 08:05:39 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 08:41:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void		pf_print(t_list *lst, int *ret_val)
+static void	pf_print(t_list *lst, int *ret_val)
 {
 	int	length;
 
@@ -26,19 +26,17 @@ static void		pf_print(t_list *lst, int *ret_val)
 	}
 }
 
-static size_t	aux1_ft_printf(const char *format, va_list ap, t_list *mai)
+static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 {
 	size_t	step;
 
 	if ((step = pf_check_convers(format)) != 0)
 	{
-		pf_convers(format, ap, mai);
-		return (step);
+		return (!(pf_convers(format, ap, mai) == -1) ? (int)step : -1);
 	}
 	else if ((step = pf_check_color(format)) != 0)
 	{
-		pf_color(format, mai);
-		return (step);
+		return (!(pf_color(format, mai) == -1) ? (int)step : -1);
 	}
 	else
 	{
@@ -49,15 +47,19 @@ static size_t	aux1_ft_printf(const char *format, va_list ap, t_list *mai)
 		{
 			step++;
 		}
-		mai->content = (void *)ft_strndup(format, step);
-		return (step);
+		if (!(mai->content = (void *)ft_strndup(format, step)))
+		{
+			return (-1);
+		}
+		return ((int)step);
 	}
 }
 
-static void		aux0_ft_printf(const char *format, va_list ap,\
+static void	aux0_ft_printf(const char *format, va_list ap,\
 													t_list *lst, int *ret_val)
 {
 	t_list	mai;
+	int		step;
 
 	if (*(format + 0) != '\0')
 	{
@@ -65,9 +67,21 @@ static void		aux0_ft_printf(const char *format, va_list ap,\
 	}
 	else
 	{
-		format = format + aux1_ft_printf(format, ap, &mai);
-		mai.next = lst;
-		aux0_ft_printf(format, ap, &mai, ret_val);
+		if (!((step = pf_step_forward(format, ap, &mai)) == -1))
+		{
+			format = format + (size_t)step;
+			mai.next = lst;
+			aux0_ft_printf(format, ap, &mai, ret_val);
+		}
+		else
+		{
+			*ret_val = -1;
+			while (lst != NULL)
+			{
+				free((char *)(lst->content));
+				lst = lst->next;
+			}
+		}
 	}
 }
 
