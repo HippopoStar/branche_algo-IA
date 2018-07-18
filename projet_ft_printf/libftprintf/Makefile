@@ -6,14 +6,14 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/07/18 10:35:53 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/07/18 11:55:56 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./includes/
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_bzero.c\

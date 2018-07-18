@@ -6,11 +6,15 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 10:04:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 12:23:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+/*
+**	ft_putstr("Appel de \"pf_print\"\n");
+*/
 
 static void	pf_print(t_list *lst, int *ret_val)
 {
@@ -25,6 +29,10 @@ static void	pf_print(t_list *lst, int *ret_val)
 		free((char *)(lst->content));
 	}
 }
+
+/*
+**	ft_putstr("Appel de \"pf_step_forward\"\n");
+*/
 
 static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 {
@@ -54,13 +62,17 @@ static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 	}
 }
 
+/*
+**	ft_putstr("Appel de \"aux0_ft_printf\"\n");
+*/
+
 static void	aux0_ft_printf(const char *format, va_list ap,\
 													t_list *lst, int *ret_val)
 {
 	t_list	mai;
 	int		step;
 
-	if (*(format + 0) != '\0')
+	if (*(format + 0) == '\0')
 	{
 		pf_print(lst, ret_val);
 	}
@@ -83,6 +95,10 @@ static void	aux0_ft_printf(const char *format, va_list ap,\
 		}
 	}
 }
+
+/*
+**	ft_putstr("Appel de \"ft_printf\"\n");
+*/
 
 int			ft_printf(const char *format, ...)
 {

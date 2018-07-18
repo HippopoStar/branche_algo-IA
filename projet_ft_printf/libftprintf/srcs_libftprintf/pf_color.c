@@ -6,31 +6,39 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 10:23:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 10:31:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 12:23:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+/*
+**	ft_putstr("Appel de \"pf_color\"\n");
+*/
+
 int	pf_color(const char *format, t_list *mai)
 {
-	return ((!ft_strncmp(format, "{eoc}", 5)
-					&& !(mai->content = (void *)ft_strdup(END_OF_COLOR)))
-		|| (!ft_strncmp(format, "{black}", 5)
-			&& !(mai->content = (void *)ft_strdup(BLACK)))
-		|| (!ft_strncmp(format, "{red}", 5)
-			&& !(mai->content = (void *)ft_strdup(RED)))
-		|| (!ft_strncmp(format, "{green}", 5)
-			&& !(mai->content = (void *)ft_strdup(GREEN)))
-		|| (!ft_strncmp(format, "{yellow}", 5)
-			&& !(mai->content = (void *)ft_strdup(YELLOW)))
-		|| (!ft_strncmp(format, "{blue}", 5)
-			&& !(mai->content = (void *)ft_strdup(BLUE)))
-		|| (!ft_strncmp(format, "{magenta}", 5)
-			&& !(mai->content = (void *)ft_strdup(MAGENTA)))
-		|| (!ft_strncmp(format, "{cyan}", 5)
-			&& !(mai->content = (void *)ft_strdup(CYAN)))
-		|| (!ft_strncmp(format, "{white}", 5)
-			&& !(mai->content = (void *)ft_strdup(WHITE))) ?
-		-1 : 0);
+	if (!(mai->content = (void *)malloc(6 * sizeof(char))))
+		return (-1);
+	if (!ft_strncmp(format, "{eoc}", 5))
+		ft_strcpy((char *)(mai->content), END_OF_COLOR);
+	else if (!ft_strncmp(format, "{black}", 7))
+		ft_strcpy((char *)(mai->content), BLACK);
+	else if (!ft_strncmp(format, "{red}", 5))
+		ft_strcpy((char *)(mai->content), RED);
+	else if (!ft_strncmp(format, "{green}", 7))
+		ft_strcpy((char *)(mai->content), GREEN);
+	else if (!ft_strncmp(format, "{yellow}", 8))
+		ft_strcpy((char *)(mai->content), YELLOW);
+	else if (!ft_strncmp(format, "{blue}", 6))
+		ft_strcpy((char *)(mai->content), BLUE);
+	else if (!ft_strncmp(format, "{magenta}", 9))
+		ft_strcpy((char *)(mai->content), MAGENTA);
+	else if (!ft_strncmp(format, "{cyan}", 6))
+		ft_strcpy((char *)(mai->content), CYAN);
+	else if (!ft_strncmp(format, "{white}", 7))
+		ft_strcpy((char *)(mai->content), WHITE);
+	else
+		return (-1);
+	return (0);
 }

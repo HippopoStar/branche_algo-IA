@@ -6,11 +6,15 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 09:20:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 09:56:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 12:23:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+/*
+**	ft_putstr("Appel de \"pf_check_convers\"\n");
+*/
 
 size_t	pf_check_convers(const char *format)
 {
@@ -23,13 +27,18 @@ size_t	pf_check_convers(const char *format)
 	else
 	{
 		step = 0;
-		while (!ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + step)))
+		while (!ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + step))
+				&& *(format + step) != '\0')
 		{
 			step++;
 		}
 		return (step + 1);
 	}
 }
+
+/*
+**	ft_putstr("Appel de \"pf_check_color\"\n");
+*/
 
 size_t	pf_check_color(const char *format)
 {
