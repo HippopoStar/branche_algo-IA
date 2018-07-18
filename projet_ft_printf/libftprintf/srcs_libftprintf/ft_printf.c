@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 08:41:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 09:51:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,12 @@ static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 				&& !(pf_check_convers(format + step)
 					|| pf_check_color(format + step)))
 		{
+			if (*(format + step) == '%' && *(format + step + 1) == '%')
+				step++;
 			step++;
 		}
-		if (!(mai->content = (void *)ft_strndup(format, step)))
-		{
-			return (-1);
-		}
-		return ((int)step);
+		return ((mai->content = (void *)ft_strndup(format, step)) != NULL ?
+				(int)step : -1);
 	}
 }
 

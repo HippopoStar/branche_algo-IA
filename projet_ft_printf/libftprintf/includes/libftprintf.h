@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 08:36:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 09:50:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 ** C	-> wint_t
 ** S	-> wchar *
 */
+
+# define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcC"
+# define PF_FORMAT_SPECIFIERS		"hljz"
+# define PF_FLAGS					"#0-+"
 
 int		ft_printf(const char *format, ...);
 size_t	pf_check_convers(const char *format);
