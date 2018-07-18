@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/07/18 14:17:23 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/07/18 15:06:49 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,8 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libftprintf/pf_check.c\
 		./srcs_libftprintf/pf_color.c\
 		./srcs_libftprintf/pf_convers.c\
-		./srcs_libftprintf/pf_get_flags_prec_spac.c
+		./srcs_libftprintf/pf_get_prec_and_spac.c\
+		./srcs_libftprintf/pf_is_flag_present.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -173,7 +174,8 @@ OBJS = ft_memset.o\
 		pf_check.o\
 		pf_color.o\
 		pf_convers.o\
-		pf_get_flags_prec_spac.o
+		pf_get_prec_and_spac.o\
+		pf_is_flag_present.o
 
 all: $(NAME)
 

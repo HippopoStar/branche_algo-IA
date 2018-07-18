@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 14:16:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/18 15:07:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ size_t	pf_check_convers(const char *format);
 size_t	pf_check_color(const char *format);
 int		pf_convers(const char *format, va_list ap, t_list *mai);
 int		pf_color(const char *format, t_list *mai);
-int		pf_get_flags_pres_spac(const char *format, char stock_flags[5],\
-													size_t *prec, size_t *spac);
+int		pf_get_pres_and_spac(const char *format, size_t *prec, size_t *spac);
+int		pf_is_flag_present(const char *format, char flag_char);
 
 #endif
