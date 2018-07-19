@@ -22,7 +22,17 @@ int	pf_is_flag_present(const char *format, char flag_char)
 			|| *(format + i) == flag_char
 			|| *(format + i) == '\0'))
 	{
-		i++;
+		if (flag_char == '0' && ft_strchr("123456789", (int)*(format + i)))
+		{
+			while (ft_strchr("0123456789", (int)*(format + i)))
+			{
+				i++;
+			}
+		}
+		else
+		{
+			i++;
+		}
 	}
 	return (*(format + i) == flag_char ? 1 : 0);
 }

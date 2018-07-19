@@ -18,8 +18,36 @@
 
 int	pf_convers(const char *format, va_list ap, t_list *mai)
 {
-	(void)format;
-	(void)ap;
-	(void)mai;
-	return (0);
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (!(ft_strchr(FT_CONVERSION_SPECIFIERS, (int)*(format + i))
+			|| ft_strchr(FT_FORMAT_SPECIFIERS, (int)*(format + i))
+			|| *(format + i) == '\0'))
+	{
+		i++;
+	}
+	j = i;
+	while (!(ft_strchr(FT_CONVERSION_SPECIFIERS, (int)*(format + j))
+			|| *(format + j) == '\0'))
+	{
+		j++;
+	}
+	if (ft_strchr(FT_CHAR_CONV_SPEC, (int)*(format + j)))
+	{
+		return (pf_char_convers(format, ap, mai, format + i));
+	}
+	else if (ft_strchr(FT_SIGNED_CONV_SPEC, (int)*(format + j)))
+	{
+		return (pf_signed_convers(format, ap, mai, format + i));
+	}
+	else if (ft_strchr(FT_UNSIGNED_CONV_SPEC, (int)*(format + j)))
+	{
+		return (pf_unsigned_convers(format, ap, mai, format + i));
+	}
+	else
+	{
+		return (-1);
+	}
 }
