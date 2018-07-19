@@ -53,7 +53,7 @@
 # define PF_FORMAT_SPECIFIERS		"hljz"
 # define PF_FLAGS					"#0-+"
 
-# define PF_CHAR_CONV_SPEC			"sScC"
+# define PF_CHARACTERS_CONV_SPEC		"sScC"
 # define PF_SIGNED_CONV_SPEC		"dDi"
 # define PF_UNSIGNED_CONV_SPEC		"poOuUxX"
 
@@ -62,7 +62,16 @@ size_t	pf_check_convers(const char *format);
 size_t	pf_check_color(const char *format);
 int		pf_convers(const char *format, va_list ap, t_list *mai);
 int		pf_color(const char *format, t_list *mai);
-int		pf_get_pres_and_spac(const char *format, size_t *prec, size_t *spac);
+int		pf_get_prec_and_spac(const char *format, size_t *prec, size_t *spac);
 int		pf_is_flag_present(const char *format, char flag_char);
+int		pf_characters_convers(const char *format, va_list ap, t_list *mai, const char *type);
+int		pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *type);
+int		pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type);
+
+char	*pf_malloc_and_left_spaces(size_t spac, size_t length);
+void	pf_deal_characters_flags(const char *format, char *str);
+
+void	pf_anticipate_sharp_mark(unsigned long long int n, const char *base, size_t *prec);
+void	pf_apply_sharp_mark(char *nbr_base, char conv_spec);
 
 #endif

@@ -14,7 +14,7 @@
 #include "common_functions.h"
 
 char	*ft_ullitoa_base(unsigned long long int n, const char *base,\
-													size_t pres, size_t spac)
+													size_t prec, size_t spac)
 {
 	t_list					l_n;
 	t_list					l_base;
@@ -29,18 +29,18 @@ char	*ft_ullitoa_base(unsigned long long int n, const char *base,\
 		return (NULL);
 	}
 	l_base.next = &l_length;
-	if (pres == 0)
+	if (prec == 0)
 	{
-		pres = 1;
+		prec = 1;
 	}
-	l_length.content = (void *)(&pres);
+	l_length.content = (void *)(&prec);
 	l_length.content_size = spac;
 	l_length.next = NULL;
 	return (aux0_ft_itoa_base(&l_n, 0, NULL));
 }
 
 char	*ft_llitoa_base(long long int n, const char *base,\
-													size_t pres, size_t spac)
+													size_t prec, size_t spac)
 {
 	t_list					l_n;
 	t_list					l_base;
@@ -58,11 +58,11 @@ char	*ft_llitoa_base(long long int n, const char *base,\
 	if (!base || (l_base.content_size = ft_strlen(base)) < 2)
 		return (NULL);
 	l_base.next = &l_length;
-	if (pres == 0)
+	if (prec == 0)
 	{
-		pres = 1;
+		prec = 1;
 	}
-	l_length.content = (void *)(&pres);
+	l_length.content = (void *)(&prec);
 	l_length.content_size = spac;
 	l_length.next = NULL;
 	return (aux0_ft_itoa_base(&l_n, 0, NULL));

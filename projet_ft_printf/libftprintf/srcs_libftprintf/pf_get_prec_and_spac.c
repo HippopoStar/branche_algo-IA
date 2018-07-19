@@ -17,22 +17,30 @@ int	pf_get_prec_and_spac(const char *format,\
 {
 	size_t	i;
 
+	*prec = 0;
+	*spac = 0;
 	i = 0;
 	while (!ft_strchr(PF_FORMAT_SPECIFIERS, (int)*(format + i))
 			&& !ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + i))
 			&& !(*(format + i) == '\0'))
 	{
-		if (*(format + i) == '.')
+		if (*(format + i) == '.' || ft_strchr("123456789", (int)*(format + i)))
 		{
-			i++;
-			*prec = (size_t)ft_atoi(format + i);
+			if (*(format + i) == '.')
+			{
+				i++;
+				*prec = (size_t)ft_atoi(format + i);
+			}
+			else
+			{
+				*spac = (size_t)ft_atoi(format + i);
+			}
+			while (ft_strchr("0123456789", (int)*(format + i)))
+			{
+				i++;
+			}
 		}
 		else
-		{
-			*spac = (size_t)ft_atoi(format + i);
-		}
-		i++;
-		while (ft_strchr("0123456789", (int)*(format + i)))
 		{
 			i++;
 		}

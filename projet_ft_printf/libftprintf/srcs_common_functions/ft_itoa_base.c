@@ -81,7 +81,7 @@ char		*aux0_ft_itoa_base(t_list *l_n, size_t i, t_list *lst)
 	}
 }
 
-char		*ft_itoa_base(int n, const char *base, size_t pres, size_t spac)
+char		*ft_itoa_base(int n, const char *base, size_t prec, size_t spac)
 {
 	t_list					l_n;
 	t_list					l_base;
@@ -100,11 +100,11 @@ char		*ft_itoa_base(int n, const char *base, size_t pres, size_t spac)
 		return (NULL);
 	}
 	l_base.next = &l_length;
-	if (pres == 0)
+	if (prec == 0)
 	{
-		pres = 1;
+		prec = 1;
 	}
-	l_length.content = (void *)(&pres);
+	l_length.content = (void *)(&prec);
 	l_length.content_size = spac;
 	l_length.next = NULL;
 	return (aux0_ft_itoa_base(&l_n, 0, NULL));

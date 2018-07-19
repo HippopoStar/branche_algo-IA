@@ -28,11 +28,11 @@ void			ft_break_color_down(int *red, int *green, int *blue, int color);
 */
 char			*aux0_ft_itoa_base(t_list *l_n, size_t i, t_list *lst);
 char			*ft_itoa_base\
-							(int n, const char *base, size_t pres, size_t spac);
+							(int n, const char *base, size_t prec, size_t spac);
 char			*ft_llitoa_base\
-				(long long int n, const char *base, size_t pres, size_t spac);
+				(long long int n, const char *base, size_t prec, size_t spac);
 char			*ft_ullitoa_base\
-		(unsigned long long int n, const char *base, size_t pres, size_t spac);
+		(unsigned long long int n, const char *base, size_t prec, size_t spac);
 /*
 ** Fin de 'ft_itoa_base' et ses derivees
 */
