@@ -6,7 +6,6 @@
 
 char	*pf_malloc_and_left_spaces(size_t spac, size_t length)
 {
-	ft_putstr("Appel de \"pf_malloc_and_left_spaces\"\n");
 	char	*str;
 	size_t	i;
 
@@ -23,28 +22,18 @@ char	*pf_malloc_and_left_spaces(size_t spac, size_t length)
 }
 
 /*
-**	ft_putstr("Appel de \"pf_deal_characters_flags\"\n");
+**	ft_putstr("Appel de \"pf_deal_minus_sign_and_zero\"\n");
 */
 
-void	pf_deal_characters_flags(const char *format, char *str)
+void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
 {
-	ft_putstr("Appel de \"pf_deal_characters_flags\"\n");
 	size_t	i;
 	size_t	decal;
 
-	if (pf_is_flag_present(format, '0'))
-	{
-		i = 0;
-		while (*(str + i) == ' ')
-		{
-			*(str + i) = '0';
-			i++;
-		}
-	}
-	else if (pf_is_flag_present(format, '-'))
+	if (pf_is_flag_present(format, '-'))
 	{
 		decal = 0;
-		while (*(str + decal) == ' ')
+		while (*(str + decal + keep) == ' ')
 		{
 			decal++;
 		}
@@ -53,6 +42,15 @@ void	pf_deal_characters_flags(const char *format, char *str)
 		{
 			*(str + i) = *(str + decal + i);
 			*(str + decal + i) = ' ';
+			i++;
+		}
+	}
+	else if (pf_is_flag_present(format, '0'))
+	{
+		i = 0;
+		while (*(str + i) == ' ')
+		{
+			*(str + i) = '0';
 			i++;
 		}
 	}

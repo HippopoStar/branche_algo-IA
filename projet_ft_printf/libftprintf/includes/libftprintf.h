@@ -51,7 +51,7 @@
 
 # define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcC"
 # define PF_FORMAT_SPECIFIERS		"hljz"
-# define PF_FLAGS					"#0-+"
+# define PF_FLAGS					"#0-+ "
 
 # define PF_CHARACTERS_CONV_SPEC		"sScC"
 # define PF_SIGNED_CONV_SPEC		"dDi"
@@ -69,9 +69,11 @@ int		pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *
 int		pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type);
 
 char	*pf_malloc_and_left_spaces(size_t spac, size_t length);
-void	pf_deal_characters_flags(const char *format, char *str);
+void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep);
 
-void	pf_anticipate_sharp_mark(unsigned long long int n, const char *base, size_t *prec);
+void	pf_apply_plus_sign(char *str);
+void	pf_anticipate_space(long long int n, size_t *spac);
 void	pf_apply_sharp_mark(char *nbr_base, char conv_spec);
+void	pf_anticipate_sharp_mark(unsigned long long int n, const char *base, size_t *prec);
 
 #endif

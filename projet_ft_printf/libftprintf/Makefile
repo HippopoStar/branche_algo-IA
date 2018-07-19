@@ -96,7 +96,7 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libftprintf/pf_get_prec_and_spac.c\
 		./srcs_libftprintf/pf_is_flag_present.c\
 		./srcs_libftprintf/pf_characters_convers.c\
-		./srcs_libftprintf/pf_deal_characters_flags.c\
+		./srcs_libftprintf/pf_deal_minus_sign_and_zero.c\
 		./srcs_libftprintf/pf_signed_convers.c\
 		./srcs_libftprintf/pf_unsigned_convers.c\
 		./srcs_libftprintf/pf_anticipate_sharp_mark.c
@@ -182,7 +182,7 @@ OBJS = ft_memset.o\
 		pf_get_prec_and_spac.o\
 		pf_is_flag_present.o\
 		pf_characters_convers.o\
-		pf_deal_characters_flags.o\
+		pf_deal_minus_sign_and_zero.o\
 		pf_signed_convers.o\
 		pf_unsigned_convers.o\
 		pf_anticipate_sharp_mark.o

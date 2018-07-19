@@ -109,7 +109,7 @@ int	pf_characters_convers(const char *format, va_list ap, t_list *mai, const cha
 	}
 	if (wit != -1)
 	{
-		pf_deal_characters_flags(format, (char *)mai->content);
+		pf_deal_minus_sign_and_zero(format, (char *)mai->content, 0);
 	}
 	return (wit);
 }
