@@ -1,6 +1,6 @@
 #include "libftprintf.h"
 
-static int	aux_pf_unsigned_convers(unsigned long long int *n, va_list ap, const char *type)
+static int	pf_get_unsigned(unsigned long long int *n, va_list ap, const char *type)
 {
 	if (*type == 'u' || *type == 'o' || *type == 'x' || *type == 'X')
 	{
@@ -25,15 +25,55 @@ static int	aux_pf_unsigned_convers(unsigned long long int *n, va_list ap, const 
 	return (0);
 }
 
+static char	*aux_pf_unsigned_convers(unsigned long long int n, size_t prec, size_t spac, char conv_spec)
+{
+	if (conv_spec == 'u' || conv_spec == 'U')
+	{
+		return (ft_ullitoa_base(n, "0123456789", prec, spac));
+	}
+	else if (conv_spec == 'o' || conv_spec == 'O')
+	{
+		return (ft_ullitoa_base(n, "01234567", prec, spac));
+	}
+	else if (conv_spec == 'x')
+	{
+		return (ft_ullitoa_base(n, "0123456789abcdef", prec, spac));
+	}
+	else if (conv_spec == 'X')
+	{
+		return (ft_ullitoa_base(n, "0123456789ABCDEF", prec, spac));
+	}
+	else if (conv_spec == 'b' || conv_spec == 'B')
+	{
+		return (ft_ullitoa_base(n, "01", prec, spac));
+	}
+	else
+	{
+		return (NULL);
+	}
+}
+
 int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type)
 {
 	unsigned long long int	n;
 	size_t			prec;
 	size_t			spac;
+	char			conv_spec;
 
-	(void)format;
-	(void)ap;
-	(void)mai;
-	(void)type;
-	return (-1);
+	if (pf_get_unsigned(&n, ap, type) == -1)
+		return (-1);
+	pf_get_prec_and_spac(format, &prec, &spac);
+	conv_spec = pf_jump_to_conv_spec(type);
+	if (pf_is_flag_present(format, '#'))
+	{
+		pf_anticipate_sharp_mark(n, conv_spec, &prec);
+	}
+	if (!(mai->content = (void *)aux_pf_unsigned_convers(n, prec, spac, conv_spec)))
+		return (-1);
+	if (pf_is_flag_present(format, '#'))
+	{
+		pf_apply_sharp_mark((char *)mai->content, conv_spec);
+	}
+	pf_deal_minus_sign_and_zero(format, (char *)mai->content, 0);
+	return (0);
 }

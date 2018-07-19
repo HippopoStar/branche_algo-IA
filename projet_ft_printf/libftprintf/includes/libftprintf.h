@@ -71,9 +71,10 @@ int		pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char
 char	*pf_malloc_and_left_spaces(size_t spac, size_t length);
 void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep);
 
+char	pf_jump_to_conv_spec(const char *format);
 void	pf_apply_plus_sign(char *str);
 void	pf_anticipate_space(long long int n, size_t *spac);
 void	pf_apply_sharp_mark(char *nbr_base, char conv_spec);
-void	pf_anticipate_sharp_mark(unsigned long long int n, const char *base, size_t *prec);
+void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *prec);
 
 #endif
