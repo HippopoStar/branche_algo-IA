@@ -12,6 +12,10 @@
 
 #include "libftprintf.h"
 
+/*
+**	ft_putstr("Appel de \"pf_is_flag_present\"\n");
+*/
+
 int	pf_is_flag_present(const char *format, char flag_char)
 {
 	size_t	i;

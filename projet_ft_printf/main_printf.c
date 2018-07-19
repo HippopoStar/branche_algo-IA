@@ -17,16 +17,10 @@ int		main(void)
 	ret_val = ft_printf("ab%c{cyan}%s{eoc}ghi\n", 'c', "def");
 	ft_putnbr(ret_val);
 	ft_putchar('\n');
-	ret_val = ft_printf("a%-3cc{cyan}%20s{eoc}ghi\n", 'b', "def");
+	ret_val = ft_printf("%u %o %O %x %X %b %B\n", 42, 42, 42, 42, 42, 42, 42);
 	ft_putnbr(ret_val);
 	ft_putchar('\n');
-	ret_val = ft_printf("a%-3cc{cyan}%20s{eoc}ghi\n", 'b', "def");
-	ft_putnbr(ret_val);
-	ft_putchar('\n');
-	ret_val = ft_printf("a%-3cc%i{cyan}%20s{eoc}ghi\n", 'b', 380, "def");
-	ft_putnbr(ret_val);
-	ft_putchar('\n');
-	ret_val = ft_printf("a%-3cc{cyan}%20s{eoc}%#Xghi\n", 'b', "def", 12);
+	ret_val = ft_printf("%#u %#o %#O %#x %#X %#b %#B\n", 42, 42, 42, 42, 42, 42, 42);
 	ft_putnbr(ret_val);
 	ft_putchar('\n');
 	return (0);

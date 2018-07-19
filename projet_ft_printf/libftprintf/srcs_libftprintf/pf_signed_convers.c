@@ -1,7 +1,12 @@
 #include "libftprintf.h"
 
+/*
+**	ft_putstr("Appel de \"pf_get_signed\"\n");
+*/
+
 static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 {
+	ft_putstr("Appel de \"pf_get_signed\"\n");
 	if (*type == 'd' || *type == 'i')
 	{
 		*n = (long long int)va_arg(ap, int);
@@ -23,8 +28,13 @@ static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 	return (0);
 }
 
+/*
+**	ft_putstr("Appel de \"pf_signed_convers\"\n");
+*/
+
 int	pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *type)
 {
+	ft_putstr("Appel de \"pf_signed_convers\"\n");
 	long long int	n;
 	size_t		prec;
 	size_t		spac;

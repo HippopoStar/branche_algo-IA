@@ -49,13 +49,13 @@
 # define CYAN						"\033[36m"
 # define WHITE						"\033[37m"
 
-# define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcC"
+# define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcCbB"
 # define PF_FORMAT_SPECIFIERS		"hljz"
 # define PF_FLAGS					"#0-+ "
 
 # define PF_CHARACTERS_CONV_SPEC		"sScC"
 # define PF_SIGNED_CONV_SPEC		"dDi"
-# define PF_UNSIGNED_CONV_SPEC		"poOuUxX"
+# define PF_UNSIGNED_CONV_SPEC		"poOuUxXbB"
 
 int		ft_printf(const char *format, ...);
 size_t	pf_check_convers(const char *format);

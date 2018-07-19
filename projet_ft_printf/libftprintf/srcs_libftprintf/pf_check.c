@@ -32,7 +32,7 @@ size_t	pf_check_convers(const char *format)
 		{
 			step++;
 		}
-		return (step + 1);
+		return (*(format + step) == '\0' ? step : step + 1);
 	}
 }
 
