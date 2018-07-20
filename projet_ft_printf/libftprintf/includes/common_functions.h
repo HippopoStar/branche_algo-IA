@@ -36,7 +36,7 @@ char			*ft_ullitoa_base\
 /*
 ** Fin de 'ft_itoa_base' et ses derivees
 */
-char			*ft_widestring_to_string(wchar_t *widestring);
+char			*ft_widestring_to_string(wchar_t *widestring, size_t spac);
 char			*ft_strndup(const char *str, size_t n);
 
 #endif

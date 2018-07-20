@@ -74,45 +74,57 @@ static void	ft_widechar_to_string(wint_t widechar, char stock[5])
 	ft_unsigned_int_to_string(n, stock);
 }
 
-static void	aux_ft_widestring_to_string(char *str, size_t *j, wint_t widechar)
+static void	aux1_ft_widestring_to_string(char stock[5], wint_t widechar)
 {
-	char	stock[5];
-
 	if ((((unsigned int)widechar) >> 7) == 0)
 	{
-		*(str + *j + 0) = (char)widechar;
-		*(str + *j + 1) = '\0';
-		(*j)++;
+		*(stock + 0) = (char)widechar;
+		*(stock + 1) = '\0';
 	}
 	else
 	{
 		ft_widechar_to_string(widechar, stock);
-		ft_strcpy((str + *j), stock);
-		*j = *j + ft_strlen(stock);
 	}
 }
 
-char		*ft_widestring_to_string(wchar_t *widestring)
+static void	aux0_ft_widestring_to_string(char **str, wchar_t *widestring, size_t cur_len, size_t *spac)
+{
+	char	stock[5];
+	size_t	stock_len;
+
+	if (*widestring == L'\0')
+	{
+		*spac = (*spac < cur_len) ? cur_len : *spac;
+		if ((*str = (char *)malloc((*spac + 1) * sizeof(char))) != NULL)
+		{
+			*((*str) + *spac) = '\0';
+			*spac = *spac - cur_len;
+		}
+	}
+	else
+	{
+		aux1_ft_widestring_to_string(stock, (wint_t)*widestring);
+		stock_len = ft_strlen(stock);
+		aux0_ft_widestring_to_string(str, widestring + 1, cur_len + stock_len, spac);
+		if ((*str) != NULL)
+		{
+			ft_strncpy((*str) + (*spac + cur_len), stock, stock_len);
+		}
+	}
+}
+
+char		*ft_widestring_to_string(wchar_t *widestring, size_t spac)
 {
 	char			*str;
-	size_t			size;
 	size_t			i;
-	size_t			j;
 
-	size = 0;
-	while (*(widestring + size) != L'\0')
-	{
-		size++;
-	}
-	if (!(str = (char *)malloc(((4 * size) + 1) * sizeof(char))))
-		return (NULL);
+	str = NULL;
+	aux0_ft_widestring_to_string(&str, widestring, 0, &spac);
 	i = 0;
-	j = 0;
-	while (i < size)
+	while (i < spac)
 	{
-		aux_ft_widestring_to_string(str, &j, (wint_t)(*(widestring + i)));
+		*(str + i) = ' ';
 		i++;
 	}
-	*(str + j) = '\0';
 	return (str);
 }
