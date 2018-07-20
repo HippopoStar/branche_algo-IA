@@ -16,9 +16,11 @@
 # include "libft.h"
 # include "common_functions.h"
 # include <stdarg.h>
+# include <stdint.h>
 
 /*
 ** Correspondances concernant les conversions
+**
 ** - de nombres :
 ** d	-> signed int
 ** hd	-> signed short int
@@ -34,9 +36,16 @@
 ** llu	-> unsigned long long int
 ** ju	-> uintmax_t
 ** zu	-> size_t
+**
 ** - de caracteres :
 ** C	-> wint_t
 ** S	-> wchar *
+**
+** Domaines d'application des flags
+** '+'	-> nombres signes
+** ' '	-> nombres signes
+** '#'	-> nombres non signes
+** '0'	-> '-' est absent
 */
 
 # define END_OF_COLOR				"\033[00m"

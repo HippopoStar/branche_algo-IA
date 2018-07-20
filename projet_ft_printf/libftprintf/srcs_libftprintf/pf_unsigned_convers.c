@@ -1,12 +1,65 @@
 #include "libftprintf.h"
 
 /*
+**	ft_putstr("Appel de \"aux1_pf_get_unsigned\"\n");
+*/
+
+static int	aux1_pf_get_unsigned(unsigned long long int *n, va_list ap, const char *type)
+{
+	if (*type == 'p')
+	{
+		*n = (unsigned long long int)va_arg(ap, void *);
+	}
+	else if (!ft_strncmp("ju", type, 2) || !ft_strncmp("jo", type, 2)
+		|| !ft_strncmp("jx", type, 2) || !ft_strncmp("jX", type, 2)
+		|| !ft_strncmp("jb", type, 2) || !ft_strncmp("jB", type, 2))
+	{
+		*n = (unsigned long long int)va_arg(ap, uintmax_t);
+	}
+	else if (!ft_strncmp("zu", type, 2) || !ft_strncmp("zo", type, 2)
+		|| !ft_strncmp("zx", type, 2) || !ft_strncmp("zX", type, 2)
+		|| !ft_strncmp("zb", type, 2) || !ft_strncmp("zB", type, 2))
+	{
+		*n = (unsigned long long int)va_arg(ap, size_t);
+	}
+	else
+	{
+		return (-1);
+	}
+	return (0);
+}
+
+/*
+**	ft_putstr("Appel de \"aux0_pf_get_unsigned\"\n");
+*/
+
+static int	aux0_pf_get_unsigned(unsigned long long int *n, va_list ap, const char *type)
+{
+	if (!ft_strncmp("hu", type, 2) || !ft_strncmp("ho", type, 2)
+		|| !ft_strncmp("hx", type, 2) || !ft_strncmp("hX", type, 2)
+		|| !ft_strncmp("hb", type, 2) || !ft_strncmp("hB", type, 2))
+	{
+		*n = (unsigned long long int)va_arg(ap, unsigned int);
+	}
+	else if (!ft_strncmp("hhu", type, 3) || !ft_strncmp("hho", type, 3)
+		|| !ft_strncmp("hhx", type, 3) || !ft_strncmp("hhX", type, 3)
+		|| !ft_strncmp("hhb", type, 3) || !ft_strncmp("hhB", type, 3))
+	{
+		*n = (unsigned long long int)va_arg(ap, unsigned int);
+	}
+	else
+	{
+		return (aux1_pf_get_unsigned(n, ap, type));
+	}
+	return (0);
+}
+
+/*
 **	ft_putstr("Appel de \"pf_get_unsigned\"\n");
 */
 
 static int	pf_get_unsigned(unsigned long long int *n, va_list ap, const char *type)
 {
-	ft_putstr("Appel de \"pf_get_unsigned\"\n");
 	if (*type == 'u' || *type == 'o' || *type == 'x' || *type == 'X'
 		|| *type == 'b' || *type == 'B')
 	{
@@ -24,11 +77,11 @@ static int	pf_get_unsigned(unsigned long long int *n, va_list ap, const char *ty
 		|| !ft_strncmp("llb", type, 3) || !ft_strncmp("llB", type, 3)
 		|| !ft_strncmp("lU", type, 2) || !ft_strncmp("lO", type, 2))
 	{
-		*n = (unsigned long long int)va_arg(ap, unsigned long long int);
+		*n = va_arg(ap, unsigned long long int);
 	}
 	else
 	{
-		return (-1);
+		return (aux0_pf_get_unsigned(n, ap, type));
 	}
 	return (0);
 }
@@ -39,7 +92,6 @@ static int	pf_get_unsigned(unsigned long long int *n, va_list ap, const char *ty
 
 static char	*aux_pf_unsigned_convers(unsigned long long int n, size_t prec, size_t spac, char conv_spec)
 {
-	ft_putstr("Appel de \"aux_pf_unsigned_convers\"\n");
 	if (conv_spec == 'u' || conv_spec == 'U')
 	{
 		return (ft_ullitoa_base(n, "0123456789", prec, spac));
@@ -48,7 +100,7 @@ static char	*aux_pf_unsigned_convers(unsigned long long int n, size_t prec, size
 	{
 		return (ft_ullitoa_base(n, "01234567", prec, spac));
 	}
-	else if (conv_spec == 'x')
+	else if (conv_spec == 'x' || conv_spec == 'p')
 	{
 		return (ft_ullitoa_base(n, "0123456789abcdef", prec, spac));
 	}
@@ -72,7 +124,6 @@ static char	*aux_pf_unsigned_convers(unsigned long long int n, size_t prec, size
 
 int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type)
 {
-	ft_putstr("Appel de \"pf_unsigned_convers\"\n");
 	unsigned long long int	n;
 	size_t			prec;
 	size_t			spac;

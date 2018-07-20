@@ -1,12 +1,53 @@
 #include "libftprintf.h"
 
 /*
+**	ft_putstr("Appel de \"aux1_pf_get_signed\"\n");
+*/
+
+static int	aux1_pf_get_signed(long long int *n, va_list ap, const char *type)
+{
+	if (!ft_strncmp("jd", type, 2) || !ft_strncmp("ji", type, 2))
+	{
+		*n = (long long int)va_arg(ap, intmax_t);
+	}
+	else if (!ft_strncmp("zd", type, 2) || !ft_strncmp("zi", type, 2))
+	{
+		*n = (long long int)va_arg(ap, ssize_t);
+	}
+	else
+	{
+		return (-1);
+	}
+	return (0);
+}
+
+/*
+**	ft_putstr("Appel de \"aux0_pf_get_signed\"\n");
+*/
+
+static int	aux0_pf_get_signed(long long int *n, va_list ap, const char *type)
+{
+	if (!ft_strncmp("hd", type, 2) || !ft_strncmp("hi", type, 2))
+	{
+		*n = (long long int)va_arg(ap, int);
+	}
+	else if (!ft_strncmp("hhd", type, 3) || !ft_strncmp("hhi", type, 3))
+	{
+		*n = (long long int)va_arg(ap, int);
+	}
+	else
+	{
+		return (aux1_pf_get_signed(n, ap, type));
+	}
+	return (0);
+}
+
+/*
 **	ft_putstr("Appel de \"pf_get_signed\"\n");
 */
 
 static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 {
-	ft_putstr("Appel de \"pf_get_signed\"\n");
 	if (*type == 'd' || *type == 'i')
 	{
 		*n = (long long int)va_arg(ap, int);
@@ -23,7 +64,7 @@ static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 	}
 	else
 	{
-		return (-1);
+		return (aux0_pf_get_signed(n, ap, type));
 	}
 	return (0);
 }
@@ -34,7 +75,6 @@ static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 
 int	pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *type)
 {
-	ft_putstr("Appel de \"pf_signed_convers\"\n");
 	long long int	n;
 	size_t		prec;
 	size_t		spac;

@@ -6,7 +6,6 @@
 
 static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 {
-	ft_putstr("Appel de \"pf_string_convers\"\n");
 	size_t	length;
 	size_t	prec;
 	size_t	spac;
@@ -34,7 +33,6 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 
 static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 {
-	ft_putstr("Appel de \"pf_char_convers\"\n");
 	size_t	prec;
 	size_t	spac;
 	char	c;
@@ -64,10 +62,20 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 
 static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 {
-	(void)format;
-	(void)ap;
-	(void)mai;
-	return (-1);
+	wchar_t	*widestring;
+	size_t	prec;
+	size_t	spac;
+
+	if (!(widestring = va_arg(ap, wchar_t *)))
+		return (-1);
+	pf_get_prec_and_spac(format, &prec, &spac);
+	if (prec > spac)
+	{
+		spac = prec;
+	}
+	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
+		return (-1);
+	return (0);
 }
 
 /*
@@ -76,10 +84,20 @@ static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 
 static int	pf_widechar_convers(const char *format, va_list ap, t_list *mai)
 {
-	(void)format;
-	(void)ap;
-	(void)mai;
-	return (-1);
+	wchar_t	widestring[2];
+	size_t	prec;
+	size_t	spac;
+
+	*(widestring + 0) = (wchar_t)va_arg(ap, wint_t);
+	*(widestring + 1) = L'\0';
+	pf_get_prec_and_spac(format, &prec, &spac);
+	if (prec > spac)
+	{
+		spac = prec;
+	}
+	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
+		return (-1);
+	return (0);
 }
 
 /*
@@ -90,7 +108,6 @@ int	pf_characters_convers(const char *format, va_list ap, t_list *mai, const cha
 {
 	int	wit;
 
-	ft_putstr("Appel de \"pf_characters_convers\"\n");
 	if (*type == 's')
 	{
 		wit = pf_string_convers(format, ap, mai);

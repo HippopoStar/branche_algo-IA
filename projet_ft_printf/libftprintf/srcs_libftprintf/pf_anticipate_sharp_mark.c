@@ -6,7 +6,6 @@
 
 char	pf_jump_to_conv_spec(const char *format)
 {
-	ft_putstr("Appel de \"pf_jump_to_conv_spec\"\n");
 	size_t	i;
 
 	i = 0;
@@ -24,11 +23,10 @@ char	pf_jump_to_conv_spec(const char *format)
 
 void	pf_apply_plus_sign(char *str)
 {
-	ft_putstr("Appel de \"pf_apply_plus_sign\"\n");
 	size_t	i;
 
 	i = 0;
-	while (*(str + i + 1) == ' ')
+	while (*(str + i + 1) == ' ' && *(str + i) != '\0')
 	{
 		i++;
 	}
@@ -44,7 +42,6 @@ void	pf_apply_plus_sign(char *str)
 
 void	pf_anticipate_space(long long int n, size_t *spac)
 {
-	ft_putstr("Appel de \"pf_anticipate_space\"\n");
 	size_t	nb_of_char;
 
 	if (n > 0)
@@ -68,14 +65,14 @@ void	pf_anticipate_space(long long int n, size_t *spac)
 
 void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 {
-	ft_putstr("Appel de \"pf_apply_sharp_mark\"\n");
 	size_t	i;
 
 	if (conv_spec == 'x' || conv_spec == 'X'
 		|| conv_spec == 'b' || conv_spec == 'B')
 	{
 		i = 0;
-		while (*(nbr_base + i) != '0')
+		while (*(nbr_base + i) != '0'
+			&& *(nbr_base + i + 1) != '\0')
 		{
 			i++;
 		}
@@ -89,7 +86,6 @@ void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 
 void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *prec)
 {
-	ft_putstr("Appel de \"pf_anticipate_sharp_mark\"\n");
 	size_t			nb_of_char;
 	unsigned long long int	base_length;
 
