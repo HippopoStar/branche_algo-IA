@@ -43,11 +43,14 @@ void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
 			decal++;
 		}
 		i = 0;
-		while (*(str + decal + i) != '\0')
+		if (decal > 0)
 		{
-			*(str + i) = *(str + decal + i);
-			*(str + decal + i) = ' ';
-			i++;
+			while (*(str + decal + i) != '\0')
+			{
+				*(str + i) = *(str + decal + i);
+				*(str + decal + i) = ' ';
+				i++;
+			}
 		}
 	}
 	else if (pf_is_flag_present(format, '0'))

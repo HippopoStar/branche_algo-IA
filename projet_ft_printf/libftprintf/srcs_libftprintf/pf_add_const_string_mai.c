@@ -6,13 +6,26 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 19:58:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/22 20:17:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/22 21:06:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	pf_add_const_string_mai(const char *str, t_list *mai)
+char	pf_jump_to_conv_spec(const char *format)
+{
+	size_t	i;
+
+	i = 0;
+	while (!(ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + i))
+			|| *(format + i) == '\0'))
+	{
+		i++;
+	}
+	return (*(format + i));
+}
+
+int		pf_add_const_string_mai(const char *str, t_list *mai)
 {
 	size_t	length;
 	size_t	i;

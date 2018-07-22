@@ -1,23 +1,6 @@
 #include "libftprintf.h"
 
 /*
-**	ft_putstr("Appel de \"pf_jump_to_conv_spec\"\n");
-*/
-
-char	pf_jump_to_conv_spec(const char *format)
-{
-	size_t	i;
-
-	i = 0;
-	while (!(ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + i))
-		|| *(format + i) == '\0'))
-	{
-		i++;
-	}
-	return (*(format + i));
-}
-
-/*
 **	ft_putstr("Appel de \"pf_apply_plus_sign\"\n");
 */
 

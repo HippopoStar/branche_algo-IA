@@ -133,13 +133,13 @@ int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char 
 		return (-1);
 	pf_get_prec_and_spac(format, &prec, &spac);
 	conv_spec = pf_jump_to_conv_spec(type);
-	if (pf_is_flag_present(format, '#'))
+	if (pf_is_flag_present(format, '#') || conv_spec == 'p')
 	{
 		pf_anticipate_sharp_mark(n, conv_spec, &prec);
 	}
 	if (!(mai->content = (void *)aux_pf_unsigned_convers(n, prec, spac, conv_spec)))
 		return (-1);
-	if (pf_is_flag_present(format, '#'))
+	if (pf_is_flag_present(format, '#') || conv_spec == 'p')
 	{
 		pf_apply_sharp_mark((char *)mai->content, conv_spec);
 	}
