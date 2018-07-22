@@ -26,7 +26,7 @@ void	pf_apply_plus_sign(char *str)
 	size_t	i;
 
 	i = 0;
-	while (*(str + i + 1) == ' ' && *(str + i) != '\0')
+	while (*(str + i + 1) == ' ' && *(str + i + 1) != '\0')
 	{
 		i++;
 	}
@@ -54,10 +54,10 @@ void	pf_anticipate_space(long long int n, size_t *spac)
 		}
 		if (!(*spac > nb_of_char))
 		{
-			*spac = nb_of_char;
+			*spac = nb_of_char + 1;
 		}
 	}
-}		
+}
 
 /*
 **	ft_putstr("Appel de \"pf_apply_sharp_mark\"\n");
