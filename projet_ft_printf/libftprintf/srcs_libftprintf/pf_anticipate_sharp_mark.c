@@ -68,7 +68,8 @@ void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 	size_t	i;
 
 	if (conv_spec == 'x' || conv_spec == 'X'
-		|| conv_spec == 'b' || conv_spec == 'B')
+		|| conv_spec == 'b' || conv_spec == 'B'
+		|| conv_spec == 'p')
 	{
 		i = 0;
 		while (*(nbr_base + i) != '0'
@@ -76,7 +77,7 @@ void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 		{
 			i++;
 		}
-		*(nbr_base + 1) = conv_spec;
+		*(nbr_base + 1) = (!(conv_spec == 'p')) ? conv_spec : 'x';
 	}
 }
 
@@ -90,9 +91,10 @@ void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *
 	unsigned long long int	base_length;
 
 	base_length = 0;
-	if (((conv_spec == 'o' || conv_spec == 'O') && (base_length = 8))
-		|| ((conv_spec == 'x' || conv_spec == 'X') && (base_length = 16))
-		|| ((conv_spec == 'b' || conv_spec == 'B') && (base_length = 2)))
+	if (((conv_spec == 'b' || conv_spec == 'B') && (base_length = 2))
+		|| ((conv_spec == 'o' || conv_spec == 'O') && (base_length = 8))
+		|| ((conv_spec == 'x' || conv_spec == 'X' || conv_spec == 'p')
+			&& (base_length = 16)))
 	{
 		nb_of_char = 0;
 		while (n > 0)

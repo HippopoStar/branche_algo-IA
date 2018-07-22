@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 15:07:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/22 20:18:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 ** '+'	-> nombres signes
 ** ' '	-> nombres signes
 ** '#'	-> nombres non signes
-** '0'	-> '-' est absent
+** '0'	-> '-' est absent, la conversion concerne des caracteres
 */
 
 # define END_OF_COLOR				"\033[00m"
@@ -76,6 +76,7 @@ int		pf_is_flag_present(const char *format, char flag_char);
 int		pf_characters_convers(const char *format, va_list ap, t_list *mai, const char *type);
 int		pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *type);
 int		pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type);
+int		pf_add_const_string_mai(const char *str, t_list *mai);
 
 char	*pf_malloc_and_left_spaces(size_t spac, size_t length);
 void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep);
