@@ -15,6 +15,11 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 		return (pf_add_const_string_mai("(null)", mai));
 	length = ft_strlen(string);
 	pf_get_prec_and_spac(format, &prec, &spac);
+	if (prec < length)
+	{
+		*(string + prec) = '\0';
+		length = prec;
+	}
 	if (prec > length || spac > length)
 	{
 		spac = (prec > spac) ? prec : spac;
@@ -63,12 +68,22 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 {
 	wchar_t	*widestring;
+	size_t	length;
 	size_t	prec;
 	size_t	spac;
 
 	if (!(widestring = va_arg(ap, wchar_t *)))
 		return (pf_add_const_string_mai("(null)", mai));
+	length = 0;
+	while ((wint_t)*(widestring + length) != L'\0')
+	{
+		length++;
+	}
 	pf_get_prec_and_spac(format, &prec, &spac);
+	if (prec < length)
+	{
+		*(widestring + prec) = (wchar_t)L'\0';
+	}
 	if (prec > spac)
 	{
 		spac = prec;

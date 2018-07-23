@@ -53,7 +53,7 @@ void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
 			}
 		}
 	}
-	else if (pf_is_flag_present(format, '0') && !(!ft_strchr(PF_CHARACTERS_CONV_SPEC, (int)pf_jump_to_conv_flag(format)) && pf_is_flag_present(format, '.')))
+	else if (pf_is_flag_present(format, '0') && !(!ft_strchr(PF_CHARACTERS_CONV_SPEC, (int)pf_jump_to_conv_spec(format)) && pf_is_flag_present(format, '.')))
 	{
 		i = 0;
 		while (*(str + i) == ' ' && *(str + i) != '\0')
