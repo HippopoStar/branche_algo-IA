@@ -83,7 +83,7 @@ void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *
 		|| ((conv_spec == 'x' || conv_spec == 'X' || conv_spec == 'p')
 			&& (base_length = 16)))
 	{
-		nb_of_char = (n > 0) ? 0 : 1;
+		nb_of_char = 0;
 		while (n > 0)
 		{
 			n = n / base_length;
