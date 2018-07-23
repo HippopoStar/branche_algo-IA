@@ -23,17 +23,21 @@ void	pf_apply_plus_sign(char *str)
 **	ft_putstr("Appel de \"pf_anticipate_space\"\n");
 */
 
-void	pf_anticipate_space(long long int n, size_t *spac)
+void	pf_anticipate_space(long long int n, size_t prec, size_t *spac)
 {
 	size_t	nb_of_char;
 
-	if (n > 0)
+	if (!(n < 0))
 	{
-		nb_of_char = 0;
+		nb_of_char = (n > 0) ? 0 : 1;
 		while (n > 0)
 		{
 			n = n / 10;
 			nb_of_char++;
+		}
+		if (nb_of_char < prec)
+		{
+			nb_of_char = prec;
 		}
 		if (!(*spac > nb_of_char))
 		{
@@ -79,7 +83,7 @@ void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *
 		|| ((conv_spec == 'x' || conv_spec == 'X' || conv_spec == 'p')
 			&& (base_length = 16)))
 	{
-		nb_of_char = 0;
+		nb_of_char = (n > 0) ? 0 : 1;
 		while (n > 0)
 		{
 			n = n / base_length;
