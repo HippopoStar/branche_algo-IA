@@ -40,22 +40,22 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 {
 	size_t	prec;
 	size_t	spac;
-	char	c;
+	unsigned char	c;
 
-	c = (char)va_arg(ap, int);
+	c = (unsigned char)va_arg(ap, int);
 	pf_get_prec_and_spac(format, &prec, &spac);
 	if (prec > 1 || spac > 1)
 	{
 		spac = (prec > spac) ? prec : spac;
 		if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, 1)))
 			return (-1);
-		*(((char *)mai->content) + spac - 1) = c;
+		*(((char *)mai->content) + spac - 1) = (char)c;
 	}
 	else
 	{
 		if (!(mai->content = (void *)malloc(2 * sizeof(char))))
 			return (-1);
-		*(((char *)mai->content) + 0) = c;
+		*(((char *)mai->content) + 0) = (char)c;
 		*(((char *)mai->content) + 1) = '\0';
 	}
 	return (0);

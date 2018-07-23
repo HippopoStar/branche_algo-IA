@@ -26,6 +26,8 @@ int	pf_convers(const char *format, va_list ap, t_list *mai)
 			|| ft_strchr(PF_FORMAT_SPECIFIERS, (int)*(format + i))
 			|| *(format + i) == '\0'))
 	{
+		if (!(ft_strchr(PF_FLAGS, (int)*(format + i)) || ft_strchr(".0123456789", (int)*format + i)))
+			return (-1);
 		i++;
 	}
 	j = i;
