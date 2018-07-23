@@ -82,13 +82,13 @@ static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
 	length = 0;
-	while (*((char *)((mai->content) + space + length)) != '\0')
+	while (*((char *)((mai->content) + spac + length)) != '\0')
 	{
 		length++;
 	}
 	if (pf_is_flag_present(format, '.') && prec < length)
 	{
-		*((char *)((mai->content) + space + prec)) = '\0';
+		*((char *)((mai->content) + spac + prec)) = '\0';
 	}
 	return (0);
 }
