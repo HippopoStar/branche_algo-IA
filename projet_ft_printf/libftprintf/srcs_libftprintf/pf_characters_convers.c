@@ -17,7 +17,6 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 	pf_get_prec_and_spac(format, &prec, &spac);
 	if (pf_is_flag_present(format, '.') && prec < length)
 	{
-		*(string + prec) = '\0';
 		length = prec;
 	}
 	if (prec > length || spac > length)
@@ -25,7 +24,8 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 		spac = (prec > spac) ? prec : spac;
 		if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, length)))
 			return (-1);
-		ft_strcpy((((char *)mai->content) + spac - length), string);
+		ft_strncpy((((char *)mai->content) + spac - length), string, length);
+		*((char *)((mai->content) + spac + length)) = '\0';
 	}
 	else if (!(mai->content = (void *)ft_strdup(string)))
 		return (-1);
@@ -74,22 +74,22 @@ static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 
 	if (!(widestring = va_arg(ap, wchar_t *)))
 		return (pf_add_const_string_mai("(null)", mai));
-	length = 0;
-	while ((wint_t)*(widestring + length) != L'\0')
-	{
-		length++;
-	}
 	pf_get_prec_and_spac(format, &prec, &spac);
-	if (pf_is_flag_present(format, '.') && prec < length)
-	{
-		*(widestring + prec) = (wchar_t)L'\0';
-	}
 	if (prec > spac)
 	{
 		spac = prec;
 	}
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
+	length = 0;
+	while (*((char *)((mai->content) + space + length)) != '\0')
+	{
+		length++;
+	}
+	if (pf_is_flag_present(format, '.') && prec < length)
+	{
+		*((char *)((mai->content) + space + prec)) = '\0';
+	}
 	return (0);
 }
 
