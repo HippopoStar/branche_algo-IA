@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:52:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 01:05:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 01:34:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	pf_deal_zero(const char *format, char *str, size_t keep)
 {
 	size_t	i;
 
-	if (!(pf_is_flag_present(format, '-') || pf_is_flag_present(format, '.')))
+	if (pf_is_flag_present(format, '0')
+		&& !(pf_is_flag_present(format, '-')
+			|| pf_is_flag_present(format, '.')))
 	{
 		i = keep;
 		while (*(str + i) == ' ' && *(str + i) != '\0')

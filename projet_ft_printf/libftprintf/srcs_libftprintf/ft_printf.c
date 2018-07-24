@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/22 20:18:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 01:42:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	pf_print(t_list *lst, int *ret_val)
 
 	if (lst != NULL)
 	{
-		length = ft_strlen((char *)(lst->content));
+		length = (lst->content_size == 0) ? ft_strlen((char *)(lst->content))
+			: lst->content_size;
 		*ret_val = *ret_val + (int)length;
 		pf_print(lst->next, ret_val);
 		write(1, (char *)(lst->content), length);
@@ -74,6 +75,7 @@ static void	aux0_ft_printf(const char *format, va_list ap,\
 	t_list	mai;
 	int		step;
 
+	mai.content_size = 0;
 	if (*(format + 0) == '\0')
 	{
 		pf_print(lst, ret_val);

@@ -58,8 +58,10 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 		*(((char *)mai->content) + 0) = (char)c;
 		*(((char *)mai->content) + 1) = '\0';
 	}
+	if (c == '\0')
+		mai->content_size = (spac == 0) ? 1 : spac;
 	return (0);
-}		
+}
 
 /*
 **	ft_putstr("Appel de \"pf_widestring_convers\"\n");
@@ -112,6 +114,8 @@ static int	pf_widechar_convers(const char *format, va_list ap, t_list *mai)
 	}
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
+	if (*(widestring + 0) == L'\0')
+		mai->content_size = (spac == 0) ? 1 : spac;
 	return (0);
 }
 
