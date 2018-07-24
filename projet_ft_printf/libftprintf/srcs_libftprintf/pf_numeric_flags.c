@@ -1,47 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_deal_minus_sign_and_zero.c                      :+:      :+:    :+:   */
+/*   pf_numeric_flags.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 00:51:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 00:51:18 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/07/25 00:52:27 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/25 01:05:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-/*
-**	ft_putstr("Appel de \"pf_malloc_and_left_spaces\"\n");
-*/
-
-char	*pf_malloc_and_left_spaces(size_t spac, size_t length)
+void	pf_deal_zero(const char *format, char *str, size_t keep)
 {
-	char	*str;
 	size_t	i;
 
-	if (!(str = (char *)malloc((spac + 1) * sizeof(char))))
-		return (NULL);
-	i = 0;
-	while (i < spac - length)
+	if (!(pf_is_flag_present(format, '-') || pf_is_flag_present(format, '.')))
 	{
-		*(str + i) = ' ';
-		i++;
+		i = keep;
+		while (*(str + i) == ' ' && *(str + i) != '\0')
+		{
+			*(str + i) = '0';
+			i++;
+		}
+		if (*(str + i) == '-')
+		{
+			*(str + 0) = '-';
+			*(str + i) = '0';
+		}
 	}
-	*(str + spac) = '\0';
-	return (str);
 }
 
 /*
-**	ft_putstr("Appel de \"pf_deal_minus_sign_and_zero\"\n");
+**	ft_putstr("Appel de \"pf_deal_minus_sign\"\n");
 ** La variable 'keep' vaut :
 ** - 1 si la conversion est un nombre signe
 ** et que le flag '+' ou le flag ' ' est present,
 ** - 0 sinon
 */
 
-void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
+void	pf_deal_minus_sign(const char *format, char *str, size_t keep)
 {
 	size_t	i;
 	size_t	decal;
@@ -63,15 +62,6 @@ void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
 				*(str + decal + i) = ' ';
 				i++;
 			}
-		}
-	}
-	else if (pf_is_flag_present(format, '0'))
-	{
-		i = 0;
-		while (*(str + i) == ' ' && *(str + i) != '\0')
-		{
-			*(str + i) = '0';
-			i++;
 		}
 	}
 }

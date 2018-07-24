@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/07/22 20:19:02 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/07/25 00:45:24 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,8 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libftprintf/pf_deal_minus_sign_and_zero.c\
 		./srcs_libftprintf/pf_signed_convers.c\
 		./srcs_libftprintf/pf_unsigned_convers.c\
-		./srcs_libftprintf/pf_anticipate_sharp_mark.c\
+		./srcs_libftprintf/pf_sharp_plus_space.c\
+		./srcs_libftprintf/pf_numeric_flags.c\
 		./srcs_libftprintf/pf_add_const_string_mai.c
 
 OBJS = ft_memset.o\
@@ -186,7 +187,8 @@ OBJS = ft_memset.o\
 		pf_deal_minus_sign_and_zero.o\
 		pf_signed_convers.o\
 		pf_unsigned_convers.o\
-		pf_anticipate_sharp_mark.o\
+		pf_sharp_plus_space.o\
+		pf_numeric_flags.o\
 		pf_add_const_string_mai.o
 
 all: $(NAME)

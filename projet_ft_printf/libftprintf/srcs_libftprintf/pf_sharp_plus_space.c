@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_sharp_plus_space.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 00:39:59 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/25 00:40:04 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
@@ -23,7 +35,7 @@ void	pf_apply_plus_sign(char *str)
 **	ft_putstr("Appel de \"pf_anticipate_space\"\n");
 */
 
-void	pf_anticipate_space(long long int n, size_t prec, size_t *spac)
+void	pf_anticipate_plus_space(long long int n, size_t prec, size_t *spac)
 {
 	size_t	nb_of_char;
 

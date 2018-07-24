@@ -139,10 +139,11 @@ int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char 
 	}
 	if (!(mai->content = (void *)aux_pf_unsigned_convers(n, prec, spac, conv_spec)))
 		return (-1);
+	pf_deal_zero(format, (char *)mai->content, 0);
 	if (pf_is_flag_present(format, '#') || conv_spec == 'p')
 	{
 		pf_apply_sharp_mark((char *)mai->content, conv_spec);
 	}
-	pf_deal_minus_sign_and_zero(format, (char *)mai->content, 0);
+	pf_deal_minus_sign(format, (char *)mai->content, 0);
 	return (0);
 }
