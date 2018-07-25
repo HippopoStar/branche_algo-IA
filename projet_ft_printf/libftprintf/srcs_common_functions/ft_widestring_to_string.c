@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 03:25:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 04:49:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 08:13:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ static void	aux1_ft_widestring_to_string(char stock[5], wint_t widechar)
 	}
 }
 
-static void	aux0_ft_widestring_to_string(char **str, wchar_t *widestring, size_t cur_len, size_t *spac)
+static void	aux0_ft_widestring_to_string(char **str, wchar_t *widestring,\
+												size_t cur_len, size_t *spac)
 {
 	char	stock[5];
 	size_t	stock_len;
@@ -105,7 +106,8 @@ static void	aux0_ft_widestring_to_string(char **str, wchar_t *widestring, size_t
 	{
 		aux1_ft_widestring_to_string(stock, (wint_t)*widestring);
 		stock_len = ft_strlen(stock);
-		aux0_ft_widestring_to_string(str, widestring + 1, cur_len + stock_len, spac);
+		aux0_ft_widestring_to_string(str, widestring + 1,\
+													cur_len + stock_len, spac);
 		if ((*str) != NULL)
 		{
 			ft_strncpy((*str) + (*spac + cur_len), stock, stock_len);
