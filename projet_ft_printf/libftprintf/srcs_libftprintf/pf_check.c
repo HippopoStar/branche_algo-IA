@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 09:20:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 12:23:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 03:51:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ size_t	pf_check_convers(const char *format)
 {
 	size_t	step;
 
-	if (!(*(format + 0) == '%' && *(format + 1) != '%'))
+	if (!(*(format + 0) == '%'))
 	{
 		return (0);
 	}
 	else
 	{
-		step = 0;
+		step = 1;
 		while (!ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + step))
 				&& *(format + step) != '\0')
 		{
