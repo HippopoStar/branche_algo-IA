@@ -19,9 +19,9 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 	{
 		length = prec;
 	}
-	if (prec > length || spac > length)
+	if (spac > length)
 	{
-		spac = (prec > spac) ? prec : spac;
+		spac = (length > spac) ? length : spac;
 		if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, length)))
 			return (-1);
 		ft_strncpy((((char *)mai->content) + spac - length), string, length);
@@ -77,10 +77,6 @@ static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 	if (!(widestring = va_arg(ap, wchar_t *)))
 		return (pf_add_const_string_mai("(null)", mai));
 	pf_get_prec_and_spac(format, &prec, &spac);
-	if (prec > spac)
-	{
-		spac = prec;
-	}
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
 	length = 0;

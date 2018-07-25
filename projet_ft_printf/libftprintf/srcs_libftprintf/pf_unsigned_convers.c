@@ -136,14 +136,14 @@ int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char 
 		return ((mai->content = (void *)pf_malloc_and_left_spaces(spac, 0)) ?
 				0 : -1);
 	conv_spec = pf_jump_to_conv_spec(type);
-	if (pf_is_flag_present(format, '#') || conv_spec == 'p')
+	if (((n != 0 || conv_spec == 'o') && pf_is_flag_present(format, '#')) || conv_spec == 'p')
 	{
 		pf_anticipate_sharp_mark(n, conv_spec, &prec);
 	}
 	if (!(mai->content = (void *)aux_pf_unsigned_convers(n, prec, spac, conv_spec)))
 		return (-1);
 	pf_deal_zero(format, (char *)mai->content, 0);
-	if (pf_is_flag_present(format, '#') || conv_spec == 'p')
+	if ((n != 0 && pf_is_flag_present(format, '#')) || conv_spec == 'p')
 	{
 		pf_apply_sharp_mark((char *)mai->content, conv_spec);
 	}
