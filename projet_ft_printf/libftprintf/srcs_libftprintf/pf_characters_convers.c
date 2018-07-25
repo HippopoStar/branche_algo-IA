@@ -19,16 +19,11 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 	{
 		length = prec;
 	}
-//	if (spac > length)
-//	{
-		spac = (length > spac) ? length : spac;
-		if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, length)))
-			return (-1);
-		ft_strncpy((((char *)mai->content) + spac - length), string, length);
-		*((char *)((mai->content) + spac + length)) = '\0';
-//	}
-//	else if (!(mai->content = (void *)ft_strdup(string)))
-//		return (-1);
+	spac = (length > spac) ? length : spac;
+	if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, length)))
+		return (-1);
+	ft_strncpy((((char *)mai->content) + spac - length), string, length);
+	*((char *)((mai->content) + spac + length)) = '\0';
 	return (0);
 }
 

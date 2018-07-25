@@ -6,7 +6,7 @@
 
 static int	aux1_pf_get_unsigned(unsigned long long int *n, va_list ap, const char *type)
 {
-	if (*type == 'p')
+	if (pf_jump_to_conv_spec(type) == 'p')
 	{
 		*n = (unsigned long long int)va_arg(ap, void *);
 	}
