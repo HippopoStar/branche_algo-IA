@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 03:40:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 03:55:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 
 	if ((step = pf_check_convers(format)) != 0)
 	{
-		return (!(pf_convers(format, ap, mai) == -1) ? (int)step : -1);
+		return (!(pf_convers(format + 1, ap, mai) == -1) ? (int)step : -1);
 	}
 	else if ((step = pf_check_color(format)) != 0)
 	{

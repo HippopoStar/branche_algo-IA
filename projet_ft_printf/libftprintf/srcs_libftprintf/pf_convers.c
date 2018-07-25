@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 10:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 12:24:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 03:55:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	pf_convers(const char *format, va_list ap, t_list *mai)
 	size_t	i;
 	size_t	j;
 
-	i = 1;
+	i = 0;
 	while (!(ft_strchr(PF_CONVERSION_SPECIFIERS, (int)*(format + i))
 			|| ft_strchr(PF_FORMAT_SPECIFIERS, (int)*(format + i))
 			|| *(format + i) == '\0'))
