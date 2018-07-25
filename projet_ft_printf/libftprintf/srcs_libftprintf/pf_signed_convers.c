@@ -83,6 +83,9 @@ int	pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *t
 	if (pf_get_signed(&n, ap, type) == -1)
 		return (-1);
 	pf_get_prec_and_spac(format, &prec, &spac);
+	if (n == 0 && prec == 0)
+		return ((mai->content = (void *)pf_malloc_and_left_spaces(spac, 0)) ?
+				0 : -1);
 	keep = 0;
 	if (pf_is_flag_present(format, ' ') || pf_is_flag_present(format, '+'))
 	{

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:39:59 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 00:40:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 04:00:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 		{
 			i++;
 		}
-		*(nbr_base + 1) = (!(conv_spec == 'p')) ? conv_spec : 'x';
+		*(nbr_base + i + 1) = (!(conv_spec == 'p')) ? conv_spec : 'x';
 	}
 }
 
