@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:52:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 01:34:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 03:34:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	pf_deal_zero(const char *format, char *str, size_t keep)
 		}
 		if (*(str + i) == '-')
 		{
-			*(str + 0) = '-';
 			*(str + i) = '0';
+			*(str + 0) = '-';
 		}
 	}
 }

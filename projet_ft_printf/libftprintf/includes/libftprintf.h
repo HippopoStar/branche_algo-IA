@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 01:07:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 03:41:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@
 # define CYAN						"\033[36m"
 # define WHITE						"\033[37m"
 
-# define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcCbB"
+# define PF_CONVERSION_SPECIFIERS	"sSpdDioOuUxXcCbB%"
 # define PF_FORMAT_SPECIFIERS		"hljz"
 # define PF_FLAGS					"#0-+ "
 
-# define PF_CHARACTERS_CONV_SPEC		"sScC"
+# define PF_CHARACTERS_CONV_SPEC		"sScC%"
 # define PF_SIGNED_CONV_SPEC		"dDi"
 # define PF_UNSIGNED_CONV_SPEC		"poOuUxXbB"
 

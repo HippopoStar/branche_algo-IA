@@ -42,11 +42,11 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 	size_t	spac;
 	unsigned char	c;
 
-	c = (unsigned char)va_arg(ap, int);
+	c = (!(pf_jump_to_conv_spec(format) == '%')) ?
+		(unsigned char)va_arg(ap, int) : '%';
 	pf_get_prec_and_spac(format, &prec, &spac);
-	if (prec > 1 || spac > 1)
+	if (spac > 1)
 	{
-		spac = (prec > spac) ? prec : spac;
 		if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, 1)))
 			return (-1);
 		*(((char *)mai->content) + spac - 1) = (char)c;
@@ -59,7 +59,7 @@ static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 		*(((char *)mai->content) + 1) = '\0';
 	}
 	if (c == '\0')
-		mai->content_size = (spac == 0) ? 1 : spac;
+		mai->content_size = (spac == 0) ? spac + 1 : spac;
 	return (0);
 }
 
@@ -108,14 +108,10 @@ static int	pf_widechar_convers(const char *format, va_list ap, t_list *mai)
 	*(widestring + 0) = (wchar_t)va_arg(ap, wint_t);
 	*(widestring + 1) = (wchar_t)L'\0';
 	pf_get_prec_and_spac(format, &prec, &spac);
-	if (prec > spac)
-	{
-		spac = prec;
-	}
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
 	if (*(widestring + 0) == L'\0')
-		mai->content_size = (spac == 0) ? 1 : spac;
+		mai->content_size = (spac == 0) ? spac + 1 : spac;
 	return (0);
 }
 
@@ -132,7 +128,7 @@ int	pf_characters_convers(const char *format, va_list ap, t_list *mai, const cha
 	{
 		wit = pf_string_convers(format, ap, mai);
 	}
-	else if (*type == 'c')
+	else if (*type == 'c' || *type == '%')
 	{
 		wit = pf_char_convers(format, ap, mai);
 	}
