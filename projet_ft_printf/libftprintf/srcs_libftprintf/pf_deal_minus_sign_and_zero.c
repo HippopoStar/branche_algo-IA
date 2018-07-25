@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:51:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 00:51:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 08:08:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	ft_putstr("Appel de \"pf_malloc_and_left_spaces\"\n");
 */
 
-char	*pf_malloc_and_left_spaces(size_t spac, size_t length)
+void	*pf_malloc_and_left_spaces(size_t spac, size_t length)
 {
 	char	*str;
 	size_t	i;
@@ -30,7 +30,7 @@ char	*pf_malloc_and_left_spaces(size_t spac, size_t length)
 		i++;
 	}
 	*(str + spac) = '\0';
-	return (str);
+	return ((void *)str);
 }
 
 /*
@@ -46,32 +46,25 @@ void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep)
 	size_t	i;
 	size_t	decal;
 
+	i = 0;
 	if (pf_is_flag_present(format, '-'))
 	{
 		decal = 0;
 		while (*(str + decal + keep) == ' '
 			&& *(str + decal + keep) != '\0')
-		{
 			decal++;
-		}
-		i = 0;
 		if (decal > 0)
-		{
 			while (*(str + decal + i) != '\0')
 			{
 				*(str + i) = *(str + decal + i);
 				*(str + decal + i) = ' ';
 				i++;
 			}
-		}
 	}
 	else if (pf_is_flag_present(format, '0'))
-	{
-		i = 0;
 		while (*(str + i) == ' ' && *(str + i) != '\0')
 		{
 			*(str + i) = '0';
 			i++;
 		}
-	}
 }

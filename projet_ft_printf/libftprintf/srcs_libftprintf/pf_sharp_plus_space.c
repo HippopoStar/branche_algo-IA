@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:39:59 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 04:00:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 07:57:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ void	pf_apply_sharp_mark(char *nbr_base, char conv_spec)
 **	ft_putstr("Appel de \"pf_anticipate_sharp_mark\"\n");
 */
 
-void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *prec)
+void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec,\
+																size_t *prec)
 {
-	size_t			nb_of_char;
+	size_t					nb_of_char;
 	unsigned long long int	base_length;
 
 	base_length = 0;
@@ -102,20 +103,9 @@ void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec, size_t *
 			nb_of_char++;
 		}
 		if (base_length == 8 && !(*prec > nb_of_char))
-		{
 			*prec = nb_of_char + 1;
-		}
 		else if ((base_length == 16 || base_length == 2)
 			&& !(*prec > nb_of_char + 2))
-		{
-			if (nb_of_char > 0)
-			{
-				*prec = nb_of_char + 2;
-			}
-			else
-			{
-				*prec = 3;
-			}
-		}
+			*prec = (nb_of_char > 0) ? nb_of_char + 2 : 3;
 	}
 }

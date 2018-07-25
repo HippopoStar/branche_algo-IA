@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:37:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 03:55:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 07:30:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	pf_step_forward(const char *format, va_list ap, t_list *mai)
 {
 	size_t	step;
 
+	mai->content_size = 0;
 	if ((step = pf_check_convers(format)) != 0)
 	{
 		return (!(pf_convers(format + 1, ap, mai) == -1) ? (int)step : -1);
@@ -71,7 +72,6 @@ static void	aux0_ft_printf(const char *format, va_list ap,\
 	t_list	mai;
 	int		step;
 
-	mai.content_size = 0;
 	if (*(format + 0) == '\0')
 	{
 		pf_print(lst, ret_val);

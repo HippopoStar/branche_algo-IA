@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:21:39 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 03:41:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 08:08:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *
 int		pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char *type);
 int		pf_add_const_string_mai(const char *str, t_list *mai);
 
-char	*pf_malloc_and_left_spaces(size_t spac, size_t length);
+void	*pf_malloc_and_left_spaces(size_t spac, size_t length);
 void	pf_deal_minus_sign_and_zero(const char *format, char *str, size_t keep);
 
 void	pf_deal_zero(const char *format, char *str, size_t keep);

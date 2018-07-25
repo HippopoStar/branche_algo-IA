@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_signed_convers.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 07:41:54 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/25 08:07:29 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
@@ -73,19 +85,19 @@ static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 **	ft_putstr("Appel de \"pf_signed_convers\"\n");
 */
 
-int	pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *type)
+int			pf_signed_convers(const char *format, va_list ap,\
+												t_list *mai, const char *type)
 {
 	long long int	n;
-	size_t		prec;
-	size_t		spac;
-	size_t		keep;
+	size_t			prec;
+	size_t			spac;
+	size_t			keep;
 
 	if (pf_get_signed(&n, ap, type) == -1)
 		return (-1);
 	pf_get_prec_and_spac(format, &prec, &spac);
 	if (n == 0 && pf_is_flag_present(format, '.') && prec == 0)
-		return ((mai->content = (void *)pf_malloc_and_left_spaces(spac, 0)) ?
-				0 : -1);
+		return ((mai->content = pf_malloc_and_left_spaces(spac, 0)) ? 0 : -1);
 	keep = 0;
 	if (pf_is_flag_present(format, ' ') || pf_is_flag_present(format, '+'))
 	{
@@ -97,8 +109,6 @@ int	pf_signed_convers(const char *format, va_list ap, t_list *mai, const char *t
 	pf_deal_zero(format, (char *)mai->content, keep);
 	pf_deal_minus_sign(format, (char *)mai->content, keep);
 	if (pf_is_flag_present(format, '+'))
-	{
 		pf_apply_plus_sign((char *)mai->content);
-	}
 	return (0);
 }

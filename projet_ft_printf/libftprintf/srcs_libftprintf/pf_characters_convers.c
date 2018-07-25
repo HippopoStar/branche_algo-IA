@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_characters_convers.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 07:43:16 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/25 07:51:52 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
 /*
@@ -33,8 +45,8 @@ static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 
 static int	pf_char_convers(const char *format, va_list ap, t_list *mai)
 {
-	size_t	prec;
-	size_t	spac;
+	size_t			prec;
+	size_t			spac;
 	unsigned char	c;
 
 	c = (!(pf_jump_to_conv_spec(format) == '%')) ?
@@ -110,7 +122,8 @@ static int	pf_widechar_convers(const char *format, va_list ap, t_list *mai)
 **	ft_putstr("Appel de \"pf_characters_convers\"\n");
 */
 
-int	pf_characters_convers(const char *format, va_list ap, t_list *mai, const char *type)
+int			pf_characters_convers(const char *format, va_list ap,\
+												t_list *mai, const char *type)
 {
 	int	wit;
 

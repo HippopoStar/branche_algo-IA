@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 14:53:05 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 14:53:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/25 07:39:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,15 @@ int	pf_get_prec_and_spac(const char *format,\
 	{
 		if (*(format + i) == '.' || ft_strchr("123456789", (int)*(format + i)))
 		{
-			if (*(format + i) == '.')
-			{
-				i++;
+			if (*(format + i) == '.' && ++i)
 				*prec = (size_t)ft_atoi(format + i);
-			}
 			else
-			{
 				*spac = (size_t)ft_atoi(format + i);
-			}
 			while (ft_strchr("0123456789", (int)*(format + i)))
-			{
 				i++;
-			}
 		}
 		else
-		{
 			i++;
-		}
 	}
 	return (!(*(format + i) == '\0') ? (int)i : -1);
 }
