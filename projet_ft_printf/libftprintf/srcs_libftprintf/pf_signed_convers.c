@@ -52,15 +52,15 @@ static int	pf_get_signed(long long int *n, va_list ap, const char *type)
 	{
 		*n = (long long int)va_arg(ap, int);
 	}
-	else if (!ft_strncmp("ld", type, 2) || !ft_strncmp("li", type, 2)
-		|| *type == 'D')
-	{
-		*n = (long long int)va_arg(ap, long int);
-	}
 	else if (!ft_strncmp("lld", type, 3) || !ft_strncmp("lli", type, 3)
 		|| !ft_strncmp("lD", type, 2))
 	{
 		*n = va_arg(ap, long long int);
+	}
+	else if (!ft_strncmp("ld", type, 2) || !ft_strncmp("li", type, 2)
+		|| pf_jump_to_conv_spec(type) == 'D')
+	{
+		*n = (long long int)va_arg(ap, long int);
 	}
 	else
 	{

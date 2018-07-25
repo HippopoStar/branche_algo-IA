@@ -65,19 +65,19 @@ static int	pf_get_unsigned(unsigned long long int *n, va_list ap, const char *ty
 	{
 		*n = (unsigned long long int)va_arg(ap, unsigned int);
 	}
-	else if (!ft_strncmp("lu", type, 2) || !ft_strncmp("lo", type, 2)
-		|| !ft_strncmp("lx", type, 2) || !ft_strncmp("lX", type, 2)
-		|| !ft_strncmp("lb", type, 2) || !ft_strncmp("lB", type, 2)
-		|| *type == 'U' || *type == 'O')
-	{
-		*n = (unsigned long long int)va_arg(ap, unsigned long int);
-	}
 	else if (!ft_strncmp("llu", type, 3) || !ft_strncmp("llo", type, 3)
 		|| !ft_strncmp("llx", type, 3) || !ft_strncmp("llX", type, 3)
 		|| !ft_strncmp("llb", type, 3) || !ft_strncmp("llB", type, 3)
 		|| !ft_strncmp("lU", type, 2) || !ft_strncmp("lO", type, 2))
 	{
 		*n = va_arg(ap, unsigned long long int);
+	}
+	else if (!ft_strncmp("lu", type, 2) || !ft_strncmp("lo", type, 2)
+		|| !ft_strncmp("lx", type, 2) || !ft_strncmp("lX", type, 2)
+		|| !ft_strncmp("lb", type, 2) || !ft_strncmp("lB", type, 2)
+		|| ft_strchr("UO", (int)pf_jump_to_conv_spec(type)))
+	{
+		*n = (unsigned long long int)va_arg(ap, unsigned long int);
 	}
 	else
 	{
