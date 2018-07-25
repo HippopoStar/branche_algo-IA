@@ -133,7 +133,7 @@ int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char 
 		return (-1);
 	pf_get_prec_and_spac(format, &prec, &spac);
 	conv_spec = pf_jump_to_conv_spec(type);
-	if (n == 0 && pf_is_flag_present(format, '.') && prec == 0 && !ft_strchr("oO", (int)conv_spec))
+	if (n == 0 && pf_is_flag_present(format, '.') && prec == 0 && !(ft_strchr("oO", (int)conv_spec) && pf_is_flag_present(format, '#')))
 		return ((mai->content = (void *)pf_malloc_and_left_spaces(spac, 0)) ?
 				0 : -1);
 	if (((n != 0 || ft_strchr("oO", (int)conv_spec)) && pf_is_flag_present(format, '#')) || conv_spec == 'p')
