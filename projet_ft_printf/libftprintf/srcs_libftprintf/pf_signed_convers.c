@@ -29,11 +29,11 @@ static int	aux0_pf_get_signed(long long int *n, va_list ap, const char *type)
 {
 	if (!ft_strncmp("hd", type, 2) || !ft_strncmp("hi", type, 2))
 	{
-		*n = (long long int)va_arg(ap, int);
+		*n = (long long int)((short int)va_arg(ap, int));
 	}
 	else if (!ft_strncmp("hhd", type, 3) || !ft_strncmp("hhi", type, 3))
 	{
-		*n = (long long int)va_arg(ap, int);
+		*n = (long long int)((signed char)va_arg(ap, int));
 	}
 	else
 	{

@@ -39,13 +39,13 @@ static int	aux0_pf_get_unsigned(unsigned long long int *n, va_list ap, const cha
 		|| !ft_strncmp("hx", type, 2) || !ft_strncmp("hX", type, 2)
 		|| !ft_strncmp("hb", type, 2) || !ft_strncmp("hB", type, 2))
 	{
-		*n = (unsigned long long int)va_arg(ap, unsigned int);
+		*n = (unsigned long long int)((unsigned short int)va_arg(ap, unsigned int));
 	}
 	else if (!ft_strncmp("hhu", type, 3) || !ft_strncmp("hho", type, 3)
 		|| !ft_strncmp("hhx", type, 3) || !ft_strncmp("hhX", type, 3)
 		|| !ft_strncmp("hhb", type, 3) || !ft_strncmp("hhB", type, 3))
 	{
-		*n = (unsigned long long int)va_arg(ap, unsigned int);
+		*n = (unsigned long long int)((unsigned char)va_arg(ap, unsigned int));
 	}
 	else
 	{
@@ -132,11 +132,11 @@ int	pf_unsigned_convers(const char *format, va_list ap, t_list *mai, const char 
 	if (pf_get_unsigned(&n, ap, type) == -1)
 		return (-1);
 	pf_get_prec_and_spac(format, &prec, &spac);
-	if (n == 0 && pf_is_flag_present(format, '.') && prec == 0)
+	conv_spec = pf_jump_to_conv_spec(type);
+	if (n == 0 && pf_is_flag_present(format, '.') && prec == 0 && !ft_strchr("oO", (int)conv_spec))
 		return ((mai->content = (void *)pf_malloc_and_left_spaces(spac, 0)) ?
 				0 : -1);
-	conv_spec = pf_jump_to_conv_spec(type);
-	if (((n != 0 || conv_spec == 'o') && pf_is_flag_present(format, '#')) || conv_spec == 'p')
+	if (((n != 0 || ft_strchr("oO", (int)conv_spec)) && pf_is_flag_present(format, '#')) || conv_spec == 'p')
 	{
 		pf_anticipate_sharp_mark(n, conv_spec, &prec);
 	}
