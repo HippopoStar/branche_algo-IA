@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 00:39:59 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 07:57:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/26 03:55:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void	pf_anticipate_sharp_mark(unsigned long long int n, char conv_spec,\
 			n = n / base_length;
 			nb_of_char++;
 		}
+		if (nb_of_char < *prec)
+			nb_of_char = *prec;
 		if (base_length == 8 && !(*prec > nb_of_char))
 			*prec = nb_of_char + 1;
 		else if ((base_length == 16 || base_length == 2)
