@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 14:55:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/26 03:07:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/26 03:11:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	pf_is_flag_present(const char *format, char flag_char)
 	{
 		if (flag_char == '0' && ft_strchr(".123456789", (int)*(format + i)))
 		{
+			if (*(format + i) == '.')
+				i++;
 			while (ft_strchr("0123456789", (int)*(format + i)))
 			{
 				i++;
