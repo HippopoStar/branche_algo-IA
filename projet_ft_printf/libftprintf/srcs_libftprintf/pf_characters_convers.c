@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 07:43:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 07:51:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/26 02:33:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,11 @@
 
 static int	pf_string_convers(const char *format, va_list ap, t_list *mai)
 {
-	size_t	length;
-	size_t	prec;
-	size_t	spac;
 	char	*string;
 
-	if (!(string = va_arg(ap, char *)))
-		return (pf_add_const_string_mai("(null)", mai));
-	length = ft_strlen(string);
-	pf_get_prec_and_spac(format, &prec, &spac);
-	if (pf_is_flag_present(format, '.') && prec < length)
-	{
-		length = prec;
-	}
-	spac = (length > spac) ? length : spac;
-	if (!(mai->content = (void *)pf_malloc_and_left_spaces(spac, length)))
-		return (-1);
-	ft_strncpy((((char *)mai->content) + spac - length), string, length);
-	*((char *)((mai->content) + spac + length)) = '\0';
-	return (0);
+	return ((!(string = va_arg(ap, char *))) ?
+			pf_add_string_mai("(null)", mai, format)
+			: pf_add_string_mai(string, mai, format));
 }
 
 /*
@@ -82,7 +68,7 @@ static int	pf_widestring_convers(const char *format, va_list ap, t_list *mai)
 	size_t	spac;
 
 	if (!(widestring = va_arg(ap, wchar_t *)))
-		return (pf_add_const_string_mai("(null)", mai));
+		return (pf_add_string_mai("(null)", mai, format));
 	pf_get_prec_and_spac(format, &prec, &spac);
 	if (!(mai->content = (void *)ft_widestring_to_string(widestring, spac)))
 		return (-1);
