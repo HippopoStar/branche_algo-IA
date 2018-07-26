@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/07/25 00:45:24 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/07/26 04:07:34 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,10 @@ CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./includes/
 
 NAME = libftprintf.a
+
+HEAD = ./includes/libft.h\
+		./includes/common_functions.h\
+		./includes/libftprintf.h
 
 SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_bzero.c\
@@ -193,7 +197,7 @@ OBJS = ft_memset.o\
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) $(HEAD)
 	gcc -c $(CFLAGS) $(SRCS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
