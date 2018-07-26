@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 19:58:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/26 02:35:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/07/26 02:40:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		pf_add_string_mai(const char *str, t_list *mai, const char *format)
 	while (i < spac - length)
 	{
 		*((char *)((mai->content + i))) = ' ';
+		i++;
 	}
 	ft_strncpy((char *)((mai->content) + spac - length), str, length);
 	*((char *)((mai->content) + spac)) = '\0';
