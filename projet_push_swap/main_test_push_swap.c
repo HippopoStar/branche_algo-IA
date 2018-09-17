@@ -26,7 +26,7 @@ void	ft_ps_fill_stacks(t_nb **stacks)
 	}
 }
 
-void	ft_ps_apply_moves(t_nb **stacks)
+void	ft_ps_test_apply_moves(t_nb **stacks)
 {
 	char	command[500];
 
@@ -81,6 +81,6 @@ int		main(void)
 
 	ft_ps_initialize_stacks(&stacks);
 	ft_ps_fill_stacks(stacks);
-	ft_ps_apply_moves(stacks);
+	ft_ps_test_apply_moves(stacks);
 	return(0);
 }
