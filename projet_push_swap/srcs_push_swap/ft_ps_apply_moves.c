@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 16:21:52 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/17 16:22:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/17 16:36:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,8 @@ void	ft_ps_apply_moves(t_nb **stacks, char *command)
 			ft_ps_swap(stacks, 'b');
 	}
 	else if (*(command + 0) == 'p' && ft_strlen(command) == 2)
-	{
-		if (*(command + 1) == 'a')
-			ft_ps_push(stacks, 'a');
-		else if (*(command + 1) == 'b')
-			ft_ps_push(stacks, 'b');
-	}
+		(*(command + 1) == 'a') ?
+			ft_ps_push(stacks, 'a') : ft_ps_push(stacks, 'b');
 	else if (*(command + 0) == 'r' && ft_strlen(command) == 2)
 	{
 		if (*(command + 1) == 'a' || *(command + 1) == 'r')
