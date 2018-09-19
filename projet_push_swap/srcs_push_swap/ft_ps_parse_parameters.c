@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 10:52:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 10:57:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/19 13:25:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	ft_ps_load_stack(t_nb **stacks)
 ** en decrementant l'index
 */
 
-void	ft_ps_parse_parameters(t_nb **stacks, int argc, char **argv)
+void	ft_ps_parse_parameters(t_nb **stacks, int opt, int argc, char **argv)
 {
 	int		index;
 	int		nb;
 
-	index = 1;
+	index = 1 + opt;
 	while (index < argc)
 	{
 		if (!ft_ps_str_is_digit(*(argv + index)))

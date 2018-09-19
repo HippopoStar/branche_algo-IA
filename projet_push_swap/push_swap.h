@@ -17,7 +17,7 @@ void			ft_ps_display_stacks(t_nb **stacks);
 int				ft_ps_stack_length(t_nb *stack);
 void			ft_ps_initialize_stacks(t_nb ***stacks_adress);
 void			ft_ps_add_elem(t_nb **stacks, char c, int nb);
-void			ft_ps_parse_parameters(t_nb **stacks, int argc, char **argv);
+void			ft_ps_parse_parameters(t_nb **stacks, int opt, int argc, char **argv);
 void			ft_ps_apply_moves(t_nb **stacks, char *command);
 
 #endif
