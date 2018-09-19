@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 11:40:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 15:13:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/19 15:30:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,21 @@ void	ft_ps_aux_display_stacks(t_nb *a, t_nb *b, int oversize)
 {
 	while (!(a == NULL && b == NULL))
 	{
+		ft_putchar('\t');
 		if (oversize > 0)
+		{
 			oversize--;
+		}
 		else
 		{
-			ft_putchar('\t');
 			ft_putnbr(a->n);
 			a = a->next;
 		}
 		ft_putstr("\t|\t");
 		if (oversize < 0)
+		{
 			oversize++;
+		}
 		else
 		{
 			ft_putnbr(b->n);
