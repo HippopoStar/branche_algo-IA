@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ps_parse.c                                      :+:      :+:    :+:   */
+/*   ft_ps_parse_parameters.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/17 14:44:29 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/17 15:22:12 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/09/19 10:52:40 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/09/19 10:57:19 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,13 @@ void	ft_ps_load_stack(t_nb **stacks)
 	}
 }
 
-void	ft_ps_parse(t_nb **stacks, int argc, char **argv)
+/*
+** Remarque :
+** On aurait egalement pu faire le choix de constituer directement la pile 'a'
+** en decrementant l'index
+*/
+
+void	ft_ps_parse_parameters(t_nb **stacks, int argc, char **argv)
 {
 	int		index;
 	int		nb;

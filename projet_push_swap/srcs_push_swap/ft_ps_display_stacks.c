@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ps_display_stacks.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/09/19 11:40:31 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/09/19 11:40:35 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		ft_ps_stack_length(t_nb *stack)
@@ -19,7 +31,7 @@ int		ft_ps_stack_length(t_nb *stack)
 
 void	ft_ps_display_stacks(t_nb **stacks)
 {
-	int	oversize;
+	int		oversize;
 	t_nb	*a;
 	t_nb	*b;
 
