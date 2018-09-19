@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:45:54 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 13:28:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/19 14:40:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,24 @@ void	ft_ps_reach(t_list *lst, t_nb **stacks, int verbose_wit, size_t *occ)
 {
 	char	*command;
 
-	if (lst != NULL)
+	if (lst == NULL)
 	{
-		(*occ)++;
+		*occ = 0;
+	}
+	else
+	{
 		command = (char *)(lst->content);
 		ft_ps_reach(lst->next, stacks, verbose_wit, occ);
 		ft_ps_apply_moves(stacks, command);
 		free(command);
-		if (verbose_wit)
-		{
-			ft_putstr("Occurence: ");
-			ft_putnbr((int)(*occ));
-			ft_putchar('\n');
-			ft_ps_display_stacks(stacks);
-		}
-		(*occ)--;
+		(*occ)++;
+	}
+	if (verbose_wit)
+	{
+		ft_putstr("\t\t\tIndice d'occurence: ");
+		ft_putnbr((int)(*occ));
+		ft_putchar('\n');
+		ft_ps_display_stacks(stacks);
 	}
 }
 
