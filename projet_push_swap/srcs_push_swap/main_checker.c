@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:45:54 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 14:40:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/19 14:54:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ void	ft_ps_reach(t_list *lst, t_nb **stacks, int verbose_wit, size_t *occ)
 	}
 	if (verbose_wit)
 	{
-		ft_putstr("\t\t\tIndice d'occurence: ");
 		ft_putnbr((int)(*occ));
-		ft_putchar('\n');
+		ft_putstr(".\n");
 		ft_ps_display_stacks(stacks);
 	}
 }

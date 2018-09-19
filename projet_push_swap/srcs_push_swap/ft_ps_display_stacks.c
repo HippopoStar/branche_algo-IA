@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 11:40:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 11:40:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/09/19 15:13:55 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,15 @@ int		ft_ps_stack_length(t_nb *stack)
 	return (i);
 }
 
-void	ft_ps_display_stacks(t_nb **stacks)
+void	ft_ps_aux_display_stacks(t_nb *a, t_nb *b, int oversize)
 {
-	int		oversize;
-	t_nb	*a;
-	t_nb	*b;
-
-	ft_putchar('\n');
-	a = *(stacks + 0);
-	b = *(stacks + 1);
-	oversize = ft_ps_stack_length(b) - ft_ps_stack_length(a);
 	while (!(a == NULL && b == NULL))
 	{
 		if (oversize > 0)
 			oversize--;
 		else
 		{
+			ft_putchar('\t');
 			ft_putnbr(a->n);
 			a = a->next;
 		}
@@ -58,5 +51,15 @@ void	ft_ps_display_stacks(t_nb **stacks)
 		}
 		ft_putchar('\n');
 	}
-	ft_putstr("_________________\n    a\t|    b\n");
+}
+
+void	ft_ps_display_stacks(t_nb **stacks)
+{
+	int		oversize;
+
+	oversize = ft_ps_stack_length(*(stacks + 1))
+		- ft_ps_stack_length(*(stacks + 0));
+	ft_putchar('\n');
+	ft_ps_aux_display_stacks(*(stacks + 0), *(stacks + 1), oversize);
+	ft_putstr("\t_________________\n\t    a\t|    b\n");
 }
