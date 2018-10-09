@@ -19,5 +19,10 @@ void			ft_ps_initialize_stacks(t_nb ***stacks_adress);
 void			ft_ps_add_elem(t_nb **stacks, char c, int nb);
 void			ft_ps_parse_parameters(t_nb **stacks, int opt, int argc, char **argv);
 void			ft_ps_apply_moves(t_nb **stacks, char *command);
+void			ft_ps_sort_ref(t_nb *lst_copy);
+t_nb			*ft_ps_copy_lst(t_nb *lst);
+t_nb			*ft_ps_get_ref(t_nb *init_lst);
+void			ft_ps_free_lst(t_nb *lst);
+void			ft_ps_free_stacks(t_nb **stacks);
 
 #endif
