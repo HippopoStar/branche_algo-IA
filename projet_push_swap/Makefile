@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/10/11 17:16:02 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/10/11 18:54:19 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CFLAGS	+=		-I./ -I./libft/includes/
 NAME = test_push_swap.exe
 
 SRCS = main_test_push_swap.c\
+		./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/main_checker.c\
 		\
 		./srcs_push_swap/ft_ps_swap.c\
@@ -52,17 +53,20 @@ $(NAME):
 	@make -C ./libft/ all
 	gcc -c $(CFLAGS) $(SRCS)
 	gcc -o $(NAME) $(CFLAGS) -L./libft/ main_test_push_swap.o $(OBJS) -lft
+	gcc -o push_swap $(CFLAGS) -L./libft/ main_push_swap.o $(OBJS) -lft
 	gcc -o checker $(CFLAGS) -L./libft/ main_checker.o $(OBJS) -lft
 
 clean:
 	@make -C ./libft/ clean
 	rm -f main_test_push_swap.o
+	rm -f main_push_swap.o
 	rm -f main_checker.o
 	rm -f $(OBJS)
 
 fclean: clean
 	@make -C ./libft/ fclean
 	rm -f $(NAME)
+	rm -f push_swap
 	rm -f checker
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 17:05:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/10/11 17:31:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 18:49:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_ps_aux_check_order(t_nb *stack, t_nb *sorted_ref)
 {
-	if (stack == NULL)
+	if (stack == NULL || stack->next == NULL)
 	{
 		return (1);
 	}
@@ -24,8 +24,8 @@ int		ft_ps_aux_check_order(t_nb *stack, t_nb *sorted_ref)
 		{
 			sorted_ref = sorted_ref->next;
 		}
-		while (sorted_ref->n == stack->n
-				&& sorted_ref->next != NULL && stack->next != NULL)
+		while (!(sorted_ref == NULL || stack == NULL)
+				&& sorted_ref->n == stack->n)
 		{
 			sorted_ref = sorted_ref->next;
 			stack = stack->next;
