@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 12:44:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/10/11 18:51:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 20:48:19 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_ps_aux_left_push_swap(t_nb *stacks[2])
 		}
 		else
 		{
-			ft_ps_swap(stacks, 'b');
 			ft_putstr("sb\n");
 		}
+		ft_ps_swap(stacks, 'b');
 	}
 	ft_ps_push(stacks, 'a');
 	ft_putstr("pa\n");
@@ -45,9 +45,9 @@ void	ft_ps_aux_right_push_swap(t_nb *stacks[2])
 		}
 		else
 		{
-			ft_ps_swap(stacks, 'a');
 			ft_putstr("sa\n");
 		}
+		ft_ps_swap(stacks, 'a');
 	}
 	ft_ps_push(stacks, 'b');
 	ft_putstr("pb\n");
@@ -55,7 +55,10 @@ void	ft_ps_aux_right_push_swap(t_nb *stacks[2])
 
 void	ft_ps_push_swap(t_nb *stacks[2], t_nb *sorted_refs[2], char c)
 {
-	if (ft_ps_check_order(stacks, sorted_refs, c) == 2)
+	int		ret;
+
+	ret = ft_ps_check_order(stacks, sorted_refs, c);
+	if (ret == 2)
 	{
 		while (*(stacks + 1) != NULL)
 		{
@@ -63,7 +66,7 @@ void	ft_ps_push_swap(t_nb *stacks[2], t_nb *sorted_refs[2], char c)
 			ft_putstr("pa\n");
 		}
 	}
-	else if (ft_ps_check_order(stacks, sorted_refs, c) == 1)
+	else if (ret == 1)
 	{
 		ft_ps_push_swap(stacks, sorted_refs, ((c == 'r') ? 'l' : 'r'));
 	}
@@ -80,6 +83,8 @@ int		main(int argc, char **argv)
 	t_nb	*stacks[2];
 	t_nb	*sorted_refs[2];
 
+	*(stacks + 0) = NULL;
+	*(stacks + 1) = NULL;
 	if (argc > 1)
 	{
 		ft_ps_parse_parameters(stacks, 0, argc, argv);

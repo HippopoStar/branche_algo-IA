@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:45:54 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/10/11 17:27:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 20:38:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int		main(int argc, char **argv)
 	size_t	occ;
 	t_nb	*stacks[2];
 
+	*(stacks + 0) = NULL;
+	*(stacks + 1) = NULL;
 	verbose_wit = (argc > 1 && !ft_strcmp(*(argv + 1), "-v")) ? 1 : 0;
 	if (1 + verbose_wit < argc)
 	{

@@ -3,6 +3,13 @@
 
 # include "libft.h"
 
+/*
+** 'CMD' + 'Click' https://cdn.intra.42.fr/pdf/pdf/650/push_swap.fr.pdf
+** Afin de tester le programme :
+** ARG=`ruby -e "puts (-540 .. 539).to_a.shuffle.join(' ')"`
+** ./push_swap `echo $ARG` | ./checker -v `echo $ARG`
+*/
+
 typedef struct		s_nb
 {
 	int				n;

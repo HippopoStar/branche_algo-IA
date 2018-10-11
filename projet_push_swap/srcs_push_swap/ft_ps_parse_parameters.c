@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 10:52:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/10/11 16:25:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 20:01:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_ps_str_is_digit(char *str)
 {
 	size_t	i;
 
-	i = 0;
+	i = ((*(str + 0) == '-') ? 1 : 0);
 	while (*(str + i) != '\0')
 	{
 		if (!ft_isdigit(*(str + i)))
