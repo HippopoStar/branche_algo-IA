@@ -6,14 +6,14 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 16:21:52 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/17 16:36:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:26:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	ft_ps_apply_moves(t_nb **stacks, char *command)
+void	ft_ps_apply_moves(t_nb *stacks[2], char *command)
 {
 	if (*(command + 0) == 's' && ft_strlen(command) == 2)
 	{

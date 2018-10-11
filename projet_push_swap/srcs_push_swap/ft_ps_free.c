@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 07:19:51 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/10/09 07:25:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:42:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	ft_ps_free_stacks(t_nb **stacks)
 {
 	ft_ps_free_lst(*(stacks + 0));
 	ft_ps_free_lst(*(stacks + 1));
-	free(stacks);
 }

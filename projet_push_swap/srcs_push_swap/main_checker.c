@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/17 14:45:54 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 14:54:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 17:27:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,17 @@ int		main(int argc, char **argv)
 {
 	int		verbose_wit;
 	size_t	occ;
-	t_nb	**stacks;
+	t_nb	*stacks[2];
 
 	verbose_wit = (argc > 1 && !ft_strcmp(*(argv + 1), "-v")) ? 1 : 0;
 	if (1 + verbose_wit < argc)
 	{
-		ft_ps_initialize_stacks(&stacks);
 		ft_ps_parse_parameters(stacks, verbose_wit, argc, argv);
+		ft_ps_checker_programm_check_doublons(*(stacks + 0));
 		occ = 0;
 		(ft_ps_checker(NULL, stacks, verbose_wit, &occ) == 1) ?
 			ft_putstr("OK\n") : ft_putstr("KO\n");
+		ft_ps_free_stacks(stacks);
 	}
 	return (0);
 }

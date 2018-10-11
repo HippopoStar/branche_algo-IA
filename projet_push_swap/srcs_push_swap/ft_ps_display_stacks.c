@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 11:40:31 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 15:30:08 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:23:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_ps_aux_display_stacks(t_nb *a, t_nb *b, int oversize)
 	}
 }
 
-void	ft_ps_display_stacks(t_nb **stacks)
+void	ft_ps_display_stacks(t_nb *stacks[2])
 {
 	int		oversize;
 

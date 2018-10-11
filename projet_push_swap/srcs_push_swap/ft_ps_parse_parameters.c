@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 10:52:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/09/19 13:25:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/10/11 16:25:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_ps_str_is_zero(char *str)
 	return (1);
 }
 
-void	ft_ps_load_stack(t_nb **stacks)
+void	ft_ps_load_stack(t_nb *stacks[2])
 {
 	while (*(stacks + 1) != NULL)
 	{
@@ -59,7 +59,7 @@ void	ft_ps_load_stack(t_nb **stacks)
 ** en decrementant l'index
 */
 
-void	ft_ps_parse_parameters(t_nb **stacks, int opt, int argc, char **argv)
+void	ft_ps_parse_parameters(t_nb *stacks[2], int opt, int argc, char **argv)
 {
 	int		index;
 	int		nb;
