@@ -7,6 +7,5 @@ From ft\_printf to CoreWar
 	- le flag '*+*' ou le flag ' '
 	- une conversion d'un *0* signe
 	Exemple : `ft_printf("%.0 i\n", 0);`
-- Erreurs concernant les unicodes
-	- erreur au-dela d'un certain seuil
+- Erreur concernant les unicodes
 	- ne pas gerer la precision

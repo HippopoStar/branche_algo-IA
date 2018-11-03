@@ -41,36 +41,42 @@ static void	ft_unsigned_int_to_string(unsigned int widechar, char stock[5])
 /*
 ** On a :
 ** [ 1100 0000 | 0000 0000 ] = 49 152
+** [ 1100 0000 | 1000 0000 ]
+**	= 49 152 + 128
+**	= 49 280
 ** [ 1110 0000 | 0000 0000 | 0000 0000 ] = 14 680 064
+** [ 1110 0000 | 1000 0000 | 1000 0000 ]
+**	= 14 680 064 + 32 768 + 128
+**	= 14 712 960
 ** [ 1111 0000 | 0000 0000 | 0000 0000 | 0000 0000 ] = 4 026 531 840
+** [ 1111 0000 | 1000 0000 | 1000 0000 | 1000 0000 ]
+**	= 4 026 531 840 + 8 388 608 + 32 768 + 128
+**	= 4 034 953 344
 */
 
 static void	ft_widechar_to_string(wint_t widechar, char stock[5])
 {
 	unsigned int	n;
-	unsigned int	i;
-	unsigned int	j;
+	size_t		i;
 
 	n = 0;
-	i = 1;
-	j = 1;
-	while ((unsigned int)widechar / i != 0)
+	i = 0;
+	while (widechar != L'\0')
 	{
-		if (j >> 6 == 1 || j >> 14 == 1 || j >> 22 == 1)
+		if (i == 6 || i == 14 || i == 22)
 		{
-			n = n + (j << 1);
-			j = j << 2;
+			i = i + 2;
 		}
-		n = n + ((((unsigned int)widechar / i) % 2) * j);
-		i = i << 1;
-		j = j << 1;
+		n = n + (((unsigned int)widechar % 2) << i);
+		i++;
+		widechar = widechar >> 1;
 	}
-	if (n >> 24 > 0)
-		n = n + 4026531840;
-	else if (n >> 16 > 0)
-		n = n + 14680064;
-	else if (n >> 8 > 0)
-		n = n + 49152;
+	if (n >> 20 > 0)
+		n = n + 4034953344;
+	else if (n >> 13 > 0)
+		n = n + 14712960;
+	else
+		n = n + 49280;
 	ft_unsigned_int_to_string(n, stock);
 }
 
