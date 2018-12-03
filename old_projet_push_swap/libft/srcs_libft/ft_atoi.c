@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:42:05 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/12 06:37:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/25 23:45:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@
 ** INT_MIN 	= -INT_MIN
 **		= -1 * INT_MIN
 **
-** [0111 1111 | 1111 1111 | 1111 1111 | 1111 1111]	= 2147483647	(INT_MAX)
-** [1111 1111 | 1111 1111 | 1111 1111 | 1111 1111]	= -2147483647	(-INT_MAX)
-** [1000 0000 | 0000 0000 | 0000 0000 | 0000 0000]	= -2147483648	(INT_MIN)
+** [0111 1111 1111 1111]		= 2147483647	(INT_MAX)
+** [1111 1111 1111 1111]		= -2147483647	(-INT_MAX)
+** [1000 0000 0000 0000]		= -2147483648	(INT_MIN)
 */
 
 static void	ft_atoi_initialize(int *n, int neg, int *a, int *b)
 {
 	*n = 0;
-	*a = !neg ? (FT_INT_MAX / 10) : (-(FT_INT_MIN / 10));
-	*b = !neg ? (FT_INT_MAX % 10) : (-(FT_INT_MIN % 10));
+	*a = !neg ? (INT_MAX / 10) : (-(INT_MIN / 10));
+	*b = !neg ? (INT_MAX % 10) : (-(INT_MIN % 10));
 }
 
 static int	ft_atoi_add(int *n, char c, int a, int b)
@@ -65,9 +65,9 @@ static int	ft_atoi_add(int *n, char c, int a, int b)
 	}
 }
 
-int			ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
+	size_t		i;
 	int		n;
 	int		neg;
 	int		a;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 02:46:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/08 05:08:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/07/19 11:47:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static long int	is_base_valid(char *base)
 		return (i);
 }
 
-static void		print_nbr_base(long int long_nbr,\
-											char *base, long int length_base)
+static void	print_nbr_base(long int long_nbr, char *base, long int length_base)
 {
 	if (long_nbr == 0)
 		;
@@ -49,7 +48,7 @@ static void		print_nbr_base(long int long_nbr,\
 	}
 }
 
-void			ft_putnbr_base(int nbr, char *base)
+void		ft_putnbr_base(int nbr, char *base)
 {
 	long int	length_base;
 	long int	long_nbr;

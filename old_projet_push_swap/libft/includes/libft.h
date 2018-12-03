@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 12:49:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 04:46:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/17 06:02:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <limits.h>
 # include "get_next_line.h"
-# include "get_next_line_backslash_zero.h"
+# include "common_functions.h"
 
 /*
 ** Le header <limits.h> contient les macro' suivantes utilisees dans 'ft_atoi' :
+** INT_MIN = -2147483648
+** INT_MAX = 2147483647
+** UINT_MAX = 4294967295
+** LONG_MIN = -9223372036854775808
+** LONG_MAX = 9223372036854775807
+** ULONG_MAX = 18446744073709551615
 */
-# define FT_INT_MIN		-2147483648
-# define FT_INT_MAX		2147483647
-# define FT_UINT_MAX	4294967295
-# define FT_LONG_MIN	-9223372036854775808
-# define FT_LONG_MAX	9223372036854775807
-# define FT_ULONG_MAX	18446744073709551615
 
 typedef struct		s_list
 {
