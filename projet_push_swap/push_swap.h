@@ -7,6 +7,10 @@ typedef struct	s_ps
 {
 	int	verbose;
 	size_t	length;
+	size_t	a_start;
+	size_t	a_end;
+	size_t	b_start;
+	size_t	b_end;
 	int	*a;
 	int	*b;
 	int	*sorted;
@@ -21,6 +25,7 @@ int	ps_integer_format(t_ps *data, char **to_parse);
 int	ps_zero_format(char *str);
 int	ps_sort_wit(int *sorted, size_t length);
 int	ps_init_stacks(t_ps *data, char **to_parse);
+void	ps_swap(t_ps *data, char c);
 /*
 ** Functions related to PUSH_SWAP
 */

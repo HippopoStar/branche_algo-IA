@@ -114,6 +114,10 @@ int		ps_init_stacks(t_ps *data, char **to_parse)
 		}
 		i++;
 	}
+	data->a_start = 0;
+	data->a_end = data->length - 1;
+	data->b_start = data->length;
+	data->b_end = data->length;
 	return (ps_sort_wit(data->sorted, data->length));
 }
 
