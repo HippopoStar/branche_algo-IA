@@ -8,7 +8,8 @@ void		ft_push_swap(t_ps *data, int argc, char **argv)
 	}
 	else
 	{
-		ps_sort(data);
+//		ps_sort(data);
+		ps_display_stacks(data->stacks);
 	}
 }
 

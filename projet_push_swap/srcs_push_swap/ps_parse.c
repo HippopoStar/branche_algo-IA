@@ -96,28 +96,31 @@ int		ps_sort_wit(int *sorted, size_t length)
 int		ps_init_stacks(t_ps *data, char **to_parse)
 {
 	size_t	i;
+	t_nb	**ptr;
 
-	if (!(data->a = (int *)malloc(3 * data->length * sizeof(int))))
+	if (!(data->sorted = (int *)malloc(data->length * sizeof(int))))
 	{
 		return (0);
 	}
-	data->b = data->a + data->length;
-	data->sorted = data->b + data->length;
+	ptr = &(*(data->stacks + 0));
 	i = 0;
 	while (i < data->length)
 	{
-		*(data->a + i) = ft_atoi(*(to_parse + i));
-		*(data->sorted + i) = *(data->a + i);
-		if (*(data->a + i) == 0 && !ps_zero_format(*(to_parse + i)))
+		if (!(*ptr = (t_nb *)malloc(sizeof(t_nb))))
 		{
 			return (0);
 		}
+		(*ptr)->nb = ft_atoi(*(to_parse + i));
+		(*ptr)->next = NULL;
+		*(data->sorted + i) = (*ptr)->nb;
+		if ((*ptr)->nb == 0 && !ps_zero_format(*(to_parse + i)))
+		{
+			return (0);
+		}
+		ptr = &((*ptr)->next);
 		i++;
 	}
-	data->a_start = 0;
-	data->a_end = data->length - 1;
-	data->b_start = data->length;
-	data->b_end = data->length;
+	*(data->stacks + 1) = NULL;
 	return (ps_sort_wit(data->sorted, data->length));
 }
 

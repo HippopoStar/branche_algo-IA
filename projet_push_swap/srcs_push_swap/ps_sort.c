@@ -2,4 +2,5 @@
 
 void	ps_sort(t_ps *data)
 {
+	(void)data;
 }
