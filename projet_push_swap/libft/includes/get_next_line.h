@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:30:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/03/22 00:21:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 01:54:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define BUFF_SIZE 24
+# define BUFF_SIZE 1024
 
 typedef struct		s_gnl
 {

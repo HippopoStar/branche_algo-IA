@@ -45,5 +45,7 @@ void				ps_sort(t_ps *data);
 /*
 ** Functions related to CHECKER
 */
+int					ps_valid_input(char *line);
+int					ps_get_input(t_input **input);
 
 #endif

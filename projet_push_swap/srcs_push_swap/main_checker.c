@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_push_swap.c                                   :+:      :+:    :+:   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:11:25 by lcabanes         ###   ########.fr       */
+/*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/01/19 02:10:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push_swap(t_ps *data, int argc, char **argv)
+void	ft_checker(t_ps *data, int argc, char **argv)
 {
-	if (ps_parse(data, argc, argv) == 0)
+	t_input		*input;
+
+	input = NULL;
+	if (ps_parse(data, argc, argv) == 0 || ps_get_input(&input) == 0)
 	{
 		ps_display_error();
 	}
 	else
 	{
-//		ps_sort(data);
 		ps_display_stacks(data->stacks);
+		ft_putstr(input->inst);
 	}
 }
 
@@ -38,7 +41,7 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		ft_push_swap(&data, argc - data.verbose, argv + data.verbose);
+		ft_checker(&data, argc - data.verbose, argv + data.verbose);
 	}
 	return (0);
 }
