@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:59 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:06:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 02:47:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ps_get_input(t_input **input)
 		{
 			if (!((*input) = (t_input *)malloc(sizeof(t_input))))
 				return (0);
-			ft_strcpy(line, (*input)->inst);
+			ft_strcpy((*input)->inst, line);
 			free(line);
 			(*input)->next = NULL;
 			input = &((*input)->next);

@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 19:29:21 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/16 19:29:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 02:31:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ps_reverse_rotate(t_nb *stacks[2], char c)
+void	ft_reverse_rotate(t_nb *stacks[2], char c)
 {
 	t_nb	*stack;
 

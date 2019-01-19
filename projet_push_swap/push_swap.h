@@ -47,5 +47,6 @@ void				ps_sort(t_ps *data);
 */
 int					ps_valid_input(char *line);
 int					ps_get_input(t_input **input);
+void				ps_apply_moves(t_nb *stacks[2], char *command);
 
 #endif

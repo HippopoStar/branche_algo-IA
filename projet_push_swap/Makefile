@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/01/19 01:49:10 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/01/19 02:22:43 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_display_error.c\
 		./srcs_push_swap/ps_display_stacks.c\
 		./srcs_push_swap/ps_sort.c\
-		./srcs_push_swap/ps_get_input.c
+		./srcs_push_swap/ps_get_input.c\
+		./srcs_push_swap/ps_apply_moves.c
 
 OBJS =	ft_swap.o\
 		ft_rotate.o\
@@ -38,7 +39,8 @@ OBJS =	ft_swap.o\
 		ps_display_error.o\
 		ps_display_stacks.o\
 		ps_sort.o\
-		ps_get_input.o
+		ps_get_input.o\
+		ps_apply_moves.o
 
 all: $(NAME)
 

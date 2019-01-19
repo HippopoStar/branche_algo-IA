@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:11:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 02:29:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		main(int argc, char **argv)
 	t_ps	data;
 
 	data.verbose = (argc > 2 && !ft_strcmp(*(argv + 1), "-v")) ? 1 : 0;
-	*(data->stacks + 0) = NULL;
-	*(data->stacks + 1) = NULL;
+	*(data.stacks + 0) = NULL;
+	*(data.stacks + 1) = NULL;
 	if (argc - data.verbose < 2)
 	{
 		ps_display_error();
