@@ -46,6 +46,7 @@ int					ps_is_ready_to_go(t_ps *data);
 */
 void				ft_push_swap(t_ps *data, int argc, char **argv);
 void				ps_sort(t_ps *data);
+void				ps_print_and_apply(t_ps *data, char *command);
 /*
 ** Functions related to CHECKER
 */

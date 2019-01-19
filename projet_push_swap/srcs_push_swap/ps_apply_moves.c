@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:20:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:23:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 04:21:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ void	ps_apply_moves(t_nb *stacks[2], char *command)
 		if (*(command + 2) == 'b' || *(command + 2) == 'r')
 			ft_reverse_rotate(stacks, 'b');
 	}
+}
+
+void	ps_print_and_apply(t_ps *data, char *command)
+{
+	ft_putstr(command);
+	ft_putchar('\n');
+	ps_apply_moves(data->stacks, command);
 }

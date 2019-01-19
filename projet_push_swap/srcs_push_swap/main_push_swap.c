@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:29:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 04:11:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void	ft_push_swap(t_ps *data, int argc, char **argv)
 	}
 	else
 	{
-//		ps_sort(data);
-		ps_display_stacks(data->stacks);
+		ps_sort(data);
 	}
 }
 
