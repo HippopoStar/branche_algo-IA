@@ -6,22 +6,32 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:44:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/19 03:37:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_aux_checker(t_ps *data, t_input *input)
+void	ft_aux_checker(t_ps *data, t_input **input)
 {
 	t_input	*tmp;
 
-	while (input)
+	while ((*input))
 	{
-		ps_apply_moves(data->stacks, input->inst);
-		tmp = input;
-		input = input->next;
+		if (data->verbose == 1)
+		{
+			ps_display_stacks(data->stacks);
+			ft_putstr((*input)->inst);
+			ft_putchar('\n');
+		}
+		ps_apply_moves(data->stacks, (*input)->inst);
+		tmp = (*input);
+		(*input) = (*input)->next;
 		free(tmp);
+	}
+	if (data->verbose == 1)
+	{
+		ps_display_stacks(data->stacks);
 	}
 }
 
@@ -33,8 +43,8 @@ void	ft_checker(t_ps *data, t_input **input, int argc, char **argv)
 	}
 	else
 	{
-		ft_aux_checker(data, *input);
-		ps_display_stacks(data->stacks);
+		ft_aux_checker(data, input);
+		ft_putstr((ps_is_ready_to_go(data)) ? "OK\n" : "KO\n");
 	}
 }
 

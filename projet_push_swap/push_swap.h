@@ -37,6 +37,10 @@ void				ft_push(t_nb *stacks[2], char c);
 void				ft_swap(t_nb *stacks[2], char c);
 void				ft_rotate(t_nb *stacks[2], char c);
 void				ft_reverse_rotate(t_nb *stacks[2], char c);
+int					ps_is_a_sorted(t_ps *data);
+int					ps_is_b_sorted(t_ps *data);
+int					ps_are_sorted(t_ps *data);
+int					ps_is_ready_to_go(t_ps *data);
 /*
 ** Functions related to PUSH_SWAP
 */
