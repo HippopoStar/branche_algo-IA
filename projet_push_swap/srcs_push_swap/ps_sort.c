@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:14:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/23 11:58:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/23 12:34:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ps_aux_distribute(t_ps *data, size_t start, size_t end, char c)
 	ft_putnbr(pivot);						//TODO
 	ft_putchar('\n');						//TODO
 	i = 0;
-	while (tmp != NULL && tmp->next != NULL && (*(data->sorted + start) <= tmp->nb && tmp->nb <= *(data->sorted + end)) && i <= (end - start))
+	while (tmp != NULL && tmp->next != NULL && !((c == 'a') ? ps_is_a_sorted(data) : ps_is_b_sorted(data)) && i <= (end - start))
 	{
 		if (tmp->nb < pivot)
 		{
@@ -45,8 +45,9 @@ void	ps_aux_distribute(t_ps *data, size_t start, size_t end, char c)
 			(c == 'a') ? ps_print_and_apply(data, "ra") : ps_print_and_apply(data, "pa");
 		}
 		ps_display_stacks(data->stacks);	//TODO
+		if (*(data->sorted + start) <= tmp->nb && tmp->nb <= *(data->sorted + end))
+			i++;
 		tmp = ((c == 'a') ? *(data->stacks + 0) : *(data->stacks + 1));
-		i++;
 	}
 }
 
