@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:14:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/23 12:34:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/01/23 13:23:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	ps_aux_distribute(t_ps *data, size_t start, size_t end, char c)
 {
 	t_nb	*tmp;
 	int		pivot;
-	size_t	i;
 
-	ft_putstr("ps_aux_distribute\n");		//TODO
+//	ft_putstr("ps_aux_distribute\n");		//TODO
 	tmp = ((c == 'a') ? *(data->stacks + 0) : *(data->stacks + 1));
-	pivot = ((c == 'a') ? *(data->sorted + ((start + end) / 2)) : *(data->sorted + ((start + end + 1) / 2)));
+	pivot = *(data->sorted + ((start + end + 1) / 2));
 	ft_putstr("stack: ");					//TODO
 	ft_putchar((c == 'a') ? 'A' : 'B');		//TODO
 	ft_putchar('\n');						//TODO
@@ -33,8 +32,7 @@ void	ps_aux_distribute(t_ps *data, size_t start, size_t end, char c)
 	ft_putstr("pivot: ");					//TODO
 	ft_putnbr(pivot);						//TODO
 	ft_putchar('\n');						//TODO
-	i = 0;
-	while (tmp != NULL && tmp->next != NULL && !((c == 'a') ? ps_is_a_sorted(data) : ps_is_b_sorted(data)) && i <= (end - start))
+	while (tmp != NULL && tmp->next != NULL && !((c == 'a') ? ps_is_a_sorted(data) : ps_is_b_sorted(data)) && ps_gotta_push(tmp, pivot, c))
 	{
 		if (tmp->nb < pivot)
 		{
@@ -44,22 +42,20 @@ void	ps_aux_distribute(t_ps *data, size_t start, size_t end, char c)
 		{
 			(c == 'a') ? ps_print_and_apply(data, "ra") : ps_print_and_apply(data, "pa");
 		}
-		ps_display_stacks(data->stacks);	//TODO
-		if (*(data->sorted + start) <= tmp->nb && tmp->nb <= *(data->sorted + end))
-			i++;
+//		ps_display_stacks(data->stacks);	//TODO
 		tmp = ((c == 'a') ? *(data->stacks + 0) : *(data->stacks + 1));
 	}
 }
 
 void	ps_distribute(t_ps *data, size_t start, size_t end, char c)
 {
-	ft_putstr("ps_distribute\n");			//TODO
+//	ft_putstr("ps_distribute\n");			//TODO
 	ps_aux_distribute(data, start, end, c);
 }
 
 void	ps_aux_sort(t_ps *data, size_t start, size_t end, size_t *occ)
 {
-	ft_putstr("ps_aux_sort\n");				//TODO
+//	ft_putstr("ps_aux_sort\n");				//TODO
 	(*occ)++;
 	if (ps_are_sorted(data))
 	{
@@ -80,7 +76,7 @@ void	ps_sort(t_ps *data)
 {
 	size_t	occ;
 
-	ft_putstr("ps_sort\n");					//TODO
+//	ft_putstr("ps_sort\n");					//TODO
 	ps_display_stacks(data->stacks);		//TODO
 	occ = 1;
 	ps_aux_sort(data, 0, data->length - 1, &occ);
