@@ -11,8 +11,11 @@ From ft\_printf to CoreWar
 	- ne pas gerer la precision
 
 ## In '**push_swap**'
-- Dans 'push\_swap'
-	- max 5300 instructions avec 500 arguments `ARG=\`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"\` ; ./push_swap $ARG | wc -l`
-- Dans 'checker'
+- Dans '*push\_swap*'
+	- max 3 instructions avec l argument "2 1 0"
+	- max 12 instructions avec l argument "1 5 2 4 3" **OU** 5 valeurs quelconques
+	- max 5300 instructions avec 500 arguments
+	```ARG=`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | wc -l```
+- Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
-	- argument depassant INTMAX : 'error'
+	- argument depassant INT_MAX : 'error'
