@@ -16,7 +16,7 @@ int		ps_gotta_push(t_nb *tmp, int pivot, char c)
 {
 	while (tmp != NULL)
 	{
-		if ((c == 'a') ? tmp->nb < pivot : pivot <= tmp->nb)
+		if ((c == 'a') ? tmp->nb <= pivot : pivot <= tmp->nb)
 		{
 			return (1);
 		}

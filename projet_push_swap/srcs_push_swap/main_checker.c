@@ -15,9 +15,12 @@
 void	ft_aux_checker(t_ps *data, t_input **input)
 {
 	t_input	*tmp;
+	int		count;
 
+	count = 0;
 	while ((*input))
 	{
+		count++;
 		if (data->verbose == 1)
 		{
 			ps_display_stacks(data->stacks);
@@ -32,6 +35,9 @@ void	ft_aux_checker(t_ps *data, t_input **input)
 	if (data->verbose == 1)
 	{
 		ps_display_stacks(data->stacks);
+		ft_putstr("\nNombre total de coups : ");
+		ft_putnbr(count);
+		ft_putchar('\n');
 	}
 }
 
