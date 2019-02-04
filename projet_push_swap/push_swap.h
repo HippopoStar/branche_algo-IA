@@ -46,6 +46,7 @@ int					ps_is_ready_to_go(t_ps *data);
 */
 void				ft_push_swap(t_ps *data, int argc, char **argv);
 void				ps_sort(t_ps *data);
+void				ps_sort_bis(t_ps *data);
 void				ps_print_and_apply(t_ps *data, char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 /*

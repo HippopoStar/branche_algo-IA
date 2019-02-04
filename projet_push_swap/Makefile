@@ -28,6 +28,7 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_display_error.c\
 		./srcs_push_swap/ps_display_stacks.c\
 		./srcs_push_swap/ps_sort.c\
+		./srcs_push_swap/ps_sort_bis.c\
 		./srcs_push_swap/ps_get_input.c\
 		./srcs_push_swap/ps_apply_moves.c\
 		./srcs_push_swap/ps_gotta_push.c\
@@ -41,6 +42,7 @@ OBJS =	ft_swap.o\
 		ps_display_error.o\
 		ps_display_stacks.o\
 		ps_sort.o\
+		ps_sort_bis.o\
 		ps_get_input.o\
 		ps_apply_moves.o\
 		ps_gotta_push.o\
