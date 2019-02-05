@@ -23,7 +23,7 @@ size_t	ps_get_next_power_of_two(t_ps *data)
 	size_t	i;
 
 	i = 1;
-	while (i < data->length - 1)
+	while (i < data->length)
 	{
 		i = 2 * i;
 	}
@@ -54,12 +54,12 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			ft_putstr("ps_position(data) + to_add: ");
 			ft_putnbr((int)(ps_position(data) + to_add));
 			ft_putchar('\n');
-			ft_putstr("(ps_position(data) + to_add) % (power_two + 1): ");
-			ft_putnbr((int)((ps_position(data) + to_add) % (power_two + 1)));
+			ft_putstr("(ps_position(data) + to_add) % power_two: ");
+			ft_putnbr((int)((ps_position(data) + to_add) % power_two));
 			ft_putchar('\n');
 			ps_display_stacks(data->stacks);
 
-			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add) % (power_two + 1)) < (power_two / 2))
+			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add) % (power_two)) < (power_two / 2))
 			{
 				ps_print_and_apply(data, "pb");
 			}
@@ -69,14 +69,14 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			}
 			i++;
 		}
-		i = 0;
-		while (*(data->stacks + 1) != NULL)
+//		while (*(data->stacks + 1) != NULL)
+		while (i > 0)
 		{
 
 			ps_display_stacks(data->stacks);
 
 			((i % power_two) < power_two / 2) ? ps_print_and_apply(data, "pa") : ps_print_and_apply(data, "rra");
-			i++;
+			i--;
 		}
 		power_two = power_two / 2;
 	}
