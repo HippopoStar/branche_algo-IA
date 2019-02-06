@@ -30,7 +30,7 @@ From ft\_printf to CoreWar
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 
-# In '**CoreWar**'
+## In '**CoreWar**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/30/corewar.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/corewar/subnotions/corewar-introduction/videos/corewar-introduction)  
 [Ressources](https://cdn.intra.42.fr/pdf/pdf/31/resources_corewar.pdf)  
