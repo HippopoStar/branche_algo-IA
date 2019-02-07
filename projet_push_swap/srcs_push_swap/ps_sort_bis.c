@@ -33,17 +33,15 @@ size_t	ps_get_next_power_of_two(t_ps *data)
 void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 {
 	size_t	i;
-	size_t	j;
 
 	while (power_two > 1)
 	{
 //		ft_putnbr((int)to_add);		//TODO
 //		ft_putchar('\n');			//TODO
 		i = 0;
-		j = 0;
 		while (i < data->length)
 		{
-
+/*
 			ft_putstr("i: ");
 			ft_putnbr((int)i);
 			ft_putchar('\n');
@@ -60,11 +58,10 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			ft_putnbr((int)((ps_position(data) + to_add) % power_two));
 			ft_putchar('\n');
 			ps_display_stacks(data->stacks);
-
+*/
 			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add) % (power_two)) < (power_two / 2))
 			{
 				ps_print_and_apply(data, "pb");
-				j++;
 			}
 			else
 			{
@@ -72,71 +69,36 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			}
 			i++;
 		}
-//		while (*(data->stacks + 1) != NULL)
-		while ((j % (power_two / 2)) > 0)
-		{
-			ps_print_and_apply(data, "pa");
-			j--;
-			while ((i % power_two) > 0)
-			{
-				ps_print_and_apply(data, "rra");
-				i--;
-			}
-		}
 		while (i > 0)
 		{
-			i = i - (j % power_two);
-
+/*
 			ft_putstr("i: ");
 			ft_putnbr((int)i);
-			ft_putchar('\n');
-			ft_putstr("j: ");
-			ft_putnbr((int)j);
 			ft_putchar('\n');
 			ft_putstr("power_two: ");
 			ft_putnbr((int)power_two);
 			ft_putchar('\n');
 			ps_display_stacks(data->stacks);
-
-			if (j % (power_two / 2) == j % power_two && (power_two / 2) > 1)
+*/
+			if (i > 0)
 			{
-				if (j > 0)
-				{
-					ps_print_and_apply(data, "pa");
-					j--;
-					while ((j % (power_two / 2)) > 0)
-					{
-						ps_print_and_apply(data, "pa");
-						j--;
-					}
-				}
 				ps_print_and_apply(data, "rra");
 				i--;
-				while ((i % power_two) > 0)
-				{
-					ps_print_and_apply(data, "rra");
-					i--;
-				}
 			}
-			else
+			while (i > 0 && (i % (power_two / 2) != data->length % (power_two / 2)))
 			{
 				ps_print_and_apply(data, "rra");
 				i--;
-				while ((i % (power_two / 2)) != (data->length % (power_two / 2)))
-				{
-					ps_print_and_apply(data, "rra");
-					i--;
-				}
-				if (j > 0)
-				{
-					ps_print_and_apply(data, "pa");
-					j--;
-					while ((j % (power_two / 2)) > 0)
-					{
-						ps_print_and_apply(data, "pa");
-						j--;
-					}
-				}
+			}
+			if (i > 0)
+			{
+				ps_print_and_apply(data, "pa");
+				i--;
+			}
+			while (i > 0 && (i % (power_two / 2) != data->length % (power_two / 2)))
+			{
+				ps_print_and_apply(data, "pa");
+				i--;
 			}
 		}
 		power_two = power_two / 2;
