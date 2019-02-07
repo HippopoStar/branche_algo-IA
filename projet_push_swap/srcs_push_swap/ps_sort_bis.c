@@ -69,6 +69,7 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			}
 			i++;
 		}
+		power_two = power_two / 2;
 		while (i > 0)
 		{
 /*
@@ -80,12 +81,9 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 			ft_putchar('\n');
 			ps_display_stacks(data->stacks);
 */
-			if (i > 0)
-			{
-				ps_print_and_apply(data, "rra");
-				i--;
-			}
-			while (i > 0 && (i % (power_two / 2) != data->length % (power_two / 2)))
+			ps_print_and_apply(data, "rra");
+			i--;
+			while (i > 0 && (i % power_two != data->length % power_two))
 			{
 				ps_print_and_apply(data, "rra");
 				i--;
@@ -95,13 +93,12 @@ void	ps_aux_sort_bis(t_ps *data, size_t to_add, size_t power_two)
 				ps_print_and_apply(data, "pa");
 				i--;
 			}
-			while (i > 0 && (i % (power_two / 2) != data->length % (power_two / 2)))
+			while (i > 0 && (i % power_two != data->length % power_two))
 			{
 				ps_print_and_apply(data, "pa");
 				i--;
 			}
 		}
-		power_two = power_two / 2;
 	}
 }
 
