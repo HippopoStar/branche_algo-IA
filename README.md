@@ -29,6 +29,8 @@ From ft\_printf to CoreWar
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
+Documentation :
+[Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
 
 ## In '**CoreWar**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/30/corewar.fr.pdf)  
