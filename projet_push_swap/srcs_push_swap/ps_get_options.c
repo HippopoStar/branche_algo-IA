@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:45:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 15:50:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 19:56:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ps_get_options(int argc, char **argv, t_ps *data)
 		c = *(*(argv + 1) + 1);
 		{
 			if (c == 'h')
-				ft_putstr("usage: ./push_swap [-hclv] $ARG\n");
+				ft_putstr("usage: ./checker [-hclv] $ARG\n");
 			else if (c == 'c')
 				data->verbose = 1;
 			else if (c == 'l')
