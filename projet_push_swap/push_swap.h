@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/02/09 16:44:55 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -45,9 +57,10 @@ int					ps_is_ready_to_go(t_ps *data);
 ** Functions related to PUSH_SWAP
 */
 void				ft_push_swap(t_ps *data, int argc, char **argv);
-void				ps_sort(t_ps *data);
-void				ps_sort_bis(t_ps *data);
-void				ps_print_and_apply(t_ps *data, char *command);
+void				ps_sort_three(t_ps *data);
+void				ps_sort_five(t_ps *data);
+void				ps_sort_power_two(t_ps *data);
+void				ps_print_ando(t_ps *data, char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 /*
 ** Functions related to CHECKER
@@ -55,5 +68,6 @@ int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 int					ps_valid_input(char *line);
 int					ps_get_input(t_input **input);
 void				ps_apply_moves(t_nb *stacks[2], char *command);
+int					ps_get_options(int argc, char **argv, t_ps *data);
 
 #endif

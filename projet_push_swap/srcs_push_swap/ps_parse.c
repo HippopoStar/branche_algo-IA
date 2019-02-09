@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:14:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 17:03:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ps_zero_format(char *str)
 	}
 	while (*(str + i) != '\0')
 	{
-		if (!ft_strchr("0123456789", (int)(*(str + i))))
+		if (*(str + i) != '0')
 		{
 			return (0);
 		}
@@ -88,9 +88,7 @@ int		ps_sort_wit(int *sorted, size_t length)
 			}
 		}
 		else if (*(sorted + i) == *(sorted + i + 1))
-		{
 			return (0);
-		}
 		else
 		{
 			i++;
@@ -111,9 +109,7 @@ int		ps_init_stacks(t_ps *data, char **to_parse)
 	t_nb	**ptr;
 
 	if (!(data->sorted = (int *)malloc(data->length * sizeof(int))))
-	{
 		return (0);
-	}
 	ptr = &(*(data->stacks + 0));
 	i = 0;
 	while (i < data->length)
@@ -147,7 +143,8 @@ int		ps_parse(t_ps *data, int argc, char **argv)
 	int		ret;
 
 	to_parse = (argc == 2) ? ft_strsplit(*(argv + 1), ' ') : argv + 1;
-	ret = (!to_parse || !ps_integer_format(data, to_parse)) ? 0 : ps_init_stacks(data, to_parse);
+	ret = (!to_parse || !ps_integer_format(data, to_parse)) ? 0 \
+		: ps_init_stacks(data, to_parse);
 	if (argc == 2 && to_parse)
 	{
 		i = 0;

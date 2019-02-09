@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:20:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 04:21:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 16:44:16 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ps_apply_moves(t_nb *stacks[2], char *command)
 	}
 }
 
-void	ps_print_and_apply(t_ps *data, char *command)
+void	ps_print_ando(t_ps *data, char *command)
 {
 	ft_putstr(command);
 	ft_putchar('\n');

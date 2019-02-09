@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/01/23 12:54:11 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/02/09 15:09:55 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,14 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_parse.c\
 		./srcs_push_swap/ps_display_error.c\
 		./srcs_push_swap/ps_display_stacks.c\
-		./srcs_push_swap/ps_sort.c\
-		./srcs_push_swap/ps_sort_bis.c\
+		./srcs_push_swap/ps_sort_three.c\
+		./srcs_push_swap/ps_sort_five.c\
+		./srcs_push_swap/ps_sort_power_two.c\
 		./srcs_push_swap/ps_get_input.c\
 		./srcs_push_swap/ps_apply_moves.c\
 		./srcs_push_swap/ps_gotta_push.c\
-		./srcs_push_swap/ps_is_ready_to_go.c
+		./srcs_push_swap/ps_is_ready_to_go.c\
+		./srcs_push_swap/ps_get_options.c
 
 OBJS =	ft_swap.o\
 		ft_rotate.o\
@@ -41,12 +43,14 @@ OBJS =	ft_swap.o\
 		ps_parse.o\
 		ps_display_error.o\
 		ps_display_stacks.o\
-		ps_sort.o\
-		ps_sort_bis.o\
+		ps_sort_three.o\
+		ps_sort_five.o\
+		ps_sort_power_two.o\
 		ps_get_input.o\
 		ps_apply_moves.o\
 		ps_gotta_push.o\
-		ps_is_ready_to_go.o
+		ps_is_ready_to_go.o\
+		ps_get_options.o
 
 all: $(NAME)
 

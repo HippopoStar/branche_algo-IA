@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 03:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/23 11:52:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 16:29:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int		ps_is_b_sorted(t_ps *data)
 		{
 			i++;
 		}
-		while (tmp != NULL && tmp->next != NULL && i > 0 && tmp->nb == *(data->sorted + i))
+		while (tmp != NULL && tmp->next != NULL && i > 0 \
+				&& tmp->nb == *(data->sorted + i))
 		{
 			tmp = tmp->next;
 			i--;
 		}
-		return ((tmp->next == NULL && i == 0 && tmp->nb == *(data->sorted + 0)) ? 1 : 0);
+		return ((tmp->next == NULL && i == 0 \
+					&& tmp->nb == *(data->sorted + 0)) ? 1 : 0);
 	}
 	return (1);
 }

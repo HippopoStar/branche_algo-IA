@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 03:25:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/25 08:13:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 15:16:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	ft_unsigned_int_to_string(unsigned int widechar, char stock[5])
 static void	ft_widechar_to_string(wint_t widechar, char stock[5])
 {
 	unsigned int	n;
-	size_t		i;
+	size_t			i;
 
 	n = 0;
 	i = 0;
