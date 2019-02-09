@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:41 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:13:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 17:39:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ps_display_error(void)
 {
-	ft_putstr("Error\n");
+	write(2, "Error\n", 6);
 }
