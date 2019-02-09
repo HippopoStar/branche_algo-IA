@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 19:35:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 19:41:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,11 @@ int		ps_integer_format(t_ps *data, char **to_parse)
 		while (*(*(to_parse + i) + j) != '\0')
 		{
 			if (!ft_strchr("0123456789", (int)(*(*(to_parse + i) + j))))
-			{
 				return (0);
-			}
 			j++;
 		}
 		if (j == 0)
-		{
 			return (0);
-		}
 		i++;
 	}
 	data->length = i;
