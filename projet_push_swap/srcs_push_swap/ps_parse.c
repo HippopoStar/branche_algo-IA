@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 17:03:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 19:35:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		ps_integer_format(t_ps *data, char **to_parse)
 	while (*(to_parse + i))
 	{
 		j = 0;
-		if (*(*(to_parse + i) + 0) == '-' && (*(*to_parse + i) + 1) != '\0')
+		if ((*(*(to_parse + i) + 0) == '-' || *(*(to_parse + i) + 0) == '+') \
+				&& *(*(to_parse + i) + 1) != '\0')
 		{
 			j++;
 		}
@@ -38,10 +39,14 @@ int		ps_integer_format(t_ps *data, char **to_parse)
 			}
 			j++;
 		}
+		if (j == 0)
+		{
+			return (0);
+		}
 		i++;
 	}
 	data->length = i;
-	return (1);
+	return (i > 0 ? 1 : 0);
 }
 
 int		ps_zero_format(char *str)
@@ -49,7 +54,7 @@ int		ps_zero_format(char *str)
 	size_t	i;
 
 	i = 0;
-	if (*(str + 0) == '-' && *(str + 1) != '\0')
+	if ((*(str + 0) == '-' || *(str + 0) == '+') && *(str + 1) != '\0')
 	{
 		i++;
 	}

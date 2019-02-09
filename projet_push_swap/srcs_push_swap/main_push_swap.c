@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:44:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/09 19:19:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ int		main(int argc, char **argv)
 	data.verbose = 0;
 	*(data.stacks + 0) = NULL;
 	*(data.stacks + 1) = NULL;
-	if (argc < 2)
-	{
-		ps_display_error();
-	}
-	else
+	if (argc > 1)
 	{
 		ft_push_swap(&data, argc, argv);
 	}
