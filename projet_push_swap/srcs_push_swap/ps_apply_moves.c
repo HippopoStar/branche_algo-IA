@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:20:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:44:16 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:02:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ void	ps_apply_moves(t_nb *stacks[2], char *command)
 		if (*(command + 2) == 'b' || *(command + 2) == 'r')
 			ft_reverse_rotate(stacks, 'b');
 	}
+}
+
+void	ps_reg_moves(t_nb *stacks[2], char *command, t_reg *reg)
+{
+	if (!ft_strcmp(command, "sa"))
+		(reg->sa)++;
+	else if (!ft_strcmp(command, "sb"))
+		(reg->sb)++;
+	else if (!ft_strcmp(command, "ss"))
+		(reg->ss)++;
+	else if (!ft_strcmp(command, "pa"))
+		(reg->pa)++;
+	else if (!ft_strcmp(command, "pb"))
+		(reg->pb)++;
+	else if (!ft_strcmp(command, "ra"))
+		(reg->ra)++;
+	else if (!ft_strcmp(command, "rb"))
+		(reg->rb)++;
+	else if (!ft_strcmp(command, "rr"))
+		(reg->rr)++;
+	else if (!ft_strcmp(command, "rra"))
+		(reg->rra)++;
+	else if (!ft_strcmp(command, "rrb"))
+		(reg->rrb)++;
+	else if (!ft_strcmp(command, "rrr"))
+		(reg->rrr)++;
+	ps_apply_moves(stacks, command);
 }
 
 void	ps_print_ando(t_ps *data, char *command)

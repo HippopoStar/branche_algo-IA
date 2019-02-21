@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 10:40:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:08:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ size_t	ps_get_next_power_of_two(t_ps *data)
 
 void	ps_aux_aux_sort_power_two(t_ps *data, size_t power_two, size_t i)
 {
-	i = ((2 * power_two) < data->length) ? i : (i - power_two);
 	while (i > 0)
 	{
 		if ((2 * power_two) < data->length)
@@ -81,6 +80,7 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 			i++;
 		}
 		power_two = power_two / 2;
+		i = ((2 * power_two) < data->length) ? i : (i - power_two);
 		ps_aux_aux_sort_power_two(data, power_two, i);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 10:34:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 12:01:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,25 @@ typedef struct		s_input
 	struct s_input	*next;
 }					t_input;
 
+typedef struct		s_reg
+{
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_reg;
+
 typedef struct		s_ps
 {
 	int				verbose;
+	t_reg			reg;
 	t_nb			*stacks[2];
 	size_t			length;
 	int				*sorted;
@@ -69,7 +85,9 @@ int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 */
 int					ps_valid_input(char *line);
 int					ps_get_input(t_input **input);
+void				ps_reg_moves(t_nb *stacks[2], char *command, t_reg *reg);
 void				ps_apply_moves(t_nb *stacks[2], char *command);
 int					ps_get_options(int argc, char **argv, t_ps *data);
+void				ps_print_register(t_reg *reg);
 
 #endif
