@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 13:16:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:27:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_aux_checker(t_ps *data, t_input **input, int *count)
 			ps_display_stacks(data->stacks);
 			ft_putendl((*input)->inst);
 		}
-		ps_reg_moves(data->stacks, (*input)->inst, &(data->reg));
+		ps_reg_m(data->stacks, (*input)->inst, &(data->reg));
 		tmp = (*input);
 		(*input) = (*input)->next;
 		free(tmp);

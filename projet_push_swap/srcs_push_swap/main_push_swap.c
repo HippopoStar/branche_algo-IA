@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 13:18:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:37:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,14 @@ void	ft_push_swap(t_ps *data, int argc, char **argv)
 			}
 		}
 	}
-	ps_shorten(&(data.input));
-	ps_print_input(&(data.input));
+	ps_shorten(&(data->input));
 }
+
+/*
+** Nul besoin de proceder a l'initialisation
+** " data.current_input = NULL "
+** (voir la fonction "ps_print_ando" du fichier "ps_apply_moves")
+*/
 
 int		main(int argc, char **argv)
 {

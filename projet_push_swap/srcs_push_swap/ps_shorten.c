@@ -6,11 +6,25 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 12:44:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 13:13:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:37:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ps_print_input(t_input **input)
+{
+	t_input	*tmp;
+
+	while ((*input) != NULL)
+	{
+		ft_putstr((*input)->inst);
+		ft_putchar('\n');
+		tmp = (*input)->next;
+		free((*input));
+		(*input) = tmp;
+	}
+}
 
 int		ps_aux_shorten(char first[4], char second[4])
 {
@@ -54,4 +68,5 @@ void	ps_shorten(t_input **input)
 				tmp = tmp->next;
 		}
 	}
+	ps_print_input(input);
 }

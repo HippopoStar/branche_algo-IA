@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 13:22:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:24:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_ps
 	int				verbose;
 	t_reg			reg;
 	t_input			*input;
+	t_input			*current_input;
 	t_nb			*stacks[2];
 	size_t			length;
 	int				*sorted;
@@ -82,6 +83,7 @@ void				ps_swap_instructions(t_ps *data);
 void				ps_print_ando(t_ps *data, const char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 void				ps_shorten(t_input **input);
+void				ps_print_input(t_input **input);
 /*
 ** Functions related to CHECKER
 */

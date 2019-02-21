@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:20:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 13:39:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 14:27:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void	ps_print_ando(t_ps *data, const char *command)
 		ps_display_error();
 		exit(0);
 	}
-	ft_strcpy(tmp.inst, command);
-	tmp.next = NULL;
+	ft_strcpy(tmp->inst, command);
+	tmp->next = NULL;
 	if (data->input == NULL)
 	{
 		data->input = tmp;
 	}
 	else
 	{
-		(data->curent_input)->next = tmp;
+		(data->current_input)->next = tmp;
 	}
 	data->current_input = tmp;
 	ps_apply_moves(data->stacks, command);
