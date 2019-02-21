@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:44:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:34:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void				ft_push_swap(t_ps *data, int argc, char **argv);
 void				ps_sort_three(t_ps *data);
 void				ps_sort_five(t_ps *data);
 void				ps_sort_power_two(t_ps *data);
+size_t				ps_position(t_ps *data);
+void				ps_swap_instructions(t_ps *data);
 void				ps_print_ando(t_ps *data, char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 /*

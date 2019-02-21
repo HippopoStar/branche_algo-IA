@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:43:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 10:40:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@
 ** que la pile 'A' n'est pas vide, et que le nombre recherche se trouve bel
 ** et bien dans la liste triee elaboree plus tot dans le programme
 */
-
-size_t	ps_position(t_ps *data)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(data->sorted + i) != (*(data->stacks + 0))->nb)
-	{
-		i++;
-	}
-	return (i);
-}
 
 size_t	ps_get_next_power_of_two(t_ps *data)
 {
@@ -57,6 +45,8 @@ void	ps_aux_aux_sort_power_two(t_ps *data, size_t power_two, size_t i)
 			ps_print_ando(data, "rra");
 			i--;
 		}
+		if (power_two == 2)
+			ps_swap_instructions(data);
 		if (i > 0)
 		{
 			ps_print_ando(data, "pa");
@@ -74,7 +64,7 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 {
 	size_t	i;
 
-	while (power_two > 1)
+	while (power_two > 2)
 	{
 		i = 0;
 		while (i < data->length)
