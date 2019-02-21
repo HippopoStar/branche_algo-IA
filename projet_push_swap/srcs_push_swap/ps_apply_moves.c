@@ -6,14 +6,14 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:20:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 12:02:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:39:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	ps_apply_moves(t_nb *stacks[2], char *command)
+void	ps_apply_moves(t_nb *stacks[2], const char *command)
 {
 	if (*(command + 0) == 's' && ft_strlen(command) == 2)
 	{
@@ -41,7 +41,7 @@ void	ps_apply_moves(t_nb *stacks[2], char *command)
 	}
 }
 
-void	ps_reg_moves(t_nb *stacks[2], char *command, t_reg *reg)
+void	ps_reg_m(t_nb *stacks[2], const char *command, t_reg *reg)
 {
 	if (!ft_strcmp(command, "sa"))
 		(reg->sa)++;
@@ -68,9 +68,25 @@ void	ps_reg_moves(t_nb *stacks[2], char *command, t_reg *reg)
 	ps_apply_moves(stacks, command);
 }
 
-void	ps_print_ando(t_ps *data, char *command)
+void	ps_print_ando(t_ps *data, const char *command)
 {
-	ft_putstr(command);
-	ft_putchar('\n');
+	t_input	*tmp;
+
+	if (!(tmp = (t_input *)malloc(sizeof(t_input))))
+	{
+		ps_display_error();
+		exit(0);
+	}
+	ft_strcpy(tmp.inst, command);
+	tmp.next = NULL;
+	if (data->input == NULL)
+	{
+		data->input = tmp;
+	}
+	else
+	{
+		(data->curent_input)->next = tmp;
+	}
+	data->current_input = tmp;
 	ps_apply_moves(data->stacks, command);
 }

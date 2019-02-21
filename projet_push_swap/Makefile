@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/02/21 11:48:56 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/02/21 13:03:50 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_gotta_push.c\
 		./srcs_push_swap/ps_is_ready_to_go.c\
 		./srcs_push_swap/ps_get_options.c\
-		./srcs_push_swap/ps_print_register.c
+		./srcs_push_swap/ps_print_register.c\
+		./srcs_push_swap/ps_shorten.c
 
 OBJS =	ft_swap.o\
 		ft_rotate.o\
@@ -54,7 +55,8 @@ OBJS =	ft_swap.o\
 		ps_gotta_push.o\
 		ps_is_ready_to_go.o\
 		ps_get_options.o\
-		ps_print_register.o
+		ps_print_register.o\
+		ps_shorten.o
 
 all: $(NAME)
 

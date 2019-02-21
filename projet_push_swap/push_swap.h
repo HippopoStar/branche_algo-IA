@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 12:01:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:22:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_ps
 {
 	int				verbose;
 	t_reg			reg;
+	t_input			*input;
 	t_nb			*stacks[2];
 	size_t			length;
 	int				*sorted;
@@ -78,15 +79,16 @@ void				ps_sort_five(t_ps *data);
 void				ps_sort_power_two(t_ps *data);
 size_t				ps_position(t_ps *data);
 void				ps_swap_instructions(t_ps *data);
-void				ps_print_ando(t_ps *data, char *command);
+void				ps_print_ando(t_ps *data, const char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
+void				ps_shorten(t_input **input);
 /*
 ** Functions related to CHECKER
 */
 int					ps_valid_input(char *line);
 int					ps_get_input(t_input **input);
-void				ps_reg_moves(t_nb *stacks[2], char *command, t_reg *reg);
-void				ps_apply_moves(t_nb *stacks[2], char *command);
+void				ps_reg_m(t_nb *stacks[2], const char *command, t_reg *reg);
+void				ps_apply_moves(t_nb *stacks[2], const char *command);
 int					ps_get_options(int argc, char **argv, t_ps *data);
 void				ps_print_register(t_reg *reg);
 

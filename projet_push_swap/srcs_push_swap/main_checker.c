@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 12:01:41 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:16:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_checker(t_ps *data, t_input **input, int argc, char **argv)
 int		main(int argc, char **argv)
 {
 	t_ps	data;
-	t_input	*input;
 	int		option_wit;
 
 	option_wit = ps_get_options(argc, argv, &data);
@@ -79,10 +78,10 @@ int		main(int argc, char **argv)
 	(data.reg).rrr = 0;
 	*(data.stacks + 0) = NULL;
 	*(data.stacks + 1) = NULL;
-	input = NULL;
+	data.input = NULL;
 	if (argc - option_wit > 1)
 	{
-		ft_checker(&data, &input, argc - option_wit, argv + option_wit);
+		ft_checker(&data, &(data.input), argc - option_wit, argv + option_wit);
 	}
 	return (0);
 }

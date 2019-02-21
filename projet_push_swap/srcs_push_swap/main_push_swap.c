@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:20 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 19:19:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/02/21 13:18:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_push_swap(t_ps *data, int argc, char **argv)
 			}
 		}
 	}
+	ps_shorten(&(data.input));
+	ps_print_input(&(data.input));
 }
 
 int		main(int argc, char **argv)
@@ -47,6 +49,7 @@ int		main(int argc, char **argv)
 	data.verbose = 0;
 	*(data.stacks + 0) = NULL;
 	*(data.stacks + 1) = NULL;
+	data.input = NULL;
 	if (argc > 1)
 	{
 		ft_push_swap(&data, argc, argv);
