@@ -22,6 +22,7 @@ From ft\_printf to CoreWar
 	```
 	ARG=`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | wc -l
 	```
+	- '*ps\_sort\_five*' ne trie pas la pile si lance avec la commande ci-dessus
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT_MAX : 'error'
