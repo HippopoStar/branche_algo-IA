@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/02/22 10:07:51 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/02/22 10:12:51 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS	+=		-I./ -I./libft/includes/
 
 HEAD = lem_in.h
 
-NAME = lem_in
+NAME = lem-in
 
 SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_error.c
