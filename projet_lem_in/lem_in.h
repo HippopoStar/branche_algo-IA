@@ -35,4 +35,25 @@ typedef struct		s_input
 	s_input			*next;
 }					t_input;
 
+typedef struct		s_room
+{	char			*name;
+	int				pos_x;
+	int				pos_y;
+	int				role;
+	struct s_room	*next;
+}					t_room;
+
+typedef struct		s_data
+{
+	int				ants;
+	size_t			size;
+	t_room			*rooms;
+	int				**map;
+	t_input		*input;
+	t_output	*output;
+}					t_data;
+
+int		li_get_input(t_input **input);
+int		li_parse_input(t_data *data);
+
 #endif
