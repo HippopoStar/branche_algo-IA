@@ -29,7 +29,7 @@ int		li_match_ants(t_input **input, t_data *data)
 			i = 0;
 			while (*((*input)->line + i) != '\0')
 			{
-				if (!ft_strchr("0123456789", (int)(*((*input)->line + i))))
+				if (!ft_is_digit(*((*input)->line + i)))
 					return (0);
 				if (*((*input)->line + i) != '0')
 					wit = 1;
@@ -43,8 +43,32 @@ int		li_match_ants(t_input **input, t_data *data)
 
 int		li_match_rooms(t_input **input, t_data *data)
 {
-	(void)input;
-	(void)data;
+	size_t	i;
+	int		wit;
+	t_room	**tmp;
+
+	tmp = &(data->rooms);
+	wit = 0;
+	while (!(*((*input)->line + 0) == '\0') && wit % 5 != 0)
+	{
+		if (!tmp && !((*tmp) = (t_room *)malloc(sizeof(t_room))))
+			return (0);
+		if (*((*input)->line + 0) == '#')
+		{
+			if (!ft_strcmp((*input)->line, "##start"))
+				(*tmp)->role = 2;
+			if (!ft_strcmp((*input)->line, "##end"))
+				(*tmp)->role = 3;
+		}
+		else
+		{
+			aux_li_match_rooms(*tmp, (*input)->line) ? return (0) : wit = wit * (*tmp)->role;
+		}
+		if ((*tmp)->role != 5)
+			(*input) = (*input)->next;
+		tmp = &((*tmp)->next);
+	}
+	return (wit == 30 ? 1 : 0);
 }
 
 int		li_parse_input(t_data *data)
