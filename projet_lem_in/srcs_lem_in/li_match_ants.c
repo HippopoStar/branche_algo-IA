@@ -9,7 +9,7 @@ int		li_match_ants(t_input **read, t_data *data)
 	{
 		if (*((*read)->line + 0) == '#')
 		{
-			(*read) = (*read)->next;
+			*read = (*read)->next;
 		}
 		else
 		{

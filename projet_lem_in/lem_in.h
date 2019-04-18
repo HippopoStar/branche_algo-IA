@@ -32,7 +32,7 @@ typedef struct		s_output
 typedef struct		s_input
 {
 	char			*line;
-	s_input			*next;
+	struct s_input			*next;
 }					t_input;
 
 typedef struct		s_room
@@ -88,9 +88,9 @@ int		li_allocate_room(t_room **room);
 int		li_allocate_map(t_data *data);
 int		aux_li_allocate_map(t_data *data, int *set_map);
 /*
-** Dans le fichier 'li_match_ants.c'
+** Dans le fichier 'li_match_pipes.c'
 */
-
+int		li_match_pipes(t_input **read, t_data *data);
 /*
 **
 */

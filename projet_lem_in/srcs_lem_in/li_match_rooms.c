@@ -35,13 +35,12 @@ int		li_match_room(t_room *room, char *str)
 		room->role = 5;
 		return (1);
 	}
-	(ft_is_digit(str, &i, &(room->pos_x)) && *(str + i) == ' ') ? i++ : return (0);
-	return ((ft_is_digit(str, &i, &(room->pos_y)) && *(str + i) == '\0') ? 1 : 0);
+	(ft_is_int(str, &i, &(room->pos_x)) && *(str + i) == ' ') ? i++ : return (0);
+	return ((ft_is_int(str, &i, &(room->pos_y)) && *(str + i) == '\0') ? 1 : 0);
 }
 
 int		li_match_rooms(t_input **read, t_data *data)
 {
-	size_t	i;
 	int		wit;
 	t_room	**tmp;
 
@@ -59,7 +58,7 @@ int		li_match_rooms(t_input **read, t_data *data)
 				(*tmp)->role = 3;
 		}
 		else
-			!li_match_rooms(*tmp, (*read)->line) ? return (0) : wit = wit * (*tmp)->role;
+			!li_match_room(*tmp, (*read)->line) ? return (0) : wit = wit * (*tmp)->role;
 		if ((*tmp)->role != 5)
 			(*read) = (*read)->next;
 		tmp = &((*tmp)->next);
