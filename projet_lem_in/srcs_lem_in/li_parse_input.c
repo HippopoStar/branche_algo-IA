@@ -17,28 +17,34 @@ int		li_parse_input(t_data *data)
 	data->read = data->input;
 	if (!li_match_ants(&(data->read), data))
 		return (0);
-	else if (!li_match_rooms(&(data->read), data))
+	ft_putstr("\"li_match_ants\" OK !\n");
+	/*else*/ if (!li_match_rooms(&(data->read), data))
 		return (0);
-	else if (!li_allocate_map(data))
+	ft_putstr("\"li_match_rooms\" OK !\n");
+	/*else*/ if (!li_allocate_map(data))
 		return (0);
-	else if (!li_match_pipes(&(data->read), data))
+	ft_putstr("\"li_allocate_map\" OK !\n");
+	/*else*/ if (!li_match_pipes(&(data->read), data))
 		return (0);
-	else
+	ft_putstr("\"li_match_pipes\" OK !\n");
+	/*else*/
 		return (1);
 }
 
 int		li_get_input(t_input **input)
 {
 	int		ret_gnl;
+	t_input	*tmp;
 
 	if (!((*input) = (t_input *)malloc(sizeof(t_input))))
 		return (0);
-	while ((ret_gnl = get_next_line_backslash_zero(0, &((*input)->line))) == 1)
+	tmp = *input;
+	while ((ret_gnl = get_next_line_backslash_zero(0, &(tmp->line))) == 1)
 	{
-		if (!((*input)->next = (t_input *)malloc(sizeof(t_input))))
+		if (!(tmp->next = (t_input *)malloc(sizeof(t_input))))
 			return (0);
-		(*input) = (*input)->next;
+		tmp = tmp->next;
 	}
-	(*input)->next = NULL;
+	tmp->next = NULL;
 	return ((ret_gnl == 0) ? 1 : 0);
 }

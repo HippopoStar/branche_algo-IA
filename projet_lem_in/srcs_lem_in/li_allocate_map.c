@@ -11,20 +11,21 @@ int		aux_li_allocate_map(t_data *data, int *set_map)
 	{
 		if (tmp->role == 1)
 		{
-			*(data->map + i) = *tmp;
+			*(data->map + i) = tmp;
 			(*tmp).pipes = &(*(set_map + (i * data->size)));
 			i++;
 		}
 		else if (tmp->role == 2)
 		{
-			*(data->map + 0) = *tmp;
+			*(data->map + 0) = tmp;
 			(*tmp).pipes = &(*(set_map + 0));
 		}
 		else
 		{
-			*(data->map + data->size - 1) = *tmp;
+			*(data->map + data->size - 1) = tmp;
 			(*tmp).pipes = &(*(set_map + ((data->size - 1) * data->size)));
 		}
+		tmp = tmp->next;
 	}
 	return ((i == data->size - 1) ? 1 : 0);
 }
@@ -43,7 +44,7 @@ int		li_allocate_map(t_data *data)
 		i++;
 	}
 	data->size = i;
-	if (!(data->map = (t_room *)malloc(i * sizeof(t_room)))
+	if (!(data->map = (t_room **)malloc(i * sizeof(t_room *)))
 			|| !(set_map = (int *)malloc(i * i * sizeof(int))))
 		return (0);
 	i = 0;

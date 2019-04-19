@@ -49,10 +49,10 @@ typedef struct		s_data
 	int				ants;
 	size_t			size;
 	t_room			*rooms;
-	t_room			*map;
+	t_room			**map;
 	t_input		*input;
 	t_input		*read;
-	t_output	*output;
+	t_output	output;
 }					t_data;
 
 /*
@@ -81,6 +81,7 @@ int		li_match_ants(t_input **read, t_data *data);
 */
 int		li_match_rooms(t_input **read, t_data *data);
 int		li_match_room(t_room *room, char *str);
+int		li_deal_sharp_marks(t_room *room, t_input **read);
 int		li_allocate_room(t_room **room);
 /*
 ** Dans le fichier 'li_allocate_map.c'
@@ -91,10 +92,11 @@ int		aux_li_allocate_map(t_data *data, int *set_map);
 ** Dans le fichier 'li_match_pipes.c'
 */
 int		li_match_pipes(t_input **read, t_data *data);
+int		li_match_pipe(t_data *data, char *str);
 /*
-**
+** Dans le fichier 'li_print_map.c'
 */
-
+void	li_print_map(t_data *data);
 /*
 **
 */

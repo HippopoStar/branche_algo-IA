@@ -14,7 +14,27 @@
 
 int		main(int argc, char **argv)
 {
+	t_data	data;
+
 	(void)argc;
 	(void)argv;
+	data.rooms = NULL;
+	data.map = NULL;
+	data.input = NULL;
+	data.read = NULL;
+	if (!li_get_input(&(data.input)))
+	{
+		li_error();
+	}
+	ft_putstr("\"li_get_input\" OK !\n");
+	/*else*/ if (!li_parse_input(&data))
+	{
+		li_error();
+	}
+	ft_putstr("\"li_parse_input\" OK !\n");
+	/*else*/
+	{
+		li_print_map(&data);
+	}
 	return (0);
 }
