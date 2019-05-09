@@ -22,3 +22,30 @@ void	li_print_map(t_data *data)
 		i++;
 	}
 }
+
+void	li_print_paths(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < data->max_paths)
+	{
+		j = 0;
+		while (*(*(data->paths + i) + j + 1) == 0)
+		{
+			j++;
+		}
+		while (j < data->size)
+		{
+			ft_putstr((*(data->map + *(*(data->paths + i) + j)))->name);
+			if (j != data->size - 1)
+			{
+				ft_putstr("->");
+			}
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
+}

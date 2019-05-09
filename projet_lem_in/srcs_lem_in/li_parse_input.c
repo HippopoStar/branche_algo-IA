@@ -31,7 +31,7 @@ int		li_parse_input(t_data *data)
 		return (1);
 }
 
-int		li_get_input(t_input **input)
+int		li_get_input(t_data *data, t_input **input)
 {
 	int		ret_gnl;
 	t_input	*tmp;
@@ -41,10 +41,13 @@ int		li_get_input(t_input **input)
 	tmp = *input;
 	while ((ret_gnl = get_next_line_backslash_zero(0, &(tmp->line))) == 1)
 	{
+		li_get_output(data, tmp->line);
 		if (!(tmp->next = (t_input *)malloc(sizeof(t_input))))
 			return (0);
 		tmp = tmp->next;
 	}
 	tmp->next = NULL;
+	li_print_output(data);
+	ft_putchar('\n');
 	return ((ret_gnl == 0) ? 1 : 0);
 }

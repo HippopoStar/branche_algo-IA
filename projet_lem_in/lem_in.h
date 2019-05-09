@@ -37,6 +37,8 @@ typedef struct		s_input
 
 typedef struct		s_room
 {	char			*name;
+	int				weight;
+	size_t			ancestor;
 	int				pos_x;
 	int				pos_y;
 	int				role;
@@ -48,6 +50,9 @@ typedef struct		s_data
 {
 	int				ants;
 	size_t			size;
+	size_t			max_paths;
+	size_t			**paths;
+	size_t			path_nb;
 	t_room			*rooms;
 	t_room			**map;
 	t_input		*input;
@@ -64,9 +69,14 @@ typedef struct		s_data
 */
 void	li_error(void);
 /*
+** Dans le fichier 'li_print.c'
+*/
+void	li_get_output(t_data *data, const char *str);
+void	li_print_output(t_data *data);
+/*
 ** Dans le fichier 'li_parse_input.c'
 */
-int		li_get_input(t_input **input);
+int		li_get_input(t_data *data, t_input **input);
 int		li_parse_input(t_data *data);
 /*
 ** Dans le fichier 'ft_is_int.c'
@@ -97,14 +107,20 @@ int		li_match_pipe(t_data *data, char *str);
 ** Dans le fichier 'li_print_map.c'
 */
 void	li_print_map(t_data *data);
+void	li_print_paths(t_data *data);
 /*
-**
+** Dans le fichier 'li_bellman_ford.c'
 */
-
+void	li_bellman_ford(t_data *data);
+void	aux_li_bellman_ford(t_data *data);
 /*
-**
+** Dans le fichier 'li_bhandari.c'
 */
-
+void		li_bhandari_max_iterations(t_data *data);
+void	li_initialise_weights(t_data *data);
+int		li_reverse_path(t_data *data);
+int		li_allocate_paths(t_data *data);
+int		li_bhandari(t_data *data);
 /*
 **
 */

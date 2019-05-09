@@ -19,23 +19,29 @@ NAME = lem-in
 
 SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_error.c\
+		./srcs_lem_in/li_get_output.c\
 		./srcs_lem_in/li_parse_input.c\
 		./srcs_lem_in/ft_is_int.c\
 		./srcs_lem_in/li_match_ants.c\
 		./srcs_lem_in/li_match_rooms.c\
 		./srcs_lem_in/li_allocate_map.c\
 		./srcs_lem_in/li_match_pipes.c\
-		./srcs_lem_in/li_print_map.c
+		./srcs_lem_in/li_print_map.c\
+		./srcs_lem_in/li_bellman_ford.c\
+		./srcs_lem_in/li_bhandari.c
 
 OBJS = ./main_lem_in.o\
 		./li_error.o\
+		./li_get_output.o\
 		./li_parse_input.o\
 		./ft_is_int.o\
 		./li_match_ants.o\
 		./li_match_rooms.o\
 		./li_allocate_map.o\
 		./li_match_pipes.o\
-		./li_print_map.o
+		./li_print_map.o\
+		./li_bellman_ford.o\
+		./li_bhandari.o
 
 all: $(NAME)
 

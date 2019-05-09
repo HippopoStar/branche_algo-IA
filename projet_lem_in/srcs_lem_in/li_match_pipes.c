@@ -23,7 +23,7 @@ int		li_match_pipe(t_data *data, char *str)
 	{
 		j++;
 	}
-	if (i == data->size || j == data->size)
+	if (i == data->size || j == data->size || i == j)
 		return (0);
 	*((*(data->map + i))->pipes + j) = 1;
 	*((*(data->map + j))->pipes + i) = 1;

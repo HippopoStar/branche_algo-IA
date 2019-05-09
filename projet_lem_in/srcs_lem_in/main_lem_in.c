@@ -20,9 +20,13 @@ int		main(int argc, char **argv)
 	(void)argv;
 	data.rooms = NULL;
 	data.map = NULL;
+	data.max_paths = 0;
+	data.paths = NULL;
+	data.path_nb = 0;
 	data.input = NULL;
 	data.read = NULL;
-	if (!li_get_input(&(data.input)))
+	(data.output).index = 0;
+	if (!li_get_input(&data, &(data.input)))
 	{
 		li_error();
 	}
@@ -35,6 +39,10 @@ int		main(int argc, char **argv)
 	/*else*/
 	{
 		li_print_map(&data);
+	}
+	if (li_bhandari(&data))
+	{
+		li_print_paths(&data);
 	}
 	return (0);
 }
