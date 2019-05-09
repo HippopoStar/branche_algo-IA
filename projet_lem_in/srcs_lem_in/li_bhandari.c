@@ -23,11 +23,11 @@ void	li_bhandari_max_iterations(t_data *data)
 	}
 	if (data->ants < beg && data->ants < end)
 	{
-		data->max_paths = data->ants;
+		data->max_paths = (size_t)data->ants;
 	}
 	else
 	{
-		data->max_paths = (beg < end ? beg : end);
+		data->max_paths = (size_t)(beg < end ? beg : end);
 	}
 }
 
@@ -35,11 +35,13 @@ void	li_initialise_weights(t_data *data)
 {
 	size_t	i;
 
+	(*(data->map + 0))->ancestor = 0;
+	(*(data->map + 0))->weight = 0;
 	i = 1;
 	while (i < data->size)
 	{
 		(*(data->map + i))->ancestor = data->size;
-		(*(data->map + i))->weight = data->size;
+		(*(data->map + i))->weight = (int)data->size;
 		i++;
 	}
 }
@@ -108,12 +110,8 @@ int		li_bhandari(t_data *data)
 		li_initialise_weights(data);
 		li_bellman_ford(data);
 		ret_val = li_reverse_path(data);
+		data->path_nb++;
 		i++;
 	}
-	if (i > 0)
-	{
-		li_print_paths(data); //TODO
-		return (1);
-	}
-	return (0);
+	return (!(i == 1 && ret_val == 0) ? 1 : 0);
 }
