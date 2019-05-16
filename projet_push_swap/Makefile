@@ -37,7 +37,9 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_is_ready_to_go.c\
 		./srcs_push_swap/ps_get_options.c\
 		./srcs_push_swap/ps_print_register.c\
-		./srcs_push_swap/ps_shorten.c
+		./srcs_push_swap/ps_shorten.c\
+		./srcs_push_swap/ps_alamano.c\
+		./srcs_push_swap/ps_do.c
 
 OBJS =	ft_swap.o\
 		ft_rotate.o\
@@ -56,7 +58,9 @@ OBJS =	ft_swap.o\
 		ps_is_ready_to_go.o\
 		ps_get_options.o\
 		ps_print_register.o\
-		ps_shorten.o
+		ps_shorten.o\
+		ps_alamano.o\
+		ps_do.o
 
 all: $(NAME)
 

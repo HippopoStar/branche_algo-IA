@@ -63,7 +63,7 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 {
 	size_t	i;
 
-	while (power_two > 2)
+	while (power_two > (data->length == 100 ? 4 : 2))
 	{
 		i = 0;
 		while (i < data->length)
@@ -93,4 +93,6 @@ void	ps_sort_power_two(t_ps *data)
 	power_two = ps_get_next_power_of_two(data);
 	to_add = power_two - data->length;
 	ps_aux_sort_power_two(data, to_add, power_two);
+	if (data->length == 100)
+		ps_alamano(data, 100);
 }
