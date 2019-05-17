@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_alamano.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:04:36 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/17 17:05:19 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ps_alamano_one(t_ps *data, int e, int f, int g)
@@ -126,21 +138,13 @@ void	ps_alamano(t_ps *data, size_t len)
 		c = (((*(data->stacks + 0))->next)->next)->nb;
 		d = ((((*(data->stacks + 0))->next)->next)->next)->nb;
 		if (a < b && a < c && a < d)
-		{
 			ps_alamano_one(data, b, c, d);
-		}
 		else if ((a < b && a < c) || (a < b && a < d) || (a < c && a < d))
-		{
 			ps_alamano_two(data, b, c, d);
-		}
 		else if (a < b || a < c || a < d)
-		{
 			ps_alamano_three(data, b, c, d);
-		}
 		else
-		{
 			ps_alamano_four(data, b, c, d);
-		}
 		len = len - 4;
 	}
 }

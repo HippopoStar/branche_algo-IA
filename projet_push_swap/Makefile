@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/02/21 13:03:50 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/05/17 16:53:54 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_get_options.c\
 		./srcs_push_swap/ps_print_register.c\
 		./srcs_push_swap/ps_shorten.c\
+		./srcs_push_swap/ps_aux_alamano.c\
 		./srcs_push_swap/ps_alamano.c\
 		./srcs_push_swap/ps_do.c
 
@@ -59,6 +60,7 @@ OBJS =	ft_swap.o\
 		ps_get_options.o\
 		ps_print_register.o\
 		ps_shorten.o\
+		ps_aux_alamano.o\
 		ps_alamano.o\
 		ps_do.o
 

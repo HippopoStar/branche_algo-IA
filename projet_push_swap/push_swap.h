@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 14:24:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/17 16:53:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void				ps_print_ando(t_ps *data, const char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 void				ps_shorten(t_input **input);
 void				ps_print_input(t_input **input);
+void				ps_aux_alamano(t_ps *data);
 void				ps_alamano(t_ps *data, size_t len);
 void				ps_do(t_ps *data, const char *inst);
 /*
