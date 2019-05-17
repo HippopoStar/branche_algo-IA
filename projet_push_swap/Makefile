@@ -38,8 +38,11 @@ SRCS =	./srcs_push_swap/main_push_swap.c\
 		./srcs_push_swap/ps_get_options.c\
 		./srcs_push_swap/ps_print_register.c\
 		./srcs_push_swap/ps_shorten.c\
-		./srcs_push_swap/ps_aux_alamano.c\
-		./srcs_push_swap/ps_alamano.c\
+		./srcs_push_swap/ps_aux_alamano_a.c\
+		./srcs_push_swap/ps_alamano_a.c\
+		./srcs_push_swap/ps_aux_alamano_b.c\
+		./srcs_push_swap/ps_alamano_b.c\
+		./srcs_push_swap/ps_sort_power_two_alamano.c\
 		./srcs_push_swap/ps_do.c
 
 OBJS =	ft_swap.o\
@@ -60,8 +63,11 @@ OBJS =	ft_swap.o\
 		ps_get_options.o\
 		ps_print_register.o\
 		ps_shorten.o\
-		ps_aux_alamano.o\
-		ps_alamano.o\
+		ps_aux_alamano_a.o\
+		ps_alamano_a.o\
+		ps_aux_alamano_b.o\
+		ps_alamano_b.o\
+		ps_sort_power_two_alamano.o\
 		ps_do.o
 
 all: $(NAME)

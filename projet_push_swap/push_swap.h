@@ -84,8 +84,11 @@ void				ps_print_ando(t_ps *data, const char *command);
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 void				ps_shorten(t_input **input);
 void				ps_print_input(t_input **input);
-void				ps_aux_alamano(t_ps *data);
-void				ps_alamano(t_ps *data, size_t len);
+void				ps_aux_alamano_a(t_ps *data);
+void				ps_alamano_a(t_ps *data);
+void				ps_aux_alamano_b(t_ps *data);
+void				ps_alamano_b(t_ps *data);
+void				ps_sort_power_two_alamano(t_ps *data);
 void				ps_do(t_ps *data, const char *inst);
 /*
 ** Functions related to CHECKER
