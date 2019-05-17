@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_match_pipes.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/17 17:52:07 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		li_match_pipe(t_data *data, char *str)
@@ -34,7 +46,8 @@ int		li_match_pipes(t_input **read, t_data *data)
 {
 	while (*((*read)->line + 0) != '\0')
 	{
-		if (!(*((*read)->line + 0) == '#') && !li_match_pipe(data, (*read)->line))
+		if (!(*((*read)->line + 0) == '#') \
+				&& !li_match_pipe(data, (*read)->line))
 		{
 			return (0);
 		}

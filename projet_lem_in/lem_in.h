@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/26 12:57:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/17 17:32:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_output
 typedef struct		s_input
 {
 	char			*line;
-	struct s_input			*next;
+	struct s_input	*next;
 }					t_input;
 
 typedef struct		s_room
@@ -55,9 +55,9 @@ typedef struct		s_data
 	size_t			path_nb;
 	t_room			*rooms;
 	t_room			**map;
-	t_input		*input;
-	t_input		*read;
-	t_output	output;
+	t_input			*input;
+	t_input			*read;
+	t_output		output;
 }					t_data;
 
 /*
@@ -67,60 +67,60 @@ typedef struct		s_data
 /*
 ** Dans le fichier 'li_error.c'
 */
-void	li_error(void);
+void				li_error(void);
 /*
 ** Dans le fichier 'li_print.c'
 */
-void	li_get_output(t_data *data, const char *str);
-void	li_print_output(t_data *data);
+void				li_get_output(t_data *data, const char *str);
+void				li_print_output(t_data *data);
 /*
 ** Dans le fichier 'li_parse_input.c'
 */
-int		li_get_input(t_data *data, t_input **input);
-int		li_parse_input(t_data *data);
+int					li_get_input(t_data *data, t_input **input);
+int					li_parse_input(t_data *data);
 /*
 ** Dans le fichier 'ft_is_int.c'
 */
-int		ft_is_int(char *str, size_t *i, int *n);
+int					ft_is_int(char *str, size_t *i, int *n);
 /*
 ** Dans le fichier 'li_match_ants.c'
 */
-int		li_match_ants(t_input **read, t_data *data);
+int					li_match_ants(t_input **read, t_data *data);
 /*
 ** Dans le fichier 'li_match_rooms.c'
 */
-int		li_match_rooms(t_input **read, t_data *data);
-int		li_match_room(t_room *room, char *str);
-int		li_deal_sharp_marks(t_room *room, t_input **read);
-int		li_allocate_room(t_room **room);
+int					li_match_rooms(t_input **read, t_data *data);
+int					li_match_room(t_room *room, char *str);
+int					li_deal_sharp_marks(t_room *room, t_input **read);
+int					li_allocate_room(t_room **room);
 /*
 ** Dans le fichier 'li_allocate_map.c'
 */
-int		li_allocate_map(t_data *data);
-int		aux_li_allocate_map(t_data *data, int *set_map);
+int					li_allocate_map(t_data *data);
+int					aux_li_allocate_map(t_data *data, int *set_map);
 /*
 ** Dans le fichier 'li_match_pipes.c'
 */
-int		li_match_pipes(t_input **read, t_data *data);
-int		li_match_pipe(t_data *data, char *str);
+int					li_match_pipes(t_input **read, t_data *data);
+int					li_match_pipe(t_data *data, char *str);
 /*
 ** Dans le fichier 'li_print_map.c'
 */
-void	li_print_map(t_data *data);
-void	li_print_paths(t_data *data);
+void				li_print_map(t_data *data);
+void				li_print_paths(t_data *data);
 /*
 ** Dans le fichier 'li_bellman_ford.c'
 */
-void	li_bellman_ford(t_data *data);
-void	aux_li_bellman_ford(t_data *data);
+void				li_bellman_ford(t_data *data);
+void				aux_li_bellman_ford(t_data *data);
 /*
 ** Dans le fichier 'li_bhandari.c'
 */
-void		li_bhandari_max_iterations(t_data *data);
-void	li_initialise_weights(t_data *data);
-int		li_reverse_path(t_data *data);
-int		li_allocate_paths(t_data *data);
-int		li_bhandari(t_data *data);
+void				li_bhandari_max_iterations(t_data *data);
+void				li_initialise_weights(t_data *data);
+int					li_reverse_path(t_data *data);
+int					li_allocate_paths(t_data *data);
+int					li_bhandari(t_data *data);
 /*
 **
 */

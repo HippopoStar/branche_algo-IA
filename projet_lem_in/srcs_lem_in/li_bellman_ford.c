@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_bellman_ford.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/17 17:36:50 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	aux_li_bellman_ford(t_data *data)
@@ -14,7 +26,8 @@ void	aux_li_bellman_ford(t_data *data)
 		{
 			if (*((*(data->map + i))->pipes + j) != 0 && i != j)
 			{
-				wei = (*(data->map + i))->weight + *((*(data->map + i))->pipes + j);
+				wei = (*(data->map + i))->weight \
+					+ *((*(data->map + i))->pipes + j);
 				if (wei < (*(data->map + j))->weight)
 				{
 					(*(data->map + j))->ancestor = i;

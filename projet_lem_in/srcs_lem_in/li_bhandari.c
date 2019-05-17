@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_bhandari.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/17 17:51:24 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	li_bhandari_max_iterations(t_data *data)
@@ -76,7 +88,8 @@ int		li_allocate_paths(t_data *data)
 	size_t	j;
 	size_t	*tmp;
 
-	if (!(tmp = (size_t *)malloc(data->max_paths * (data->size + 1) * sizeof(size_t))))
+	if (!(tmp = (size_t *)malloc(data->max_paths * (data->size + 1) \
+					* sizeof(size_t))))
 		return (0);
 	if (!(data->paths = (size_t **)malloc(data->max_paths * sizeof(size_t *))))
 		return (0);
