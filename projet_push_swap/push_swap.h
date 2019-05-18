@@ -88,6 +88,7 @@ void				ps_aux_alamano_a(t_ps *data);
 void				ps_alamano_a(t_ps *data);
 void				ps_aux_alamano_b(t_ps *data);
 void				ps_alamano_b(t_ps *data);
+int					ps_get_a_four_lasts(t_ps *data, int *b, int *c, int *d);
 void				ps_sort_power_two_alamano(t_ps *data);
 void				ps_do(t_ps *data, const char *inst);
 /*
