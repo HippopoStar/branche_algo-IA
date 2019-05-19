@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 16:52:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/19 17:05:47 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 		}
 		power_two = power_two / 2;
 		i = ((2 * power_two) < data->length) ? i : (i - power_two);
-		(power_two > 4) ? ps_aux_aux_sort_power_two(data, power_two, i) : ps_sort_power_two_alamano(data);
+		(power_two > 4) ? ps_aux_aux_sort_power_two(data, power_two, i)
+			: ps_sort_power_two_alamano(data);
 	}
 }
 

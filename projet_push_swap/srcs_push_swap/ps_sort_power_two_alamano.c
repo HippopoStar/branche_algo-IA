@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps_sort_power_two_alamano.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/19 17:04:31 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/19 17:05:18 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /*
-** En fait, etant donne l'algorithme precedant,
+** En pratique, etant donne l'algorithme precedant,
 ** la pile 'A' contiendra toujours au moins 4 elements
 */
 
