@@ -2,26 +2,24 @@
 
 TMP_FILE_NAME='test_script_push_swap.tmp'
 
-rm -f /tmp/${TMP_FILE_NAME}
-touch /tmp/${TMP_FILE_NAME}
+usage () {
+	echo "usage: ${0} [first nb] [last nb] [nb of iterations]"
+}
 
-let "n = 100"
-while test ${n} -gt 0 ; do
-	ARG=`ruby -e "puts (1 .. 4).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 5).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 6).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 7).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 8).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 9).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 10).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 11).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 12).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 13).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 14).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 15).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	ARG=`ruby -e "puts (1 .. 16).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG >> /tmp/${TMP_FILE_NAME} 2>&1
-	let "n = n - 1"
-done
+if test ${#} -ne 3 || test ${3} -le 0 || test ${1} -gt ${2} ; then
+	usage
+else
+	rm -f /tmp/${TMP_FILE_NAME}
+	touch /tmp/${TMP_FILE_NAME}
 
-cat /tmp/${TMP_FILE_NAME} | awk '!/OK/ { print $0 }'
+	let "n = ${3}"
+	while test ${n} -gt 0 ; do
+		{ ARG=`ruby -e "puts (${1} .. ${2}).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | ./checker $ARG ; } >> /tmp/${TMP_FILE_NAME} 2>&1
+		let "n = n - 1"
+	done
+
+	cat /tmp/${TMP_FILE_NAME} | awk '!/OK/ { print $0 }'
+	echo "Pour consulter les logs : \`cat /tmp/${TMP_FILE_NAME}\`"
+	echo "(nombre de lignes du fichier de log : `cat /tmp/${TMP_FILE_NAME} | wc -l`)"
+fi
 
