@@ -6,12 +6,15 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/02/22 10:12:51 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/05/20 22:02:30 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./ -I./libft/includes/
+CFLAGS	+=		-O1 -g -fsanitize=address \
+				-fno-omit-frame-pointer \
+				-fsanitize-address-use-after-scope
 
 HEAD = lem_in.h
 
@@ -28,7 +31,8 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_match_pipes.c\
 		./srcs_lem_in/li_print_map.c\
 		./srcs_lem_in/li_bellman_ford.c\
-		./srcs_lem_in/li_bhandari.c
+		./srcs_lem_in/li_bhandari.c\
+		./srcs_lem_in/li_build_routes.c
 
 OBJS = ./main_lem_in.o\
 		./li_error.o\
@@ -41,7 +45,8 @@ OBJS = ./main_lem_in.o\
 		./li_match_pipes.o\
 		./li_print_map.o\
 		./li_bellman_ford.o\
-		./li_bhandari.o
+		./li_bhandari.o\
+		./li_build_routes.o
 
 all: $(NAME)
 

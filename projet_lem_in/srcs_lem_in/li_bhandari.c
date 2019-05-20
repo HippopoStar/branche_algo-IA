@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:51:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/20 18:33:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int		li_bhandari(t_data *data)
 		li_initialise_weights(data);
 		li_bellman_ford(data);
 		ret_val = li_reverse_path(data);
-		data->path_nb++;
+		data->path_nb = (ret_val == 1 ? data->path_nb + 1 : data->path_nb);
 		i++;
 	}
 	return (!(i == 1 && ret_val == 0) ? 1 : 0);

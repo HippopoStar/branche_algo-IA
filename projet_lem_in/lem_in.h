@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:32:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/20 22:07:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct		s_data
 	size_t			max_paths;
 	size_t			**paths;
 	size_t			path_nb;
+	size_t			***routes;
 	t_room			*rooms;
 	t_room			**map;
 	t_input			*input;
@@ -108,6 +109,7 @@ int					li_match_pipe(t_data *data, char *str);
 */
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
+void				li_print_routes(t_data *data);
 /*
 ** Dans le fichier 'li_bellman_ford.c'
 */
@@ -122,7 +124,10 @@ int					li_reverse_path(t_data *data);
 int					li_allocate_paths(t_data *data);
 int					li_bhandari(t_data *data);
 /*
-**
+** Dans le fichier 'li_build_routes.c'
 */
+int					li_allocate_routes(t_data *data);
+void				li_aux_build_routes(t_data *data, size_t **field, size_t n);
+int					li_build_routes(t_data *data);
 
 #endif

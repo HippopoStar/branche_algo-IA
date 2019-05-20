@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/22 10:04:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/20 22:12:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,19 @@ int		main(int argc, char **argv)
 	}
 	ft_putstr("\"li_parse_input\" OK !\n");
 	/*else*/
-	{
-		li_print_map(&data);
-	}
+//	{
+//		li_print_map(&data);
+//	}
 	if (li_bhandari(&data))
 	{
 		li_print_paths(&data);
+		ft_putstr("\"data->path_nb\" vaut ");
+		ft_putnbr((int)data.path_nb);
+		ft_putchar('\n');
+	}
+	if (li_build_routes(&data))
+	{
+		li_print_routes(&data);
 	}
 	return (0);
 }
