@@ -30,13 +30,18 @@ From ft\_printf to CoreWar
 	- '*ps\_sort\_five*' ne trie pas la pile si lance avec la commande ci-dessus
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
-	- argument depassant INT_MAX : 'error'
+	- argument depassant INT\_MAX : 'error'
+- Ameliorer le Makefile et ajouter des instructions specifiques a chaque binaire (Norme)
+- Liberer manuellement la memoire avec 'free'
+- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne)
 
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
+- / ! \\ Attention au cas dans lequel '##end' n'est pas suivi d'une description de salle
+- Penser a liberer manuellement la memoire avec 'free'
 
 ## In '**mod1**'
 
