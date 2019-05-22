@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/20 21:59:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/22 21:17:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,9 @@ void	li_print_paths(t_data *data)
 	size_t	j;
 
 	i = 0;
-	while (i < data->max_paths)
+	while (i < data->max_paths && !(*(*(data->paths + i) + data->size) == data->size))
 	{
-		j = 0;
-		while (*(*(data->paths + i) + j + 1) == 0)
-		{
-			j++;
-		}
+		j = *(*(data->paths + i) + data->size);
 		while (j < data->size)
 		{
 			ft_putstr((*(data->map + *(*(data->paths + i) + j)))->name);
@@ -57,6 +53,10 @@ void	li_print_paths(t_data *data)
 			}
 			j++;
 		}
+		ft_putstr(" *(*(data->paths + ");
+		ft_putnbr((int)i);
+		ft_putstr(") + data->size) vaut : ");
+		ft_putnbr((int)*(*(data->paths + i) + data->size));
 		ft_putchar('\n');
 		i++;
 	}

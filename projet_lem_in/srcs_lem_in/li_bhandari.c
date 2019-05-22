@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/20 18:33:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/22 21:16:50 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		li_reverse_path(t_data *data)
 		pos--;
 		j = i;
 	}
+	*(*(data->paths + data->path_nb) + data->size) = pos;
 	return (1);
 }
 
@@ -86,23 +87,23 @@ int		li_allocate_paths(t_data *data)
 {
 	size_t	i;
 	size_t	j;
-	size_t	*tmp;
 
-	if (!(tmp = (size_t *)malloc(data->max_paths * (data->size + 1) \
-					* sizeof(size_t))))
-		return (0);
 	if (!(data->paths = (size_t **)malloc(data->max_paths * sizeof(size_t *))))
+		return (0);
+	if (!(*(data->paths + 0) = (size_t *)malloc(data->max_paths * (data->size + 1) \
+					* sizeof(size_t))))
 		return (0);
 	i = 0;
 	while (i < data->max_paths)
 	{
-		*(data->paths + i) = &(*(tmp + (i * (data->size + 1))));
+		*(data->paths + i) = &(*(*(data->paths + 0) + (i * (data->size + 1))));
 		j = 0;
-		while (j < data->size + 1)
+		while (j < data->size)
 		{
 			*(*(data->paths + i) + j) = 0;
 			j++;
 		}
+		*(*(data->paths + i) + data->size) = data->size;
 		i++;
 	}
 	return (1);
