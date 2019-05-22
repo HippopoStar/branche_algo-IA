@@ -40,7 +40,11 @@ From ft\_printf to CoreWar
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
-- / ! \\ Attention au cas dans lequel '##end' n'est pas suivi d'une description de salle
+- comptabiliser le nombre de liaisons de chaque salle lors du parsing
+- lors du premier passage de Bellman-Ford, pour chaque salle :
+	- comptabiliser le nombre d'itineraires l'impliquant
+	- sauvegarder quelque part son poid minimum
+- / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - Penser a liberer manuellement la memoire avec 'free'
 
 ## In '**mod1**'
