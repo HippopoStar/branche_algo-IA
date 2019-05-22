@@ -43,14 +43,16 @@ Documentation :
 - lors du parsing :
 	- comptabiliser le nombre de liaisons de chaque salle
 	- renvoyer une erreur pour une liaison declaree plusieurs fois ?
-- lors du premier passage de Bellman-Ford :
+- lors du premier passage de Bellman-Ford :  
+/ ! \\ Attention : il ne va pas trouver tous les itineraires possibles !  
+	Exemple : Il ne dessinera pas les itineraires employants des salles impliquees dans un itineraire plus court deja repertorie
 	- pour chaque salle :
 		- comptabiliser le nombre d'itineraires l'impliquant
-		- sauvegarder quelque part son poid minimum
+		- sauvegarder quelque part son poids minimum ('room->weight' apres le premier passage)
 	- pour chaque itineraire :
-		- repertorier les salles impliquees (dans la stucture des salles elles-memes, en employant des nombre premiers ?)  
-			-> il est necessaire qu'il existe davantage de nombre premiers inferieurs a INT_MAX que d'itineraires possibles
-		- sauvegarder quelque part son poids
+		- repertorier les salles impliquees (dans la stucture des salles elles-memes, en employant des nombres premiers ?)  
+			-> il est necessaire qu'il existe davantage de nombres premiers inferieurs a INT_MAX que d'itineraires possibles
+		- sauvegarder quelque part le poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - Penser a liberer manuellement la memoire avec 'free'
 
