@@ -40,10 +40,17 @@ From ft\_printf to CoreWar
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
-- comptabiliser le nombre de liaisons de chaque salle lors du parsing
-- lors du premier passage de Bellman-Ford, pour chaque salle :
-	- comptabiliser le nombre d'itineraires l'impliquant
-	- sauvegarder quelque part son poid minimum
+- lors du parsing :
+	- comptabiliser le nombre de liaisons de chaque salle
+	- renvoyer une erreur pour une liaison declaree plusieurs fois ?
+- lors du premier passage de Bellman-Ford :
+	- pour chaque salle :
+		- comptabiliser le nombre d'itineraires l'impliquant
+		- sauvegarder quelque part son poid minimum
+	- pour chaque itineraire :
+		- repertorier les salles impliquees (dans la stucture des salles elles-memes, en employant des nombre premiers ?)  
+			-> il est necessaire qu'il existe davantage de nombre premiers inferieurs a INT_MAX que d'itineraires possibles
+		- sauvegarder quelque part son poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - Penser a liberer manuellement la memoire avec 'free'
 
