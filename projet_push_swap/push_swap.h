@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/23 18:31:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/23 20:28:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void				ps_print_ando(t_ps *data, const char *command);
 */
 int					ps_gotta_push(t_nb *tmp, int pivot, char c);
 /*
-** Dans le fichier 'ps_shoten.c'
+** Dans le fichier 'ps_shorten.c'
 */
 void				ps_shorten(t_input **input);
 void				ps_print_input(t_input **input);

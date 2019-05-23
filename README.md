@@ -40,6 +40,7 @@ From ft\_printf to CoreWar
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
+- Enlever les flags 'sanitize' dans le Makefile
 - lors du parsing :
 	- comptabiliser le nombre de liaisons de chaque salle
 	- renvoyer une erreur pour une liaison declaree plusieurs fois ?
