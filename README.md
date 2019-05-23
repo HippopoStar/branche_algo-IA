@@ -34,6 +34,7 @@ From ft\_printf to CoreWar
 - Ameliorer le Makefile et ajouter des instructions specifiques a chaque binaire (Norme)
 - Liberer manuellement la memoire avec 'free'
 - Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne)
+- Il faut 'free' a la main y compris en cas d'erreur (voir l'appel de 'exit' dans 'ps\_print\_ando')
 
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  

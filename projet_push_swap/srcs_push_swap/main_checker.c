@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 14:27:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/23 23:10:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ int		main(int argc, char **argv)
 	{
 		ft_checker(&data, &(data.input), argc - option_wit, argv + option_wit);
 	}
+	ps_liberate_stacks(data.stacks);
 	return (0);
 }

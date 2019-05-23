@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/23 20:28:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/23 23:08:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ int					ps_is_a_sorted(t_ps *data);
 int					ps_is_b_sorted(t_ps *data);
 int					ps_are_sorted(t_ps *data);
 int					ps_is_ready_to_go(t_ps *data);
+/*
+** Dans le fichier 'ps_liberate_stacks.c'
+*/
+void				ps_liberate_stacks(t_nb *stacks[2]);
 /*
 ** Functions related to PUSH_SWAP ----------------------------------------------
 */

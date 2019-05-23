@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:07:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/28 01:43:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/23 23:11:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static size_t	cherche_arrivee(char const *s, size_t index)
 	{
 		index = index + i;
 		i = 1;
-		while (*(s + index + i) == ' ' ||
-				*(s + index + i) == '\n' ||
-				*(s + index + i) == '\t')
+		while (*(s + index + i) == ' '
+				|| *(s + index + i) == '\n'
+				|| *(s + index + i) == '\t')
 		{
 			i++;
 		}

@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/05/23 22:50:22 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/05/23 23:09:38 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRCS_BOTH =			./srcs_push_swap/ft_swap.c\
 					./srcs_push_swap/ps_display_stacks.c\
 					./srcs_push_swap/ps_parse.c\
 					./srcs_push_swap/ps_apply_moves.c\
-					./srcs_push_swap/ps_is_ready_to_go.c
+					./srcs_push_swap/ps_is_ready_to_go.c\
+					./srcs_push_swap/ps_liberate_stacks.c
 
 OBJS_PUSH_SWAP =	./main_push_swap.o\
 					./ps_sort_three.o\
@@ -74,7 +75,8 @@ OBJS_BOTH =			./ft_swap.o\
 					./ps_display_stacks.o\
 					./ps_parse.o\
 					./ps_apply_moves.o\
-					./ps_is_ready_to_go.o
+					./ps_is_ready_to_go.o\
+					./ps_liberate_stacks.o
 
 all: $(NAME) $(NAME_2)
 
