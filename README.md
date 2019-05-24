@@ -32,9 +32,8 @@ From ft\_printf to CoreWar
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT\_MAX : 'error'
 - Ameliorer le Makefile et ajouter des instructions specifiques a chaque binaire (Norme)
-- Liberer manuellement la memoire avec 'free'
+- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c')
 - Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne)
-- Il faut 'free' a la main y compris en cas d'erreur (voir l'appel de 'exit' dans 'ps\_print\_ando')
 
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
