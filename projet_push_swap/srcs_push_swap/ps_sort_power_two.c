@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/19 17:05:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:23:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ void	ps_aux_aux_sort_power_two(t_ps *data, size_t power_two, size_t i)
 	{
 		if ((2 * power_two) < data->length)
 		{
-			ps_print_ando(data, "rra");
+			ps_print_and_do(data, "rra");
 			i--;
 		}
 		while (i > 0 && (i % power_two != data->length % power_two))
 		{
-			ps_print_ando(data, "rra");
+			ps_print_and_do(data, "rra");
 			i--;
 		}
 		if (power_two == 2)
 			ps_swap_instructions(data);
 		if (i > 0)
 		{
-			ps_print_ando(data, "pa");
+			ps_print_and_do(data, "pa");
 			i--;
 		}
 		while (i > 0 && (i % power_two != data->length % power_two))
 		{
-			ps_print_ando(data, "pa");
+			ps_print_and_do(data, "pa");
 			i--;
 		}
 	}
@@ -85,11 +85,11 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add) \
 						% (power_two)) < (power_two / 2))
 			{
-				ps_print_ando(data, "pb");
+				ps_print_and_do(data, "pb");
 			}
 			else
 			{
-				ps_print_ando(data, "ra");
+				ps_print_and_do(data, "ra");
 			}
 			i++;
 		}

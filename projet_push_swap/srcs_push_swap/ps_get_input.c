@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:24:59 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/01/19 02:47:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:35:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ int		ps_valid_input(char *line)
 				|| !ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb")
 				|| !ft_strcmp(line, "rrr")) ? 1 : 0);
 }
+
+/*
+** Allocation dynamique de memoire dans 'ps_get_input'
+** ('get_next_line_backslash_zero' / 'malloc')
+*/
 
 int		ps_get_input(t_input **input)
 {

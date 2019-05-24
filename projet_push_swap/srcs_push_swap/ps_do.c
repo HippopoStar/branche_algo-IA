@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:04:28 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:04:30 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:17:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ps_do(t_ps *data, const char *inst)
 	i = 0;
 	while (*(inst + i) != '\0')
 	{
-		ps_print_ando(data, inst + i);
+		ps_print_and_do(data, inst + i);
 		while (*(inst + i) != '\0')
 		{
 			i++;

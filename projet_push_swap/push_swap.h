@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 15:15:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/23 23:08:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:14:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,18 @@ int					ps_is_b_sorted(t_ps *data);
 int					ps_are_sorted(t_ps *data);
 int					ps_is_ready_to_go(t_ps *data);
 /*
-** Dans le fichier 'ps_liberate_stacks.c'
+** Dans le fichier 'ps_liberate_memory.c'
 */
-void				ps_liberate_stacks(t_nb *stacks[2]);
+void				ps_liberate_stacks_and_sorted(t_ps *data);
+void				ps_liberate_input(t_input *input);
+void				ps_liberate_splited_argv(char **splited_argv);
 /*
 ** Functions related to PUSH_SWAP ----------------------------------------------
 */
 /*
 ** Dans le fichier 'main_push_swap.c'
 */
-void				ft_push_swap(t_ps *data, int argc, char **argv);
+int					ft_push_swap(t_ps *data, int argc, char **argv);
 /*
 ** Dans le fichier 'ps_sort_three.c'
 */
@@ -126,7 +128,8 @@ void				ps_swap_instructions(t_ps *data);
 /*
 ** / ! \ Dans le fichier 'ps_apply_moves.c'
 */
-void				ps_print_ando(t_ps *data, const char *command);
+int					ps_mem_and_do(t_ps *data, const char *command);
+void				ps_print_and_do(t_ps *data, const char *command);
 /*
 ** Dans le fichier 'ps_gotta_push.c'
 */

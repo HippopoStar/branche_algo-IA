@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:29 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:43:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:21:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	ps_sort_three(t_ps *data)
 	third = (((*(data->stacks + 0))->next)->next)->nb;
 	if (first < third && third < second)
 	{
-		ps_print_ando(data, "sa");
-		ps_print_ando(data, "ra");
+		ps_print_and_do(data, "sa");
+		ps_print_and_do(data, "ra");
 	}
 	else if (second < first && first < third)
-		ps_print_ando(data, "sa");
+		ps_print_and_do(data, "sa");
 	else if (third < first && first < second)
-		ps_print_ando(data, "rra");
+		ps_print_and_do(data, "rra");
 	else if (second < third && third < first)
-		ps_print_ando(data, "ra");
+		ps_print_and_do(data, "ra");
 	else if (third < second && second < first)
 	{
-		ps_print_ando(data, "ra");
-		ps_print_ando(data, "sa");
+		ps_print_and_do(data, "ra");
+		ps_print_and_do(data, "sa");
 	}
 }

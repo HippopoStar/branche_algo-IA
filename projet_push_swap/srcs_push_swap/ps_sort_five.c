@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:51:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 16:41:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:30:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	ps_distribute(t_ps *data, size_t start, size_t end, char c)
 	{
 		if (tmp->nb == pivot)
 		{
-			(c == 'a') ? ps_print_ando(data, "pb") : ps_print_ando(data, "pa");
-			(c == 'a') ? ps_print_ando(data, "rb") : ps_print_ando(data, "ra");
+			ps_print_and_do(data, (c == 'a') ? "pb" : "pa");
+			ps_print_and_do(data, (c == 'a') ? "rb" : "ra");
 			wit = 1;
 		}
 		else if (tmp->nb < pivot)
-			(c == 'a') ? ps_print_ando(data, "pb") : ps_print_ando(data, "rb");
+			ps_print_and_do(data, (c == 'a') ? "pb" : "rb");
 		else
-			(c == 'a') ? ps_print_ando(data, "ra") : ps_print_ando(data, "pa");
+			ps_print_and_do(data, (c == 'a') ? "ra" : "pa");
 		tmp = ((c == 'a') ? *(data->stacks + 0) : *(data->stacks + 1));
 	}
 	if (wit == 1)
-		(c == 'a') ? ps_print_ando(data, "rrb") : ps_print_ando(data, "rra");
+		ps_print_and_do(data, (c == 'a') ? "rrb" : "rra");
 }
 
 void	ps_aux_sort_five(t_ps *data, size_t start, size_t end, size_t *occ)
@@ -63,7 +63,7 @@ void	ps_aux_sort_five(t_ps *data, size_t start, size_t end, size_t *occ)
 	{
 		while (*(data->stacks + 1) != NULL)
 		{
-			ps_print_ando(data, "pa");
+			ps_print_and_do(data, "pa");
 		}
 	}
 	else if ((end - start) > 2)

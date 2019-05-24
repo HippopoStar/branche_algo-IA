@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:37:45 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/28 01:41:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 16:56:09 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static size_t	fill_word(char **split, const char *s, char c)
 		word_length++;
 	}
 	if (!(*(split + 0) = (char *)malloc((word_length + 1) * sizeof(char))))
-		return (word_length);
+		return (0);
 	i = 0;
 	while (i < word_length)
 	{
@@ -63,14 +63,12 @@ static size_t	fill_word(char **split, const char *s, char c)
 	return (word_length);
 }
 
-static char		**aux_ft_strsplit(char const *s, char c)
+static int		aux_ft_strsplit(char const *s, char c, char **split)
 {
-	char	**split;
 	size_t	word_place;
 	size_t	i;
+	size_t	ret_val;
 
-	if (!(split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (NULL);
 	i = 0;
 	while (*(s + i) == c)
 	{
@@ -79,7 +77,9 @@ static char		**aux_ft_strsplit(char const *s, char c)
 	word_place = 0;
 	while (*(s + i) != '\0')
 	{
-		i = i + fill_word(&(*(split + word_place)), (s + i), c);
+		if ((ret_val = fill_word(&(*(split + word_place)), (s + i), c)) == 0)
+			return (0);
+		i = i + ret_val;
 		word_place++;
 		while (*(s + i) == c)
 		{
@@ -87,10 +87,32 @@ static char		**aux_ft_strsplit(char const *s, char c)
 		}
 	}
 	*(split + word_place) = NULL;
-	return (split);
+	return (1);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	return ((s != NULL) ? aux_ft_strsplit(s, c) : NULL);
+	char	**split;
+	size_t	i;
+
+	if (s == NULL)
+	{
+		return (NULL);
+	}
+	if (!(split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *))))
+	{
+		return (NULL);
+	}
+	if (aux_ft_strsplit(s, c, split) == 0)
+	{
+		i = 0;
+		while (*(split + i) != NULL)
+		{
+			free(*(split + i));
+			i++;
+		}
+		free(split);
+		return (NULL);
+	}
+	return (split);
 }

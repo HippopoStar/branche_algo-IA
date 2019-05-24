@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/09 19:41:11 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:37:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ int		ps_sort_wit(int *sorted, size_t length)
 ** verifier la coherence des nombres grace a 'ps_zero_format', et appeler
 ** 'ps_sort_wit'
 */
+/*
+** Allocation dynamique de memoire dans 'ps_init_stacks' ('malloc')
+*/
 
 int		ps_init_stacks(t_ps *data, char **to_parse)
 {
@@ -135,6 +138,9 @@ int		ps_init_stacks(t_ps *data, char **to_parse)
 /*
 ** Un message d'erreur etant envoye dans la fonction appelant 'ps_parse'
 ** dans le cas ou celle-ci renverrait '0', nul besoin de l'afficher ici-meme
+*/
+/*
+** Allocation dynamique de memoire dans 'ps_parse' ('ft_strsplit')
 */
 
 int		ps_parse(t_ps *data, int argc, char **argv)

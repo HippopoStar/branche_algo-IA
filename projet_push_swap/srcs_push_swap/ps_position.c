@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:15:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 10:34:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:32:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	ps_swap_instructions(t_ps *data)
 		instruction = 3 * instruction;
 	}
 	if (instruction % 6 == 0)
-		ps_print_ando(data, "ss");
+		ps_print_and_do(data, "ss");
 	else if (instruction % 2 == 0)
-		ps_print_ando(data, "sa");
+		ps_print_and_do(data, "sa");
 	else if (instruction % 3 == 0)
-		ps_print_ando(data, "sb");
+		ps_print_and_do(data, "sb");
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 01:21:46 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/23 23:10:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:19:57 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ int		main(int argc, char **argv)
 	(data.reg).rrr = 0;
 	*(data.stacks + 0) = NULL;
 	*(data.stacks + 1) = NULL;
+	data.sorted = NULL;
 	data.input = NULL;
 	if (argc - option_wit > 1)
 	{
 		ft_checker(&data, &(data.input), argc - option_wit, argv + option_wit);
 	}
-	ps_liberate_stacks(data.stacks);
+	ps_liberate_stacks_and_sorted(&data);
 	return (0);
 }

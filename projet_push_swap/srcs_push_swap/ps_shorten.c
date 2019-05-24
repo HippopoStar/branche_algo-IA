@@ -6,11 +6,15 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 12:44:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/21 14:37:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:56:47 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+** FICHIER OBSOLETE (voir 'ps_mem_and_do' dans le ficher 'ps_apply_moves.c')
+*/
 
 void	ps_print_input(t_input **input)
 {
