@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 15:28:11 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/25 15:10:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/25 18:51:22 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	attribute(char *dest, char *src, int word_size)
 	dest[word_size] = '\0';
 }
 
-static int		aux_whitespaces(char **split, char *str)
+static int	aux_whitespaces(char **split, char *str)
 {
 	int i;
 	int word_size;
