@@ -6,9 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 12:49:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 04:46:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:42:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Sujet du projet : https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf
+*/
 
 #ifndef LIBFT_H
 # define LIBFT_H
