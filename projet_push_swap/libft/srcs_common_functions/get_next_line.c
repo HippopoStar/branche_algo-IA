@@ -6,14 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/03/22 00:23:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/25 17:55:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*
-** bs_p : backspace_place
+** bs_p : backspace_place (correspond parfois a l'index dans le buffer
+**                         du premier caractere a traiter davantage qu'a
+**                         celui du dernier 'retour a la ligne' rencontre)
 ** r_v  : read_value
 */
 
@@ -35,6 +37,40 @@ static t_gnl	*creer_maillon(const int fd)
 }
 
 /*
+** La fonction 'aux_3_gnl'
+** - Determine la longueur prealable de la chaine (~ ft_strlen)
+** ( > 0 : cas dans lequel une ligne est a cheval entre 2 buffers de 'read')
+** - Determine le nombre de carateres a ajouter a la chaine prealable
+** lors de l'appel courant
+** (~ max(index premier '\n' rencontre, nombre de caracteres lu par 'read')
+**     - index de depart lors de l'appel)
+** - Alloue dynamiquement de la memoire pour une nouvelle chaine de carateres
+** contenant la concatenation de la chaine prealable et des autres caracteres
+** - Copie dans la nouvelle chaine la chaine prealable
+** - Libere la memoire attribuee a la chaine prealable ('*line')
+** - Copie dans la nouvelle chaine les autres caracteres
+** Note : lors de cette etape, la post-incrementation de la variable 'mai->bs_p'
+**        a pour effet d'attribuer a cette derniere en fin de boucle la valeur
+**        de 'mai->r_v' dans le cas ou on n'a pas rencontre de '\n'
+** - Attribue au pointeur ('*line') l'adresse de la chaine obtenue
+** - Si l'emplacement du dernier caratere a traite
+** (contenu alors dans la variable 'mai->bs_p') correspond au nombre de
+** carateres que le dernier appel de 'read' en date a lu,
+** appel 'aux_2_gnl' en conservant sa valeur de retour et renvoie :
+**     - '1' si cette derniere vaut '0'
+**     (la prochaine valeur de retour de 'read' vaut '0',
+**     le fichier a dors et deja ete lu integralement)
+**     - cette valeur elle-meme sinon ('1' ou '-1')
+** - Sinon, si l'emplacement du dernier caractere traite
+** (contenu alors dans la variable 'mai->bs_p') ne correspond pas au nombre de
+** carateres que le dernier appel de 'read' en date a lu,
+** (on a alors ne-ce-ssaire-ment rencontre un '\n')
+**     - Incremente la valeur de la variable 'mai->bs_p' indiquant alors
+**     la position du dernier 'retour a la ligne' rencontre, afin qu'elle
+**     corresponde a l'index du premier caractere de la ligne suivante
+**     - Renvoie '1' (car la ligne est integralement retranscrite dans '*line')
+**
+**
 ** tab[0] : previous_length
 ** tab[1] : to_add
 ** tab[2] : i
@@ -66,6 +102,16 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[3])
 	return (1);
 }
 
+/*
+** La fonction 'aux_2_gnl'
+** - Si l'emplacement du dernier 'retour a la ligne' traite correspond
+** au dernier caratere lu par 'read', rappelle 'read'
+**     - Si 'read' ne lit pas davantage de caracteres, renvoie '0'
+**     - Sinon, remet la variable indiquant l'emplacement du dernier
+**     'retour a la ligne' traite a '0', et renvoie le retour de 'aux_3_gnl'
+** - Sinon, renvoie le retour de 'aux_3_gnl'
+*/
+
 int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 {
 	ssize_t			p_l__t_a[3];
@@ -82,6 +128,13 @@ int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 		return (aux_3_gnl(fd, line, maillon, p_l__t_a));
 	}
 }
+
+/*
+** Remarque :
+** Peut-etre serait-il pertinent dans le cas d'une valeur de retour
+** de 'aux_2_gnl' valant '-1' (echec d'un 'malloc' de '*line' ou d'un 'read')
+** de liberer la memoire attribuee au maillon correspondant ?
+*/
 
 int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 {
