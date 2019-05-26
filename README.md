@@ -25,15 +25,16 @@ From ft\_printf to CoreWar
 	- max 12 instructions avec l argument "1 5 2 4 3" **OU** 5 valeurs quelconques
 	- max 5300 instructions avec 500 arguments
 	```
-	ARG=`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"` ; ./push_swap $ARG | wc -l
+	ARG=`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"` && ./push_swap $ARG | wc -l
+	ARG=`ruby -e "puts (-250 .. 249).to_a.shuffle.join(' ')"` && echo $ARG && ./push_swap $ARG | ./checker -c $ARG && ./push_swap $ARG | wc -l
 	```
 	- '*ps\_sort\_five*' ne trie pas la pile si lance avec la commande ci-dessus
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT\_MAX : 'error'
-- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) ([color=#26B260] OK [/color])
-- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') ([color=#26B260] OK [/color])
-- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) ([color=#26B260] OK [/color])
+- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) (<span style="color: #26B260"> OK </span>)
+- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') (<span style="color: #26B260"> OK </span>)
+- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) (<span style="color: #26B260"> OK </span>)
 - Ameliorer le Makefile ( [https://forum.intra.42.fr/topics/85/messages] )
 - Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D)
 
