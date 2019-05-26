@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:54:02 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/24 15:23:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/26 13:50:58 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ps_aux_sort_power_two(t_ps *data, size_t to_add, size_t power_two)
 		i = 0;
 		while (i < data->length)
 		{
-			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add) \
+			if (*(data->stacks + 0) != NULL && ((ps_position(data) + to_add)
 						% (power_two)) < (power_two / 2))
 			{
 				ps_print_and_do(data, "pb");

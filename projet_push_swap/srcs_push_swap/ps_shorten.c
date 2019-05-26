@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 12:44:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/24 15:56:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/26 13:50:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ps_aux_shorten(char first[4], char second[4])
 				|| (!ft_strcmp(first, "rr") && !ft_strcmp(second, "rrr"))
 				|| (!ft_strcmp(first, "rra") && !ft_strcmp(second, "ra"))
 				|| (!ft_strcmp(first, "rrb") && !ft_strcmp(second, "rb"))
-				|| (!ft_strcmp(first, "rrr") && !ft_strcmp(second, "rr"))) ? 1 \
+				|| (!ft_strcmp(first, "rrr") && !ft_strcmp(second, "rr"))) ? 1
 			: 0);
 }
 
@@ -53,7 +53,7 @@ void	ps_shorten(t_input **input)
 	int		wit;
 
 	wit = 1;
-	while ((*input) != NULL && (*input)->next != NULL \
+	while ((*input) != NULL && (*input)->next != NULL
 			&& ((*input)->next)->next != NULL && wit == 1)
 	{
 		wit = 0;

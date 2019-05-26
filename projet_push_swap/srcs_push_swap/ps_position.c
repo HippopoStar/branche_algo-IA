@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 09:15:32 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/24 15:32:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/26 13:49:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ps_swap_instructions(t_ps *data)
 	{
 		instruction = 2 * instruction;
 	}
-	if ((*(data->stacks + 1) != NULL && (*(data->stacks + 1))->next != NULL) \
+	if ((*(data->stacks + 1) != NULL && (*(data->stacks + 1))->next != NULL)
 			&& ((*(data->stacks + 1))->nb < ((*(data->stacks + 1))->next)->nb))
 	{
 		instruction = 3 * instruction;

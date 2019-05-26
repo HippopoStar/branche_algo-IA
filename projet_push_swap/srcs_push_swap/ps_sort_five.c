@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 13:51:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/24 15:30:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/26 13:50:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ps_distribute(t_ps *data, size_t start, size_t end, char c)
 	tmp = ((c == 'a') ? *(data->stacks + 0) : *(data->stacks + 1));
 	pivot = *(data->sorted + ((start + end + 1) / 2));
 	wit = 0;
-	while (tmp != NULL && tmp->next != NULL \
-			&& !((c == 'a') ? ps_is_a_sorted(data) : ps_is_b_sorted(data)) \
+	while (tmp != NULL && tmp->next != NULL
+			&& !((c == 'a') ? ps_is_a_sorted(data) : ps_is_b_sorted(data))
 			&& (ps_gotta_push(tmp, pivot, c) || tmp->next->next == NULL))
 	{
 		if (tmp->nb == pivot)

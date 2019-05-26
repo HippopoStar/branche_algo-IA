@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 02:13:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/24 14:37:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/26 13:49:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ps_integer_format(t_ps *data, char **to_parse)
 	while (*(to_parse + i))
 	{
 		j = 0;
-		if ((*(*(to_parse + i) + 0) == '-' || *(*(to_parse + i) + 0) == '+') \
+		if ((*(*(to_parse + i) + 0) == '-' || *(*(to_parse + i) + 0) == '+')
 				&& *(*(to_parse + i) + 1) != '\0')
 		{
 			j++;
@@ -150,7 +150,7 @@ int		ps_parse(t_ps *data, int argc, char **argv)
 	int		ret;
 
 	to_parse = (argc == 2) ? ft_strsplit(*(argv + 1), ' ') : argv + 1;
-	ret = (!to_parse || !ps_integer_format(data, to_parse)) ? 0 \
+	ret = (!to_parse || !ps_integer_format(data, to_parse)) ? 0
 		: ps_init_stacks(data, to_parse);
 	if (argc == 2 && to_parse)
 	{
