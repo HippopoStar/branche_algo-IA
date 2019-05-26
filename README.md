@@ -31,9 +31,11 @@ From ft\_printf to CoreWar
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT\_MAX : 'error'
-- Ameliorer le Makefile et ajouter des instructions specifiques a chaque binaire (Norme)
-- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c')
-- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne)
+- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) ([color=#26B260] OK [/color])
+- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') ([color=#26B260] OK [/color])
+- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) ([color=#26B260] OK [/color])
+- Ameliorer le Makefile ( [https://forum.intra.42.fr/topics/85/messages] )
+- Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D)
 
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
