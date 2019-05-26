@@ -46,18 +46,20 @@
 ** 13 - 6 = 7 est le nombre de fourmis devant encore entrer dans la fourmiliere
 ** apres que la premiere fourmis ayant emprunte le chemin le plus long
 ** soit arrive
-** 7 - 3 = 4 > 0  -> 4 + 3 = 7 fourmis passeront par le plus court chemin
-** 4 - 3 = 1 > 0  -> 1 + 3 = 4 fourmis passeront par le 2e plus court chemin
-** 1 - 3 = -2 <=0 -> 1 + 1 = 2 fourmis passeront par le 3e plus court chemin
+** (nb de fourmis restantes / nb de chemin restants) = nb de fourmis a envoyer
+**                                                     dans le chemin courant
+**           7 / 3 = 2 reste 1 -> 4 + 3 = 7 fourmis passeront par le plus court chemin
+** (7 - 3 = 4) / 2 = 2         -> 1 + 2 = 3 fourmis passeront par le 2e plus court chemin
+** (4 - 2 = 2) / 1 = 2         -> 1 + 2 = 3 fourmis passeront par le 3e plus court chemin
 **
 **  1: L1-B L2-C L3-G
 **  2: L1-Z L2-D L3-H L4-B L5-C L6-G
-**  3:      L2-E L3-I L4-Z L5-D L6-H L7-B L8-C
-**  4:      L2-F L3-J      L5-E L6-I L7-Z L8-D L9-B L10-C
-**  5:      L2-Z L3-Z      L5-F L6-J      L8-E L9-Z L10-D L11-B
-**  6:                     L5-Z L6-Z      L8-F      L10-E L11-Z L12-B
-**  7:                                    L8-Z      L10-F       L12-Z L13-B
-**  8:                                              L10-Z             L13-Z
+**  3:      L2-E L3-I L4-Z L5-D L6-H L7-B L8-C L9-G
+**  4:      L2-F L3-J      L5-E L6-I L7-Z L8-D L9-H L10-B
+**  5:      L2-Z L3-Z      L5-F L6-J      L8-E L9-I L10-Z L11-B
+**  6:                     L5-Z L6-Z      L8-F L9-J       L11-Z L12-B
+**  7:                                    L8-Z L9-Z             L12-Z L13-B
+**  8:                                                                L13-Z
 **  9:
 ** 10:
 **

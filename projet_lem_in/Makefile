@@ -32,7 +32,8 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_print_map.c\
 		./srcs_lem_in/li_bellman_ford.c\
 		./srcs_lem_in/li_bhandari.c\
-		./srcs_lem_in/li_build_routes.c
+		./srcs_lem_in/li_build_routes.c\
+		./srcs_lem_in/li_eval_routes.c
 
 OBJS = ./main_lem_in.o\
 		./li_error.o\
@@ -46,7 +47,8 @@ OBJS = ./main_lem_in.o\
 		./li_print_map.o\
 		./li_bellman_ford.o\
 		./li_bhandari.o\
-		./li_build_routes.o
+		./li_build_routes.o\
+		./li_eval_routes.o
 
 all: $(NAME)
 

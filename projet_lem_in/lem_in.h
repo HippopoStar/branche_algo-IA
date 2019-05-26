@@ -129,5 +129,9 @@ int					li_bhandari(t_data *data);
 int					li_allocate_routes(t_data *data);
 void				li_aux_build_routes(t_data *data, size_t **field, size_t n);
 int					li_build_routes(t_data *data);
+/*
+** Dans le fichier 'li_eval_routes.c'
+*/
+size_t				li_eval_steps(t_data *data, size_t index);
 
 #endif
