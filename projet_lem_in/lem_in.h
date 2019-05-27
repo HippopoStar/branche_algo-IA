@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/20 22:07:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/27 17:41:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ int					li_build_routes(t_data *data);
 /*
 ** Dans le fichier 'li_eval_routes.c'
 */
+size_t				li_eval_meanwhile(t_data *data, size_t index);
 size_t				li_eval_steps(t_data *data, size_t index);
 
 #endif

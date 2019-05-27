@@ -65,13 +65,21 @@
 **
 */
 
-
-
-size_t	li_eval_steps(t_data *data, size_t index)
+size_t	li_eval_meanwhile(t_data *data, size_t index)
 {
 	size_t	i;
+	size_t	longest_path_length;
+	size_t	current_path_length;
+	size_t	meanwhile;
 
+	longest_path_length = *(*(*(data->routes + index) + index) + data->size);
+	meanwhile = 1;
 	i = 0;
-	while (i < data->size)
+	while (i < index)
 	{
-
+		current_path_length = *(*(*(data->routes + index) + i) + data->size);
+		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
+		i++;
+	}
+	return ((meanwhile <= data->size) ? meanwhile : 0);
+}
