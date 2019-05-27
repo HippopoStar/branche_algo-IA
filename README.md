@@ -1,6 +1,8 @@
 # branche\_algo-IA
 From ft\_printf to CoreWar
 
+Signe de verification : [✓](https://unicode-table.com/fr/#2713)
+
 ## In '**ft\_printf**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/20/ft_printf.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/printf/subnotions/printf-introduction/videos/introduction-74)  
@@ -32,11 +34,16 @@ From ft\_printf to CoreWar
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT\_MAX : 'error'
-- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) (<span style="color: #26B260"> OK </span>)
-- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') (<span style="color: #26B260"> OK </span>)
-- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) (<span style="color: #26B260"> OK </span>)
-- Ameliorer le Makefile ( [https://forum.intra.42.fr/topics/85/messages] )
-- Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D)
+- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) [✓]
+- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') [✓]
+- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) [✓]
+- Ameliorer le Makefile [Intra - Comment faire un Makefile modulaire](https://forum.intra.42.fr/topics/85/messages) [ ]
+- Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D) [ ]
+- Valgrind rale a propos de 'get\_next\_line' lorsque 'checker' est employe de la maniere suivante :
+	```
+	ARG=`ruby -e "puts (-50 .. 49).to_a.shuffle.join(' ')"` && ./push_swap $ARG > log_push_swap.log
+	valgrind ./checker < log_push_swap.log $ARG
+	```
 
 ## In '**lem-in**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
