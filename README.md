@@ -38,7 +38,13 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 - Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') [✓]
 - Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) [✓]
 - Ameliorer le Makefile [Intra - Comment faire un Makefile modulaire](https://forum.intra.42.fr/topics/85/messages) [ ]
-- Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D) [ ]
+- Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D) [ ]  
+	-> Ajouter les 2 lignes suivantes au debut de la fonction 'aux_2_gnl' :  
+	(car autrement 'read' va vouloir se lancer une 2e fois apres avoir lu '0' caracteres)
+	```
+	if (maillon->r_v == 0)
+		return (0);
+	```
 - Valgrind rale a propos de 'get\_next\_line' lorsque 'checker' est employe de la maniere suivante :
 	```
 	ARG=`ruby -e "puts (-50 .. 49).to_a.shuffle.join(' ')"` && ./push_swap $ARG > log_push_swap.log
