@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 17:56:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:27:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,15 @@ void	li_print_routes(t_data *data)
 			while (k < data->size)
 			{
 				room_id = *(*(*(data->routes + i) + j) + k);
-				if (room_id < data->size) //TODO
-					ft_putstr((*(data->map + room_id))->name);
-				else
-				{
-					ft_putnbr((int)room_id);
-					ft_putchar('!');
-				}
+				ft_putstr((*(data->map + room_id))->name);
 				if (k < data->size - 1)
 				{
 					ft_putstr("->");
 				}
 				k++;
 			}
+			ft_putstr(" length : ");
+			ft_putnbr((int)(*(*(data->routes + i) + j) + data->size));
 			ft_putchar('\n');
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 16:24:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 20:03:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 	size_t	current_path_length;
 	size_t	meanwhile;
 
+	*(*(*(data->routes + index) + index) + data->size + 1) = 0;
 	longest_path_length = *(*(*(data->routes + index) + index) + data->size);
 	meanwhile = 1;
 	i = 0;
@@ -95,8 +96,14 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
 		i++;
 	}
-	return ((meanwhile <= data->size) ? meanwhile : 0);
+	return ((meanwhile <= (size_t)data->ants) ? meanwhile : 0);
 }
+
+/*
+** On assigne a la variable
+** *(*(*(data->routes + A) + B) + data->size + 1)
+** Le nombre de fourmis devant passer par l'itineraire B de la combinaison A
+*/
 
 size_t	li_eval_steps(t_data *data, size_t index)
 {
@@ -106,7 +113,7 @@ size_t	li_eval_steps(t_data *data, size_t index)
 
 	if (index == 0)
 	{
-		*(*(*(data->routes + 0) + 0) + data->size + 1) = data->size;
+		*(*(*(data->routes + 0) + 0) + data->size + 1) = (size_t)data->ants;
 	}
 	else if ((ret_val = li_eval_meanwhile(data, index)) == 0)
 	{
@@ -114,7 +121,7 @@ size_t	li_eval_steps(t_data *data, size_t index)
 	}
 	else
 	{
-		ants = data->size - ret_val;
+		ants = (size_t)data->ants - ret_val;
 		i = 0;
 		while (ants > 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 16:37:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:45:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,12 @@ int					li_bhandari(t_data *data);
 ** Dans le fichier 'li_build_routes.c'
 */
 int					li_allocate_routes(t_data *data);
-void				li_aux_build_routes(t_data *data, size_t **field, size_t n);
+void				aux_li_build_routes(t_data *data, size_t **field, size_t n);
 int					li_build_routes(t_data *data);
+/*
+** Dans le fichier 'li_get_routes_lengths'
+*/
+void				li_get_routes_lengths(t_data *data);
 /*
 ** Dans le fichier 'li_eval_routes.c'
 */

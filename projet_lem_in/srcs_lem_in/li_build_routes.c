@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 19:08:39 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:47:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		li_allocate_routes(t_data *data)
 ** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E devient H
 */
 
-void	li_aux_build_routes(t_data *data, size_t **field, size_t n)
+void	aux_li_build_routes(t_data *data, size_t **field, size_t n)
 {
 	size_t	a;
 	size_t	b;
@@ -139,7 +139,7 @@ int		li_build_routes(t_data *data)
 			j++;
 		}
 		*(*(*(data->routes + i) + i) + data->size) = data->size - *(*(data->paths + i) + data->size);
-		li_aux_build_routes(data, *(data->routes + i), i);
+		aux_li_build_routes(data, *(data->routes + i), i);
 		i++;
 	}
 	return (1);
