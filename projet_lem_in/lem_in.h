@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/27 17:41:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 16:37:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct		s_data
 	size_t			**paths;
 	size_t			path_nb;
 	size_t			***routes;
+	size_t			best_steps;
+	size_t			best_route;
 	t_room			*rooms;
 	t_room			**map;
 	t_input			*input;
@@ -134,5 +136,12 @@ int					li_build_routes(t_data *data);
 */
 size_t				li_eval_meanwhile(t_data *data, size_t index);
 size_t				li_eval_steps(t_data *data, size_t index);
+size_t				li_eval_routes(t_data *data);
+/*
+** Dans le fichier 'li_move_ants.c'
+** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' !
+*/
+void				aux_li_move_ants(t_data *data, size_t j);
+void				li_move_ants(t_data *data);
 
 #endif

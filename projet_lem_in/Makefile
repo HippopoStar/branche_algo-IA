@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/05/20 22:02:30 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/05/28 16:22:29 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_bellman_ford.c\
 		./srcs_lem_in/li_bhandari.c\
 		./srcs_lem_in/li_build_routes.c\
-		./srcs_lem_in/li_eval_routes.c
+		./srcs_lem_in/li_eval_routes.c\
+		./srcs_lem_in/li_move_ants.c
 
 OBJS = ./main_lem_in.o\
 		./li_error.o\
@@ -48,7 +49,8 @@ OBJS = ./main_lem_in.o\
 		./li_bellman_ford.o\
 		./li_bhandari.o\
 		./li_build_routes.o\
-		./li_eval_routes.o
+		./li_eval_routes.o\
+		./li_move_ants.o
 
 all: $(NAME)
 

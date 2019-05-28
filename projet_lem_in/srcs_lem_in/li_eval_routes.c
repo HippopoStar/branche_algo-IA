@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_eval_routes.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/05/28 16:24:38 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 /*
@@ -78,8 +90,62 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 	while (i < index)
 	{
 		current_path_length = *(*(*(data->routes + index) + i) + data->size);
+		*(*(*(data->routes + index) + i) + data->size + 1)
+			= (longest_path_length - current_path_length) + 1;
 		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
 		i++;
 	}
 	return ((meanwhile <= data->size) ? meanwhile : 0);
+}
+
+size_t	li_eval_steps(t_data *data, size_t index)
+{
+	size_t	ret_val;
+	size_t	ants;
+	size_t	i;
+
+	if (index == 0)
+	{
+		*(*(*(data->routes + 0) + 0) + data->size + 1) = data->size;
+	}
+	else if ((ret_val = li_eval_meanwhile(data, index)) == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		ants = data->size - ret_val;
+		i = 0;
+		while (ants > 0)
+		{
+			(*(*(*(data->routes + index) + (i % index)) + data->size + 1))++;
+			ants--;
+		}
+	}
+	return (*(*(*(data->routes + index) + 0) + data->size)
+			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 1);
+}
+
+size_t	li_eval_routes(t_data *data)
+{
+	size_t	ret_val;
+	size_t	best_value;
+	size_t	best_index;
+	size_t	i;
+
+	best_value = li_eval_steps(data, 0);
+	best_index = 0;
+	i = 1;
+	while (i < data->path_nb && (ret_val = li_eval_steps(data, i)) > 0)
+	{
+		if (ret_val < best_value)
+		{
+			best_value = ret_val;
+			best_index = i;
+		}
+		i++;
+	}
+	data->best_steps = best_value;
+	data->best_route = best_index;
+	return (best_index);
 }
