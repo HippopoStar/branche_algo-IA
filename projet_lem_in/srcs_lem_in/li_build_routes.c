@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/22 21:18:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:08:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		li_allocate_routes(t_data *data)
 	}
 	if (!(data->routes = (size_t ***)malloc(data->path_nb * sizeof(size_t **)))
 			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
-			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n * (data->size + 1) * sizeof(size_t))))
+			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n * (data->size + 2) * sizeof(size_t))))
 		return (0);
 	n = 0;
 	i = 1;
@@ -38,7 +38,7 @@ int		li_allocate_routes(t_data *data)
 		j = 0;
 		while (j <= i)
 		{
-			*(*(data->routes + i) + j) = &(*(*(*(data->routes + 0) + 0) + ((n + j) * (data->size + 1))));
+			*(*(data->routes + i) + j) = &(*(*(*(data->routes + 0) + 0) + ((n + j) * (data->size + 2))));
 			j++;
 		}
 		i++;
@@ -46,11 +46,53 @@ int		li_allocate_routes(t_data *data)
 	return (1);
 }
 
+/*
+** A->E->D->H               donne   A->E->F->G->H   D devient F
+** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E devient H
+*/
+
 void	li_aux_build_routes(t_data *data, size_t **field, size_t n)
 {
-	(void)data;
-	(void)field;
-	(void)n;
+	size_t	a;
+	size_t	b;
+	size_t	i;
+	size_t	j;
+	size_t	tmp_b;
+
+	a = n;
+	b = 1;
+	while (b + 2 < data->size)
+	{
+		i = 0;
+		while (i <= n)
+		{
+			j = 1;
+			while (j < data->size)
+			{
+				if (!(*(*(field + i) + j) == 0 || *(*(field + i) + j) == data->size - 1)
+						&& *(*(field + i) + j) == *(*(field + a) + b)
+						&& !(a == i && b == j))
+				{
+					tmp_b = b;
+					while (j < data->size && tmp_b + 2 < data->size)
+					{
+						*(*(field + i) + j) = *(*(field + a) + tmp_b + 2);
+						*(*(field + a) + tmp_b + 1) = *(*(field + i) + j + 1);
+						tmp_b++;
+						j++;
+					}
+					*(*(field + a) + tmp_b + 1) = *(*(field + i) + j + 1);
+					*(*(field + a) + data->size) = *(*(field + a) + data->size) - 3;
+					*(*(field + i) + data->size) = *(*(field + i) + data->size) + 1;
+					a = i;
+					i = n;
+				}
+				j++;
+			}
+			i++;
+		}
+		b++;
+	}
 }
 
 /*
@@ -97,8 +139,8 @@ int		li_build_routes(t_data *data)
 			j++;
 		}
 		*(*(*(data->routes + i) + i) + data->size) = data->size - *(*(data->paths + i) + data->size);
-		i++;
 		li_aux_build_routes(data, *(data->routes + i), i);
+		i++;
 	}
 	return (1);
 }

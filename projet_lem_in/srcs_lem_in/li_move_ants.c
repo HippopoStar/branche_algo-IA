@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 16:26:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/28 17:52:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	aux_li_move_ants(t_data *data, size_t j)
 	li_get_output(data, ant_name);
 	free(ant_name);
 	li_get_output(data, "-");
-	li_get_output(data, (*(data->rooms + room_id)).name);
+	li_get_output(data, (*(data->map + room_id))->name);
 	li_get_output(data, " ");
 }
 
