@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/05/28 19:42:55 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/05/29 19:09:10 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_build_routes.c\
 		./srcs_lem_in/li_get_routes_lengths.c\
 		./srcs_lem_in/li_eval_routes.c\
+		./srcs_lem_in/li_size_ttoa.c\
 		./srcs_lem_in/li_move_ants.c
 
 OBJS = ./main_lem_in.o\
@@ -52,6 +53,7 @@ OBJS = ./main_lem_in.o\
 		./li_build_routes.o\
 		./li_get_routes_lengths.o\
 		./li_eval_routes.o\
+		./li_size_ttoa.o\
 		./li_move_ants.o
 
 all: $(NAME)

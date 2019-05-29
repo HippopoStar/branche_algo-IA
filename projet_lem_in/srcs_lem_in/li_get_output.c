@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:33:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 18:21:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	li_get_output(t_data *data, const char *str)
 		*((data->output).buff + (data->output).index + i) = *(str + i);
 		i++;
 	}
-	if ((data->output).index + i < LI_BUFF)
-	{
-		*((data->output).buff + (data->output).index + i) = '\n';
-		i++;
-	}
+//	if ((data->output).index + i < LI_BUFF)
+//	{
+//		*((data->output).buff + (data->output).index + i) = '\n';
+//		i++;
+//	}
 	(data->output).index = (data->output).index + i;
 	if ((data->output).index == LI_BUFF)
 	{

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/26 12:57:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 18:21:57 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		li_get_input(t_data *data, t_input **input)
 	while ((ret_gnl = get_next_line_backslash_zero(0, &(tmp->line))) == 1)
 	{
 		li_get_output(data, tmp->line);
+		li_get_output(data, "\n");
 		if (!(tmp->next = (t_input *)malloc(sizeof(t_input))))
 			return (0);
 		tmp = tmp->next;

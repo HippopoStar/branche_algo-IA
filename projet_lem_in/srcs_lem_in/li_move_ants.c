@@ -6,50 +6,77 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 17:52:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:36:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-/*
-** Allocation dynamique de memoire dans 'aux_li_move_ants' ('ft_itoa')
-** / ! \ Penser a la gestion d'erreur
-*/
-
-void	aux_li_move_ants(t_data *data, size_t j)
+int		li_allocate_ant_tab(t_data *data)
 {
-	size_t	ant_id;
-	size_t	room_id;
-	char	*ant_name;
+	size_t	i;
 
-	room_id = *(*(*(data->routes + data->best_route) + (j % data->path_nb))
-			+ (j / data->path_nb));
-	ant_id = j % data->size;
-	ant_name = ft_itoa((int)ant_id);
-	li_get_output(data, "L");
-	li_get_output(data, ant_name);
-	free(ant_name);
-	li_get_output(data, "-");
-	li_get_output(data, (*(data->map + room_id))->name);
-	li_get_output(data, " ");
+	if (!(data->ant_tab = (t_ant *)malloc(data->ants * sizeof(t_ant))))
+		return (0);
+	i = 0;
+	while (i < (size_t)data->ants)
+	{
+		(*(data->ant_tab + i)).pos_x = i % (data->best_route + 1);
+		(*(data->ant_tab + i)).pos_y = 1;
+		li_size_ttoa(i + 1, (*(data->ant_tab + i)).to_print, data->color);
+		i++;
+	}
+	return (1);
 }
 
-void	li_move_ants(t_data *data)
+void	aux_li_move_ants(t_data *data)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	j = 0;
-	while (i < data->best_steps)
+	while ((*(data->ant_tab + i)).pos_y != 1 && i < (size_t)data->ants)
 	{
-		while (j % data->size > 0)
+		if ((*(data->ant_tab + i)).pos_y < *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_x) + data->size))
 		{
-			aux_li_move_ants(data, j);
-			j++;
+			li_get_output(data, (char *)(*(data->ant_tab + i)).to_print);
+			li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_x) + (*(data->ant_tab + i)).pos_y)))->name);
+			((*(data->ant_tab + i)).pos_y)++;
 		}
 		i++;
 	}
+	j = 0;
+	while (j < data->best_route && i + j < (size_t)data->ants)
+	{
+		li_get_output(data, (char *)(*(data->ant_tab + i + j)).to_print);
+		li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i + j)).pos_x) + (*(data->ant_tab + i + j)).pos_y)))->name);
+		((*(data->ant_tab + i + j)).pos_y)++;
+		j++;
+	}
+	ft_putchar('\n');
+	li_print_output(data);
+}
+
+int		li_move_ants(t_data *data)
+{
+//	size_t	calls;
+	size_t	i;
+//	size_t	j;
+
+	if (!(li_allocate_ant_tab(data)))
+		return (0);
+	i = 1;
+	while (i <= data->best_steps)
+	{
+//		calls = i * (data->best_index + 1);
+//		j = 0;
+//		while (j < calls)
+//		{
+			aux_li_move_ants(data);
+//			j++;
+//		}
+		i++;
+	}
+	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 16:37:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:48:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,28 @@ void	aux_li_build_routes(t_data *data, size_t **field, size_t n)
 	}
 }
 
+void	li_copy_previous_route(t_data *data, size_t index)
+{
+	size_t	i;
+	size_t	j;
+
+	if (index > 0)
+	{
+		i = 0;
+		while (i < index)
+		{
+			j = 0;
+			while (j <= data->size)
+			{
+				*(*(*(data->routes + index) + i) + j)
+					= *(*(*(data->routes + index - 1) + i) + j);
+				j++;
+			}
+			i++;
+		}
+	}
+}
+
 /*
 ** Rappel :
 ** Dans la fonction 'li_reverse_path' du fichier 'li_bhandari.c'
@@ -125,35 +147,25 @@ int		li_build_routes(t_data *data)
 {
 	size_t	i;
 	size_t	j;
-	size_t	k;
 
 	if (!li_allocate_routes(data))
 		return (0);
 	i = 0;
 	while (i < data->path_nb)
 	{
+		li_copy_previous_route(data, i);
 		j = 0;
 		while (j + *(*(data->paths + i) + data->size) < data->size)
 		{
-			if (i > 0)
-			{
-				k = 0;
-				while (k < i)
-				{
-					*(*(*(data->routes + i) + k) + j) = *(*(*(data->routes + i - 1) + k) + j);
-					*(*(*(data->routes + i) + k) + data->size) = *(*(*(data->routes + i - 1) + k) + data->size); //va etre appele a de multiples reprises
-					k++;
-				}
-			}
 			*(*(*(data->routes + i) + i) + j) = *(*(data->paths + i) + j + *(*(data->paths + i) + data->size));
 			j++;
 		}
+		*(*(*(data->routes + i) + i) + data->size) = j;
 		while (j < data->size)
 		{
 			*(*(*(data->routes + i) + i) + j) = 0;
 			j++;
 		}
-		*(*(*(data->routes + i) + i) + data->size) = data->size - *(*(data->paths + i) + data->size);
 		aux_li_build_routes(data, *(data->routes + i), i);
 		i++;
 	}

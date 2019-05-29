@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 16:20:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:37:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		main(int argc, char **argv)
 	data.input = NULL;
 	data.read = NULL;
 	(data.output).index = 0;
+	data.ant_tab = NULL;
+	data.color = 1;
 	if (!li_get_input(&data, &(data.input)))
 	{
 		li_error();

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 16:49:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 18:17:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,12 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 ** On assigne a la variable
 ** *(*(*(data->routes + A) + B) + data->size + 1)
 ** Le nombre de fourmis devant passer par l'itineraire B de la combinaison A
+**
+** Pour calculer le nombre d'etapes,
+** on soustrait 2 a la somme de la valeurs du poids (longueur) du plus court
+** chemin et de la valeur du nombre de fourmis devant l'emprunter
+** car ici et contrairement a l'exemple la salle de depart est consideree
+** dans le calcul de du poids du plus court chemin
 */
 
 size_t	li_eval_steps(t_data *data, size_t index)
@@ -173,12 +179,19 @@ size_t	li_eval_steps(t_data *data, size_t index)
 		i = 0;
 		while (ants > 0)
 		{
-			(*(*(*(data->routes + index) + (i % index)) + data->size + 1))++;
+			(*(*(*(data->routes + index) + (i % (index + 1))) + data->size + 1))++;
+			i++;
 			ants--;
 		}
 	}
+	ft_putnbr((int)index);
+	ft_putchar('\n');
+	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size));
+	ft_putchar('\n');
+	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size + 1));
+	ft_putchar('\n');
 	return (*(*(*(data->routes + index) + 0) + data->size)
-			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 1);
+			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 2);
 }
 
 size_t	li_eval_routes(t_data *data)

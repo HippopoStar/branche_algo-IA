@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 19:45:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:37:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,16 @@ typedef struct		s_input
 	struct s_input	*next;
 }					t_input;
 
+typedef struct		s_ant
+{
+	char			to_print[24];
+	size_t			pos_x;
+	size_t			pos_y;
+}					t_ant;
+
 typedef struct		s_room
-{	char			*name;
+{
+	char			*name;
 	int				weight;
 	size_t			ancestor;
 	int				pos_x;
@@ -56,11 +64,13 @@ typedef struct		s_data
 	size_t			***routes;
 	size_t			best_steps;
 	size_t			best_route;
+	t_ant			*ant_tab;
 	t_room			*rooms;
 	t_room			**map;
 	t_input			*input;
 	t_input			*read;
 	t_output		output;
+	int				color;
 }					t_data;
 
 /*
@@ -130,6 +140,7 @@ int					li_bhandari(t_data *data);
 */
 int					li_allocate_routes(t_data *data);
 void				aux_li_build_routes(t_data *data, size_t **field, size_t n);
+void				li_copy_previous_route(t_data *data, size_t index);
 int					li_build_routes(t_data *data);
 /*
 ** Dans le fichier 'li_get_routes_lengths'
@@ -142,10 +153,16 @@ size_t				li_eval_meanwhile(t_data *data, size_t index);
 size_t				li_eval_steps(t_data *data, size_t index);
 size_t				li_eval_routes(t_data *data);
 /*
+** Dans le fichier 'li_size_ttoa.c'
+*/
+void				li_color_ants(size_t ant, char to_print[24], size_t gap);
+void				li_size_ttoa(size_t ant, char to_print[24], int color);
+/*
 ** Dans le fichier 'li_move_ants.c'
 ** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' !
 */
-void				aux_li_move_ants(t_data *data, size_t j);
-void				li_move_ants(t_data *data);
+int					li_allocate_ants(t_data *data);
+void				aux_li_move_ants(t_data *data);
+int					li_move_ants(t_data *data);
 
 #endif
