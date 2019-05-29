@@ -6,11 +6,20 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 19:47:01 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:37:05 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Rappel :
+** On alloue a chaque itineraire 'data->size + 2' emplacements car :
+** '*(*(*(data->routes + ?) + ?) + data->size)'
+**                      vaut le poids de l'itineraire
+** '*(*(*(data->routes + ?) + ?) + data->size + 1)'
+**                      vaut le nombre de fourmis l'empruntant
+*/
 
 int		li_allocate_routes(t_data *data)
 {
@@ -47,6 +56,11 @@ int		li_allocate_routes(t_data *data)
 }
 
 /*
+** Dans la fonction 'aux_li_build_routes, on essaie de calculer en place
+** la longueur de chaque itineraire nouvellement adapte
+**
+** Exemple de 'maps/basic_disjoint.map' :
+**
 ** A->E->D->H               donne   A->E->F->G->H   D devient F
 ** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E devient H
 */
@@ -103,7 +117,7 @@ void	aux_li_build_routes(t_data *data, size_t **field, size_t n)
 **
 ** Ainsi l'assignation
 ** *(*(*(data->routes + i) + i) + data->size)
-**		= data->size - *(*(data->paths + i) + data->size)
+**      = data->size - *(*(data->paths + i) + data->size)
 ** correspont a la longueur de l'itineraire
 */
 
@@ -127,6 +141,7 @@ int		li_build_routes(t_data *data)
 				while (k < i)
 				{
 					*(*(*(data->routes + i) + k) + j) = *(*(*(data->routes + i - 1) + k) + j);
+					*(*(*(data->routes + i) + k) + data->size) = *(*(*(data->routes + i - 1) + k) + data->size); //va etre appele a de multiples reprises
 					k++;
 				}
 			}

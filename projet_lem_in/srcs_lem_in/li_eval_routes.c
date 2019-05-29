@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 20:03:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:49:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,67 @@
 
 /*
 ** Exemple :
+**
+** $> cat maps/eval_instance.map
+** 13
+** ##start
+** A 0 0
+** B 0 0
+** C 0 0
+** D 0 0
+** E 0 0
+** F 0 0
+** G 0 0
+** H 0 0
+** I 0 0
+** J 0 0
+** K 0 0
+** # Pas de salle 'L' - Reserve aux fourmis
+** M 0 0
+** N 0 0
+** O 0 0
+** P 0 0
+** Q 0 0
+** R 0 0
+** ##end
+** Z 0 0
+** A-B
+** A-C
+** A-G
+** A-K
+** B-Z
+** C-D
+** D-E
+** E-F
+** F-Z
+** G-H
+** H-I
+** I-J
+** J-Z
+** K-M
+** M-N
+** N-O
+** O-P
+** P-Q
+** Q-R
+** R-Z
+**
 ** 13 fourmis
 ** Itineraires :
 **               A->B->Z                   (3)
 **               A->C->D->E->F->Z          (6)
 **               A->G->H->I->J->Z          (6)
-**               A->K->L->M->N->O->P->Q->Z (9)
+**               A->K->M->N->O->P->Q->R->Z (9)
 **
 **  1: L1-B L2-C L3-G L4-K
-**  2: L1-Z L2-D L3-H L4-L L5-B L6-C L7-G L8-K
-**  3:      L2-E L3-I L4-M L5-Z L6-D L7-H L8-L L9-B L10-C L11-G L12-K
-**  4:      L2-F L3-J L4-N      L6-E L7-I L8-M L9-Z L10-D L11-H L12-L L13-B
-**  5:      L2-Z L3-Z L4-O      L6-F L7-J L8-N      L10-E L11-I L12-M L13-Z
-**  6:                L4-P      L6-Z L7-Z L8-O      L10-F L11-J L12-N
-**  7:                L4-Q                L8-P      L10-Z L11-Z L12-O
-**  8:                L4-Z                L8-Q                  L12-P
-**  9:                                    L8-Z                  L12-Q
+**  2: L1-Z L2-D L3-H L4-M L5-B L6-C L7-G L8-K
+**  3:      L2-E L3-I L4-N L5-Z L6-D L7-H L8-M L9-B L10-C L11-G L12-K
+**  4:      L2-F L3-J L4-O      L6-E L7-I L8-N L9-Z L10-D L11-H L12-M L13-B
+**  5:      L2-Z L3-Z L4-P      L6-F L7-J L8-O      L10-E L11-I L12-N L13-Z
+**  6:                L4-Q      L6-Z L7-Z L8-P      L10-F L11-J L12-O
+**  7:                L4-R                L8-Q      L10-Z L11-Z L12-P
+**  8:                L4-Z                L8-R                  L12-Q
+**  9:                                    L8-Z                  L12-R
 ** 10:                                                          L12-Z
 **
 **   1 par 8
@@ -74,7 +119,6 @@
 **  8:                                                                L13-Z
 **  9:
 ** 10:
-**
 */
 
 size_t	li_eval_meanwhile(t_data *data, size_t index)
@@ -93,9 +137,13 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 		current_path_length = *(*(*(data->routes + index) + i) + data->size);
 		*(*(*(data->routes + index) + i) + data->size + 1)
 			= (longest_path_length - current_path_length) + 1;
-		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
+		meanwhile = meanwhile + *(*(*(data->routes + index) + i) + data->size + 1);
+//		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
 		i++;
 	}
+	ft_putstr("meanwhile : ");
+	ft_putnbr((int)meanwhile);
+	ft_putchar('\n');
 	return ((meanwhile <= (size_t)data->ants) ? meanwhile : 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/28 19:27:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:52:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ void	li_print_map(t_data *data)
 	}
 }
 
+/*
+** Rappel :
+** Dans le tableau a 2 dimensions 'data->paths'
+** les cases '*(*(data->paths + ?) + data->size)'
+** doivent contenir l'index de depart de chaque itineraire
+*/
+
 void	li_print_paths(t_data *data)
 {
 	size_t	i;
@@ -62,6 +69,17 @@ void	li_print_paths(t_data *data)
 	}
 }
 
+/*
+** Rappel :
+** Dans le tableau a 3 dimensions 'data->routes'
+** les cases '*(*(*(data->routes + ?) + ?) + data->size)'
+** doivent contenir le poids total (longueur) de chaque itineraire
+**
+** D'autre part, au terme de l'execution de 'li_eval_routes'
+** les cases '*(*(*(data->routes + ?) + ?) + data->size + 1)'
+** doivent contenir le nombre de fourmis a devoir emprunter chaque itineraire
+*/
+
 void	li_print_routes(t_data *data)
 {
 	size_t	i;
@@ -76,18 +94,21 @@ void	li_print_routes(t_data *data)
 		while (j <= i)
 		{
 			k = 0;
-			while (k < data->size)
+			while (k < data->size && !(k > 1 && *(*(*(data->routes + i) + j) + k) == 0))
 			{
 				room_id = *(*(*(data->routes + i) + j) + k);
+				ft_putnbr((int)room_id);
 				ft_putstr((*(data->map + room_id))->name);
-				if (k < data->size - 1)
+				if (k < data->size - 1 && *(*(*(data->routes + i) + j) + k + 1) != 0)
 				{
 					ft_putstr("->");
 				}
 				k++;
 			}
-			ft_putstr(" length : ");
-			ft_putnbr((int)(*(*(data->routes + i) + j) + data->size));
+			ft_putstr("\tlength : ");
+			ft_putnbr((int)(*(*(*(data->routes + i) + j) + data->size)));
+			ft_putstr("\tants : ");
+			ft_putnbr((int)(*(*(*(data->routes + i) + j) + data->size + 1)));
 			ft_putchar('\n');
 			j++;
 		}
