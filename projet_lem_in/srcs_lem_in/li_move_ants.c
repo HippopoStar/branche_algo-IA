@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 20:36:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/29 21:31:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	aux_li_move_ants(t_data *data)
 	size_t	j;
 
 	i = 0;
-	while ((*(data->ant_tab + i)).pos_y != 1 && i < (size_t)data->ants)
+	while (i < (size_t)data->ants && (*(data->ant_tab + i)).pos_y != 1)
 	{
 		if ((*(data->ant_tab + i)).pos_y < *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_x) + data->size))
 		{
@@ -46,15 +46,13 @@ void	aux_li_move_ants(t_data *data)
 		i++;
 	}
 	j = 0;
-	while (j < data->best_route && i + j < (size_t)data->ants)
+	while (j <= data->best_route && i + j < (size_t)data->ants)
 	{
 		li_get_output(data, (char *)(*(data->ant_tab + i + j)).to_print);
 		li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i + j)).pos_x) + (*(data->ant_tab + i + j)).pos_y)))->name);
 		((*(data->ant_tab + i + j)).pos_y)++;
 		j++;
 	}
-	ft_putchar('\n');
-	li_print_output(data);
 }
 
 int		li_move_ants(t_data *data)
@@ -73,6 +71,7 @@ int		li_move_ants(t_data *data)
 //		while (j < calls)
 //		{
 			aux_li_move_ants(data);
+			li_get_output(data, "\n");
 //			j++;
 //		}
 		i++;
