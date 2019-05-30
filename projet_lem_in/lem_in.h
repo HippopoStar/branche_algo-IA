@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 20:37:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:33:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void				li_get_routes_lengths(t_data *data);
 */
 size_t				li_eval_meanwhile(t_data *data, size_t index);
 size_t				li_eval_steps(t_data *data, size_t index);
-size_t				li_eval_routes(t_data *data);
+void				li_eval_routes(t_data *data);
 /*
 ** Dans le fichier 'li_size_ttoa.c'
 */

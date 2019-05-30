@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 17:48:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/30 18:06:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,43 @@ int		li_allocate_routes(t_data *data)
 **
 ** Exemple de 'maps/basic_disjoint.map' :
 **
-** A->E->D->H               donne   A->E->F->G->H   D devient F
-** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E devient H
+**  / B - C \
+**  A - E - D - H
+**      \ F - G /
+**
+** A->E->D->H               donne   A->E->F->G->H   D(3) devient F(6)
+** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E(5) devient H(4)
+**
+** Exemple de 'maps/test_aux_li_build_routes.map'
+**
+** $> cat maps/build_instance.map
+** #  / B - - - C \
+** #  A - F - E - D - I
+** #      \ G - - - H /
+** 3
+** A 0 0
+** B 0 0
+** C 0 0
+** D 0 0
+** E 0 0
+** F 0 0
+** G 0 0
+** H 0 0
+** I 0 0
+** A-B
+** A-F
+** B-C
+** C-D
+** D-E
+** D-I
+** E-F
+** F-G
+** G-H
+** H-I
+** $>
+**
+** A->F->E->D->I            donne   A->F->E->F->G->H->I
+** A->B->C->D->E->F->G->H->I  et    A->B->C->D->I
 */
 
 void	aux_li_build_routes(t_data *data, size_t **field, size_t n)

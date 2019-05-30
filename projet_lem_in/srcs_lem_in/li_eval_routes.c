@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 18:17:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/30 18:06:19 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 ** Exemple :
 **
 ** $> cat maps/eval_instance.map
+** #   / - - - - - B - - - - - - \
+** # A - C - D - E - F - - - - - - Z
+** # | \ G - H - I - J - - - - - / |
+** #  \ K - M - N - O - P - Q - R /
 ** 13
 ** ##start
 ** A 0 0
@@ -58,6 +62,7 @@
 ** P-Q
 ** Q-R
 ** R-Z
+** $>
 **
 ** 13 fourmis
 ** Itineraires :
@@ -194,7 +199,7 @@ size_t	li_eval_steps(t_data *data, size_t index)
 			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 2);
 }
 
-size_t	li_eval_routes(t_data *data)
+void	li_eval_routes(t_data *data)
 {
 	size_t	ret_val;
 	size_t	best_value;
@@ -215,5 +220,4 @@ size_t	li_eval_routes(t_data *data)
 	}
 	data->best_steps = best_value;
 	data->best_route = best_index;
-	return (best_index);
 }
