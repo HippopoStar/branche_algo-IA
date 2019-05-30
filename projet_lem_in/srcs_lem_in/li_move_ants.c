@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 21:31:13 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/30 19:14:04 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,32 @@ int		li_allocate_ant_tab(t_data *data)
 	}
 	return (1);
 }
+
+/*
+** En prenant comme reference dans le deplacement des fourmis un index 'i'
+** prenant comme valeur de depart '0' et en l'incrementant jusqu'a
+** 'data->best_steps * (size_t)data->ants', pour chaque valeur de 'i', on a :
+**
+** ant_id = i % (size_t)data->ants;
+** ant_x = ant_id % (data->best_route + 1);
+** ant_y = (i / data->best_route); //TODO -------------------------------------
+** room_id = *(*(*(data->routes + data->best_route) + ant_x) + ant_y);
+** room_name = (*(data->map + room_id))->name;
+**
+** Affichage lorsque :
+** 0 < ant_y < data->size
+** 0 < room_id
+**
+** 4 itineraires : 8 fourmis
+** i = 0 : 1
+** i = 1 : 1
+** i = 2 : 1
+** i = 3 : 1
+** i = 4 : 0
+** i = 5 : 0
+** i = 6 : 0
+** i = 7 : 0
+*/
 
 void	aux_li_move_ants(t_data *data)
 {
@@ -78,4 +104,3 @@ int		li_move_ants(t_data *data)
 	}
 	return (1);
 }
-

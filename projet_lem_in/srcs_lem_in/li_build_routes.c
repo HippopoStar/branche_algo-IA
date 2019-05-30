@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 18:06:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/30 18:35:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		li_allocate_routes(t_data *data)
 ** #  A - F - E - D - I
 ** #      \ G - - - H /
 ** 3
+** ##start
 ** A 0 0
 ** B 0 0
 ** C 0 0
@@ -83,6 +84,7 @@ int		li_allocate_routes(t_data *data)
 ** F 0 0
 ** G 0 0
 ** H 0 0
+** ##end
 ** I 0 0
 ** A-B
 ** A-F
