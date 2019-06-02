@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 18:35:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/02 21:11:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,36 @@ int		li_allocate_routes(t_data *data)
 ** A->E->D->H               donne   A->E->F->G->H   D(3) devient F(6)
 ** A->B->C->D->E->F->G->H     et    A->B->C->D->H   E(5) devient H(4)
 **
+** -> Appel de 'li_get_inversed_edge_gap'
+** Situation initiale :
+** *(a + (*b)) correspond a 'D'
+** *(i + (*j)) correspond a 'D'
+** Etape 1 :
+** *(a + (*b)) 'D'->'E'
+** *(i + (*j)) 'E'<-'D'
+** Situation finale :
+** *(a + (*b)) correspond a 'E'
+** *(i + (*j)) correspond a 'E'
+** gap vaut 1
+**
+** -> *(a + (*b) - gap) correspond a 'D'
+** -> *(i + (*j) + gap) correspond a 'D'
+**
+** -> *(a + (*b) - gap) = *(i + (*j) + gap);            ['D']-['D']
+** -> *(i + (*j) + gap) = *(a + (*b) + gap + 1);        ['D']-['F']
+**
+** -> *(a + (*b) - gap + 1) = *(i + (*j) + gap + 1);    ['E']-['H']
+** -> *(i + (*j) + gap + 1) = *(a + (*b) + gap + 2);    ['H']-['G']
+**
+** -> *(a + (*b) - gap + 2) = *(i + (*j) + gap + 2);    ['F']-['A']
+** -> *(i + (*j) + gap + 2) = *(a + (*b) + gap + 3);    ['A']-['H']
+**
+** -> *(a + (*b) - gap + 3) = *(i + (*j) + gap + 3);    ['G']-['A']
+** -> *(i + (*j) + gap + 3) = *(a + (*b) + gap + 4);    ['A']-['A']
+**
+** -> *(a + (*b) - gap + 4) = *(i + (*j) + gap + 4);    ['H']-['A']
+** -> *(i + (*j) + gap + 4) = *(a + (*b) + gap + 5);    ['A']-['A']
+**
 ** Exemple de 'maps/test_aux_li_build_routes.map'
 **
 ** $> cat maps/build_instance.map
@@ -98,6 +128,7 @@ int		li_allocate_routes(t_data *data)
 ** H-I
 ** $>
 **
+**                                     !     !
 ** A->F->E->D->I            donne   A->F->E->F->G->H->I
 ** A->B->C->D->E->F->G->H->I  et    A->B->C->D->I
 */
