@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 17:33:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/02 18:31:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct		s_input
 typedef struct		s_ant
 {
 	char			to_print[24];
-	size_t			pos_x;
 	size_t			pos_y;
+	size_t			wait;
 }					t_ant;
 
 typedef struct		s_room
@@ -161,8 +161,9 @@ void				li_size_ttoa(size_t ant, char to_print[24], int color);
 ** Dans le fichier 'li_move_ants.c'
 ** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' !
 */
-int					li_allocate_ants(t_data *data);
-void				aux_li_move_ants(t_data *data);
+int					li_allocate_ant_tab(t_data *data);
+void				li_ants_distribution(t_data *data);
+void				aux_li_move_ants(t_data *data, size_t step);
 int					li_move_ants(t_data *data);
 
 #endif

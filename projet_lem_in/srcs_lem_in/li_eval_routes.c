@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 18:06:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/02 18:47:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 	size_t	current_path_length;
 	size_t	meanwhile;
 
-	*(*(*(data->routes + index) + index) + data->size + 1) = 0;
+	*(*(*(data->routes + index) + index) + data->size + 1) = 1;
 	longest_path_length = *(*(*(data->routes + index) + index) + data->size);
 	meanwhile = 1;
 	i = 0;

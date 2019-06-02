@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 19:14:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/02 19:12:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		li_allocate_ant_tab(t_data *data)
 	i = 0;
 	while (i < (size_t)data->ants)
 	{
-		(*(data->ant_tab + i)).pos_x = i % (data->best_route + 1);
-		(*(data->ant_tab + i)).pos_y = 1;
+		(*(data->ant_tab + i)).pos_y = 0;
+		(*(data->ant_tab + i)).wait = 0;
 		li_size_ttoa(i + 1, (*(data->ant_tab + i)).to_print, data->color);
 		i++;
 	}
@@ -35,13 +35,13 @@ int		li_allocate_ant_tab(t_data *data)
 ** 'data->best_steps * (size_t)data->ants', pour chaque valeur de 'i', on a :
 **
 ** ant_id = i % (size_t)data->ants;
-** ant_x = ant_id % (data->best_route + 1);
-** ant_y = (i / data->best_route); //TODO -------------------------------------
-** room_id = *(*(*(data->routes + data->best_route) + ant_x) + ant_y);
+** ant_y = ant_id % (data->best_route + 1);
+** ant_x = (i / data->ants) - (ant_y % (data->ants + 1));
+** room_id = *(*(*(data->routes + data->best_route) + ant_y) + ant_x);
 ** room_name = (*(data->map + room_id))->name;
 **
 ** Affichage lorsque :
-** 0 < ant_y < data->size
+** 0 < ant_x < data->size
 ** 0 < room_id
 **
 ** 4 itineraires : 8 fourmis
@@ -55,51 +55,65 @@ int		li_allocate_ant_tab(t_data *data)
 ** i = 7 : 0
 */
 
-void	aux_li_move_ants(t_data *data)
+void	li_ants_distribution(t_data *data)
 {
 	size_t	i;
 	size_t	j;
+	size_t	ord;
 
 	i = 0;
-	while (i < (size_t)data->ants && (*(data->ant_tab + i)).pos_y != 1)
+	j = 0;
+	while (i < (size_t)data->ants)
 	{
-		if ((*(data->ant_tab + i)).pos_y < *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_x) + data->size))
+		ord = j % (data->best_route + 1);
+		if (*(*(*(data->routes + data->best_route) + ord) + data->size + 1) > 0)
 		{
-			li_get_output(data, (char *)(*(data->ant_tab + i)).to_print);
-			li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_x) + (*(data->ant_tab + i)).pos_y)))->name);
-			((*(data->ant_tab + i)).pos_y)++;
+			(*(data->ant_tab + i)).pos_y = ord;
+			(*(data->ant_tab + i)).wait = j / (data->best_route + 1);
+			(*(*(*(data->routes + data->best_route) + ord) + data->size + 1))--;
+			i++;
+		}
+		j++;
+	}
+}
+
+void	aux_li_move_ants(t_data *data, size_t step)
+{
+	size_t	i;
+	size_t	abs;
+	size_t	wit;
+
+	wit = 1;
+	i = 0;
+	while (i < (size_t)data->ants)
+	{
+		if ((*(data->ant_tab + i)).wait < step)
+		{
+			abs = step - (*(data->ant_tab + i)).wait;
+			if (abs < *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_y) + data->size))
+			{
+				li_get_output(data, &(*((*(data->ant_tab + i)).to_print + wit)));
+				li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_y) + abs)))->name);
+				wit = 0;
+				li_print_output(data);
+			}
 		}
 		i++;
-	}
-	j = 0;
-	while (j <= data->best_route && i + j < (size_t)data->ants)
-	{
-		li_get_output(data, (char *)(*(data->ant_tab + i + j)).to_print);
-		li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i + j)).pos_x) + (*(data->ant_tab + i + j)).pos_y)))->name);
-		((*(data->ant_tab + i + j)).pos_y)++;
-		j++;
 	}
 }
 
 int		li_move_ants(t_data *data)
 {
-//	size_t	calls;
 	size_t	i;
-//	size_t	j;
 
 	if (!(li_allocate_ant_tab(data)))
 		return (0);
+	li_ants_distribution(data);
 	i = 1;
 	while (i <= data->best_steps)
 	{
-//		calls = i * (data->best_index + 1);
-//		j = 0;
-//		while (j < calls)
-//		{
-			aux_li_move_ants(data);
-			li_get_output(data, "\n");
-//			j++;
-//		}
+		aux_li_move_ants(data, i);
+		li_get_output(data, "\n");
 		i++;
 	}
 	return (1);
