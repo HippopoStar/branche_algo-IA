@@ -73,6 +73,13 @@ typedef struct		s_data
 	int				color;
 }					t_data;
 
+typedef struct		s_route
+{
+	size_t			width;
+	size_t			height;
+	size_t			**field;
+}					t_route;
+
 /*
 ** Dans le fichier 'main_lem_in.c'
 */
@@ -163,7 +170,14 @@ void				li_size_ttoa(size_t ant, char to_print[24], int color);
 */
 int					li_allocate_ant_tab(t_data *data);
 void				li_ants_distribution(t_data *data);
-void				aux_li_move_ants(t_data *data, size_t step);
 int					li_move_ants(t_data *data);
+/*
+** Dans le fichier 'li_remove_edges'
+*/
+void	li_swap_paths(t_route *route, size_t i, size_t j);
+void	li_order_paths(t_route *route);
+size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k);
+void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
+void	li_remove_edges(t_route *route);
 
 #endif

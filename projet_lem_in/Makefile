@@ -12,9 +12,9 @@
 
 CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./ -I./libft/includes/
-CFLAGS	+=		-O1 -g -fsanitize=address \
-				-fno-omit-frame-pointer \
-				-fsanitize-address-use-after-scope
+#CFLAGS	+=		-O1 -g -fsanitize=address \
+#				-fno-omit-frame-pointer \
+#				-fsanitize-address-use-after-scope
 
 HEAD = lem_in.h
 
@@ -33,6 +33,7 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_bellman_ford.c\
 		./srcs_lem_in/li_bhandari.c\
 		./srcs_lem_in/li_build_routes.c\
+		./srcs_lem_in/li_remove_edges.c\
 		./srcs_lem_in/li_get_routes_lengths.c\
 		./srcs_lem_in/li_eval_routes.c\
 		./srcs_lem_in/li_size_ttoa.c\
@@ -51,6 +52,7 @@ OBJS = ./main_lem_in.o\
 		./li_bellman_ford.o\
 		./li_bhandari.o\
 		./li_build_routes.o\
+		./li_remove_edges.o\
 		./li_get_routes_lengths.o\
 		./li_eval_routes.o\
 		./li_size_ttoa.o\
