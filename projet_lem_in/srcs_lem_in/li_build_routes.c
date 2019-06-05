@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/02 21:11:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:25:05 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,12 @@
 **                      vaut le nombre de fourmis l'empruntant
 */
 
-int		li_allocate_routes(t_data *data)
+void	aux_li_allocate_routes(t_data *data)
 {
 	size_t	n;
 	size_t	i;
 	size_t	j;
 
-	n = 0;
-	i = 0;
-	while (i <= data->path_nb)
-	{
-		n = n + i;
-		i++;
-	}
-	if (!(data->routes = (size_t ***)malloc(data->path_nb * sizeof(size_t **)))
-			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
-			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n * (data->size + 2) * sizeof(size_t))))
-		return (0);
 	n = 0;
 	i = 1;
 	while (i < data->path_nb)
@@ -52,6 +41,25 @@ int		li_allocate_routes(t_data *data)
 		}
 		i++;
 	}
+}
+
+int		li_allocate_routes(t_data *data)
+{
+	size_t	n;
+	size_t	i;
+
+	n = 0;
+	i = 0;
+	while (i <= data->path_nb)
+	{
+		n = n + i;
+		i++;
+	}
+	if (!(data->routes = (size_t ***)malloc(data->path_nb * sizeof(size_t **)))
+			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
+			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n * (data->size + 2) * sizeof(size_t))))
+		return (0);
+	aux_li_allocate_routes(data);
 	return (1);
 }
 

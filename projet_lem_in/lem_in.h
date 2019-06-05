@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/02 18:31:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:57:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct		s_data
 {
 	int				ants;
 	size_t			size;
+	size_t			bonds;
 	size_t			max_paths;
 	size_t			**paths;
 	size_t			path_nb;
@@ -124,6 +125,10 @@ int					aux_li_allocate_map(t_data *data, int *set_map);
 int					li_match_pipes(t_input **read, t_data *data);
 int					li_match_pipe(t_data *data, char *str);
 /*
+** Dans le fichier 'li_shorten_map_pipes.c'
+*/
+int					li_shorten_map_pipes(t_data *data);
+/*
 ** Dans le fichier 'li_print_map.c'
 */
 void				li_print_map(t_data *data);
@@ -145,10 +150,19 @@ int					li_bhandari(t_data *data);
 /*
 ** Dans le fichier 'li_build_routes.c'
 */
+void				aux_li_allocate_outes(t_data *data);
 int					li_allocate_routes(t_data *data);
-void				aux_li_build_routes(t_data *data, size_t **field, size_t n);
 void				li_copy_previous_route(t_data *data, size_t index);
+void				li_copy_last_path(t_data *data, size_t i);
 int					li_build_routes(t_data *data);
+/*
+** Dans le fichier 'li_remove_edges'
+*/
+void				li_swap_paths(t_route *route, size_t i, size_t j);
+void				li_order_paths(t_route *route);
+size_t				li_edge_len(t_route *route, size_t i, size_t j, size_t k);
+void				li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
+void				li_remove_edges(t_route *route);
 /*
 ** Dans le fichier 'li_get_routes_lengths'
 */
@@ -171,13 +185,5 @@ void				li_size_ttoa(size_t ant, char to_print[24], int color);
 int					li_allocate_ant_tab(t_data *data);
 void				li_ants_distribution(t_data *data);
 int					li_move_ants(t_data *data);
-/*
-** Dans le fichier 'li_remove_edges'
-*/
-void	li_swap_paths(t_route *route, size_t i, size_t j);
-void	li_order_paths(t_route *route);
-size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k);
-void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
-void	li_remove_edges(t_route *route);
 
 #endif

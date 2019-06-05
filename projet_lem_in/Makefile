@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/05/29 19:09:10 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/05 18:56:27 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_match_rooms.c\
 		./srcs_lem_in/li_allocate_map.c\
 		./srcs_lem_in/li_match_pipes.c\
+		./srcs_lem_in/li_shorten_map_pipes.c\
 		./srcs_lem_in/li_print_map.c\
 		./srcs_lem_in/li_bellman_ford.c\
 		./srcs_lem_in/li_bhandari.c\
@@ -48,6 +49,7 @@ OBJS = ./main_lem_in.o\
 		./li_match_rooms.o\
 		./li_allocate_map.o\
 		./li_match_pipes.o\
+		./li_shorten_map_pipes.o\
 		./li_print_map.o\
 		./li_bellman_ford.o\
 		./li_bhandari.o\

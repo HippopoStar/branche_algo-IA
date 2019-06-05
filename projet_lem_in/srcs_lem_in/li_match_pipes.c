@@ -6,11 +6,26 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:52:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:54:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** La fonction 'li_match_pipe'
+** va rechercher les index respectifs des deux salles
+** dans le tableau 'data->map'
+** et ajouter a chacune la liaison correspondante dans leur liste
+** les repertoriant '(t_room *)->pipes'
+**
+** Au passage, elle comptabilise le nombre total de liaisons
+** dans la variable 'data->bonds'
+** (initialisee a '0' dans la fonction 'li_match_pipes')
+**
+** / ! \ Faut-il ici renvoyer une erreur dans le cas dans lequel la
+** liaison a deja ete repertoriee anterieurement (doublon) ?
+*/
 
 int		li_match_pipe(t_data *data, char *str)
 {
@@ -39,11 +54,13 @@ int		li_match_pipe(t_data *data, char *str)
 		return (0);
 	*((*(data->map + i))->pipes + j) = 1;
 	*((*(data->map + j))->pipes + i) = 1;
+	data->bonds++;
 	return (1);
 }
 
 int		li_match_pipes(t_input **read, t_data *data)
 {
+	data->bonds = 0;
 	while (*((*read)->line + 0) != '\0')
 	{
 		if (!(*((*read)->line + 0) == '#') \
