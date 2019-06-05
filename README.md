@@ -6,6 +6,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 ## In '**ft\_printf**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/20/ft_printf.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/printf/subnotions/printf-introduction/videos/introduction-74)  
+[Intra - Afficher des caracteres unicodes](https://forum.intra.42.fr/topics/15759/messages)  
 - Erreur lors de la combinaison de
 	- une *precision* de *0*
 	- le flag '*+*' ou le flag ' '
@@ -34,9 +35,9 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 - Dans '*checker*'
 	- aucun argument : rendre la main sans afficher 'error'
 	- argument depassant INT\_MAX : 'error'
-- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) [✅]
-- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') [✅]
-- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) [✅]
+- Ajouter au Makefile des instructions specifiques a chaque binaire (Norme) [✓]
+- Liberer manuellement la memoire avec 'free' - y compris en cas d'erreur (necessite d'ameliorer 'libft/srcs\_libft/ft\_strsplit.c') [✓]
+- Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) [✓]
 - Ameliorer le Makefile [Intra - Comment faire un Makefile modulaire](https://forum.intra.42.fr/topics/85/messages) [ ]
 - Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D) [ ]  
 	-> Ajouter les 2 lignes suivantes au debut de la fonction 'aux_2_gnl' :  
@@ -53,7 +54,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 
 ## In '**lem-in**'
 [Page du projet](https://projects.intra.42.fr/projects/lem_in)  
-[Sujet](https://cdn.intra.42.fr/pdf/pdf/185/lem-in.fr.pdf)  
+[Sujet](https://cdn.intra.42.fr/pdf/pdf/1555/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
