@@ -113,7 +113,7 @@ void	li_remove_edges(t_route *route)
 	size_t	k;
 
 	k = 1;
-	while (k + 1 < *(*(route->field + route->height) + route->width) && *(*(route->field + route->height) + k) != 0)
+	while (k + 1 < *(*(route->field + route->height) + route->width))
 	{
 		j = 1;
 		while (j < route->width)

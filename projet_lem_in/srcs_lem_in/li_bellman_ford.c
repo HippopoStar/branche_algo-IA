@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:36:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 21:04:55 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@ void	aux_li_bellman_ford(t_data *data)
 {
 	size_t	i;
 	size_t	j;
+	size_t	target;
 	int		wei;
 
 	i = 0;
 	while (i < data->size)
 	{
 		j = 0;
-		while (j < data->size)
+		while (j < (*(data->map + i))->nb_of_bonds)
 		{
-			if (*((*(data->map + i))->pipes + j) != 0 && i != j)
+			target = *((*(data->map + i))->bond_sum + j);
+			if (*((*(data->map + i))->pipes + target) != 0 && i != target)
 			{
-				wei = (*(data->map + i))->weight \
-					+ *((*(data->map + i))->pipes + j);
-				if (wei < (*(data->map + j))->weight)
+				wei = (*(data->map + i))->weight
+					+ *((*(data->map + i))->pipes + target);
+				if (wei < (*(data->map + target))->weight)
 				{
-					(*(data->map + j))->ancestor = i;
-					(*(data->map + j))->weight = wei;
+					(*(data->map + target))->ancestor = i;
+					(*(data->map + target))->weight = wei;
 				}
 			}
 			j++;

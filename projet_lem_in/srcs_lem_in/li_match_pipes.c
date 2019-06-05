@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 18:54:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:34:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 ** Au passage, elle comptabilise le nombre total de liaisons
 ** dans la variable 'data->bonds'
 ** (initialisee a '0' dans la fonction 'li_match_pipes')
+** Et met a jour les valeurs respectives de '(t_room *)->nb_of_bonds'
+** (initialisees a '0' dans la fonction 'li_allocate_room')
 **
 ** / ! \ Faut-il ici renvoyer une erreur dans le cas dans lequel la
 ** liaison a deja ete repertoriee anterieurement (doublon) ?
@@ -54,6 +56,8 @@ int		li_match_pipe(t_data *data, char *str)
 		return (0);
 	*((*(data->map + i))->pipes + j) = 1;
 	*((*(data->map + j))->pipes + i) = 1;
+	((*(data->map + i))->nb_of_bonds)++;
+	((*(data->map + j))->nb_of_bonds)++;
 	data->bonds++;
 	return (1);
 }

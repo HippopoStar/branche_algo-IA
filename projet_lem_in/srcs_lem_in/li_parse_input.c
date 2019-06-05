@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/29 18:21:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 20:43:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int		li_parse_input(t_data *data)
 	/*else*/ if (!li_match_pipes(&(data->read), data))
 		return (0);
 	ft_putstr("\"li_match_pipes\" OK !\n");
+	/*else*/ if (!li_shorten_map_pipes(data))
+		return (0);
+	ft_putstr("\"li_shorten_map_pipes\" OK !\n");
 	/*else*/
 		return (1);
 }

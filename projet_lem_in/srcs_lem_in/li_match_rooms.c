@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/17 17:33:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 19:29:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		li_allocate_room(t_room **room)
 		return (0);
 	(*room)->name = NULL;
 	(*room)->role = 1;
+	(*room)->nb_of_bonds = 0;
 	(*room)->pipes = NULL;
 	(*room)->next = NULL;
 	return (1);

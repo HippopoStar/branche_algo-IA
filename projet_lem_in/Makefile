@@ -6,15 +6,15 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/05 18:56:27 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/05 20:38:22 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
 CFLAGS	+=		-I./ -I./libft/includes/
-#CFLAGS	+=		-O1 -g -fsanitize=address \
-#				-fno-omit-frame-pointer \
-#				-fsanitize-address-use-after-scope
+CFLAGS	+=		-O1 -g -fsanitize=address \
+				-fno-omit-frame-pointer \
+				-fsanitize-address-use-after-scope
 
 HEAD = lem_in.h
 

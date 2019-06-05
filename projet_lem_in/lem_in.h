@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 18:57:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/05 20:31:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct		s_room
 	int				pos_x;
 	int				pos_y;
 	int				role;
+	size_t			nb_of_bonds;
+	size_t			*bond_sum;
 	int				*pipes;
 	struct s_room	*next;
 }					t_room;
@@ -127,6 +129,7 @@ int					li_match_pipe(t_data *data, char *str);
 /*
 ** Dans le fichier 'li_shorten_map_pipes.c'
 */
+void				li_fill_bond_summary(t_room *current);
 int					li_shorten_map_pipes(t_data *data);
 /*
 ** Dans le fichier 'li_print_map.c'
