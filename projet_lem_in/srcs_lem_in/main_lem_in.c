@@ -12,6 +12,65 @@
 
 #include "lem_in.h"
 
+/*
+** Shema de fonctionnement du programme :
+** lem_in
+**     | li_get_input (*)
+**         | get_next_line_backslash_zero (L*)
+**         | li_get_output
+**         | li_print_output
+**     | li_parse_input
+**         | li_match_ants
+**             | ft_is_int
+**                 | ft_is_digit (L)
+**                 | ft_atoi (L)
+**         | li_match_rooms
+**             | li_allocate_room (*)
+**             | li_deal_sharp_marks
+**                 | ft_strcmp (L)
+**             | li_match_room
+**                 | ft_is_int
+**                     | ft_is_digit (L)
+**                     | ft_atoi (L)
+**         | li_allocate_map (*)
+**             | aux_li_allocate_map
+**         | li_match_pipes
+**             | li_match_pipe
+**                 | ft_strcmp (L)
+**         | li_shorten_map_pipes (*)
+**             | li_fill_bond_summary
+**     | li_bhandari
+**         | li_bhandari_max_iteration
+**         | li_allocate_paths (*)
+**         | li_initialise_weights
+**         | li_bellman_ford
+**             | aux_li_bellman_ford
+**         | li_reverse_path
+**     | li_build_routes
+**         | li_allocate_routes (*)
+**             | aux_li_allocate_routes
+**         | li_copy_previous_route
+**         | li_copy_last_path
+**         | li_remove_edges
+**             | li_melt_paths
+**                 | li_edge_len
+**             | li_swap_paths
+**         | li_order_paths
+**     | li_eval_routes
+**         | li_eval_steps
+**             | li_eval_meanwhile
+**     | li_move_ants
+**         | li_allocate_ant_tab (*)
+**             | li_size_ttoa
+**                 | li_color_ants
+**         | li_ants_distribution
+**         | aux_li_move_ants
+**             | li_get_output
+**         | li_get_output
+**     | li_memory_liberator
+**     | li_print_output
+*/
+
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -59,6 +118,7 @@ int		main(int argc, char **argv)
 	{
 		li_error();
 	}
+	li_memory_liberator(&data);
 	li_print_output(&data);
 	ft_putstr("data.ants : ");
 	ft_putnbr((int)data.ants);

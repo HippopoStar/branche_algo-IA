@@ -42,6 +42,12 @@ int		aux_li_allocate_map(t_data *data, int *set_map)
 	return ((i == data->size - 1) ? 1 : 0);
 }
 
+/*
+** Allocation dynamique de memoire dans 'li_allocate_map'
+** (t_room **)data->map
+** (int *)set_map : (*(data->map + 0))->pipes
+*/
+
 int		li_allocate_map(t_data *data)
 {
 	size_t	i;

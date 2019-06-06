@@ -132,7 +132,7 @@ int					li_match_pipe(t_data *data, char *str);
 void				li_fill_bond_summary(t_room *current);
 int					li_shorten_map_pipes(t_data *data);
 /*
-** Dans le fichier 'li_print_map.c'
+** Dans le fichier 'li_print_map.c' (implementer options ?)
 */
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
@@ -167,7 +167,7 @@ size_t				li_edge_len(t_route *route, size_t i, size_t j, size_t k);
 void				li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
 void				li_remove_edges(t_route *route);
 /*
-** Dans le fichier 'li_get_routes_lengths'
+** Dans le fichier 'li_get_routes_lengths' (caduque)
 */
 void				li_get_routes_lengths(t_data *data);
 /*
@@ -183,10 +183,14 @@ void				li_color_ants(size_t ant, char to_print[24], size_t gap);
 void				li_size_ttoa(size_t ant, char to_print[24], int color);
 /*
 ** Dans le fichier 'li_move_ants.c'
-** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' !
+** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' ! ('ft_itoa' -> 'li_size_ttoa')
 */
 int					li_allocate_ant_tab(t_data *data);
 void				li_ants_distribution(t_data *data);
 int					li_move_ants(t_data *data);
+/*
+** Dans le fichier 'li_memory_liberator.c'
+*/
+void				li_memory_liberator(t_data *data);
 
 #endif

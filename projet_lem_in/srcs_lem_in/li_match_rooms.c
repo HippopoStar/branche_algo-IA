@@ -12,6 +12,11 @@
 
 #include "lem_in.h"
 
+/*
+** Allocation dynamique de memoire dans 'li_allocate_room'
+** (t_room *)*room : data->rooms (liste chainee)
+*/
+
 int		li_allocate_room(t_room **room)
 {
 	if (!(*room = (t_room *)malloc(sizeof(t_room))))

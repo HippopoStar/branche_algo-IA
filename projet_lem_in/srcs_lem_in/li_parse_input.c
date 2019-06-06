@@ -34,6 +34,12 @@ int		li_parse_input(t_data *data)
 		return (1);
 }
 
+/*
+** Allocation dynamique de memoire dans 'li_get_input'
+** (t_input *)*input : data->input (liste chainee)
+** (char *)line : (t_input *)->line (dans chaque maillon)
+*/
+
 int		li_get_input(t_data *data, t_input **input)
 {
 	int		ret_gnl;
@@ -51,7 +57,7 @@ int		li_get_input(t_data *data, t_input **input)
 		tmp = tmp->next;
 	}
 	tmp->next = NULL;
+	li_get_output(data, "\n");
 	li_print_output(data);
-	ft_putchar('\n');
 	return ((ret_gnl == 0) ? 1 : 0);
 }

@@ -12,6 +12,14 @@
 
 #include "lem_in.h"
 
+/*
+** Cette fonction est caduque
+** car on calcul en place
+** la longueur de chaque itineraire
+** lors de l'execution de chaque algo
+** pouvant l'alterer
+*/
+
 void	li_get_routes_lengths(t_data *data)
 {
 	size_t	i;

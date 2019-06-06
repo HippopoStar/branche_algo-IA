@@ -35,6 +35,13 @@ void	li_order_paths(t_route *route)
 	}
 }
 
+/*
+** La maniere de calculer en place les longueurs des itineraires
+** dans la fonction 'li_edge_len' peut surprendre
+** mais il ne faut pas omettre qu'elle deplace d'abord localement
+** les indexs
+*/
+
 size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k)
 {
 	size_t	edge_len;

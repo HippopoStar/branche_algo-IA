@@ -83,6 +83,12 @@ int		li_reverse_path(t_data *data)
 	return (1);
 }
 
+/*
+** Allocation dynamique de memoire dans 'li_allocate_paths'
+** (size_t **)data->paths
+** (size_t *)*(data->paths + 0)
+*/
+
 int		li_allocate_paths(t_data *data)
 {
 	size_t	i;

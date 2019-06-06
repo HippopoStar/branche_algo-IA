@@ -12,6 +12,11 @@
 
 #include "lem_in.h"
 
+/*
+** Allocation dynamique de memoire dans 'li_allocate_ant_tab'
+** (t_ant *)data->ant_tab
+*/
+
 int		li_allocate_ant_tab(t_data *data)
 {
 	size_t	i;
@@ -95,7 +100,7 @@ void	aux_li_move_ants(t_data *data, size_t step)
 				li_get_output(data, &(*((*(data->ant_tab + i)).to_print + wit)));
 				li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_y) + abs)))->name);
 				wit = 0;
-				li_print_output(data);
+//				li_print_output(data);
 			}
 		}
 		i++;

@@ -43,6 +43,13 @@ void	aux_li_allocate_routes(t_data *data)
 	}
 }
 
+/*
+** Allocation dynamique de memoire dans 'li_allocate_routes'
+** (size_t ***)data->routes
+** (size_t **)*(data->routes + 0)
+** (size_t *)*(*(data->routes + 0) + 0)
+*/
+
 int		li_allocate_routes(t_data *data)
 {
 	size_t	n;
