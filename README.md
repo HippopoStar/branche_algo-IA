@@ -75,6 +75,10 @@ Documentation :
 		- sauvegarder quelque part le poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - Penser a liberer manuellement la memoire avec 'free'
+- Problème de boucle infinie dans le cas dans lequel 'lem-in' est lance sans arguments ('CTRL + D' 'CTRL + D')
+- Ameliorer 'get\_next\_line'
+- Ameliorer le Makefile
+- 2 logins necessaires dans le fichier auteur
 
 ## In '**mod1**'
 
