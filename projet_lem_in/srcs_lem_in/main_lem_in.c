@@ -14,10 +14,19 @@
 
 /*
 ** Shema de fonctionnement du programme :
-** lem_in
+** | li_options
+**     | ft_options
+**         | aux_ft_options
+**             | ft_strchr (L)
+**     | li_get_output (R)
+**         | ft_strlen (L)
+**         | li_print_output
+** | lem_in
 **     | li_get_input (*)
 **         | get_next_line_backslash_zero (L*)
-**         | li_get_output
+**         | li_get_output (R)
+**             | ft_strlen (L)
+**             | li_print_output
 **         | li_print_output
 **     | li_parse_input
 **         | li_match_ants
@@ -65,8 +74,12 @@
 **                 | li_color_ants
 **         | li_ants_distribution
 **         | aux_li_move_ants
-**             | li_get_output
-**         | li_get_output
+**             | li_get_output (R)
+**                 | ft_strlen (L)
+**                 | li_print_output
+**         | li_get_output (R)
+**             | ft_strlen (L)
+**             | li_print_output
 **     | li_memory_liberator
 **     | li_print_output
 */
