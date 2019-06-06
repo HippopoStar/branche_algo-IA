@@ -21,6 +21,8 @@ HEAD = lem_in.h
 NAME = lem-in
 
 SRCS = ./srcs_lem_in/main_lem_in.c\
+		./srcs_lem_in/ft_options.c\
+		./srcs_lem_in/li_options.c\
 		./srcs_lem_in/li_error.c\
 		./srcs_lem_in/li_get_output.c\
 		./srcs_lem_in/li_parse_input.c\
@@ -42,6 +44,8 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_memory_liberator.c
 
 OBJS = ./main_lem_in.o\
+		./ft_options.o\
+		./li_options.o\
 		./li_error.o\
 		./li_get_output.o\
 		./li_parse_input.o\

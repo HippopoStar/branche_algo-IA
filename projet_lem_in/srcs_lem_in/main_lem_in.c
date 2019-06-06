@@ -86,7 +86,11 @@ int		main(int argc, char **argv)
 	data.read = NULL;
 	(data.output).index = 0;
 	data.ant_tab = NULL;
-	data.color = 1;
+	if (!li_options(&data, argc, argv))
+	{
+		li_usage();
+		return (0);
+	}
 	if (!li_get_input(&data, &(data.input)))
 	{
 		li_error();

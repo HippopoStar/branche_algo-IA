@@ -22,6 +22,7 @@
 */
 
 # define LI_BUFF 4096
+# define USAGE_MSG "usage: [time] [valgrind] ./lem-in [-hcl] < my_map_file\n"
 
 typedef struct		s_output
 {
@@ -73,7 +74,9 @@ typedef struct		s_data
 	t_input			*input;
 	t_input			*read;
 	t_output		output;
+	int				options;
 	int				color;
+	int				display_steps;
 }					t_data;
 
 typedef struct		s_route
@@ -88,8 +91,17 @@ typedef struct		s_route
 */
 
 /*
+** Dans le fichier 'ft_options.c'
+*/
+int					ft_options(int argc, char **argv, const char *allowed_opt, int allow_non_opt);
+/*
+** Dans le fichier 'li_options.c'
+*/
+int						li_options(t_data *data, int argc, char **argv);
+/*
 ** Dans le fichier 'li_error.c'
 */
+void				li_usage(void);
 void				li_error(void);
 /*
 ** Dans le fichier 'li_print.c'
