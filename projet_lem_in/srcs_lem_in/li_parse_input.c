@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 20:43:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/07 23:53:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ int		li_get_input(t_data *data, t_input **input)
 	}
 	tmp->next = NULL;
 	li_get_output(data, "\n");
-	li_print_output(data);
 	return ((ret_gnl == 0) ? 1 : 0);
 }

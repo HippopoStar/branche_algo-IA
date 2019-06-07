@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_options.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/07 22:33:57 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/06/07 22:44:28 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		li_options(t_data *data, int argc, char **argv)
@@ -8,10 +20,7 @@ int		li_options(t_data *data, int argc, char **argv)
 	}
 	else
 	{
-		if ((data->options >> ('h' - 'a')) % 2 == 1)
-		{
-			li_get_output(data, USAGE_MSG);
-		}
+		data->help = (data->options >> ('h' - 'a')) % 2;
 		data->color = (data->options >> ('c' - 'a')) % 2;
 		data->display_steps = (size_t)((data->options >> ('l' - 'a')) % 2);
 	}

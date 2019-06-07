@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 12:49:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 04:46:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 00:07:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,20 @@
 */
 # define FT_INT_MIN		-2147483648
 # define FT_INT_MAX		2147483647
-# define FT_UINT_MAX	4294967295
-# define FT_LONG_MIN	-9223372036854775808
-# define FT_LONG_MAX	9223372036854775807
-# define FT_ULONG_MAX	18446744073709551615
+# define FT_UINT_MAX	(4294967295U)
+# define FT_LONG_MIN	(-9223372036854775808L)
+# define FT_LONG_MAX	(9223372036854775807L)
+# define FT_ULONG_MAX	(18446744073709551615UL)
+
+# define END_OF_COLOR	"\033[00m"
+# define BLACK			"\033[30m"
+# define RED			"\033[31m"
+# define GREEN			"\033[32m"
+# define YELLOW			"\033[33m"
+# define BLUE			"\033[34m"
+# define MAGENTA		"\033[35m"
+# define CYAN			"\033[36m"
+# define WHITE			"\033[37m"
 
 typedef struct		s_list
 {

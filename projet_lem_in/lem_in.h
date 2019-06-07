@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 20:31:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/07 23:20:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 */
 
 # define LI_BUFF 4096
-# define USAGE_MSG "usage: [time] [valgrind] ./lem-in [-hcl] < my_map_file\n"
 
 typedef struct		s_output
 {
@@ -75,6 +74,7 @@ typedef struct		s_data
 	t_input			*read;
 	t_output		output;
 	int				options;
+	int				help;
 	int				color;
 	size_t			display_steps;
 }					t_data;
@@ -89,7 +89,7 @@ typedef struct		s_route
 /*
 ** Dans le fichier 'main_lem_in.c'
 */
-
+int					lem_in(t_data *data);
 /*
 ** Dans le fichier 'ft_options.c'
 */
@@ -101,6 +101,7 @@ int						li_options(t_data *data, int argc, char **argv);
 /*
 ** Dans le fichier 'li_error.c'
 */
+void				li_help(void);
 void				li_usage(void);
 void				li_error(void);
 /*

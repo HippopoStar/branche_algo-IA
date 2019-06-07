@@ -6,15 +6,25 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:08:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/02/26 11:03:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 00:08:59 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
+void	li_help(void)
+{
+	ft_putstr("\033[32mHelp\033[00m:\n");
+	li_usage();
+	ft_putstr("\033[32mAvailable options\033[00m:\n");
+	ft_putstr("-h\t: display help\n");
+	ft_putstr("-c\t: enable colors\n");
+	ft_putstr("-l\t: enable step counting\n");
+}
+
 void	li_usage(void)
 {
-	ft_putstr(USAGE_MSG);
+	ft_putstr("usage: [time] ./lem-in [-hcl] < my_map_file\n");
 }
 
 /*
