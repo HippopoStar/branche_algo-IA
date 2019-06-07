@@ -41,6 +41,7 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 		./srcs_lem_in/li_eval_routes.c\
 		./srcs_lem_in/li_size_ttoa.c\
 		./srcs_lem_in/li_move_ants.c\
+		./srcs_lem_in/li_display_steps.c\
 		./srcs_lem_in/li_memory_liberator.c
 
 OBJS = ./main_lem_in.o\
@@ -64,6 +65,7 @@ OBJS = ./main_lem_in.o\
 		./li_eval_routes.o\
 		./li_size_ttoa.o\
 		./li_move_ants.o\
+		./li_display_steps.o\
 		./li_memory_liberator.o
 
 all: $(NAME)

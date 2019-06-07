@@ -13,7 +13,7 @@ int		li_options(t_data *data, int argc, char **argv)
 			li_get_output(data, USAGE_MSG);
 		}
 		data->color = (data->options >> ('c' - 'a')) % 2;
-		data->display_steps = (data->options >> ('l' - 'a')) % 2;
+		data->display_steps = (size_t)((data->options >> ('l' - 'a')) % 2);
 	}
 	return (1);
 }

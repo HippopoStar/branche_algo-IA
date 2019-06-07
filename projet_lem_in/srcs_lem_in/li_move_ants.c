@@ -109,14 +109,24 @@ void	aux_li_move_ants(t_data *data, size_t step)
 
 int		li_move_ants(t_data *data)
 {
+	char	to_display[28];
 	size_t	i;
 
 	if (!(li_allocate_ant_tab(data)))
 		return (0);
+	if ((data->display_steps = li_steps_length(data)) > 0)
+	{
+		li_prepare_steps_str(data, to_display);
+	}
 	li_ants_distribution(data);
 	i = 1;
 	while (i <= data->best_steps)
 	{
+		if (data->display_steps > 0)
+		{
+			li_display_steps(data, i, to_display);
+			li_get_output(data, (char *)to_display);
+		}
 		aux_li_move_ants(data, i);
 		li_get_output(data, "\n");
 		i++;

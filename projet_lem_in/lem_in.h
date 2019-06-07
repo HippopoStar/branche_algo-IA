@@ -76,7 +76,7 @@ typedef struct		s_data
 	t_output		output;
 	int				options;
 	int				color;
-	int				display_steps;
+	size_t			display_steps;
 }					t_data;
 
 typedef struct		s_route
@@ -200,6 +200,12 @@ void				li_size_ttoa(size_t ant, char to_print[24], int color);
 int					li_allocate_ant_tab(t_data *data);
 void				li_ants_distribution(t_data *data);
 int					li_move_ants(t_data *data);
+/*
+** Dans le fichier 'li_display_steps.c'
+*/
+size_t	li_steps_length(t_data *data);
+void	li_prepare_steps_str(t_data *data, char to_display[27]);
+void	li_display_steps(t_data *data, size_t step, char to_display[27]);
 /*
 ** Dans le fichier 'li_memory_liberator.c'
 */
