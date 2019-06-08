@@ -6,9 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 12:49:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/08 00:07:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 20:51:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Sujet du projet : https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf
+*/
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -29,15 +33,15 @@
 # define FT_LONG_MAX	(9223372036854775807L)
 # define FT_ULONG_MAX	(18446744073709551615UL)
 
-# define END_OF_COLOR	"\033[00m"
-# define BLACK			"\033[30m"
-# define RED			"\033[31m"
-# define GREEN			"\033[32m"
-# define YELLOW			"\033[33m"
-# define BLUE			"\033[34m"
-# define MAGENTA		"\033[35m"
-# define CYAN			"\033[36m"
-# define WHITE			"\033[37m"
+# define FT_END_OF_COLOR	"\033[00m"
+# define FT_BLACK			"\033[30m"
+# define FT_RED				"\033[31m"
+# define FT_GREEN			"\033[32m"
+# define FT_YELLOW			"\033[33m"
+# define FT_BLUE			"\033[34m"
+# define FT_MAGENTA			"\033[35m"
+# define FT_CYAN			"\033[36m"
+# define FT_WHITE			"\033[37m"
 
 typedef struct		s_list
 {

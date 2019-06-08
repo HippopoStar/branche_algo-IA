@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:34:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/07 22:34:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 20:45:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static int	aux_ft_options(char *av, int *options, const char *allowed_opt)
 	return (1);
 }
 
-int		ft_options(int argc, char **argv, const char *allowed_opt, int allow_non_opt)
+int			ft_options(int argc, char **argv,\
+									const char *allowed_opt, int allow_non_opt)
 {
 	int		options;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/08 05:09:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 08:00:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 20:11:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ char			*ft_ullitoa_base\
 */
 char			*ft_widestring_to_string(wchar_t *widestring, size_t spac);
 char			*ft_strndup(const char *str, size_t n);
+int				ft_options\
+			(int argc, char **argv, const char *allowed_opt, int allow_non_opt);
+int				ft_is_int(char *str, size_t *i, int *n);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/28 18:28:58 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 20:27:27 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,9 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_common_functions/ft_itoa_base.c\
 		./srcs_common_functions/ft_lli_and_ulli_toa_base.c\
 		./srcs_common_functions/ft_widestring_to_string.c\
-		./srcs_common_functions/ft_strndup.c
+		./srcs_common_functions/ft_strndup.c\
+		./srcs_common_functions/ft_is_int.c\
+		./srcs_common_functions/ft_options.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -166,7 +168,9 @@ OBJS = ft_memset.o\
 		ft_itoa_base.o\
 		ft_lli_and_ulli_toa_base.o\
 		ft_widestring_to_string.o\
-		ft_strndup.o
+		ft_strndup.o\
+		ft_is_int.o\
+		ft_options.o
 
 all: $(NAME)
 

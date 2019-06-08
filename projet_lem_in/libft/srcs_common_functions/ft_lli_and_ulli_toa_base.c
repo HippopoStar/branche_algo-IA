@@ -6,12 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 06:06:55 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 06:10:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:52:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "common_functions.h"
+
+/*
+** "common_functions.h" : 'aux0_ft_itoa_base'
+*/
 
 char	*ft_ullitoa_base(unsigned long long int n, const char *base,\
 													size_t prec, size_t spac)

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 06:30:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/12 06:30:58 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 20:29:22 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,17 @@ int				aux_2_gnl_bsz(const int fd, char **line, t_gnl *maillon)
 {
 	ssize_t			p_l__t_a[3];
 
+	if (maillon->r_v == 0)
+	{
+		return (0);
+	}
 	if (maillon->bs_p == maillon->r_v)
 	{
 		if ((maillon->r_v = read(fd, maillon->buff, BUFF_SIZE)) == -1)
 			return (-1);
 		maillon->bs_p = 0;
 		return (maillon->r_v == 0 ? 0
-								: aux_3_gnl_bsz(fd, line, maillon, p_l__t_a));
+				: aux_3_gnl_bsz(fd, line, maillon, p_l__t_a));
 	}
 	else
 	{

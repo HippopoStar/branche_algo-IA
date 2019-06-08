@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/07 23:20:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 20:14:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEM_IN_H
 
 # include "libft.h"
+# include "common_functions.h"
 # include <stdio.h>
 
 /*
@@ -91,10 +92,6 @@ typedef struct		s_route
 */
 int					lem_in(t_data *data);
 /*
-** Dans le fichier 'ft_options.c'
-*/
-int					ft_options(int argc, char **argv, const char *allowed_opt, int allow_non_opt);
-/*
 ** Dans le fichier 'li_options.c'
 */
 int						li_options(t_data *data, int argc, char **argv);
@@ -114,10 +111,6 @@ void				li_print_output(t_data *data);
 */
 int					li_get_input(t_data *data, t_input **input);
 int					li_parse_input(t_data *data);
-/*
-** Dans le fichier 'ft_is_int.c'
-*/
-int					ft_is_int(char *str, size_t *i, int *n);
 /*
 ** Dans le fichier 'li_match_ants.c'
 */

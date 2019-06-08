@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 02:25:48 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/07/18 02:19:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/05/25 14:45:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ char		*aux0_ft_itoa_base(t_list *l_n, size_t i, t_list *lst)
 	}
 	else
 	{
-		c = *((char *)((l_n->next)->content)\
-				+ ((size_t)(*((unsigned long long int *)(l_n->content)))\
+		c = *((char *)((l_n->next)->content)
+				+ ((size_t)(*((unsigned long long int *)(l_n->content)))
 					% (l_n->next)->content_size));
-		tmp = *((unsigned long long int *)l_n->content)\
-				/ (unsigned long long int)((l_n->next)->content_size);
+		tmp = *((unsigned long long int *)l_n->content)
+			/ (unsigned long long int)((l_n->next)->content_size);
 		l_n->content = (void *)(&tmp);
 		new.content = (void *)(&c);
 		new.next = lst;

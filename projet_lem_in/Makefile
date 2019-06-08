@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 18:15:14 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 20:38:28 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,6 @@ NAME = lem-in
 SRC_PATH = ./srcs_lem_in/
 
 SRC_NAME = main_lem_in.c\
-			ft_is_int.c\
-			ft_options.c\
 			li_options.c\
 			li_error.c\
 			li_get_output.c\
@@ -59,7 +57,9 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEAD) libft
+$(NAME): libft link
+
+link: $(OBJ) $(HEAD)
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
 # 'mkdir' est appele lors de la compilation de chaque fichier source
@@ -85,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft link
