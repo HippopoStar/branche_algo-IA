@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 20:38:28 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 21:12:12 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,9 +57,7 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME): libft link
-
-link: $(OBJ) $(HEAD)
+$(NAME): $(OBJ) $(HEAD) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
 # 'mkdir' est appele lors de la compilation de chaque fichier source
@@ -85,4 +83,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft link
+.PHONY: all clean fclean re libft
