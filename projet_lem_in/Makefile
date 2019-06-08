@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 18:06:31 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 18:15:14 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,8 @@ $(NAME): $(OBJ) $(HEAD) libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
 # 'mkdir' est appele lors de la compilation de chaque fichier source
-# en fichier objet, mais c'est une nessecite car une regle ne peut pas
-# etre appelee par une autre regle autrement qu'en temps que dependance
+# en fichier objet, cependant c'est une nessecite car une regle ne peut pas
+# etre appelee par une autre regle autrement qu'en tant que dependance
 # Il est necessaire d'employer l'option '-o' de 'gcc' pour que les fichiers
 # objets se placent dans le repertoire '$(OBJ_PATH)'
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
