@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:08:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/08 00:08:59 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/08 18:11:03 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	li_help(void)
 	ft_putstr("-h\t: display help\n");
 	ft_putstr("-c\t: enable colors\n");
 	ft_putstr("-l\t: enable step counting\n");
+	ft_putstr("\033[32mComplexite\033[00m:\n");
+	ft_putstr("O(nb_de_salles * nb_total_de_liaisons * nb_max_de_chemins_simultanes)\n");
 }
 
 void	li_usage(void)
