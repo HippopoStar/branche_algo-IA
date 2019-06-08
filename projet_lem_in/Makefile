@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 23:33:36 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 23:55:35 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ all: $(NAME)
 
 # Tel quel la 'libft' est mise a jour si l'un de ses fichiers sources
 # a ete modifie, cependant cela ne recomplie pas le programme pour autant
-$(NAME): $(OBJ) $(HEAD) | libft
+$(NAME): $(OBJ) $(HEAD) $(LIBFT) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
 # 'mkdir' est appele lors de la compilation de chaque fichier source
