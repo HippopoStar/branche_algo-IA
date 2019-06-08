@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 21:12:12 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/08 23:33:36 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,11 @@ LDLIBS =	-lft
 #			-fsanitize-address-use-after-scope
 
 HEAD = ./lem_in.h
+
+# La ligne suivante est une ebauche d'idee pour creer une regle
+# dont le role serait d'appeler ./libft/Makefile et de recompiler
+# le projet seulement si './libft/libft.a' a ete mis a jour
+LIBFT = ./libft/libft.a
 
 NAME = lem-in
 
@@ -55,8 +60,12 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
+# Allez savoir pourquoi, meme lorque '$NAME)' existe deja,
+# 'all' s'evertue a appeler la regle correspondante
 all: $(NAME)
 
+# Tel quel la 'libft' est mise a jour si l'un de ses fichiers sources
+# a ete modifie, cependant cela ne recomplie pas le programme pour autant
 $(NAME): $(OBJ) $(HEAD) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
@@ -65,9 +74,11 @@ $(NAME): $(OBJ) $(HEAD) | libft
 # etre appelee par une autre regle autrement qu'en tant que dependance
 # Il est necessaire d'employer l'option '-o' de 'gcc' pour que les fichiers
 # objets se placent dans le repertoire '$(OBJ_PATH)'
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir -p $(OBJ_PATH) > /dev/null
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c | $(OBJ_PATH)
 	gcc -c -o $@ $(CFLAGS) $(CPPFLAGS) $<
+
+$(OBJ_PATH):
+	mkdir $(OBJ_PATH)
 
 libft:
 	@make -C ./libft/ all
