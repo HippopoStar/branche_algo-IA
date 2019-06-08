@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/08 23:55:35 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/09 00:19:36 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,13 +60,16 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-# Allez savoir pourquoi, meme lorque '$NAME)' existe deja,
+# Allez savoir pourquoi, meme lorque '$(NAME)' existe deja,
 # 'all' s'evertue a appeler la regle correspondante
 all: $(NAME)
 
 # Tel quel la 'libft' est mise a jour si l'un de ses fichiers sources
 # a ete modifie, cependant cela ne recomplie pas le programme pour autant
-$(NAME): $(OBJ) $(HEAD) $(LIBFT) | libft
+# On ne peut pas placer '$(LIBFT)' en tant que dependance car
+# le Makefile ne contient pas de regle correspondante lui expliquant comment
+# creer le fichier
+$(NAME): $(OBJ) $(HEAD) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
 # 'mkdir' est appele lors de la compilation de chaque fichier source
