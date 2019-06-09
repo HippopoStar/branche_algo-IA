@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/07 23:53:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 16:14:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int		li_parse_input(t_data *data)
 		return (1);
 }
 
+/*
+** Etant donne qu'on appelle 'gel_next_line_backslash_zero'
+** en lui passant l'adresse de 'tmp->line',
+** il est necessaire de d'allouer un maillon avant
+** d'entrer dans la boucle conditionnelle
+*/
 /*
 ** Allocation dynamique de memoire dans 'li_get_input'
 ** (t_input *)*input : data->input (liste chainee)

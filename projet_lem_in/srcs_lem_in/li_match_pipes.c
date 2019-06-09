@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 19:34:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 17:05:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,18 @@ int		li_match_pipe(t_data *data, char *str)
 	return (1);
 }
 
+/*
+** Etant donne le comportement et les conditions de validite de
+** 'li_match_rooms' dont l'appel precede celui de 'li_match_pipes', on sait
+** par avance que le maillon '*read' existe
+*/
+
 int		li_match_pipes(t_input **read, t_data *data)
 {
 	data->bonds = 0;
-	while (*((*read)->line + 0) != '\0')
+	while ((*read)->next != NULL && *((*read)->line + 0) != '\0')
 	{
-		if (!(*((*read)->line + 0) == '#') \
+		if (!(*((*read)->line + 0) == '#')
 				&& !li_match_pipe(data, (*read)->line))
 		{
 			return (0);

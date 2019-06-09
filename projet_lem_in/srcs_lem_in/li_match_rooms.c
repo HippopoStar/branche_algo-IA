@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 19:29:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 16:53:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,30 @@ int		li_allocate_room(t_room **room)
 	return (1);
 }
 
+/*
+** La fonction 'li_deal_sharp_marks' met egalement a profit
+** le fait que la variable '(t_room *)->role' soit initialisee a '1'
+** dans la fonction 'li_allocate_room',
+** pour s'en servir dans sa valeur de retour
+** et ne renvoyer '0' que si 2 lignes '##start' ou '##end' sont presentes
+** dans la meme section de commentaires/commandes
+*/
+
 int		li_deal_sharp_marks(t_room *room, t_input **read)
 {
-	if (!ft_strcmp((*read)->line, "##start"))
+	while (*read && (*((*read)->line) + 0) == '#')
 	{
-		if (room->role == 1)
+		if (!ft_strcmp((*read)->line, "##start"))
 		{
-			room->role = 2;
+			room->role = (room->role == 1) ? 2 : 0;
 		}
-		else
+		else if (!ft_strcmp((*read)->line, "##end"))
 		{
-			return (0);
+			room->role = (room->role == 1) ? 3 : 0;
 		}
+		*read = (*read)->next;
 	}
-	else if (!ft_strcmp((*read)->line, "##end"))
-	{
-		if (room->role == 1)
-		{
-			room->role = 3;
-		}
-		else
-		{
-			return (0);
-		}
-	}
-	*read = (*read)->next;
-	return (1);
+	return (room->role);
 }
 
 int		li_match_room(t_room *room, char *str)
@@ -84,6 +82,21 @@ int		li_match_room(t_room *room, char *str)
 	i++;
 	return ((ft_is_int(str, &i, &(room->pos_y)) && *(str + i) == '\0') ? 1 : 0);
 }
+
+/*
+** Dans la fonction 'li_match_rooms',
+** la condition 'if (!(*tmp) && !li_allocate_rooms(tmp))'
+** permet de n'allouer un nouveau maillon que si on a avance
+** dans la chaine des salles au cours de l'etape precedente
+** (ie la ligne precedente correspondait a une declaration de salle)
+**
+** On met a profit le fait d'avoir initialise la variable '(t_room *)->role'
+** a '1' lors de son allocation dans l'emploi de facteurs premiers
+** concernant la variable 'wit'
+** (permettant de s'assurer que la condition 'wit % 5 == 0' soit remplie
+** seulement lorsqu'on a atteint la fin de la declaration des salles,
+** et non par une combinaison de '##start' et de '##end')
+*/
 
 int		li_match_rooms(t_input **read, t_data *data)
 {
