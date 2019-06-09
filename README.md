@@ -74,6 +74,8 @@ Documentation :
 			-> il est necessaire qu'il existe davantage de nombres premiers < INT_MAX que d'itineraires possibles
 		- sauvegarder quelque part le poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
+- / ! \\ Attention au cas dans lequel 2 salles portant le meme nom sont declarees
+- / ! \\ Attention au cas dans lequel une commande est appelee lors d'une etape inapropriee
 - Penser a liberer manuellement la memoire avec 'free'
 - Problème de boucle infinie dans le cas dans lequel 'lem-in' est lance sans arguments ('CTRL + D' 'CTRL + D')
 - Ameliorer 'get\_next\_line'

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 16:53:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 19:33:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ int		li_allocate_room(t_room **room)
 	return (1);
 }
 
+int		li_is_name_available(t_room *current, t_data *data)
+{
+	t_room		*tmp;
+
+	tmp = data->rooms;
+	while (tmp && tmp != current)
+	{
+		if (!ft_strcmp(tmp->name, current->name))
+		{
+			return (0);
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 /*
 ** La fonction 'li_deal_sharp_marks' met egalement a profit
 ** le fait que la variable '(t_room *)->role' soit initialisee a '1'
@@ -37,23 +53,44 @@ int		li_allocate_room(t_room **room)
 ** et ne renvoyer '0' que si 2 lignes '##start' ou '##end' sont presentes
 ** dans la meme section de commentaires/commandes
 */
+/*
+** La fonction 'li_deal_sharp_marks' assigne a 'room->role' sa valeur de retour
+** qui vaut :
+** '0' si 'line' correspond a la commande '##start' ou '##end'
+**     et qu'une de ces 2 commandes a dors et deja ete invoquee
+**     dans le meme bloc de commentaires/commandes
+** '1' si 'line' correspond a un commentaire
+** '2' si 'line' correspond a la commande '##start'
+** '3' si 'line' correspond a la commande '##end'
+*/
 
 int		li_deal_sharp_marks(t_room *room, t_input **read)
 {
-	while (*read && (*((*read)->line) + 0) == '#')
+	if (!ft_strcmp((*read)->line, "##start"))
 	{
-		if (!ft_strcmp((*read)->line, "##start"))
-		{
-			room->role = (room->role == 1) ? 2 : 0;
-		}
-		else if (!ft_strcmp((*read)->line, "##end"))
-		{
-			room->role = (room->role == 1) ? 3 : 0;
-		}
-		*read = (*read)->next;
+		room->role = (room->role == 1) ? 2 : 0;
+	}
+	else if (!ft_strcmp((*read)->line, "##end"))
+	{
+		room->role = (room->role == 1) ? 3 : 0;
 	}
 	return (room->role);
 }
+
+/*
+** Note:
+** Dans une description de fourmiliere valide :
+** - Aucune ligne ne doit commencer par 'L'
+** - Hormis les commentaires, les seules lignes contenant des espaces sont
+**     les declarations de salles, et elles doivent en contenir exactement 2
+**
+** Sachant cela, la fonction 'li_match_room' renvoie :
+** '0' en cas de detection d'une incoherence
+**     (room->role vaut '1')
+** '1' sinon (salle valide ou non salle)
+**     (salle valide : room->role vaut '1')
+**     (non salle : room->role vaut '5')
+*/
 
 int		li_match_room(t_room *room, char *str)
 {
@@ -97,32 +134,40 @@ int		li_match_room(t_room *room, char *str)
 ** seulement lorsqu'on a atteint la fin de la declaration des salles,
 ** et non par une combinaison de '##start' et de '##end')
 */
+/*
+** La fonction 'li_match_rooms' revoie :
+** '-1' si 'line' correspond a la commande '##start' ou '##end'
+**      et qu'une de ces 2 commandes a dors et deja ete invoquee
+**      dans le meme bloc de commentaires/commandes
+** '0' si 'line' correspond a un commentaire
+** '1' si 'line' correspond a une description de salle
+** '2' si 'line' correspond a la commande '##start'
+** '3' si 'line' correspond a la commande '##end'
+** '5' sinon
+*/
 
-int		li_match_rooms(t_input **read, t_data *data)
+int		li_match_rooms(char *line, t_data *data, t_room **curent)
 {
-	int		wit;
-	t_room	**tmp;
+	int		ret_val;
 
-	tmp = &(data->rooms);
-	wit = 1;
-	while (*read && wit % 5 != 0)
+	if (!(*current) && !li_allocate_room(current))
+		return (-1);
+	if (*(line + 0) == '#')
 	{
-		if (!(*tmp) && !li_allocate_room(tmp))
-			return (0);
-		if (*((*read)->line + 0) == '#' && !li_deal_sharp_marks(*tmp, read))
+		ret_val = li_deal_sharp_marks(*current, line);
+		if (ret_val == 1)
 		{
 			return (0);
 		}
-		else
-		{
-			if (!li_match_room(*tmp, (*read)->line))
-			{
-				return (0);
-			}
-			wit = wit * (*tmp)->role;
-		}
-		*read = ((*tmp)->role == 5) ? *read : (*read)->next;
-		tmp = &((*tmp)->next);
 	}
-	return (wit == 30 ? 1 : 0);
+	else
+	{
+		if ((ret_val = li_match_room(*current, (*read)->line)) == 1)
+		{
+			if (!li_is_name_available(*current, data))
+			{
+				return (-1);
+			}
+	}
+	return (ret_val ? (*current)->role : -1);
 }

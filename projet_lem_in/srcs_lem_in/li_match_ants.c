@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:37 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 16:07:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 17:39:05 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,19 @@
 ** en verifiaiant que la ligne concernee ne contient rien d'autre
 */
 
-int		li_match_ants(t_input **read, t_data *data)
+int		li_match_ants(char *line, t_data *data)
 {
-	size_t	i;
-	int		wit;
+	size_t	len;
 
-	while (*read)
+	if (*(line + 0) == '#')
 	{
-		if (*((*read)->line + 0) == '#')
-		{
-			*read = (*read)->next;
-		}
-		else
-		{
-			i = 0;
-			wit = ((ft_is_int((*read)->line, &i, &(data->ants))
-						&& data->ants > 0 && *((*read)->line + i) == '\0')
-					? 1 : 0);
-			*read = (*read)->next;
-			return (wit);
-		}
+		return (0);
 	}
-	return (0);
+	else
+	{
+		len = 0;
+		return ((ft_is_int(line, &len, &(data->ants))
+					&& data->ants > 0 && *(line + len) == '\0')
+				? 1 : -1);
+	}
 }

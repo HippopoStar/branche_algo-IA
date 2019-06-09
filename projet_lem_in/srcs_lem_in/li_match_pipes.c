@@ -6,11 +6,29 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 17:05:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/09 19:51:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+int		li_actualise_map(t_data *data, size_t i, size_t j)
+{
+	if (*((*(data->map + i))->pipes + j) == 1
+			|| *((*(data->map + j))->pipes + i) == 1)
+	{
+		return (0);
+	}
+	else
+	{
+		*((*(data->map + i))->pipes + j) = 1;
+		*((*(data->map + j))->pipes + i) = 1;
+		((*(data->map + i))->nb_of_bonds)++;
+		((*(data->map + j))->nb_of_bonds)++;
+		data->bonds++;
+		return (1);
+	}
+}
 
 /*
 ** La fonction 'li_match_pipe'
@@ -54,12 +72,7 @@ int		li_match_pipe(t_data *data, char *str)
 	}
 	if (i == data->size || j == data->size || i == j)
 		return (0);
-	*((*(data->map + i))->pipes + j) = 1;
-	*((*(data->map + j))->pipes + i) = 1;
-	((*(data->map + i))->nb_of_bonds)++;
-	((*(data->map + j))->nb_of_bonds)++;
-	data->bonds++;
-	return (1);
+	return (li_actualise_map(data, i, j);
 }
 
 /*
