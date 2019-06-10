@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/07 23:59:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:06:55 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@
 
 int		lem_in(t_data *data)
 {
-	if (!li_parse_input(data)
-		|| !li_bhandari(data)
+	if (!li_bhandari(data)
 		|| !li_build_routes(data))
 	{
 		return (0);
@@ -119,15 +118,13 @@ int		main(int argc, char **argv)
 	data.max_paths = 0;
 	data.paths = NULL;
 	data.path_nb = 0;
-	data.input = NULL;
-	data.read = NULL;
 	(data.output).index = 0;
 	data.ant_tab = NULL;
 	if (!(ret_val = (!li_options(&data, argc, argv) || data.help) ? 0 : 1))
 		data.help ? li_help() : li_usage();
 	else
 	{
-		ret_val = li_get_input(&data, &(data.input));
+		ret_val = li_parse_input(&data);
 		li_print_output(&data);
 		if (!ret_val || !(ret_val = lem_in(&data)))
 			li_error();

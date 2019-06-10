@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/09 00:19:36 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/10 21:22:12 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CPPFLAGS =	-I./ -I./libft/includes/
 LDFLAGS =	-L./libft/
 LDLIBS =	-lft
 
-#CFLAGS +=	-O1 -g -fsanitize=address \
-#			-fno-omit-frame-pointer \
-#			-fsanitize-address-use-after-scope
+CFLAGS +=	-O1 -g -fsanitize=address \
+			-fno-omit-frame-pointer \
+			-fsanitize-address-use-after-scope
 
 HEAD = ./lem_in.h
 
@@ -34,11 +34,12 @@ SRC_NAME = main_lem_in.c\
 			li_options.c\
 			li_error.c\
 			li_get_output.c\
+			li_get_next_non_comment_line.c\
 			li_parse_input.c\
 			li_match_ants.c\
-			li_match_rooms.c\
+			li_match_room.c\
 			li_allocate_map.c\
-			li_match_pipes.c\
+			li_match_pipe.c\
 			li_shorten_map_pipes.c\
 			li_print_map.c\
 			li_bellman_ford.c\

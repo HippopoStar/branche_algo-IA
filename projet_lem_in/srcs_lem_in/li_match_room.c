@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   li_match_rooms.c                                   :+:      :+:    :+:   */
+/*   li_match_room.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 17:33:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 19:33:02 by lcabanes         ###   ########.fr       */
+/*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/06/10 21:16:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,23 @@ int		li_is_name_available(t_room *current, t_data *data)
 ** '3' si 'line' correspond a la commande '##end'
 */
 
-int		li_deal_sharp_marks(t_room *room, t_input **read)
+void	li_deal_sharp_marks(t_room *current, char *line, int *wit)
 {
-	if (!ft_strcmp((*read)->line, "##start"))
+	if (!ft_strcmp(line, "##start") && (*wit) % 2 != 0)
 	{
-		room->role = (room->role == 1) ? 2 : 0;
+		*wit = (*wit) * 2;
+		current->role = 2;
 	}
-	else if (!ft_strcmp((*read)->line, "##end"))
+	else if (!ft_strcmp(line, "##end") && (*wit) % 3 != 0)
 	{
-		room->role = (room->role == 1) ? 3 : 0;
+		*wit = (*wit) * 3;
+		current->role = 3;
 	}
-	return (room->role);
+	else
+	{
+		*wit = 0;
+	}
+	free(line);
 }
 
 /*
@@ -92,32 +98,33 @@ int		li_deal_sharp_marks(t_room *room, t_input **read)
 **     (non salle : room->role vaut '5')
 */
 
-int		li_match_room(t_room *room, char *str)
+int		aux_li_match_room(t_room *current, char *line, int *wit)
 {
 	size_t	i;
 
-	room->name = str;
-	if (*(str + 0) == 'L')
+	current->name = line;
+	if (*(line + 0) == 'L')
 		return (0);
 	i = 0;
-	while (*(str + i) != ' ' && *(str + i) != '\0')
+	while (*(line + i) != ' ' && *(line + i) != '\0')
 	{
 		i++;
 	}
-	if (*(str + i) == ' ')
+	if (*(line + i) == ' ')
 	{
-		*(str + i) = '\0';
+		*(line + i) = '\0';
 		i++;
 	}
 	else
 	{
-		room->role = 5;
-		return (1);
+		*wit = (*wit) * 5;
+		return ((current->role == 2 || current->role == 3) ? 0 : 1);
 	}
-	if (!ft_is_int(str, &i, &(room->pos_x)) && *(str + i) == ' ')
+	if (!ft_is_int(line, &i, &(current->pos_x)) && *(line + i) == ' ')
 		return (0);
 	i++;
-	return ((ft_is_int(str, &i, &(room->pos_y)) && *(str + i) == '\0') ? 1 : 0);
+	return ((ft_is_int(line, &i, &(current->pos_y)) && *(line + i) == '\0')
+			? 1 : 0);
 }
 
 /*
@@ -146,28 +153,28 @@ int		li_match_room(t_room *room, char *str)
 ** '5' sinon
 */
 
-int		li_match_rooms(char *line, t_data *data, t_room **curent)
+void	li_match_room(t_data *data, char *line, t_room **current, int *wit)
 {
-	int		ret_val;
-
-	if (!(*current) && !li_allocate_room(current))
-		return (-1);
 	if (*(line + 0) == '#')
 	{
-		ret_val = li_deal_sharp_marks(*current, line);
-		if (ret_val == 1)
-		{
-			return (0);
-		}
+		li_deal_sharp_marks(*current, line, wit);
 	}
 	else
 	{
-		if ((ret_val = li_match_room(*current, (*read)->line)) == 1)
+		if (aux_li_match_room(*current, line, wit) && !((*wit) % 5 == 0)
+				&& li_is_name_available(*current, data))
 		{
-			if (!li_is_name_available(*current, data))
+			*current = (*current)->next;
+		}
+		else
+		{
+			free(*current);
+			*current = NULL;
+			if (!((*wit) % 5 == 0))
 			{
-				return (-1);
+				free(line);
+				*wit = 0;
 			}
+		}
 	}
-	return (ret_val ? (*current)->role : -1);
 }

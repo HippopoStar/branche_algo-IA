@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:37 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 17:39:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:14:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 ** en verifiaiant que la ligne concernee ne contient rien d'autre
 */
 
-int		li_match_ants(char *line, t_data *data)
+int		li_match_ants(t_data *data, char *line)
 {
 	size_t	len;
 
-	if (*(line + 0) == '#')
+	len = 0;
+	if (ft_is_int(line, &len, &(data->ants)) && data->ants > 0
+			&& *(line + len) == '\0')
 	{
-		return (0);
+		free(line);
+		return (1);
 	}
 	else
 	{
-		len = 0;
-		return ((ft_is_int(line, &len, &(data->ants))
-					&& data->ants > 0 && *(line + len) == '\0')
-				? 1 : -1);
+		free(line);
+		return (0);
 	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   li_match_pipes.c                                   :+:      :+:    :+:   */
+/*   li_match_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/17 17:33:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 19:51:25 by lcabanes         ###   ########.fr       */
+/*   Created: 2019/06/10 20:53:22 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/06/10 21:19:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		li_actualise_map(t_data *data, size_t i, size_t j)
 		*((*(data->map + j))->pipes + i) = 1;
 		((*(data->map + i))->nb_of_bonds)++;
 		((*(data->map + j))->nb_of_bonds)++;
-		data->bonds++;
 		return (1);
 	}
 }
@@ -47,21 +46,21 @@ int		li_actualise_map(t_data *data, size_t i, size_t j)
 ** liaison a deja ete repertoriee anterieurement (doublon) ?
 */
 
-int		li_match_pipe(t_data *data, char *str)
+int		li_match_pipe(t_data *data, char *line)
 {
 	size_t	i;
 	size_t	j;
 	char	*tmp;
 
 	i = 0;
-	while (*(str + i) != '-' && *(str + i) != '\0')
+	while (*(line + i) != '-' && *(line + i) != '\0')
 	{
 		i++;
 	}
-	tmp = (*(str + i) == '-') ? (str + i + 1) : (str + i);
-	*(str + i) = '\0';
+	tmp = (*(line + i) == '-') ? (line + i + 1) : (line + i);
+	*(line + i) = '\0';
 	i = 0;
-	while (i < data->size && ft_strcmp((*(data->map + i))->name, str))
+	while (i < data->size && ft_strcmp((*(data->map + i))->name, line))
 	{
 		i++;
 	}
@@ -72,7 +71,7 @@ int		li_match_pipe(t_data *data, char *str)
 	}
 	if (i == data->size || j == data->size || i == j)
 		return (0);
-	return (li_actualise_map(data, i, j);
+	return (li_actualise_map(data, i, j));
 }
 
 /*
@@ -80,18 +79,3 @@ int		li_match_pipe(t_data *data, char *str)
 ** 'li_match_rooms' dont l'appel precede celui de 'li_match_pipes', on sait
 ** par avance que le maillon '*read' existe
 */
-
-int		li_match_pipes(t_input **read, t_data *data)
-{
-	data->bonds = 0;
-	while ((*read)->next != NULL && *((*read)->line + 0) != '\0')
-	{
-		if (!(*((*read)->line + 0) == '#')
-				&& !li_match_pipe(data, (*read)->line))
-		{
-			return (0);
-		}
-		*read = (*read)->next;
-	}
-	return (((*read)->next == NULL) ? 1 : 0);
-}

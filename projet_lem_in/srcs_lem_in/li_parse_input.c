@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/09 20:48:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:12:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,14 @@
 
 int		li_parse_ants(t_data *data, char **line, int *ret_gnl)
 {
-	int		ret_val;
-
-	ret_val = 0;
-	while (((*ret_gnl) = get_next_line_backslash_zero(0, line)) == 1
-			&& (ret_val = li_match_ants(*line, data)) == 0)
+	if (((*ret_gnl) = li_get_next_non_comment_line(data, line)) == 1)
 	{
-		li_get_output(data, *line);
-		free(*line);
+		return (li_match_ants(data, *line));
 	}
-	if (*line)
+	else
 	{
-		li_get_output(data, *line);
-		free(*line);
+		return (0);
 	}
-	return (ret_val);
 }
 
 /*
@@ -50,30 +43,18 @@ int		li_parse_ants(t_data *data, char **line, int *ret_gnl)
 
 int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 {
-	int		ret_val;
-	t_room	**tmp;
+	t_room	**current;
 	int		wit;
 
-	*tmp = data->rooms;
+	current = &(data->rooms);
 	wit = 1;
-	ret_val = 0;
-	while (ret_val >= 0 && wit % 5 != 0
-			&& ((*tmp) || li_allocate_room(tmp))
-			&& ((*ret_gnl) = get_next_line_backslash_zero(0, line)) == 1)
+	while (wit > 0 && !(wit % 5 == 0)
+			&& ((*current) || li_allocate_room(current))
+			&& ((*ret_gnl) = li_get_next_non_comment_line(data, line)) == 1)
 	{
-		li_get_output(data, *line);
-		ret_val = li_match_rooms(*line, data);
-		if (!(ret_val == 1 || ret_val == 5))
-		{
-			free(*line);
-		}
-		wit = wit * (*tmp)->role;
-		if (ret_val == 1)
-		{
-			*tmp = (*tmp)->next;
-		}
+		li_match_room(data, *line, current, &wit);
 	}
-	return (wit == 30 && ret_val >= 0 ? 1 : 0);
+	return (wit == 30 ? 1 : 0);
 }
 
 /*
@@ -83,6 +64,16 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 
 int		li_parse_pipes(t_data *data, char **line, int *ret_gnl)
 {
+	data->bonds = 0;
+	while (((*line)
+				|| ((*ret_gnl) = li_get_next_non_comment_line(data, line)) == 1)
+			&& li_match_pipe(data, *line))
+	{
+		free(*line);
+		*line = NULL;
+		(data->bonds)++;
+	}
+	return ((*ret_gnl == 0) ? 1 : 0);
 }
 
 /*
@@ -97,23 +88,26 @@ int		li_parse_pipes(t_data *data, char **line, int *ret_gnl)
 ** (char *)line : (t_input *)->line (dans chaque maillon)
 */
 
-int		li_get_input(t_data *data, t_input **input)
+int		li_parse_input(t_data *data)
 {
+	char	*line;
 	int		ret_gnl;
-	t_input	*tmp;
 
-	if (!((*input) = (t_input *)malloc(sizeof(t_input))))
-		return (0);
-	tmp = *input;
-	while ((ret_gnl = get_next_line_backslash_zero(0, &(tmp->line))) == 1)
+	if (li_parse_ants(data, &line, &ret_gnl)
+			&& li_parse_rooms(data, &line, &ret_gnl))
 	{
-		li_get_output(data, tmp->line);
-		li_get_output(data, "\n");
-		if (!(tmp->next = (t_input *)malloc(sizeof(t_input))))
+		if (!li_allocate_map(data))
+		{
+			free(line);
 			return (0);
-		tmp = tmp->next;
+		}
+		else
+		{
+			return (li_parse_pipes(data, &line, &ret_gnl));
+		}
 	}
-	tmp->next = NULL;
-	li_get_output(data, "\n");
-	return ((ret_gnl == 0) ? 1 : 0);
+	else
+	{
+		return (0);
+	}
 }

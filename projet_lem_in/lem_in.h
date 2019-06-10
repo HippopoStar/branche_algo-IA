@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/08 20:14:01 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:18:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ typedef struct		s_data
 	t_ant			*ant_tab;
 	t_room			*rooms;
 	t_room			**map;
-	t_input			*input;
-	t_input			*read;
 	t_output		output;
 	int				options;
 	int				help;
@@ -107,21 +105,31 @@ void				li_error(void);
 void				li_get_output(t_data *data, const char *str);
 void				li_print_output(t_data *data);
 /*
+** Dans le fichier 'li_get_next_non_comment_line.c'
+*/
+int					li_is_command(char *line);
+int					li_is_comment(char *line);
+int					li_get_next_non_comment_line(t_data *data, char **line);
+/*
 ** Dans le fichier 'li_parse_input.c'
 */
-int					li_get_input(t_data *data, t_input **input);
+int					li_parse_ants(t_data *data, char **line, int *ret_gnl);
+int					li_parse_rooms(t_data *data, char **line, int *ret_gnl);
+int					li_parse_pipes(t_data *data, char **line, int *ret_gnl);
 int					li_parse_input(t_data *data);
 /*
 ** Dans le fichier 'li_match_ants.c'
 */
-int					li_match_ants(t_input **read, t_data *data);
+int					li_match_ants(t_data *data, char *line);
 /*
 ** Dans le fichier 'li_match_rooms.c'
 */
-int					li_match_rooms(t_input **read, t_data *data);
-int					li_match_room(t_room *room, char *str);
-int					li_deal_sharp_marks(t_room *room, t_input **read);
 int					li_allocate_room(t_room **room);
+int					li_is_name_available(t_room *current, t_data *data);
+void				li_deal_sharp_marks(t_room *current, char *line, int *wit);
+int					aux_li_match_room(t_room *current, char *line, int *wit);
+void				li_match_room(t_data *data, char *line,\
+													t_room **current, int *wit);
 /*
 ** Dans le fichier 'li_allocate_map.c'
 */
@@ -130,8 +138,8 @@ int					aux_li_allocate_map(t_data *data, int *set_map);
 /*
 ** Dans le fichier 'li_match_pipes.c'
 */
-int					li_match_pipes(t_input **read, t_data *data);
-int					li_match_pipe(t_data *data, char *str);
+int					li_actualise_map(t_data *data, size_t i, size_t j);
+int					li_match_pipe(t_data *data, char *line);
 /*
 ** Dans le fichier 'li_shorten_map_pipes.c'
 */
