@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:12:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:44:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 			&& ((*current) || li_allocate_room(current))
 			&& ((*ret_gnl) = li_get_next_non_comment_line(data, line)) == 1)
 	{
-		li_match_room(data, *line, current, &wit);
+		li_match_room(data, *line, &current, &wit);
 	}
 	return (wit == 30 ? 1 : 0);
 }
@@ -103,7 +103,8 @@ int		li_parse_input(t_data *data)
 		}
 		else
 		{
-			return (li_parse_pipes(data, &line, &ret_gnl));
+			return ((li_parse_pipes(data, &line, &ret_gnl)
+						&& li_shorten_map_pipes(data)) ? 1 : 0);
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:32:51 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:21:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:50:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		li_allocate_map(t_data *data)
 
 	i = 0;
 	tmp = data->rooms;
-	while (tmp->role != 5)
+	while (tmp != NULL)
 	{
 		tmp = tmp->next;
 		i++;

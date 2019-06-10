@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:18:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:07:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int					li_is_name_available(t_room *current, t_data *data);
 void				li_deal_sharp_marks(t_room *current, char *line, int *wit);
 int					aux_li_match_room(t_room *current, char *line, int *wit);
 void				li_match_room(t_data *data, char *line,\
-													t_room **current, int *wit);
+												t_room ***current, int *wit);
 /*
 ** Dans le fichier 'li_allocate_map.c'
 */
@@ -148,6 +148,7 @@ int					li_shorten_map_pipes(t_data *data);
 /*
 ** Dans le fichier 'li_print_map.c' (implementer options ?)
 */
+void				li_print_rooms(t_data *data);
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
 void				li_print_routes(t_data *data);

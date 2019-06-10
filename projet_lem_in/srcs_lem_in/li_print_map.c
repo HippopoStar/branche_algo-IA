@@ -6,11 +6,34 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/30 17:36:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 21:56:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void	li_print_rooms(t_data *data)
+{
+	t_room	*tmp;
+
+	tmp = data->rooms;
+	while (tmp != NULL && tmp->name != NULL)
+	{
+		ft_putchar('(');
+		ft_putstr(tmp->name);
+		ft_putchar(' ');
+		ft_putnbr(tmp->pos_x);
+		ft_putchar(' ');
+		ft_putnbr(tmp->pos_y);
+		ft_putchar(')');
+		if (tmp->next != NULL)
+		{
+			ft_putstr("->");
+		}
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
+}
 
 void	li_print_map(t_data *data)
 {

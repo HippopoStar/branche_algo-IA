@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:16:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/10 22:09:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,23 +153,23 @@ int		aux_li_match_room(t_room *current, char *line, int *wit)
 ** '5' sinon
 */
 
-void	li_match_room(t_data *data, char *line, t_room **current, int *wit)
+void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)
 {
 	if (*(line + 0) == '#')
 	{
-		li_deal_sharp_marks(*current, line, wit);
+		li_deal_sharp_marks(**current, line, wit);
 	}
 	else
 	{
-		if (aux_li_match_room(*current, line, wit) && !((*wit) % 5 == 0)
-				&& li_is_name_available(*current, data))
+		if (aux_li_match_room(**current, line, wit) && !((*wit) % 5 == 0)
+				&& li_is_name_available(**current, data))
 		{
-			*current = (*current)->next;
+			*current = &((**current)->next);
 		}
 		else
 		{
-			free(*current);
-			*current = NULL;
+			free(**current);
+			**current = NULL;
 			if (!((*wit) % 5 == 0))
 			{
 				free(line);

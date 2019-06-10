@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/10 21:22:12 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/10 22:21:14 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CPPFLAGS =	-I./ -I./libft/includes/
 LDFLAGS =	-L./libft/
 LDLIBS =	-lft
 
-CFLAGS +=	-O1 -g -fsanitize=address \
-			-fno-omit-frame-pointer \
-			-fsanitize-address-use-after-scope
+#CFLAGS +=	-O1 -g -fsanitize=address \
+#			-fno-omit-frame-pointer \
+#			-fsanitize-address-use-after-scope
 
 HEAD = ./lem_in.h
 
@@ -78,7 +78,8 @@ $(NAME): $(OBJ) $(HEAD) | libft
 # etre appelee par une autre regle autrement qu'en tant que dependance
 # Il est necessaire d'employer l'option '-o' de 'gcc' pour que les fichiers
 # objets se placent dans le repertoire '$(OBJ_PATH)'
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c | $(OBJ_PATH)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c # | $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH) 2> /dev/null
 	gcc -c -o $@ $(CFLAGS) $(CPPFLAGS) $<
 
 $(OBJ_PATH):
