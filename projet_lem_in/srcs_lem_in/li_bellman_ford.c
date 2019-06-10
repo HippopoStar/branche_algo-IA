@@ -29,7 +29,7 @@ void	aux_li_bellman_ford(t_data *data)
 			if (*((*(data->map + i))->pipes + target) != 0 && i != target)
 			{
 				wei = (*(data->map + i))->weight
-					+ *((*(data->map + i))->pipes + target);
+					+ (int)(*((*(data->map + i))->pipes + target));
 				if (wei < (*(data->map + target))->weight)
 				{
 					(*(data->map + target))->ancestor = i;

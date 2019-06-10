@@ -21,8 +21,8 @@ int		li_actualise_map(t_data *data, size_t i, size_t j)
 	}
 	else
 	{
-		*((*(data->map + i))->pipes + j) = 1;
-		*((*(data->map + j))->pipes + i) = 1;
+		*((*(data->map + i))->pipes + j) = (signed char)1;
+		*((*(data->map + j))->pipes + i) = (signed char)1;
 		((*(data->map + i))->nb_of_bonds)++;
 		((*(data->map + j))->nb_of_bonds)++;
 		return (1);

@@ -53,7 +53,7 @@ typedef struct		s_room
 	int				role;
 	size_t			nb_of_bonds;
 	size_t			*bond_sum;
-	int				*pipes;
+	signed char	*pipes;
 	struct s_room	*next;
 }					t_room;
 
@@ -134,7 +134,7 @@ void				li_match_room(t_data *data, char *line,\
 ** Dans le fichier 'li_allocate_map.c'
 */
 int					li_allocate_map(t_data *data);
-int					aux_li_allocate_map(t_data *data, int *set_map);
+int					aux_li_allocate_map(t_data *data, signed char *set_map);
 /*
 ** Dans le fichier 'li_match_pipes.c'
 */

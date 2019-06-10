@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-int		aux_li_allocate_map(t_data *data, int *set_map)
+int		aux_li_allocate_map(t_data *data, signed char *set_map)
 {
 	size_t	i;
 	t_room	*tmp;
@@ -50,9 +50,9 @@ int		aux_li_allocate_map(t_data *data, int *set_map)
 
 int		li_allocate_map(t_data *data)
 {
-	size_t	i;
-	t_room	*tmp;
-	int		*set_map;
+	size_t		i;
+	t_room		*tmp;
+	signed char	*set_map;
 
 	i = 0;
 	tmp = data->rooms;
@@ -63,12 +63,12 @@ int		li_allocate_map(t_data *data)
 	}
 	data->size = i;
 	if (!(data->map = (t_room **)malloc(i * sizeof(t_room *)))
-			|| !(set_map = (int *)malloc(i * i * sizeof(int))))
+			|| !(set_map = (signed char *)malloc(i * i * sizeof(signed char))))
 		return (0);
 	i = 0;
 	while (i < data->size * data->size)
 	{
-		*(set_map + i) = 0;
+		*(set_map + i) = (signed char)0;
 		i++;
 	}
 	return (aux_li_allocate_map(data, set_map));

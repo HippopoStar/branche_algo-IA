@@ -73,8 +73,8 @@ int		li_reverse_path(t_data *data)
 	while (i != 0)
 	{
 		i = (*(data->map + j))->ancestor;
-		*((*(data->map + i))->pipes + j) = 0;
-		*((*(data->map + j))->pipes + i) = -1;
+		*((*(data->map + i))->pipes + j) = (signed char)0;
+		*((*(data->map + j))->pipes + i) = (signed char)(-1);
 		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
 		j = i;
