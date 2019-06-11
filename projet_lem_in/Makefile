@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/10 22:21:14 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/11 19:05:56 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,11 @@ LDLIBS =	-lft
 
 HEAD = ./lem_in.h
 
-# La ligne suivante est une ebauche d'idee pour creer une regle
-# dont le role serait d'appeler ./libft/Makefile et de recompiler
-# le projet seulement si './libft/libft.a' a ete mis a jour
 LIBFT = ./libft/libft.a
 
 NAME = lem-in
 
-SRC_PATH = ./srcs_lem_in/
+SRC_PATH = ./srcs_lem_in
 
 SRC_NAME = main_lem_in.c\
 			li_options.c\
@@ -53,37 +50,43 @@ SRC_NAME = main_lem_in.c\
 			li_display_steps.c\
 			li_memory_liberator.c
 
-SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-OBJ_PATH = ./objs/
+OBJ_PATH = ./objs
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 # Allez savoir pourquoi, meme lorque '$(NAME)' existe deja,
 # 'all' s'evertue a appeler la regle correspondante
 all: $(NAME)
 
-# Tel quel la 'libft' est mise a jour si l'un de ses fichiers sources
-# a ete modifie, cependant cela ne recomplie pas le programme pour autant
-# On ne peut pas placer '$(LIBFT)' en tant que dependance car
-# le Makefile ne contient pas de regle correspondante lui expliquant comment
-# creer le fichier
-$(NAME): $(OBJ) $(HEAD) | libft
+# L'appel de 'libft' permet d'actualiser '$(LIBFT)'
+# afin qu'eventuellement '$(NAME)' se lance lors du prochain appel de 'make'
+
+$(NAME): $(OBJ) $(LIBFT) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
 
-# 'mkdir' est appele lors de la compilation de chaque fichier source
-# en fichier objet, cependant c'est une nessecite car une regle ne peut pas
-# etre appelee par une autre regle autrement qu'en tant que dependance
-# Il est necessaire d'employer l'option '-o' de 'gcc' pour que les fichiers
-# objets se placent dans le repertoire '$(OBJ_PATH)'
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c # | $(OBJ_PATH)
-	@mkdir -p $(OBJ_PATH) 2> /dev/null
+# Autre solution de creation du dossier '$(OBJ_PATH)' :
+#	@mkdir -p $(OBJ_PATH) 2> /dev/null
+# dans la dependance '$(OBJ_PATH)'
+# Dans ce cas 'mkdir' est appele lors de la compilation de chaque fichier source
+
+# Il est necessaire d'employer l'option '-o' de 'gcc' de la maniere qui suit
+# pour que les fichiers objets se placent dans le repertoire '$(OBJ_PATH)'
+
+# Par ailleurs il egalement necessaire de placer le '/' comme c'est la cas
+# et de ne pas l'inclure dans dans la variable '$(OBJ_PATH)'
+# car autrement allez savoir pourquoi la commande 'make re' revoie une erreur
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEAD) | $(OBJ_PATH)
 	gcc -c -o $@ $(CFLAGS) $(CPPFLAGS) $<
 
 $(OBJ_PATH):
 	mkdir $(OBJ_PATH)
+
+$(LIBFT): libft
 
 libft:
 	@make -C ./libft/ all
