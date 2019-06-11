@@ -45,22 +45,30 @@ int		li_is_name_available(t_room *current, t_data *data)
 	return (1);
 }
 
-void	li_deal_sharp_marks(t_room *current, char *line, int *wit)
+void	li_deal_sharp_marks(t_room **current, char *line, int *wit)
 {
-	if (!ft_strcmp(line, "##start") && (*wit) % 2 != 0)
+	int		command_id;
+
+	command_id = 0;
+	if (!ft_strcmp(line, "##start"))
 	{
-		*wit = (*wit) * 2;
-		current->role = 2;
+		command_id = 2;
 	}
-	else if (!ft_strcmp(line, "##end") && (*wit) % 3 != 0)
+	else if (!ft_strcmp(line, "##end"))
 	{
-		*wit = (*wit) * 3;
-		current->role = 3;
+		command_id = 3;
+	}
+	if ((*current)->role == 1 && (command_id) && !((*wit) % command_id == 0))
+	{
+		(*current)->role = command_id;
 	}
 	else
 	{
-		*wit = 0;
+		command_id = 0;
+		free(*current);
+		*current = NULL;
 	}
+	*wit = (*wit) * command_id;
 	free(line);
 }
 
@@ -124,7 +132,7 @@ void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)
 {
 	if (*(line + 0) == '#')
 	{
-		li_deal_sharp_marks(**current, line, wit);
+		li_deal_sharp_marks(*current, line, wit);
 	}
 	else
 	{

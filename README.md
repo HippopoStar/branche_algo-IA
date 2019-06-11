@@ -76,6 +76,7 @@ Documentation :
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - / ! \\ Attention au cas dans lequel 2 salles portant le meme nom sont declarees
 - / ! \\ Attention au cas dans lequel une commande est appelee lors d'une etape inapropriee
+- / ! \\ Attention au cas dans lequel le nombre de fourmis vaut '0'
 - Penser a liberer manuellement la memoire avec 'free'
 - Problème de boucle infinie dans le cas dans lequel 'lem-in' est lance sans arguments ('CTRL + D' 'CTRL + D')
 - Ameliorer 'get\_next\_line'

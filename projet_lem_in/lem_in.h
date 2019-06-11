@@ -126,7 +126,7 @@ int					li_match_ants(t_data *data, char *line);
 */
 int					li_allocate_room(t_room **room);
 int					li_is_name_available(t_room *current, t_data *data);
-void				li_deal_sharp_marks(t_room *current, char *line, int *wit);
+void				li_deal_sharp_marks(t_room **current, char *line, int *wit);
 int					aux_li_match_room(t_room *current, char *line, int *wit);
 void				li_match_room(t_data *data, char *line,\
 												t_room ***current, int *wit);

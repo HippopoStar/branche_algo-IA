@@ -111,6 +111,11 @@ int		li_allocate_paths(t_data *data)
 	return (1);
 }
 
+/*
+** Ne pas omettre que 'data->ants' == '0' => 'data->max_paths' == '0'
+** On fait le choix de ne pas considerer '0' fourmis comme une erreur
+*/
+
 int		li_bhandari(t_data *data)
 {
 	size_t	i;
@@ -118,7 +123,7 @@ int		li_bhandari(t_data *data)
 
 	li_bhandari_max_iterations(data);
 	if (data->max_paths == 0 || !li_allocate_paths(data))
-		return (0);
+		return (data->ants == 0 ? 1 : 0);
 	ret_val = 1;
 	i = 0;
 	while (i < data->max_paths && ret_val == 1)
