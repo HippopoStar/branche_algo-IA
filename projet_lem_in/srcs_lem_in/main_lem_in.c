@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 22:26:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:42:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,37 @@
 **         |ft_putstr (L)
 ** | li_usage
 **     | ft_putstr (L)
-** | li_get_input (*)
-**     | get_next_line_backslash_zero (L*)
-**     | li_get_output (R)
-**         | ft_strlen (L)
-**         | li_print_output
+** | li_parse_input
+**     | li_parse_ants
+**         | li_get_next_non_comment_line (*)
+**         | li_match_ants
+**             | ft_is_int (L)
+**             | free (S)
+**     | li_parse_rooms
+**         | li_allocate_room (*)
+**         | li_get_next_non_comment_line (*)
+**         | li_match_room
+**             | li_deal_sharp_mark
+**                 | ft_strcmp (L)
+**                 | free (S)
+**             | aux_li_match_room
+**                 | ft_is_int (L)
+**             | li_is_name_available
+**                 | ft_strcmp (L)
+**             | free (S)
+**     | li_allocate_map (*)
+**         | aux_li_allocate_map
+**     | free (S)
+**     | li_parse_pipes
+**         | li_get_next_non_comment_line (*)
+**         | li_match_pipe
+**             | ft_strcmp (L)
+**             | li_actualise_map
+**         | free (S)
+**     | li_shorten_map_pipes (*)
+**         | li_fill_bond_summary
 ** | li_print_output
 ** | lem_in
-**     | li_parse_input
-**         | li_match_ants
-**             | ft_is_int
-**                 | ft_is_digit (L)
-**                 | ft_atoi (L)
-**         | li_match_rooms
-**             | li_allocate_room (*)
-**             | li_deal_sharp_marks
-**                 | ft_strcmp (L)
-**             | li_match_room
-**                 | ft_is_int
-**                     | ft_is_digit (L)
-**                     | ft_atoi (L)
-**         | li_allocate_map (*)
-**             | aux_li_allocate_map
-**         | li_match_pipes
-**             | li_match_pipe
-**                 | ft_strcmp (L)
-**         | li_shorten_map_pipes (*)
-**             | li_fill_bond_summary
 **     | li_bhandari
 **         | li_bhandari_max_iteration
 **         | li_allocate_paths (*)

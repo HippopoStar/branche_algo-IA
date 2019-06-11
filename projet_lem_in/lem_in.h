@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 19:26:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:19:22 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_room
 	int				role;
 	size_t			nb_of_bonds;
 	size_t			*bond_sum;
-	signed char	*pipes;
+	signed char		*pipes;
 	struct s_room	*next;
 }					t_room;
 
@@ -92,7 +92,7 @@ int					lem_in(t_data *data);
 /*
 ** Dans le fichier 'li_options.c'
 */
-int						li_options(t_data *data, int argc, char **argv);
+int					li_options(t_data *data, int argc, char **argv);
 /*
 ** Dans le fichier 'li_error.c'
 */
@@ -199,7 +199,8 @@ void				li_color_ants(size_t ant, char to_print[24], size_t gap);
 void				li_size_ttoa(size_t ant, char to_print[24], int color);
 /*
 ** Dans le fichier 'li_move_ants.c'
-** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' ! ('ft_itoa' -> 'li_size_ttoa')
+** / ! \ Penser a securiser le 'malloc' de 'ft_itoa' ! (OBSOLETE)
+** ('ft_itoa' -> 'li_size_ttoa')
 */
 int					li_allocate_ant_tab(t_data *data);
 void				li_ants_distribution(t_data *data);
@@ -207,9 +208,10 @@ int					li_move_ants(t_data *data);
 /*
 ** Dans le fichier 'li_display_steps.c'
 */
-size_t	li_steps_length(t_data *data);
-void	li_prepare_steps_str(t_data *data, char to_display[27]);
-void	li_display_steps(t_data *data, size_t step, char to_display[27]);
+size_t				li_steps_length(t_data *data);
+void				li_prepare_steps_str(t_data *data, char to_display[27]);
+void				li_display_steps(t_data *data, size_t step,\
+														char to_display[27]);
 /*
 ** Dans le fichier 'li_memory_liberator.c'
 */

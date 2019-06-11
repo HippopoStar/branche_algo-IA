@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:32:51 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 19:32:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:20:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		aux_li_allocate_map(t_data *data, signed char *set_map)
 /*
 ** Allocation dynamique de memoire dans 'li_allocate_map'
 ** (t_room **)data->map
-** (int *)set_map : (*(data->map + 0))->pipes
+** (signed char *)set_map : (*(data->map + 0))->pipes
 */
 
 int		li_allocate_map(t_data *data)
