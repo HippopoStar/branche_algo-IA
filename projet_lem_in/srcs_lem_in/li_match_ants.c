@@ -23,7 +23,7 @@ int		li_match_ants(t_data *data, char *line)
 	size_t	len;
 
 	len = 0;
-	if (ft_is_int(line, &len, &(data->ants)) && data->ants > 0
+	if (ft_is_int(line, &len, &(data->ants)) && data->ants >= 0
 			&& *(line + len) == '\0')
 	{
 		free(line);

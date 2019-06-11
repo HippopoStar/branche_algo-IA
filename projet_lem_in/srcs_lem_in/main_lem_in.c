@@ -130,7 +130,7 @@ int		main(int argc, char **argv)
 	{
 		ret_val = li_parse_input(&data);
 		li_print_output(&data);
-		if (!ret_val || !(ret_val = lem_in(&data)))
+		if (!ret_val || !(ret_val = (!data.ants || lem_in(&data)) ? 1 : 0))
 			li_error();
 	}
 	li_memory_liberator(&data);

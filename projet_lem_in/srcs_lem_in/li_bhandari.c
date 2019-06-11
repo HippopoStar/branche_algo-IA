@@ -114,6 +114,9 @@ int		li_allocate_paths(t_data *data)
 /*
 ** Ne pas omettre que 'data->ants' == '0' => 'data->max_paths' == '0'
 ** On fait le choix de ne pas considerer '0' fourmis comme une erreur
+**
+** Si le nombre de fourmis s'avere valoir '0', 'li_bhandari'
+** n'est pas appelee
 */
 
 int		li_bhandari(t_data *data)
