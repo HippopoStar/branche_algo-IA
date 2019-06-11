@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:27:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:07:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:06:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		li_is_comment(char *line)
 */
 /*
 ** Allocation dynamique de memoire dans 'li_get_next_non_comment_line'
+** (char *)line
 */
 
 int		li_get_next_non_comment_line(t_data *data, char **line)

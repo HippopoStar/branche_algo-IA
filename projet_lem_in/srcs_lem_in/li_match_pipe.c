@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:53:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:36:35 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:11:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int		li_actualise_map(t_data *data, size_t i, size_t j)
 ** va rechercher les index respectifs des deux salles
 ** dans le tableau 'data->map'
 ** et ajouter a chacune la liaison correspondante dans leur liste
-** les repertoriant '(t_room *)->pipes'
+** les repertoriant (signed_char *)'(t_room *)->pipes'
 **
 ** Au passage, elle comptabilise le nombre total de liaisons
 ** dans la variable 'data->bonds'
-** (initialisee a '0' dans la fonction 'li_match_pipes')
+** (initialisee a '0' dans la fonction 'li_parse_pipes') (OBSOLETE)
 ** Et met a jour les valeurs respectives de '(t_room *)->nb_of_bonds'
 ** (initialisees a '0' dans la fonction 'li_allocate_room')
 **
@@ -73,9 +73,3 @@ int		li_match_pipe(t_data *data, char *line)
 		return (0);
 	return (li_actualise_map(data, i, j));
 }
-
-/*
-** Etant donne le comportement et les conditions de validite de
-** 'li_match_rooms' dont l'appel precede celui de 'li_match_pipes', on sait
-** par avance que le maillon '*read' existe
-*/

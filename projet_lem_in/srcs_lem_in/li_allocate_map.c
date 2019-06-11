@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:32:51 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 21:50:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:32:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		aux_li_allocate_map(t_data *data, signed char *set_map)
 {
 	size_t	i;
 	t_room	*tmp;
+	size_t	first_or_last;
 
 	i = 1;
 	tmp = data->rooms;
@@ -27,15 +28,11 @@ int		aux_li_allocate_map(t_data *data, signed char *set_map)
 			(*tmp).pipes = &(*(set_map + (i * data->size)));
 			i++;
 		}
-		else if (tmp->role == 2)
-		{
-			*(data->map + 0) = tmp;
-			(*tmp).pipes = &(*(set_map + 0));
-		}
 		else
 		{
-			*(data->map + data->size - 1) = tmp;
-			(*tmp).pipes = &(*(set_map + ((data->size - 1) * data->size)));
+			first_or_last = (tmp->role == 2) ? 0 : data->size - 1;
+			*(data->map + first_or_last) = tmp;
+			(*tmp).pipes = &(*(set_map + (first_or_last * data->size)));
 		}
 		tmp = tmp->next;
 	}

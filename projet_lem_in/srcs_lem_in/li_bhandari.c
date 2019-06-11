@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/05/22 21:16:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:14:44 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,9 @@ void	li_bhandari_max_iterations(t_data *data)
 {
 	int		beg;
 	int		end;
-	size_t	i;
 
-	beg = 0;
-	end = 0;
-	i = 0;
-	while (i < data->size)
-	{
-		if (*((*(data->map + 0))->pipes + i) == 1)
-		{
-			beg++;
-		}
-		if (*((*(data->map + data->size - 1))->pipes + i) == 1)
-		{
-			end++;
-		}
-		i++;
-	}
+	beg = (*(data->map + 0))->nb_of_bonds;
+	end = (*(data->map + data->size - 1))->nb_of_bonds;
 	if (data->ants < beg && data->ants < end)
 	{
 		data->max_paths = (size_t)data->ants;
@@ -96,8 +82,8 @@ int		li_allocate_paths(t_data *data)
 
 	if (!(data->paths = (size_t **)malloc(data->max_paths * sizeof(size_t *))))
 		return (0);
-	if (!(*(data->paths + 0) = (size_t *)malloc(data->max_paths * (data->size + 1) \
-					* sizeof(size_t))))
+	if (!(*(data->paths + 0) = (size_t *)malloc(data->max_paths
+					* (data->size + 1) * sizeof(size_t))))
 		return (0);
 	i = 0;
 	while (i < data->max_paths)

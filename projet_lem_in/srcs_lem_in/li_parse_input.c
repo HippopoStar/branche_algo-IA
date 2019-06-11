@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 22:44:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:11:04 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ int		li_parse_ants(t_data *data, char **line, int *ret_gnl)
 	}
 }
 
-/*
-** Etant donne que seule la multiplication par '1' laisse une valeur
-** a l'identique, et qu'il est necessaire de distinguer les commentaires
-** des descriptions de salle afin de savoir quand liberer la memoire,
-** on ne peut l'utiliser pour decrire a la fois ces 2 entites dans la variable
-** '(t_room *)->role' et par extension dans 'wit'
-*/
-
 int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 {
 	t_room	**current;
@@ -58,6 +50,10 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 }
 
 /*
+** Etant donne le comportement et les conditions de validite de
+** 'li_parse_rooms' dont l'appel precede celui de 'li_parse_pipes', on sait
+** par avance que la chaine de caractere '*line' existe
+**
 ** Ne pas oublier que des commentaires peuvent suivre la fin
 ** de la declaration de la fourmiliere
 */
@@ -75,18 +71,6 @@ int		li_parse_pipes(t_data *data, char **line, int *ret_gnl)
 	}
 	return ((*ret_gnl == 0) ? 1 : 0);
 }
-
-/*
-** Etant donne qu'on appelle 'gel_next_line_backslash_zero'
-** en lui passant l'adresse de 'tmp->line',
-** il est necessaire de d'allouer un maillon avant
-** d'entrer dans la boucle conditionnelle
-*/
-/*
-** Allocation dynamique de memoire dans 'li_get_input'
-** (t_input *)*input : data->input (liste chainee)
-** (char *)line : (t_input *)->line (dans chaque maillon)
-*/
 
 int		li_parse_input(t_data *data)
 {

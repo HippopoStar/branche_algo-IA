@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 15:49:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/02 19:12:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:56:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@ void	li_ants_distribution(t_data *data)
 	}
 }
 
+/*
+** On peut vouloir ajouter la ligne suivante a la suite des appels
+** de 'li_get_output' :
+**				li_print_output(data);
+*/
+
 void	aux_li_move_ants(t_data *data, size_t step)
 {
 	size_t	i;
@@ -95,12 +101,16 @@ void	aux_li_move_ants(t_data *data, size_t step)
 		if ((*(data->ant_tab + i)).wait < step)
 		{
 			abs = step - (*(data->ant_tab + i)).wait;
-			if (abs < *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_y) + data->size))
+			if (abs < *(*(*(data->routes + data->best_route)
+							+ (*(data->ant_tab + i)).pos_y) + data->size))
 			{
-				li_get_output(data, &(*((*(data->ant_tab + i)).to_print + wit)));
-				li_get_output(data, (*(data->map + *(*(*(data->routes + data->best_route) + (*(data->ant_tab + i)).pos_y) + abs)))->name);
+				li_get_output(data, &(*((*(data->ant_tab + i)).to_print
+								+ wit)));
+				li_get_output(data, (*(data->map
+								+ *(*(*(data->routes + data->best_route)
+										+ (*(data->ant_tab + i)).pos_y)
+									+ abs)))->name);
 				wit = 0;
-//				li_print_output(data);
 			}
 		}
 		i++;

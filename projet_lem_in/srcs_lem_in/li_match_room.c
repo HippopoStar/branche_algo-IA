@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 22:09:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 20:04:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,6 @@ int		li_is_name_available(t_room *current, t_data *data)
 	return (1);
 }
 
-/*
-** La fonction 'li_deal_sharp_marks' met egalement a profit
-** le fait que la variable '(t_room *)->role' soit initialisee a '1'
-** dans la fonction 'li_allocate_room',
-** pour s'en servir dans sa valeur de retour
-** et ne renvoyer '0' que si 2 lignes '##start' ou '##end' sont presentes
-** dans la meme section de commentaires/commandes
-*/
-/*
-** La fonction 'li_deal_sharp_marks' assigne a 'room->role' sa valeur de retour
-** qui vaut :
-** '0' si 'line' correspond a la commande '##start' ou '##end'
-**     et qu'une de ces 2 commandes a dors et deja ete invoquee
-**     dans le meme bloc de commentaires/commandes
-** '1' si 'line' correspond a un commentaire
-** '2' si 'line' correspond a la commande '##start'
-** '3' si 'line' correspond a la commande '##end'
-*/
-
 void	li_deal_sharp_marks(t_room *current, char *line, int *wit)
 {
 	if (!ft_strcmp(line, "##start") && (*wit) % 2 != 0)
@@ -92,10 +73,7 @@ void	li_deal_sharp_marks(t_room *current, char *line, int *wit)
 **
 ** Sachant cela, la fonction 'li_match_room' renvoie :
 ** '0' en cas de detection d'une incoherence
-**     (room->role vaut '1')
 ** '1' sinon (salle valide ou non salle)
-**     (salle valide : room->role vaut '1')
-**     (non salle : room->role vaut '5')
 */
 
 int		aux_li_match_room(t_room *current, char *line, int *wit)
@@ -128,7 +106,7 @@ int		aux_li_match_room(t_room *current, char *line, int *wit)
 }
 
 /*
-** Dans la fonction 'li_match_rooms',
+** Dans la fonction 'li_parse_rooms',
 ** la condition 'if (!(*tmp) && !li_allocate_rooms(tmp))'
 ** permet de n'allouer un nouveau maillon que si on a avance
 ** dans la chaine des salles au cours de l'etape precedente
@@ -140,17 +118,6 @@ int		aux_li_match_room(t_room *current, char *line, int *wit)
 ** (permettant de s'assurer que la condition 'wit % 5 == 0' soit remplie
 ** seulement lorsqu'on a atteint la fin de la declaration des salles,
 ** et non par une combinaison de '##start' et de '##end')
-*/
-/*
-** La fonction 'li_match_rooms' revoie :
-** '-1' si 'line' correspond a la commande '##start' ou '##end'
-**      et qu'une de ces 2 commandes a dors et deja ete invoquee
-**      dans le meme bloc de commentaires/commandes
-** '0' si 'line' correspond a un commentaire
-** '1' si 'line' correspond a une description de salle
-** '2' si 'line' correspond a la commande '##start'
-** '3' si 'line' correspond a la commande '##end'
-** '5' sinon
 */
 
 void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)

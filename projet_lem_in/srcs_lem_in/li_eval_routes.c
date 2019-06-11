@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/02 18:47:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:50:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@
 ** soit arrive
 ** (nb de fourmis restantes / nb de chemin restants) = nb de fourmis a envoyer
 **                                                     dans le chemin courant
-**           7 / 3 = 2 reste 1 -> 4 + 3 = 7 fourmis passeront par le plus court chemin
-** (7 - 3 = 4) / 2 = 2         -> 1 + 2 = 3 fourmis passeront par le 2e plus court chemin
-** (4 - 2 = 2) / 1 = 2         -> 1 + 2 = 3 fourmis passeront par le 3e plus court chemin
+**           7 / 3 = 2 reste 1 -> 4 + 3 = 7 fourmis passeront par le 1er chemin
+** (7 - 3 = 4) / 2 = 2         -> 1 + 2 = 3 fourmis passeront par le 2e chemin
+** (4 - 2 = 2) / 1 = 2         -> 1 + 2 = 3 fourmis passeront par le 3e chemin
 **
 **  1: L1-B L2-C L3-G
 **  2: L1-Z L2-D L3-H L4-B L5-C L6-G
@@ -124,31 +124,33 @@
 **  8:                                                                L13-Z
 **  9:
 ** 10:
+**
+** On peut vouloir ajouter les lignes suivantes avant le retour de la fonction :
+**	ft_putstr("meanwhile : ");
+**	ft_putnbr((int)meanwhile);
+**	ft_putchar('\n');
 */
 
 size_t	li_eval_meanwhile(t_data *data, size_t index)
 {
 	size_t	i;
-	size_t	longest_path_length;
-	size_t	current_path_length;
+	size_t	longest_path_len;
+	size_t	current_path_len;
 	size_t	meanwhile;
 
 	*(*(*(data->routes + index) + index) + data->size + 1) = 1;
-	longest_path_length = *(*(*(data->routes + index) + index) + data->size);
+	longest_path_len = *(*(*(data->routes + index) + index) + data->size);
 	meanwhile = 1;
 	i = 0;
 	while (i < index)
 	{
-		current_path_length = *(*(*(data->routes + index) + i) + data->size);
-		*(*(*(data->routes + index) + i) + data->size + 1)
-			= (longest_path_length - current_path_length) + 1;
-		meanwhile = meanwhile + *(*(*(data->routes + index) + i) + data->size + 1);
-//		meanwhile = meanwhile + (longest_path_length - current_path_length) + 1;
+		current_path_len = *(*(*(data->routes + index) + i) + data->size);
+		*(*(*(data->routes + index) + i) + data->size + 1) = (longest_path_len
+				- current_path_len) + 1;
+		meanwhile = meanwhile
+			+ *(*(*(data->routes + index) + i) + data->size + 1);
 		i++;
 	}
-	ft_putstr("meanwhile : ");
-	ft_putnbr((int)meanwhile);
-	ft_putchar('\n');
 	return ((meanwhile <= (size_t)data->ants) ? meanwhile : 0);
 }
 
@@ -162,6 +164,14 @@ size_t	li_eval_meanwhile(t_data *data, size_t index)
 ** chemin et de la valeur du nombre de fourmis devant l'emprunter
 ** car ici et contrairement a l'exemple la salle de depart est consideree
 ** dans le calcul de du poids du plus court chemin
+**
+** On peut vouloir ajouter les lignes suivantes avant le retour de la fonction :
+**	ft_putnbr((int)index);
+**	ft_putchar('\n');
+**	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size));
+**	ft_putchar('\n');
+**	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size + 1));
+**	ft_putchar('\n');
 */
 
 size_t	li_eval_steps(t_data *data, size_t index)
@@ -175,26 +185,19 @@ size_t	li_eval_steps(t_data *data, size_t index)
 		*(*(*(data->routes + 0) + 0) + data->size + 1) = (size_t)data->ants;
 	}
 	else if ((ret_val = li_eval_meanwhile(data, index)) == 0)
-	{
 		return (0);
-	}
 	else
 	{
 		ants = (size_t)data->ants - ret_val;
 		i = 0;
 		while (ants > 0)
 		{
-			(*(*(*(data->routes + index) + (i % (index + 1))) + data->size + 1))++;
+			(*(*(*(data->routes + index) + (i % (index + 1)))
+				+ data->size + 1))++;
 			i++;
 			ants--;
 		}
 	}
-	ft_putnbr((int)index);
-	ft_putchar('\n');
-	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size));
-	ft_putchar('\n');
-	ft_putnbr((int)*(*(*(data->routes + index) + 0) + data->size + 1));
-	ft_putchar('\n');
 	return (*(*(*(data->routes + index) + 0) + data->size)
 			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 2);
 }

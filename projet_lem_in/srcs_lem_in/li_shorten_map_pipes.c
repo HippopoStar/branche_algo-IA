@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 18:40:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 21:04:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:42:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	li_fill_bond_summary(t_room *current)
 ** et contient 2 informations sous la forme d'un 'int'
 ** (d'une part l'index de la salle correspondante et d'autre part son poids)
 */
-/* Allocation dynamique de memoire dans 'li_shorten_map_pipes'
+/*
+** Allocation dynamique de memoire dans 'li_shorten_map_pipes'
 ** (size_t *)(*(data->map + 0))->bond_sum
 */
 
@@ -64,7 +65,8 @@ int		li_shorten_map_pipes(t_data *data)
 	size_t	i;
 	size_t	j;
 
-	if (!((*(data->map + 0))->bond_sum = (size_t *)malloc(2 * data->bonds * sizeof(size_t))))
+	if (!((*(data->map + 0))->bond_sum = (size_t *)malloc(2 * data->bonds
+					* sizeof(size_t))))
 		return (0);
 	i = 0;
 	j = 0;

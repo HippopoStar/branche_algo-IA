@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/10 22:07:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:26:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ int					li_shorten_map_pipes(t_data *data);
 void				li_print_rooms(t_data *data);
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
+void				aux_li_print_routes(t_data *data, size_t i, size_t j);
 void				li_print_routes(t_data *data);
 /*
 ** Dans le fichier 'li_bellman_ford.c'

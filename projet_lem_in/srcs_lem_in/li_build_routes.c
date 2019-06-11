@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/05 18:25:05 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:52:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	aux_li_allocate_routes(t_data *data)
 		j = 0;
 		while (j <= i)
 		{
-			*(*(data->routes + i) + j) = &(*(*(*(data->routes + 0) + 0) + ((n + j) * (data->size + 2))));
+			*(*(data->routes + i) + j) = &(*(*(*(data->routes + 0) + 0)
+						+ ((n + j) * (data->size + 2))));
 			j++;
 		}
 		i++;
@@ -64,7 +65,8 @@ int		li_allocate_routes(t_data *data)
 	}
 	if (!(data->routes = (size_t ***)malloc(data->path_nb * sizeof(size_t **)))
 			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
-			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n * (data->size + 2) * sizeof(size_t))))
+			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n
+					* (data->size + 2) * sizeof(size_t))))
 		return (0);
 	aux_li_allocate_routes(data);
 	return (1);
@@ -126,12 +128,14 @@ int		li_allocate_routes(t_data *data)
 ** *(*(route->field + route->height) + k)               correspond a 'D'
 ** edge_len vaut 2
 **
-** -> 'D' etant l'element a partir duquel on souhaite bifurquer dans le 1er itineraire
+** -> 'D' etant l'element a partir duquel on souhaite bifurquer dans le 1er
+**                                                                    itineraire
 **
 ** *(*(route->field + i) + j - edge_len)                correspond a 'F'
 ** *(*(route->field + route->height) + k + edge_len)    correspond a 'F'
 **
-** -> 'F' etant l'element a partir duquel on souhaite bifurquer dans le 2nd itineraire
+** -> 'F' etant l'element a partir duquel on souhaite bifurquer dans le 2nd
+**                                                                    itineraire
 **
 **
 ** Apres avoir decale les positions dans les itineraires dans 'li_edge_len' :
@@ -154,8 +158,8 @@ void	li_copy_previous_route(t_data *data, size_t index)
 			j = 0;
 			while (j <= data->size)
 			{
-				*(*(*(data->routes + index) + i) + j)
-					= *(*(*(data->routes + index - 1) + i) + j);
+				*(*(*(data->routes + index) + i) + j) = *(*(*(data->routes
+								+ index - 1) + i) + j);
 				j++;
 			}
 			i++;
@@ -170,7 +174,8 @@ void	li_copy_last_path(t_data *data, size_t i)
 	j = 0;
 	while (j + *(*(data->paths + i) + data->size) < data->size)
 	{
-		*(*(*(data->routes + i) + i) + j) = *(*(data->paths + i) + j + *(*(data->paths + i) + data->size));
+		*(*(*(data->routes + i) + i) + j) = *(*(data->paths + i) + j
+				+ *(*(data->paths + i) + data->size));
 		j++;
 	}
 	*(*(*(data->routes + i) + i) + data->size) = j;
