@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:14:44 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 21:55:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	li_initialise_weights(t_data *data)
 	}
 }
 
+/*
+** On peut souhaiter ajouter les 2 lignes suivantes au debut de la
+** boucle conditionnelle :
+**		ft_putstr((*(data->map + j))->name);
+**		ft_putstr("<-");
+** ainsi qu'a la suite de cette derniere :
+**		ft_putstr((*(data->map + i))->name);
+**		ft_putchar('\n');
+*/
+
 int		li_reverse_path(t_data *data)
 {
 	size_t	i;
@@ -56,7 +66,7 @@ int		li_reverse_path(t_data *data)
 		return (0);
 	}
 	pos = data->size - 1;
-	while (i != 0)
+	while (j > 0)
 	{
 		i = (*(data->map + j))->ancestor;
 		*((*(data->map + i))->pipes + j) = (signed char)0;
