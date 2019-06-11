@@ -64,6 +64,9 @@ all: $(NAME)
 
 # L'appel de 'libft' permet d'actualiser '$(LIBFT)'
 # afin qu'eventuellement '$(NAME)' se lance lors du prochain appel de 'make'
+#
+# Les regles appelee par l'intermediaire d'autres regles s'executent quoi
+# qu'il arrive, et quoi qu'il arrive les regles les appelant s'executent
 
 $(NAME): $(OBJ) $(LIBFT) | libft
 	gcc -o $(NAME) $(LDFLAGS) $(OBJ) $(LDLIBS)
