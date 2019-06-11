@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 21:55:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/11 22:08:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		li_bhandari(t_data *data)
 	int		ret_val;
 
 	li_bhandari_max_iterations(data);
-	if (!li_allocate_paths(data))
+	if (data->max_paths == 0 || !li_allocate_paths(data))
 		return (0);
 	ret_val = 1;
 	i = 0;
