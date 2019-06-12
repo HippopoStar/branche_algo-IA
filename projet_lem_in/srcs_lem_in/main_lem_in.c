@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:42:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:11:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 **         | li_get_next_non_comment_line (*)
 **         | li_match_ants
 **             | ft_is_int (L)
-**             | free (S)
+**         | free (S)
 **     | li_parse_rooms
 **         | li_allocate_room (*)
 **         | li_get_next_non_comment_line (*)
@@ -112,6 +112,15 @@ int		lem_in(t_data *data)
 	}
 }
 
+/*
+** 'data.ants' est initialisee dans 'li_match_ants'
+** 'data.size' est initialisee dans 'li_parse_rooms'
+** 'data.path_nb' est initialisee dans 'li_bhandari'
+** 'data.max_paths' est initialisee dans 'li_bhandari_max_iterations'
+** 'data.best_steps' est initialisee dans 'li_eval_routes'
+** 'data.best_route' est initialisee dans 'li_eval_routes'
+*/
+
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -119,7 +128,6 @@ int		main(int argc, char **argv)
 
 	data.rooms = NULL;
 	data.map = NULL;
-	data.max_paths = 0;
 	data.paths = NULL;
 	data.routes = NULL;
 	data.path_nb = 0;

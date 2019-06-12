@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:32:51 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:20:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:24:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,15 @@ int		aux_li_allocate_map(t_data *data, signed char *set_map)
 int		li_allocate_map(t_data *data)
 {
 	size_t		i;
-	t_room		*tmp;
+	size_t		square;
 	signed char	*set_map;
 
-	i = 0;
-	tmp = data->rooms;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	data->size = i;
-	if (!(data->map = (t_room **)malloc(i * sizeof(t_room *)))
-			|| !(set_map = (signed char *)malloc(i * i * sizeof(signed char))))
+	square = data->size * data->size;
+	if (!(data->map = (t_room **)malloc(data->size * sizeof(t_room *)))
+			|| !(set_map = (signed char *)malloc(square * sizeof(signed char))))
 		return (0);
 	i = 0;
-	while (i < data->size * data->size)
+	while (i < square)
 	{
 		*(set_map + i) = (signed char)0;
 		i++;

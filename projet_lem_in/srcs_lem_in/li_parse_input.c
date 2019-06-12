@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 17:48:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:25:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 
 int		li_parse_ants(t_data *data, char **line, int *ret_gnl)
 {
+	int		ret_val;
+
+	ret_val = 0;
 	if (((*ret_gnl) = li_get_next_non_comment_line(data, line)) == 1)
 	{
-		return (li_match_ants(data, *line));
+		ret_val = li_match_ants(data, *line);
+		free(*line);
 	}
-	else
-	{
-		return (0);
-	}
+	return (ret_val);
 }
 
 int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
@@ -38,6 +39,7 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 	t_room	**current;
 	int		wit;
 
+	data->size = 0;
 	current = &(data->rooms);
 	wit = 1;
 	while (wit > 0 && !(wit % 5 == 0)

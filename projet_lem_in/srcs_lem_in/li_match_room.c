@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:04:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 18:25:28 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)
 				&& li_is_name_available(**current, data))
 		{
 			*current = &((**current)->next);
+			(data->size)++;
 		}
 		else
 		{
