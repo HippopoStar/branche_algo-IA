@@ -121,6 +121,7 @@ int		main(int argc, char **argv)
 	data.map = NULL;
 	data.max_paths = 0;
 	data.paths = NULL;
+	data.routes = NULL;
 	data.path_nb = 0;
 	(data.output).index = 0;
 	data.ant_tab = NULL;
