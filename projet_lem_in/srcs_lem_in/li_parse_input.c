@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 17:37:39 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 17:48:22 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 	{
 		li_match_room(data, *line, &current, &wit);
 	}
+	if (wit % 5 == 0 && !(wit == 30))
+	{
+		free(*line);
+	}
 	return (wit == 30 ? 1 : 0);
 }
 
@@ -75,7 +79,15 @@ int		li_parse_pipes(t_data *data, char **line, int *ret_gnl)
 		*line = NULL;
 		(data->bonds)++;
 	}
-	return ((*ret_gnl == 0) ? 1 : 0);
+	if ((*ret_gnl) == 1)
+	{
+		free(*line);
+		return (0);
+	}
+	else
+	{
+		return (1);
+	}
 }
 
 int		li_parse_input(t_data *data)
