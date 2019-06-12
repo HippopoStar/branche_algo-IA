@@ -25,6 +25,7 @@ int		li_allocate_room(t_room **room)
 	(*room)->role = 1;
 	(*room)->nb_of_bonds = 0;
 	(*room)->pipes = NULL;
+	(*room)->bond_sum = NULL;
 	(*room)->next = NULL;
 	return (1);
 }

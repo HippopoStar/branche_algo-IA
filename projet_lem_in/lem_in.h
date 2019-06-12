@@ -215,6 +215,8 @@ void				li_display_steps(t_data *data, size_t step,\
 /*
 ** Dans le fichier 'li_memory_liberator.c'
 */
+void				li_liberate_rooms_map_and_bonds(t_data *data);
+void				li_liberate_paths_and_routes(t_data *data);
 void				li_memory_liberator(t_data *data);
 
 #endif

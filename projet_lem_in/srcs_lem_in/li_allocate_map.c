@@ -43,6 +43,16 @@ int		aux_li_allocate_map(t_data *data, signed char *set_map)
 ** Allocation dynamique de memoire dans 'li_allocate_map'
 ** (t_room **)data->map
 ** (signed char *)set_map : (*(data->map + 0))->pipes
+**
+** Concernant la liberation de la memoire :
+** Prendre des precautions :
+** l'allocation de 'data->map' peut reussir
+** et celle de 'set_map' echouer
+**
+** Dans ce cas, '(*(data->map + 0))->pipes' n'est pas assignee
+** La seule maniere securisee de liberer la memoire alloue pour
+** la carte est de passer par '(t_room *) && (t_room *)->role == 2'
+** dans la liste chainee 'data->rooms'
 */
 
 int		li_allocate_map(t_data *data)
