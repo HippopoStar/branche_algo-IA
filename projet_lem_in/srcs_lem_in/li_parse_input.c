@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:11:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/12 17:37:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 ** Etant donne le comportement et les conditions de validite de
 ** 'li_parse_rooms' dont l'appel precede celui de 'li_parse_pipes', on sait
 ** par avance que la chaine de caractere '*line' existe
+**
+** Car dans le cas contraire la condition 'wit % 5 == 0' n'est jamais remplie :
+** Par exemple, dans le cas ou aucune declaration de liaison ne suit la fin
+** de la declaration des salles, qu'elle est directement suivie par la
+** fin de l'entree :
+** L'arret de la boucle se fait alors d'apres la variable '(*ret_gnl)'
 **
 ** Ne pas oublier que des commentaires peuvent suivre la fin
 ** de la declaration de la fourmiliere
