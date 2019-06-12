@@ -1,0 +1,29 @@
+# Cette fois, on voudrait que 'edge_len' vale 2 et ne soit pas un des deux
+# chemins finaux,
+# et que 'i > j + edge_len' dans l'appel de 'li_remove_edges'
+#
+#  / B - - - C \
+#  A - F - E - D - I
+#      \ G - - - H /
+3
+##start
+A 0 0
+B 0 0
+C 0 0
+D 0 0
+E 0 0
+F 0 0
+G 0 0
+H 0 0
+##end
+I 0 0
+A-B
+A-F
+B-C
+C-D
+D-E
+D-I
+E-F
+F-G
+G-H
+H-I

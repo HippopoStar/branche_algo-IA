@@ -1,3 +1,6 @@
+# Cette fois, on voudrait que 'edge_len' vale 2 et que le chemin chemin
+# le plus court ne soit pas un des deux chemins finaux
+#
 #  / B - - - C \
 #  A - F - E - D - I
 #      \ G - - - H /
