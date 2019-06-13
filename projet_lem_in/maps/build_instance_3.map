@@ -1,5 +1,5 @@
-# Cette fois, on voudrait que 'edge_len' vale 2 et ne soit pas un des deux
-# chemins finaux,
+# Cette fois, on voudrait que 'edge_len' vale 2 et que le chemin le plus court
+# ne soit pas un des deux chemins finaux,
 # et que 'i > j + edge_len' dans l'appel de 'li_remove_edges'
 #
 #  / B - - - C \

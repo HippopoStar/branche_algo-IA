@@ -1,9 +1,32 @@
 # Cette fois, on voudrait que 'edge_len' vale 2 et que le chemin chemin
 # le plus court ne soit pas un des deux chemins finaux
 #
-#  / B - - - C \
-#  A - F - E - D - I
-#      \ G - - - H /
+#  / B - C - D \
+#  A - G - F - E - K
+#      \ H - I - J /
+#
+# A->| G->F->E |->K
+# A->B->C->D->| E->F->G |->H->I->J->K
+#
+# On doit avoir :
+# A->B->C->D->E->K
+# A->G->H->I->J->K
+#
+# Dans 'li_remove_edges'
+# 'j' vaut 3
+# 'k' vaut 4
+#
+# 'edge_len' vaut 2
+#
+# 'j' vaut 3
+# 'k + edge_len' vaut 6
+#
+# Dans 'li_melt_paths'
+# 'j - edge_len' vaut 1 (correspond a 'G')
+# 'k + edge_len' vaut 6 (correspond a 'G')
+#
+# 'k' vaut 4 (correspond a 'E')
+# 'j' vaut 3 (correspond a 'E')
 3
 ##start
 A 0 0
@@ -14,15 +37,19 @@ E 0 0
 F 0 0
 G 0 0
 H 0 0
-##end
 I 0 0
+J 0 0
+##end
+K 0 0
 A-B
-A-F
+A-G
 B-C
 C-D
 D-E
-D-I
 E-F
+E-K
 F-G
 G-H
 H-I
+I-J
+J-K

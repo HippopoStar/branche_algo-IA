@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:19:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/13 18:21:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ typedef struct		s_output
 	char			buff[LI_BUFF];
 	size_t			index;
 }					t_output;
-
-typedef struct		s_input
-{
-	char			*line;
-	struct s_input	*next;
-}					t_input;
 
 typedef struct		s_ant
 {
@@ -83,6 +77,7 @@ typedef struct		s_route
 	size_t			width;
 	size_t			height;
 	size_t			**field;
+	t_data			*data_ptr;
 }					t_route;
 
 /*
@@ -151,7 +146,7 @@ int					li_shorten_map_pipes(t_data *data);
 void				li_print_rooms(t_data *data);
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
-void				aux_li_print_routes(t_data *data, size_t i, size_t j);
+void				li_print_route(t_route *current, size_t i);
 void				li_print_routes(t_data *data);
 /*
 ** Dans le fichier 'li_bellman_ford.c'

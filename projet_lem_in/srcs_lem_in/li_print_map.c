@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 19:39:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/13 18:32:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,43 +109,47 @@ void	li_print_paths(t_data *data)
 **				ft_putnbr((int)room_id);
 */
 
-void	aux_li_print_routes(t_data *data, size_t i, size_t j)
+void	li_print_route(t_route *current, size_t i)
 {
+	size_t	j;
 	size_t	k;
 	size_t	room_id;
 
-	k = 0;
-	while (k < data->size && !(k > 1 && *(*(*(data->routes + i) + j) + k) == 0))
+	j = 0;
+	while (j <= i)
 	{
-		room_id = *(*(*(data->routes + i) + j) + k);
-		ft_putstr((*(data->map + room_id))->name);
-		if (k < data->size - 1 && *(*(*(data->routes + i) + j) + k + 1) != 0)
+		k = 0;
+		while (k < current->width
+				&& !(k > 1 && *(*(current->field + j) + k) == 0))
 		{
-			ft_putstr("->");
+			room_id = *(*(current->field + j) + k);
+			ft_putstr((*((current->data_ptr)->map + room_id))->name);
+			if (k < current->width - 1 && *(*(current->field + j) + k + 1) != 0)
+				ft_putstr("->");
+			k++;
 		}
-		k++;
+		ft_putstr("\tlength : ");
+		ft_putnbr((int)(*(*(current->field + j) + current->width)));
+		ft_putstr("\tants : ");
+		ft_putnbr((int)(*(*(current->field + j) + current->width + 1)));
+		ft_putchar('\n');
+		j++;
 	}
-	ft_putstr("\tlength : ");
-	ft_putnbr((int)(*(*(*(data->routes + i) + j) + data->size)));
-	ft_putstr("\tants : ");
-	ft_putnbr((int)(*(*(*(data->routes + i) + j) + data->size + 1)));
-	ft_putchar('\n');
 }
 
 void	li_print_routes(t_data *data)
 {
+	t_route	current;
 	size_t	i;
-	size_t	j;
 
+	current.data_ptr = data;
+	current.width = data->size;
 	i = 0;
 	while (i < data->path_nb)
 	{
-		j = 0;
-		while (j <= i)
-		{
-			aux_li_print_routes(data, i, j);
-			j++;
-		}
+		current.height = i;
+		current.field = *(data->routes + i);
+		li_print_route(&current, i);
 		ft_putchar('\n');
 		i++;
 	}

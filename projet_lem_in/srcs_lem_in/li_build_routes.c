@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 19:52:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/13 18:19:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ int		li_build_routes(t_data *data)
 	size_t	i;
 	t_route	to_build;
 
+	to_build.data_ptr = data;
 	to_build.width = data->size;
 	if (!li_allocate_routes(data))
 		return (0);
