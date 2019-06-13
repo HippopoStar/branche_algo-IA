@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:02:03 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/13 20:01:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,15 +139,15 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 		j++;
 		k++;
 	}
-	while (j < route->width || k + edge_len < route->width)
+	while (j - edge_len < route->width || k < route->width)
 	{
 		if (j < k + edge_len)
 		{
-			*(*(route->field + i) + j) = 0;
+			*(*(route->field + i) + j - edge_len) = 0;
 		}
 		else
 		{
-			*(*(route->field + route->height) + k + edge_len) = 0;
+			*(*(route->field + route->height) + k) = 0;
 		}
 		j++;
 		k++;
@@ -156,6 +156,8 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 
 /*
 ** On peut vouloir ajouter les lignes suivantes avant l'appel de 'li_melt_paths'
+**					ft_putstr("Avant appel de 'li_remove_edges'\n");
+**					li_print_route(route, route->height);
 **					ft_putstr("i vaut : ");
 **					ft_putnbr((int)i);
 **					ft_putchar('\n');
@@ -165,6 +167,10 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 **					ft_putstr("k vaut : ");
 **					ft_putnbr((int)k);
 **					ft_putchar('\n');
+**
+** Puis :
+**					ft_putstr("Apres appel de 'li_remove_edges'\n");
+**					li_print_route(route, route->height);
 */
 
 void	li_remove_edges(t_route *route)
@@ -183,8 +189,11 @@ void	li_remove_edges(t_route *route)
 			while (i < route->height)
 			{
 				if (*(*(route->field + i) + j) == *(*(route->field
-								+ route->height) + k))
+								+ route->height) + k)
+						&& j < *(*(route->field + i) + route->width))
 				{
+					ft_putstr("Avant appel de 'li_remove_edges'\n");
+					li_print_route(route, route->height);
 					ft_putstr("i vaut : ");
 					ft_putnbr((int)i);
 					ft_putchar('\n');
@@ -196,6 +205,8 @@ void	li_remove_edges(t_route *route)
 					ft_putchar('\n');
 					li_melt_paths(route, i, j, k);
 					li_swap_paths(route, i, route->height);
+					ft_putstr("Apres appel de 'li_remove_edges'\n");
+					li_print_route(route, route->height);
 					k = 1;
 					j = route->width;
 					i = route->height;

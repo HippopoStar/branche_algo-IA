@@ -13,13 +13,13 @@
 # A->G->H->I->J->K
 #
 # Dans 'li_remove_edges'
-# 'j' vaut 3
-# 'k' vaut 4
+# 'j' vaut 3 (correspond a 'E')
+# 'k' vaut 4 (correspond a 'E')
 #
 # 'edge_len' vaut 2
 #
-# 'j' vaut 3
-# 'k + edge_len' vaut 6
+# 'j' vaut 3 (correspond a 'E')
+# 'k + edge_len' vaut 6 (correspond a 'G')
 #
 # Dans 'li_melt_paths'
 # 'j - edge_len' vaut 1 (correspond a 'G')
@@ -27,7 +27,7 @@
 #
 # 'k' vaut 4 (correspond a 'E')
 # 'j' vaut 3 (correspond a 'E')
-3
+10
 ##start
 A 0 0
 B 0 0
