@@ -62,6 +62,7 @@ void	li_deal_sharp_marks(t_room **current, char *line, int *wit)
 	if ((*current)->role == 1 && (command_id) && !((*wit) % command_id == 0))
 	{
 		(*current)->role = command_id;
+		free(line);
 	}
 	else
 	{
@@ -70,7 +71,6 @@ void	li_deal_sharp_marks(t_room **current, char *line, int *wit)
 		*current = NULL;
 	}
 	*wit = (*wit) * command_id;
-	free(line);
 }
 
 /*

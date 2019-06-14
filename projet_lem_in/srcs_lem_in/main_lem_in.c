@@ -96,6 +96,14 @@
 ** | li_memory_liberator
 ** | li_error
 ** | li_print_output
+**
+** Note :
+** On aurait pu appeler 'li_eval_routes' apres chaque combinaison d'itineraires
+** decouverte, afin de s'arreter des lors qu'une combinaison n'exploitait pas
+** l'integralite de ses itineraires pour faire circuler les fourmis
+** Cependant, cela obligerait a allouer 'max_paths' et non 'path_nb' tableaux
+** dans la variable 'routes', car alors on ne saurait pas a l'avance combien
+** d'itineraires 'bhandari' identifierait
 */
 
 int		lem_in(t_data *data)

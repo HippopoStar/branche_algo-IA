@@ -156,7 +156,7 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 
 /*
 ** On peut vouloir ajouter les lignes suivantes avant l'appel de 'li_melt_paths'
-**					ft_putstr("Avant appel de 'li_remove_edges'\n");
+**					ft_putstr("Avant appel de 'li_melt_paths'\n");
 **					li_print_route(route, route->height);
 **					ft_putstr("i vaut : ");
 **					ft_putnbr((int)i);
@@ -169,7 +169,7 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 **					ft_putchar('\n');
 **
 ** Puis :
-**					ft_putstr("Apres appel de 'li_remove_edges'\n");
+**					ft_putstr("Apres appel de 'li_melt_paths'\n");
 **					li_print_route(route, route->height);
 */
 
@@ -192,7 +192,7 @@ void	li_remove_edges(t_route *route)
 								+ route->height) + k)
 						&& j < *(*(route->field + i) + route->width))
 				{
-					ft_putstr("Avant appel de 'li_remove_edges'\n");
+					ft_putstr("Avant appel de 'li_melt_paths'\n");
 					li_print_route(route, route->height);
 					ft_putstr("i vaut : ");
 					ft_putnbr((int)i);
@@ -205,7 +205,7 @@ void	li_remove_edges(t_route *route)
 					ft_putchar('\n');
 					li_melt_paths(route, i, j, k);
 					li_swap_paths(route, i, route->height);
-					ft_putstr("Apres appel de 'li_remove_edges'\n");
+					ft_putstr("Apres appel de 'li_melt_paths'\n");
 					li_print_route(route, route->height);
 					k = 1;
 					j = route->width;
