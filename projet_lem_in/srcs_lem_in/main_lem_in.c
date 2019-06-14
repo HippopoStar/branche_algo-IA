@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/14 16:28:52 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/14 16:48:17 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@
 **   la salle d'arrivee (la longueur de l'itineraire)
 ** - Au terme de 'li_eval_routes' :
 **   L'element d'index 'data->size + 1' correspond au nombre de fourmis devant
-**   emprunter cet itineraire
+**   emprunter cet itineraire (valeur qui sera decrementee jusqu'a '0' lors
+**   de l'appel de 'li_distribute_ants')
 */
 
 int		lem_in(t_data *data)
