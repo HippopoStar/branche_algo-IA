@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/13 20:01:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/14 16:21:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	li_order_paths(t_route *route)
 ** dans la fonction 'li_edge_len' peut surprendre
 ** mais il ne faut pas omettre qu'elle deplace d'abord localement
 ** les indexs
+**
+** Par ailleurs elle remplie les champs contenant les tailles futures
+** des deux itineraires concernes, mais cela n'impacte pas la suite de l'algo'
+** car par la suite les chaines se copient jusqu'a 'data->size' et non
+** jusqu'a leurs longueures respectives
 **
 ** On peut vouloir ajouter les lignes suivantes apres l'assignation
 ** des variables 'len_1' et 'len_2' (16 lignes) :
@@ -126,6 +131,25 @@ size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k)
 	return (edge_len);
 }
 
+/*
+** A la fin de la premiere boucle :
+** 'j == route->width || k + edge_len == route->width'
+**
+** 1er cas :
+** - La 2eme liste a copie la 1ere jusqu'a 'route->width' de cette derniere,
+** mais ne s'est pas necessairement completee par des '0'
+** (ce n'est pas le cas si on a 'k < j')
+** - La 1ere liste a copie la 2eme jusqu'a 'route->width - edge_len',
+** la suite devant etre remplacee par des '0'
+**
+** 2eme cas :
+** - La 1ere liste a copie la 2eme jusqu'a 'route->width' de cette derniere,
+** mais ne s'est pas necessairement completee par des '0'
+** (ce n'est pas le cas si on a 'j - edge_len < k + edge_len')
+** - La 2eme liste a copie la 1ere jusqu'a 'route->width - edge_len',
+** la suite devant etre remplacee par des '0'
+*/
+
 void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 {
 	size_t	edge_len;
@@ -141,11 +165,11 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 	}
 	while (j - edge_len < route->width || k < route->width)
 	{
-		if (j < k + edge_len)
+		if (j - edge_len < route->width)
 		{
 			*(*(route->field + i) + j - edge_len) = 0;
 		}
-		else
+		if (k < route->width)
 		{
 			*(*(route->field + route->height) + k) = 0;
 		}

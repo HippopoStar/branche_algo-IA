@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 18:11:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/14 16:28:52 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,19 @@
 ** Cependant, cela obligerait a allouer 'max_paths' et non 'path_nb' tableaux
 ** dans la variable 'routes', car alors on ne saurait pas a l'avance combien
 ** d'itineraires 'bhandari' identifierait
+**
+** Rappel :
+** Dans 'data->paths'
+** - Au terme de 'li_bhandari' :
+**   L'element d'index 'data->size' de chaque itineraire correspond l'index de
+**   la salle de depart
+** Dans 'data->routes'
+** - Au terme de 'li_build_routes' :
+**   L'element d'index 'data->size' de chaque itineraire correspond a l'index de
+**   la salle d'arrivee (la longueur de l'itineraire)
+** - Au terme de 'li_eval_routes' :
+**   L'element d'index 'data->size + 1' correspond au nombre de fourmis devant
+**   emprunter cet itineraire
 */
 
 int		lem_in(t_data *data)
