@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/14 16:48:17 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/15 17:25:04 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,90 @@
 **   L'element d'index 'data->size + 1' correspond au nombre de fourmis devant
 **   emprunter cet itineraire (valeur qui sera decrementee jusqu'a '0' lors
 **   de l'appel de 'li_distribute_ants')
+**
+** Exemple 01 (Absence de point de congestion):
+**
+** 4 fourmis:
+** A->B->C->J
+** A->D->E->F->J
+** A->G->H->I->J
+**
+** 1 chemin : 6 tours
+** 2 chemins : 6 tours
+** 3 chemins : 5 tours
+**
+** Reflexion :
+** S'il est strictement plus rapide de passer par 1 chemin que par 2, alors cela
+** signifie que le 2nd chemin n'est pas emprunte, et donc que la recherche d'un
+** eventuel 3eme chemin (necessairement de longueure >= au 2eme) est derisoire
+** Note :
+** Ne pas omettre que la decouverte d'un nouveau chemin, en raison de sa
+** superposition potentielle avec les chemins precedemment decouverts, peut
+** entrainer une deviation provoquant rallongement de ces derniers !
+**
+**
+** Soit A le nombre de fourmis a devoir traverser
+**
+** Soit L(n) la longueur du plus long chemin decouvert lors de l'etape n
+**
+** Soit S(n) le nombre de fourmis total ayant traverse la fourmiliere de part en
+** part le temps que la 1ere fourmi ayant emprunte le plus long itineraire
+** atteigne la sortie
+** Pour n = 1 :
+** S(1) = 1
+** Pour n > 1 :
+** S(n) = S(n - 1) + [(L(n) - L(n - 1)) * (n - 1)] + 1
+**
+** Pour n > 1, soit D(n) la difference entre S(n) et S(n - 1)
+** D(n) = [(L(n) - L(n - 1)) * (n - 1)] + 1
+**
+** La combinaison de chemin de l'etape 'n' est parfaitement exploite ssi on a :
+** (A - S(n)) % n == 0
+** ie
+** A % n == S(n) % n
+**
+** Exemple 02 (Absence de point de congestion):
+**
+**   A % n            S(N) % n
+** 5 % 1 = 0    &    1 % 1 = 0
+** 5 % 2 = 1    &    3 % 2 = 1
+** 5 % 3 = 2    &    4 % 3 = 1
+** 5 % 4 = 1    &    5 % 4 = 1
+**
+** 5 fourmis:
+** A->B->Z
+** A->C->D->Z
+** A->E->F->Z
+** A->G->H->Z
+**
+** 1 chemin : 6 tours
+** 2 chemins : 5 tours
+** 3 chemins : 5 tours
+** 4 chemins : 4 tours
+**
+** Exemple 3 (Presence de point de congestion):
+**
+** On cherche un nombre de fourmis > 6 qui soit congru a 0 modulo 3
+** et qui ne soit pas congru a 1 modulo 2
+** ie
+** un multiple de 6 strictement superieur a 6
+**
+** 12 fourmis:
+**
+** 0  1  2  3
+** A->B->C->D->Z (12)
+** 15 etapes
+**
+** 0  1  2  3  4  5  6  7  8  9  10
+** A->B->C->D->E->F->G->H->I->J->Z (7)
+** A->B->C->D->E->F->G->H->I->J->K->Z (5)
+** 16 etapes
+**
+** 0  1  2  3  4  5  6  7  8  9  10 11
+** A->B->C->D->E->F->G->H->I->J->Z (5)
+** A->B->C->D->E->F->G->H->I->J->K->Z (4)
+** A->B->C->D->E->F->G->H->I->J->K->M->Z (3)
+** 14 etapes
 */
 
 int		lem_in(t_data *data)
