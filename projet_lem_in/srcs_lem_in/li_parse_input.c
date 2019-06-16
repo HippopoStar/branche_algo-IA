@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 16:47:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 17:03:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ int		li_parse_ants(t_data *data, char **line, int *ret_gnl)
 	return (ret_val);
 }
 
+/*
+** Dans 'li_match_room', on ne libere 'line' que si tout s'est bien passe,
+** dans le cas contraire on se contente de mettre 'wit' a '0' et c'est
+** 'li_parse_rooms' qui se charge de liberer la memoire allouee a 'line'
+**
+** La condition 'wit % 5 == 0' est vraie
+** lorsque 'wit' vaut '0' ainsi que pour tout autre multiple de '5'
+*/
+
 int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 {
 	t_room	**current;
@@ -48,7 +57,7 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 	{
 		li_match_room(data, *line, &current, &wit);
 	}
-	if (wit > 0 && wit % 5 == 0 && !(wit == 30))
+	if (wit % 5 == 0 && !(wit == 30))
 	{
 		free(*line);
 	}

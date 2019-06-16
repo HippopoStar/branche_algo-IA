@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 16:46:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 17:03:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,10 @@ int		aux_li_match_room(t_room *current, char *line, int *wit)
 ** (permettant de s'assurer que la condition 'wit % 5 == 0' soit remplie
 ** seulement lorsqu'on a atteint la fin de la declaration des salles,
 ** et non par une combinaison de '##start' et de '##end')
+**
+** Il est necessaire de mettre 'wit' sur '0' en cas d'erreur
+** afin de remplir a la fois la condition de sortie de la boucle et la
+** condition de liberation de la memoire alloue a 'line' dans 'li_parse_rooms'
 */
 
 void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)
@@ -155,7 +159,6 @@ void	li_match_room(t_data *data, char *line, t_room ***current, int *wit)
 			**current = NULL;
 			if (!((*wit) % 5 == 0))
 			{
-				free(line);
 				*wit = 0;
 			}
 		}
