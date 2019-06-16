@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 18:25:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 16:46:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int		li_is_name_available(t_room *current, t_data *data)
 	}
 	return (1);
 }
+
+/*
+** La condition '&& (command_id)' precedent la condition
+** '!((*wit) % command_id == 0)' permet de s'assurer de ne pas tenter
+** de faire une division par '0'
+*/
 
 void	li_deal_sharp_marks(t_room **current, char *line, int *wit)
 {

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 11:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 18:25:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 16:47:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		li_parse_rooms(t_data *data, char **line, int *ret_gnl)
 	{
 		li_match_room(data, *line, &current, &wit);
 	}
-	if (wit % 5 == 0 && !(wit == 30))
+	if (wit > 0 && wit % 5 == 0 && !(wit == 30))
 	{
 		free(*line);
 	}
