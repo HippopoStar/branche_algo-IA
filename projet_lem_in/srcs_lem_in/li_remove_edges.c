@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 16:28:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 19:16:47 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,21 +137,21 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 ** dans la suite de l'itineraire positionne a l'index 'route->height'
 **
 ** On peut vouloir ajouter les lignes suivantes avant l'appel de 'li_melt_paths'
-**					ft_putstr("Avant appel de 'li_melt_paths'\n");
-**					li_print_route(route, route->height);
-**					ft_putstr("i vaut : ");
-**					ft_putnbr((int)i);
-**					ft_putchar('\n');
-**					ft_putstr("j vaut : ");
-**					ft_putnbr((int)j);
-**					ft_putchar('\n');
-**					ft_putstr("k vaut : ");
-**					ft_putnbr((int)k);
-**					ft_putchar('\n');
+**		ft_putstr("Avant appel de 'li_melt_paths'\n");
+**		li_print_route(route, route->height);
+**		ft_putstr("i vaut : ");
+**		ft_putnbr((int)(*i));
+**		ft_putchar('\n');
+**		ft_putstr("j vaut : ");
+**		ft_putnbr((int)(*j));
+**		ft_putchar('\n');
+**		ft_putstr("k vaut : ");
+**		ft_putnbr((int)(*k));
+**		ft_putchar('\n');
 **
 ** Puis :
-**					ft_putstr("Apres appel de 'li_melt_paths'\n");
-**					li_print_route(route, route->height);
+**		ft_putstr("Apres appel de 'li_melt_paths'\n");
+**		li_print_route(route, route->height);
 */
 
 void	aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
