@@ -167,6 +167,18 @@ void	li_copy_previous_route(t_data *data, size_t index)
 	}
 }
 
+/*
+** Rappel :
+** Pour tout 0 <= i < data->path_nb,
+** La variable *(*(data->paths + i) + data->size)
+** correspond a l'index de depart de l'itineraire 'i' dans '*(data->path + i)'
+** (voir 'li_bellman_ford' puis 'li_reverse_path')
+**
+** On initialise *(*(*(data->routes + i) + i) + data->size + 1)
+** (devant par la suite prendre la valeur du nombre de fourmis devant traverser
+** la fourmiliere en empruntant l'itineraire correspondant) a '0'
+*/
+
 void	li_copy_last_path(t_data *data, size_t i)
 {
 	size_t	j;
@@ -179,6 +191,7 @@ void	li_copy_last_path(t_data *data, size_t i)
 		j++;
 	}
 	*(*(*(data->routes + i) + i) + data->size) = j;
+	*(*(*(data->routes + i) + i) + data->size + 1) = 0;
 	while (j < data->size)
 	{
 		*(*(*(data->routes + i) + i) + j) = 0;
