@@ -156,7 +156,7 @@ void	li_copy_previous_route(t_data *data, size_t index)
 		while (i < index)
 		{
 			j = 0;
-			while (j <= data->size)
+			while (j < data->size + 2)
 			{
 				*(*(*(data->routes + index) + i) + j) = *(*(*(data->routes
 								+ index - 1) + i) + j);
