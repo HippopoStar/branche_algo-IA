@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/13 18:21:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 16:30:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,12 +170,17 @@ void				li_copy_previous_route(t_data *data, size_t index);
 void				li_copy_last_path(t_data *data, size_t i);
 int					li_build_routes(t_data *data);
 /*
-** Dans le fichier 'li_remove_edges'
+** Dans le fichier 'li_order_paths'
 */
 void				li_swap_paths(t_route *route, size_t i, size_t j);
 void				li_order_paths(t_route *route);
+/*
+** Dans le fichier 'li_remove_edges'
+*/
 size_t				li_edge_len(t_route *route, size_t i, size_t j, size_t k);
 void				li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
+void				aux_li_remove_edges(t_route *route, size_t *i, size_t *j,\
+																	size_t *k);
 void				li_remove_edges(t_route *route);
 /*
 ** Dans le fichier 'li_get_routes_lengths' (caduque)

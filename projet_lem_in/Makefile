@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/11 19:05:56 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/16 16:31:17 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC_NAME = main_lem_in.c\
 			li_bhandari.c\
 			li_build_routes.c\
 			li_remove_edges.c\
+			li_order_paths.c\
 			li_get_routes_lengths.c\
 			li_eval_routes.c\
 			li_size_ttoa.c\

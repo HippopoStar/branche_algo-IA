@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/14 16:21:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 16:28:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,6 @@
 ** la 1ere salle, et se termine par 'data->size', correspondant a la derniere
 ** salle (au plus tard en position 'data->size - 1')
 */
-
-void	li_swap_paths(t_route *route, size_t i, size_t j)
-{
-	size_t	*tmp;
-
-	tmp = *(route->field + i);
-	*(route->field + i) = *(route->field + j);
-	*(route->field + j) = tmp;
-}
-
-void	li_order_paths(t_route *route)
-{
-	size_t	*tmp;
-	size_t	i;
-
-	i = 1;
-	while (i <= route->height)
-	{
-		while (*(*(route->field + i - 1) + route->width)
-				> *(*(route->field + i) + route->width) && i > 0)
-		{
-			tmp = *(route->field + i - 1);
-			*(route->field + i - 1) = *(route->field + i);
-			*(route->field + i) = tmp;
-			i--;
-		}
-		i++;
-	}
-}
 
 /*
 ** La maniere de calculer en place les longueurs des itineraires
@@ -103,31 +74,9 @@ size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k)
 	}
 	len_1 = &(*(*(route->field + i) + route->width));
 	len_2 = &(*(*(route->field + route->height) + route->width));
-	ft_putstr("begin :\n");
-	ft_putstr("(*len_1) vaut : ");
-	ft_putnbr((int)(*len_1));
-	ft_putchar('\n');
-	ft_putstr("(*len_2) vaut : ");
-	ft_putnbr((int)(*len_2));
-	ft_putchar('\n');
-	ft_putstr("edge_len vaut : ");
-	ft_putnbr((int)edge_len);
-	ft_putchar('\n');
-	ft_putstr("j vaut : ");
-	ft_putnbr((int)j);
-	ft_putchar('\n');
-	ft_putstr("k vaut : ");
-	ft_putnbr((int)k);
-	ft_putchar('\n');
 	tmp = (*len_1);
 	*len_1 = j + ((*len_2) - k);
 	*len_2 = k + (tmp - j) - (2 * edge_len);
-	ft_putstr("(*len_1) vaut : ");
-	ft_putnbr((int)(*len_1));
-	ft_putchar('\n');
-	ft_putstr("(*len_2) vaut : ");
-	ft_putnbr((int)(*len_2));
-	ft_putchar('\n');
 	return (edge_len);
 }
 
@@ -205,6 +154,20 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 **					li_print_route(route, route->height);
 */
 
+void	aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
+{
+	if (*(*(route->field + (*i)) + (*j)) == *(*(route->field
+					+ route->height) + (*k))
+			&& (*j) < *(*(route->field + (*i)) + route->width))
+	{
+		li_melt_paths(route, (*i), (*j), (*k));
+		li_swap_paths(route, (*i), route->height);
+		*k = 1;
+		*j = route->width;
+		*i = route->height;
+	}
+}
+
 void	li_remove_edges(t_route *route)
 {
 	size_t	i;
@@ -220,29 +183,7 @@ void	li_remove_edges(t_route *route)
 			i = 0;
 			while (i < route->height)
 			{
-				if (*(*(route->field + i) + j) == *(*(route->field
-								+ route->height) + k)
-						&& j < *(*(route->field + i) + route->width))
-				{
-					ft_putstr("Avant appel de 'li_melt_paths'\n");
-					li_print_route(route, route->height);
-					ft_putstr("i vaut : ");
-					ft_putnbr((int)i);
-					ft_putchar('\n');
-					ft_putstr("j vaut : ");
-					ft_putnbr((int)j);
-					ft_putchar('\n');
-					ft_putstr("k vaut : ");
-					ft_putnbr((int)k);
-					ft_putchar('\n');
-					li_melt_paths(route, i, j, k);
-					li_swap_paths(route, i, route->height);
-					ft_putstr("Apres appel de 'li_melt_paths'\n");
-					li_print_route(route, route->height);
-					k = 1;
-					j = route->width;
-					i = route->height;
-				}
+				aux_li_remove_edges(route, &i, &j, &k);
 				i++;
 			}
 			j++;
