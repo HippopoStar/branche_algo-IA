@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/12 18:08:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/16 20:09:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int		li_reverse_path(t_data *data)
 	{
 		i = (*(data->map + j))->ancestor;
 		*((*(data->map + i))->pipes + j) = (signed char)0;
-		*((*(data->map + j))->pipes + i) = (signed char)(-1);
+		*((*(data->map + j))->pipes + i) = (signed char)
+			(*((*(data->map + j))->pipes + i) == 1 ? -1 : 0);
 		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
 		j = i;
