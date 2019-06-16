@@ -179,6 +179,14 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 }
 
 /*
+** Il est necessaire d'apres l'implementation de la suite de l'algorithme
+** de pacourir la combinaison d'itineraires d'abord suivant les colonnes
+** (distance a la salle de depart) puis suivant les lignes (les itineraires)
+** car on doit detecter les superpositions dans l'ordre dans lesquelles elles
+** interviennent, afin qu'en echangeant les positions des itineraires ainsi
+** fondus, toutes les eventuelles superpositions restantes soient necessairement
+** dans la suite de l'itineraire positionne a l'index 'route->height'
+**
 ** On peut vouloir ajouter les lignes suivantes avant l'appel de 'li_melt_paths'
 **					ft_putstr("Avant appel de 'li_melt_paths'\n");
 **					li_print_route(route, route->height);
