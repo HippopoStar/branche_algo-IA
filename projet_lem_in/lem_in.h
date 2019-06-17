@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 16:30:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:47:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct		s_room
 	char			*name;
 	int				weight;
 	size_t			ancestor;
+	int				allowed;
+	int				except;
 	int				pos_x;
 	int				pos_y;
 	int				role;
@@ -152,7 +154,8 @@ void				li_print_routes(t_data *data);
 ** Dans le fichier 'li_bellman_ford.c'
 */
 void				li_bellman_ford(t_data *data);
-void				aux_li_bellman_ford(t_data *data);
+void				aux_li_bellman_ford(t_data *data, size_t i);
+void				li_ping_neighbour(t_data *data, size_t i, size_t j);
 /*
 ** Dans le fichier 'li_bhandari.c'
 */

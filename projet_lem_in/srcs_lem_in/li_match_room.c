@@ -6,13 +6,15 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 17:03:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:09:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
 /*
+** On initialise '(*(data->map + i))->allowed' a '1' a ce moment-la
+**
 ** Allocation dynamique de memoire dans 'li_allocate_room'
 ** (t_room *)*room : data->rooms (liste chainee)
 */
@@ -22,6 +24,7 @@ int		li_allocate_room(t_room **room)
 	if (!(*room = (t_room *)malloc(sizeof(t_room))))
 		return (0);
 	(*room)->name = NULL;
+	(*room)->allowed = 1;
 	(*room)->role = 1;
 	(*room)->nb_of_bonds = 0;
 	(*room)->pipes = NULL;

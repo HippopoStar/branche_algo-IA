@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 20:09:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:10:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	li_bhandari_max_iterations(t_data *data)
 	}
 }
 
+/*
+** On (re)met '(*(data->map + i))->except' a '0' a ce moment-la
+*/
+
 void	li_initialise_weights(t_data *data)
 {
 	size_t	i;
@@ -40,11 +44,19 @@ void	li_initialise_weights(t_data *data)
 	{
 		(*(data->map + i))->ancestor = data->size;
 		(*(data->map + i))->weight = (int)data->size;
+		(*(data->map + i))->except = 0;
 		i++;
 	}
 }
 
 /*
+** On met '(*(data->map + i))->allowed' a '0' a ce moment-la
+**
+** Cela n'a pas d'impact de mettre la variable
+** '(*(data->map + data->size - 1))->allowed' a '0' car cette salle
+** n'est pas 'parcourue' a proprement parler lors de l'execution de
+** Bellman-Ford
+**
 ** On peut souhaiter ajouter les 2 lignes suivantes au debut de la
 ** boucle conditionnelle :
 **		ft_putstr((*(data->map + j))->name);
@@ -68,6 +80,7 @@ int		li_reverse_path(t_data *data)
 	pos = data->size - 1;
 	while (j > 0)
 	{
+		(*(data->map + j))->allowed = 0;
 		i = (*(data->map + j))->ancestor;
 		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*((*(data->map + j))->pipes + i) = (signed char)

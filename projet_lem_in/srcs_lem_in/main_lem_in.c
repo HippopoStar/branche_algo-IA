@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/15 17:25:04 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:48:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 **         | li_initialise_weights
 **         | li_bellman_ford
 **             | aux_li_bellman_ford
+**                 | li_ping_neighboor
 **         | li_reverse_path
 **     | li_build_routes
 **         | li_allocate_routes (*)
