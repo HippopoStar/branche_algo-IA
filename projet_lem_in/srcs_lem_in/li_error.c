@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:08:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 19:36:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:52:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	li_help(void)
 	ft_putstr("-h\t: display help\n");
 	ft_putstr("-c\t: enable colors\n");
 	ft_putstr("-l\t: enable step counting\n");
+	ft_putstr("-e\t: enable duplicates in connections declaration\n");
+	ft_putstr("-d\t: disable duplicates in rooms' coordinates\n");
 	ft_putstr("\033[32mComplexity\033[00m:\n");
 	ft_putstr("O(nb_of_rooms * total_nb_of_tubes * max_simultaneous_paths)\n");
 }

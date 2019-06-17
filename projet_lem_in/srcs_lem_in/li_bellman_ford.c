@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 16:52:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:51:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 **
 ** (Notez qu'on ne peut atteindre de salle en passant par une liaison
 ** de poids nul)
+**
+** Une salle ne peut posseder plus de 1 liaison de poids negatif, car :
+** - emprunter une liaison de poids negatif dans un nouvel itineraire la detruit
+** - emprunter une liaison de poids positif alors qu'on possede par ailleurs
+**   une liaison de poids negatif, detruit cette liaison
+**   (la liaison de poids negatif resultante sera dans la salle atteinte)
 */
 
 void	li_ping_neighbour(t_data *data, size_t i, size_t j)
@@ -71,6 +77,15 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 	}
 }
 
+/*
+** On ne peut avoir 'data->size == 0'
+** (car alors 'li_parse_rooms' renverrait une erreur)
+**
+** Si le poids d'une salle vaut 'data->size',
+** c'est qu'elle n'a pas encore ete atteinte depuis l'appel
+** de 'li_initialise_weights'
+*/
+
 void	li_bellman_ford(t_data *data)
 {
 	size_t	iteration;
@@ -79,10 +94,14 @@ void	li_bellman_ford(t_data *data)
 	iteration = 0;
 	while (iteration < data->size)
 	{
-		i = 0;
+		aux_li_bellman_ford(data, 0);
+		i = 1;
 		while (i < data->size)
 		{
-			aux_li_bellman_ford(data, i);
+			if ((*(data->map + i))->weight != (int)data->size)
+			{
+				aux_li_bellman_ford(data, i);
+			}
 			i++;
 		}
 		iteration++;

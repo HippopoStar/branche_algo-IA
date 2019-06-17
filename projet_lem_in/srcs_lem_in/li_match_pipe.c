@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:53:22 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 20:11:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:22:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		li_actualise_map(t_data *data, size_t i, size_t j)
 	if (*((*(data->map + i))->pipes + j) == 1
 			|| *((*(data->map + j))->pipes + i) == 1)
 	{
-		return (0);
+		return (data->doublon == 1 ? 1 : 0);
 	}
 	else
 	{

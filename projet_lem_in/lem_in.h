@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 16:47:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:17:21 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct		s_data
 	int				options;
 	int				help;
 	int				color;
+	int				doublon;
+	int				coordinates;
 	size_t			display_steps;
 }					t_data;
 

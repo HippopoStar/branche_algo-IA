@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 20:54:00 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 16:09:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:20:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ int		li_is_name_available(t_room *current, t_data *data)
 		if (!ft_strcmp(tmp->name, current->name))
 		{
 			return (0);
+		}
+		else if (data->coordinates == 1)
+		{
+			if (current->pos_x == tmp->pos_x && current->pos_y == tmp->pos_y)
+			{
+				return (0);
+			}
 		}
 		tmp = tmp->next;
 	}
