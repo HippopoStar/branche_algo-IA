@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:08:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 18:52:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:16:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	li_help(void)
 
 void	li_usage(void)
 {
-	ft_putstr("usage: [time] ./lem-in [-hcl] < my_map_file\n");
+	ft_putstr("usage: [time] ./lem-in [-hcled] < my_map_file\n");
 }
 
 /*

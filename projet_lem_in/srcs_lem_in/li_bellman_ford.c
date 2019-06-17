@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 18:51:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:20:19 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@
 ** de poids nul)
 **
 ** Une salle ne peut posseder plus de 1 liaison de poids negatif, car :
-** - emprunter une liaison de poids negatif dans un nouvel itineraire la detruit
-** - emprunter une liaison de poids positif alors qu'on possede par ailleurs
-**   une liaison de poids negatif, detruit cette liaison
-**   (la liaison de poids negatif resultante sera dans la salle atteinte)
+** - Dans une salle possedant une liaison de poids negatif :
+**     - emprunter une liaison de poids negatif dans un nouvel itineraire
+**       la detruit
+**     - emprunter une liaison de poids positif alors qu'on possede par ailleurs
+**       une liaison de poids negatif, detruit cette liaison
+**       (la liaison de poids negatif resultante sera dans la salle atteinte)
+** - Dans une salle ne possedant pas de liaison de poids negatif :
+**     - atteindre une salle possedant une liaison de poids negatif
+**       pre-existante force cette derniere a l'emprunter, la detruisant ainsi
 */
 
 void	li_ping_neighbour(t_data *data, size_t i, size_t j)
