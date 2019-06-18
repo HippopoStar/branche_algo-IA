@@ -56,7 +56,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 [Page du projet](https://projects.intra.42.fr/projects/lem_in)  
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/1555/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
-Documentation :
+Documentation :  
 [Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
 [Algo' d'Edmonds-Karp & Maximum flow problem](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp)  
 - Enlever les flags 'sanitize' dans le Makefile
@@ -97,6 +97,7 @@ Documentation :
 [op.h](https://projects.intra.42.fr/uploads/document/document/27/op.h)  
 [op.c](https://projects.intra.42.fr/uploads/document/document/26/op.c)  
 [VM and champs](https://projects.intra.42.fr/uploads/document/document/391/vm_champs.tar)  
+Documentation :  
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
 
 ## In '**CoreWar Championship**'
