@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 16:10:45 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/18 15:34:34 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,22 +135,27 @@ int		li_allocate_paths(t_data *data)
 
 int		li_bhandari(t_data *data)
 {
-	size_t	i;
 	int		ret_val;
 
 	data->path_nb = 0;
+	data->best_steps = (size_t)data->ants * data->size;
+	data->best_route = 0;
 	li_bhandari_max_iterations(data);
-	if (data->max_paths == 0 || !li_allocate_paths(data))
+	if (data->max_paths == 0 || !li_allocate_paths(data) || !li_allocate_routes(data))
 		return (data->ants == 0 ? 1 : 0);
 	ret_val = 1;
-	i = 0;
-	while (i < data->max_paths && ret_val == 1)
+	while (data->path_nb < data->max_paths && ret_val == 1)
 	{
 		li_initialise_weights(data);
 		li_bellman_ford(data);
-		ret_val = li_reverse_path(data);
-		data->path_nb = (ret_val == 1 ? data->path_nb + 1 : data->path_nb);
-		i++;
+		if ((ret_val = li_reverse_path(data)) == 1)
+		{
+			li_build_routes(data, data->path_nb);
+			if ((ret_val = li_eval_routes(data, data->path_nb)) == 1)
+			{
+				(data->path_nb)++;
+			}
+		}
 	}
-	return (!(i == 1 && ret_val == 0) ? 1 : 0);
+	return (data->path_nb > 0 ? 1 : 0);
 }

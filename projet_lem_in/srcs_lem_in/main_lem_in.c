@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 16:48:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/18 15:16:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,14 +207,12 @@
 
 int		lem_in(t_data *data)
 {
-	if (!li_bhandari(data)
-		|| !li_build_routes(data))
+	if (!li_bhandari(data))
 	{
 		return (0);
 	}
 	else
 	{
-		li_eval_routes(data);
 		return (li_move_ants(data) ? 1 : 0);
 	}
 }

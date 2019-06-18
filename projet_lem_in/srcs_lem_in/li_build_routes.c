@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/13 18:19:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/18 15:32:09 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	aux_li_allocate_routes(t_data *data)
 
 	n = 0;
 	i = 1;
-	while (i < data->path_nb)
+	while (i < data->max_paths)
 	{
 		n = n + i;
 		*(data->routes + i) = &(*(*(data->routes + 0) + n));
@@ -58,12 +58,12 @@ int		li_allocate_routes(t_data *data)
 
 	n = 0;
 	i = 0;
-	while (i <= data->path_nb)
+	while (i <= data->max_paths)
 	{
 		n = n + i;
 		i++;
 	}
-	if (!(data->routes = (size_t ***)malloc(data->path_nb * sizeof(size_t **)))
+	if (!(data->routes = (size_t ***)malloc(data->max_paths * sizeof(size_t **)))
 			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
 			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n
 					* (data->size + 2) * sizeof(size_t))))
@@ -211,25 +211,16 @@ void	li_copy_last_path(t_data *data, size_t i)
 ** correspont a la longueur de l'itineraire
 */
 
-int		li_build_routes(t_data *data)
+void	li_build_routes(t_data *data, size_t i)
 {
-	size_t	i;
 	t_route	to_build;
 
 	to_build.data_ptr = data;
 	to_build.width = data->size;
-	if (!li_allocate_routes(data))
-		return (0);
-	i = 0;
-	while (i < data->path_nb)
-	{
-		li_copy_previous_route(data, i);
-		li_copy_last_path(data, i);
-		to_build.height = i;
-		to_build.field = *(data->routes + i);
-		li_remove_edges(&to_build);
-		li_order_paths(&to_build);
-		i++;
-	}
-	return (1);
+	li_copy_previous_route(data, i);
+	li_copy_last_path(data, i);
+	to_build.height = i;
+	to_build.field = *(data->routes + i);
+	li_remove_edges(&to_build);
+	li_order_paths(&to_build);
 }

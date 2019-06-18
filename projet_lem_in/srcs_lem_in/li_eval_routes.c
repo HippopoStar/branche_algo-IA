@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/11 19:50:17 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/18 15:38:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,25 +202,21 @@ size_t	li_eval_steps(t_data *data, size_t index)
 			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 2);
 }
 
-void	li_eval_routes(t_data *data)
+int		li_eval_routes(t_data *data, size_t i)
 {
 	size_t	ret_val;
-	size_t	best_value;
-	size_t	best_index;
-	size_t	i;
 
-	best_value = li_eval_steps(data, 0);
-	best_index = 0;
-	i = 1;
-	while (i < data->path_nb && (ret_val = li_eval_steps(data, i)) > 0)
+	if ((ret_val = li_eval_steps(data, i)) > 0)
 	{
-		if (ret_val < best_value)
+		if (ret_val < data->best_steps)
 		{
-			best_value = ret_val;
-			best_index = i;
+			data->best_steps = ret_val;
+			data->best_route = i;
 		}
-		i++;
+		return (1);
 	}
-	data->best_steps = best_value;
-	data->best_route = best_index;
+	else
+	{
+		return (0);
+	}
 }
