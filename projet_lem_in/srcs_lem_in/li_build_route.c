@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   li_build_routes.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 20:59:03 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/18 15:32:09 by lcabanes         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "lem_in.h"
 
 /*
@@ -211,7 +199,7 @@ void	li_copy_last_path(t_data *data, size_t i)
 ** correspont a la longueur de l'itineraire
 */
 
-void	li_build_routes(t_data *data, size_t i)
+void	li_build_route(t_data *data, size_t i)
 {
 	t_route	to_build;
 

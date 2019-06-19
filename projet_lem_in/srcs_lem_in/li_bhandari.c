@@ -150,8 +150,8 @@ int		li_bhandari(t_data *data)
 		li_bellman_ford(data);
 		if ((ret_val = li_reverse_path(data)) == 1)
 		{
-			li_build_routes(data, data->path_nb);
-			if ((ret_val = li_eval_routes(data, data->path_nb)) == 1)
+			li_build_route(data, data->path_nb);
+			if ((ret_val = li_eval_route(data, data->path_nb)) == 1)
 			{
 				(data->path_nb)++;
 			}

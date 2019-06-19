@@ -167,13 +167,13 @@ int					li_reverse_path(t_data *data);
 int					li_allocate_paths(t_data *data);
 int					li_bhandari(t_data *data);
 /*
-** Dans le fichier 'li_build_routes.c'
+** Dans le fichier 'li_build_route.c'
 */
 void				aux_li_allocate_outes(t_data *data);
 int					li_allocate_routes(t_data *data);
 void				li_copy_previous_route(t_data *data, size_t index);
 void				li_copy_last_path(t_data *data, size_t i);
-void				li_build_routes(t_data *data, size_t i);
+void				li_build_route(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_order_paths'
 */
@@ -192,11 +192,11 @@ void				li_remove_edges(t_route *route);
 */
 void				li_get_routes_lengths(t_data *data);
 /*
-** Dans le fichier 'li_eval_routes.c'
+** Dans le fichier 'li_eval_route.c'
 */
 size_t				li_eval_meanwhile(t_data *data, size_t index);
 size_t				li_eval_steps(t_data *data, size_t index);
-int					li_eval_routes(t_data *data, size_t i);
+int					li_eval_route(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_size_ttoa.c'
 */

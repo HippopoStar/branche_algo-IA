@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   li_eval_routes.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/28 16:24:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/18 15:38:49 by lcabanes         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "lem_in.h"
 
 /*
@@ -202,7 +190,7 @@ size_t	li_eval_steps(t_data *data, size_t index)
 			+ *(*(*(data->routes + index) + 0) + data->size + 1) - 2);
 }
 
-int		li_eval_routes(t_data *data, size_t i)
+int		li_eval_route(t_data *data, size_t i)
 {
 	size_t	ret_val;
 

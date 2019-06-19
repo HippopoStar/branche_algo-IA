@@ -41,7 +41,8 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t j)
 	int		wei;
 
 	target = *((*(data->map + i))->bond_sum + j);
-	if (*((*(data->map + i))->pipes + target) != 0 && i != target
+	if (!(*((*(data->map + i))->pipes + target) == 0 || i == target
+				|| (*(data->map + target))->ancestor == i)
 			&& ((wei = (*(data->map + i))->weight
 					+ (int)(*((*(data->map + i))->pipes + target)))
 				< (*(data->map + target))->weight))

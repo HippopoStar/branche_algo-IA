@@ -156,9 +156,9 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 
 void	aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
 {
-	if (*(*(route->field + (*i)) + (*j)) == *(*(route->field
-					+ route->height) + (*k))
-			&& (*j) < *(*(route->field + (*i)) + route->width))
+	if ((*j) < *(*(route->field + (*i)) + route->width)
+			&& *(*(route->field + (*i)) + (*j)) == *(*(route->field
+					+ route->height) + (*k)))
 	{
 		li_melt_paths(route, (*i), (*j), (*k));
 		li_swap_paths(route, (*i), route->height);

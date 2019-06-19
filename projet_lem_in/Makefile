@@ -41,11 +41,11 @@ SRC_NAME = main_lem_in.c\
 			li_print_map.c\
 			li_bellman_ford.c\
 			li_bhandari.c\
-			li_build_routes.c\
+			li_build_route.c\
 			li_remove_edges.c\
 			li_order_paths.c\
 			li_get_routes_lengths.c\
-			li_eval_routes.c\
+			li_eval_route.c\
 			li_size_ttoa.c\
 			li_move_ants.c\
 			li_display_steps.c\
