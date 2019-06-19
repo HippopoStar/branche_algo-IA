@@ -61,6 +61,11 @@ void	li_initialise_weights(t_data *data)
 ** poids strictement negatif grace a la condition sur 'pos',
 ** en revanche cela peut entraver la decouverte de nouveau chemins
 **
+** On ne rempli pas le champ '*(*(data->paths + data->path_nb) + 0)',
+** qui est par defaut a '0'
+** (d'ou la validite de la condition 'pos > 0' dans la structure de controle
+** de la boucle conditionnelle)
+**
 ** On peut souhaiter ajouter les 2 lignes suivantes au debut de la
 ** boucle conditionnelle :
 **		ft_putstr((*(data->map + j))->name);
@@ -81,7 +86,7 @@ int		li_reverse_path(t_data *data)
 	{
 		return (0);
 	}
-	pos = data->size;
+	pos = data->size - 1;
 	while (j > 0 && pos > 0)
 	{
 		(*(data->map + j))->allowed = 0;
@@ -89,8 +94,8 @@ int		li_reverse_path(t_data *data)
 		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*((*(data->map + j))->pipes + i) = (signed char)
 			(*((*(data->map + j))->pipes + i) == 1 ? -1 : 0);
-		pos--;
 		*(*(data->paths + data->path_nb) + pos) = j;
+		pos--;
 		j = i;
 	}
 	*(*(data->paths + data->path_nb) + data->size) = pos;
@@ -145,6 +150,11 @@ int		li_allocate_paths(t_data *data)
 ** on peut additionner 'data->path_nb' avec cette valeur de retour plutot
 ** que de creer une boucle conditionnelle dans laquelle
 ** incrementer 'data->path_nb'
+**
+** Un appel de 'li_order_rooms' au moment la 2nd iteration de la boucle
+** conditionnelle compromet la correspondance entre les positions des salles
+** dans '(t_data *)->map' et leurs positions respectives dans le graphe
+** des liaisons '(t_room *)->pipes'
 */
 
 int		li_bhandari(t_data *data)
@@ -161,8 +171,8 @@ int		li_bhandari(t_data *data)
 	ret_val = 1;
 	while (data->path_nb < data->max_paths && ret_val == 1)
 	{
-		if (data->path_nb == 1)
-			li_order_rooms(data);
+//		if (data->path_nb == 1)
+//			li_order_rooms(data);
 		li_initialise_weights(data);
 		li_bellman_ford(data);
 		if ((ret_val = li_reverse_path(data)) == 1)
