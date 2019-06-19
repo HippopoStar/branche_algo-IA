@@ -35,12 +35,10 @@
 **       pre-existante force cette derniere a l'emprunter, la detruisant ainsi
 */
 
-void	li_ping_neighbour(t_data *data, size_t i, size_t j)
+void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 {
-	size_t	target;
 	int		wei;
 
-	target = *((*(data->map + i))->bond_sum + j);
 	if (!(*((*(data->map + i))->pipes + target) == 0 || i == target
 				|| (*(data->map + target))->ancestor == i)
 			&& ((wei = (*(data->map + i))->weight
@@ -67,7 +65,7 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 			target = *((*(data->map + i))->bond_sum + j);
 			if (*((*(data->map + i))->pipes + target) == (signed char)(-1))
 			{
-				li_ping_neighbour(data, i, j);
+				li_ping_neighbour(data, i, target);
 			}
 			j++;
 		}
@@ -77,7 +75,7 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 		while (j < (*(data->map + i))->nb_of_bonds)
 		{
 			target = *((*(data->map + i))->bond_sum + j);
-			li_ping_neighbour(data, i, j);
+			li_ping_neighbour(data, i, target);
 			j++;
 		}
 	}
@@ -104,7 +102,7 @@ void	li_bellman_ford(t_data *data)
 		i = 1;
 		while (i < data->size)
 		{
-			if ((*(data->map + i))->weight != (int)data->size)
+			if (!((*(data->map + i))->weight == (int)data->size))
 			{
 				aux_li_bellman_ford(data, i);
 			}

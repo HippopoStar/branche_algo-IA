@@ -157,7 +157,7 @@ void				li_print_routes(t_data *data);
 */
 void				li_bellman_ford(t_data *data);
 void				aux_li_bellman_ford(t_data *data, size_t i);
-void				li_ping_neighbour(t_data *data, size_t i, size_t j);
+void				li_ping_neighbour(t_data *data, size_t i, size_t target);
 /*
 ** Dans le fichier 'li_bhandari.c'
 */
