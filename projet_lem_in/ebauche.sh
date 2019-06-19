@@ -1,6 +1,6 @@
 #!/bin/sh
-PATH='Users/lcabanes/Documents/branche_algo_et_IA/projet_lem_in'
-mkdir -p ${PATH}/tmp_dir
+PATH='/Users/lcabanes/Documents/branche_algo_et_IA/projet_lem_in'
+mkdir ${PATH}/tmp_dir
 mv ${PATH}/lem_in.h ${PATH}/tmp_dir/
 mv ${PATH}/srcs_lem_in/li_allocate_map.c ${PATH}/tmp_dir/
 mv ${PATH}/srcs_lem_in/li_bellman_ford.c ${PATH}/tmp_dir/
