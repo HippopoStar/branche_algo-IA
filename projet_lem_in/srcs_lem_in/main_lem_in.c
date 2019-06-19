@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/18 15:16:26 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/19 18:36:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,25 @@
 **     | li_bhandari
 **         | li_bhandari_max_iteration
 **         | li_allocate_paths (*)
+**         | li_allocate_routes (*)
+**             | aux_li_allocate_routes
+**         | li_order_rooms
 **         | li_initialise_weights
 **         | li_bellman_ford
 **             | aux_li_bellman_ford
 **                 | li_ping_neighboor
 **         | li_reverse_path
-**     | li_build_routes
-**         | li_allocate_routes (*)
-**             | aux_li_allocate_routes
-**         | li_copy_previous_route
-**         | li_copy_last_path
-**         | li_remove_edges
-**             | li_melt_paths
-**                 | li_edge_len
+**         | li_build_route
+**             | li_copy_previous_route
+**             | li_copy_last_path
+**             | li_remove_edges
+**                 | li_melt_paths
+**                     | li_edge_len
+**             | li_order_paths
+**         | li_eval_route
+**             | li_eval_steps
+**                 | li_eval_meanwhile
 **             | li_swap_paths
-**         | li_order_paths
-**     | li_eval_routes
-**         | li_eval_steps
-**             | li_eval_meanwhile
 **     | li_move_ants
 **         | li_allocate_ant_tab (*)
 **             | li_size_ttoa

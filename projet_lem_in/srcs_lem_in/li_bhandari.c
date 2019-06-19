@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/18 15:34:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/19 18:37:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	li_initialise_weights(t_data *data)
 ** n'est pas 'parcourue' a proprement parler lors de l'execution de
 ** Bellman-Ford
 **
+** On s'assure s'arreter lorsqu'on est malheureusement tombe sur un cycle de
+** poids strictement negatif grace a la condition sur 'pos',
+** en revanche cela peut entraver la decouverte de nouveau chemins
+**
 ** On peut souhaiter ajouter les 2 lignes suivantes au debut de la
 ** boucle conditionnelle :
 **		ft_putstr((*(data->map + j))->name);
@@ -77,20 +81,20 @@ int		li_reverse_path(t_data *data)
 	{
 		return (0);
 	}
-	pos = data->size - 1;
-	while (j > 0)
+	pos = data->size;
+	while (j > 0 && pos > 0)
 	{
 		(*(data->map + j))->allowed = 0;
 		i = (*(data->map + j))->ancestor;
 		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*((*(data->map + j))->pipes + i) = (signed char)
 			(*((*(data->map + j))->pipes + i) == 1 ? -1 : 0);
-		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
+		*(*(data->paths + data->path_nb) + pos) = j;
 		j = i;
 	}
 	*(*(data->paths + data->path_nb) + data->size) = pos;
-	return (1);
+	return (j == 0 ? 1 : 0);
 }
 
 /*
@@ -131,6 +135,16 @@ int		li_allocate_paths(t_data *data)
 **
 ** Si le nombre de fourmis s'avere valoir '0', 'li_bhandari'
 ** n'est pas appelee
+**
+** On pourrait eventuellement trier les salles suivant leur poids appelant une
+** fonction dont ce serait le propos apres le 1er passage de Bellman-Ford
+** Peut-etre cela eviterait-il de generer des cycles de poids strictement
+** negatifs dans la majorite des cas ?
+**
+** Etant donne que la valeur de retour de 'li_eval_routes' est soit 1 soit 0,
+** on peut additionner 'data->path_nb' avec cette valeur de retour plutot
+** que de creer une boucle conditionnelle dans laquelle
+** incrementer 'data->path_nb'
 */
 
 int		li_bhandari(t_data *data)
@@ -141,20 +155,21 @@ int		li_bhandari(t_data *data)
 	data->best_steps = (size_t)data->ants * data->size;
 	data->best_route = 0;
 	li_bhandari_max_iterations(data);
-	if (data->max_paths == 0 || !li_allocate_paths(data) || !li_allocate_routes(data))
+	if (data->max_paths == 0 || !li_allocate_paths(data)
+			|| !li_allocate_routes(data))
 		return (data->ants == 0 ? 1 : 0);
 	ret_val = 1;
 	while (data->path_nb < data->max_paths && ret_val == 1)
 	{
+		if (data->path_nb == 1)
+			li_order_rooms(data);
 		li_initialise_weights(data);
 		li_bellman_ford(data);
 		if ((ret_val = li_reverse_path(data)) == 1)
 		{
 			li_build_route(data, data->path_nb);
-			if ((ret_val = li_eval_route(data, data->path_nb)) == 1)
-			{
-				(data->path_nb)++;
-			}
+			data->path_nb = data->path_nb
+				+ ((ret_val = li_eval_route(data, data->path_nb)));
 		}
 	}
 	return (data->path_nb > 0 ? 1 : 0);

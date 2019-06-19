@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/18 15:37:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/19 18:36:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ void				li_remove_edges(t_route *route);
 ** Dans le fichier 'li_get_routes_lengths' (caduque)
 */
 void				li_get_routes_lengths(t_data *data);
+void				li_order_rooms(t_data *data);
 /*
 ** Dans le fichier 'li_eval_route.c'
 */

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 19:20:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/19 18:09:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,33 @@
 ** - Dans une salle ne possedant pas de liaison de poids negatif :
 **     - atteindre une salle possedant une liaison de poids negatif
 **       pre-existante force cette derniere a l'emprunter, la detruisant ainsi
+**
+** Tel quel, Bellman-Ford ne preserve pas de l'apparition de cycles de poids
+** strictement negatif,
+** et ajouter une condition '&& !((*(data->map + target))->ancestor == i)'
+** fait perdre l'assurance de decouvrir l'itineraire le plus court
+**
+** La condition '&& !(i == target)' on a deja l'assurance que ce n'est pas le
+** cas grace a 'li_match_pipe'
+**
+** La condition '!(*((*(data->map + i))->pipes + target) == 0)', quant a elle,
+** est necessaire, car elle permet de s'assurer que la liaison n'a pas ete
+** fermee a la suite de la decouverte anterieure d'un itineraire
+**
+** Remarque :
+** Etant donne le fait que Bhandari s'assure d'avoir trouver la combinaison de
+** chemin la plus courte a chaque etape, le poids de la salle de depart ne peut
+** descendre en dessous de '0' apres avoir ete atteint par une suite de liaison
+** de poids strictement negatifs, car pour arriver au depart de cette suite de
+** liaisons, il aura fallut emprunter un itineraire de poids superieur a la
+** valeur absolue de cet suite liaison
 */
 
 void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 {
 	int		wei;
 
-	if (!(*((*(data->map + i))->pipes + target) == 0 || i == target
-				|| (*(data->map + target))->ancestor == i)
+	if (!(*((*(data->map + i))->pipes + target) == 0)
 			&& ((wei = (*(data->map + i))->weight
 					+ (int)(*((*(data->map + i))->pipes + target)))
 				< (*(data->map + target))->weight))

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_build_route.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/19 17:40:36 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/06/19 18:09:52 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 /*
@@ -51,7 +63,8 @@ int		li_allocate_routes(t_data *data)
 		n = n + i;
 		i++;
 	}
-	if (!(data->routes = (size_t ***)malloc(data->max_paths * sizeof(size_t **)))
+	if (!(data->routes = (size_t ***)malloc(data->max_paths
+					* sizeof(size_t **)))
 			|| !(*(data->routes + 0) = (size_t **)malloc(n * sizeof(size_t *)))
 			|| !(*(*(data->routes + 0) + 0) = (size_t *)malloc(n
 					* (data->size + 2) * sizeof(size_t))))

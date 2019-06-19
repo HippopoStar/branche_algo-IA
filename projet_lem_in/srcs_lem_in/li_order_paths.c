@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 16:19:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 16:19:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/19 18:24:48 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	li_swap_paths(t_route *route, size_t i, size_t j)
 	*(route->field + j) = tmp;
 }
 
+/*
+** Il est necessaire de verifier la condition 'i > 0' en premier dans la
+** structure de controle de la 2nd boucle conditionnelle
+** (car dans le cas contraire ca ne presente que tres peu d'interet)
+*/
+
 void	li_order_paths(t_route *route)
 {
 	size_t	*tmp;
@@ -36,8 +42,8 @@ void	li_order_paths(t_route *route)
 	i = 1;
 	while (i <= route->height)
 	{
-		while (*(*(route->field + i - 1) + route->width)
-				> *(*(route->field + i) + route->width) && i > 0)
+		while (i > 0 && *(*(route->field + i - 1) + route->width)
+				> *(*(route->field + i) + route->width))
 		{
 			tmp = *(route->field + i - 1);
 			*(route->field + i - 1) = *(route->field + i);
