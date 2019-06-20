@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/16 19:16:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/20 16:53:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 ** dans la suite de l'itineraire positionne a l'index 'route->height'
 **
 ** On peut vouloir ajouter les lignes suivantes avant l'appel de 'li_melt_paths'
+** (20 lignes)
 **		ft_putstr("Avant appel de 'li_melt_paths'\n");
 **		li_print_route(route, route->height);
 **		ft_putstr("i vaut : ");
@@ -145,8 +146,17 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 **		ft_putstr("j vaut : ");
 **		ft_putnbr((int)(*j));
 **		ft_putchar('\n');
+**		ft_putstr((*((route->data_ptr)->map
+**						+ *(*(route->field + (*i)) + (*j))))->name);
+**		ft_putchar('\n');
+**		ft_putstr("route->height vaut : ");
+**		ft_putnbr((int)route->height);
+**		ft_putchar('\n');
 **		ft_putstr("k vaut : ");
 **		ft_putnbr((int)(*k));
+**		ft_putchar('\n');
+**		ft_putstr((*((route->data_ptr)->map
+**						+ *(*(route->field + route->height) + (*k))))->name);
 **		ft_putchar('\n');
 **
 ** Puis :
