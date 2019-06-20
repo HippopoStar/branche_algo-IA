@@ -1,0 +1,61 @@
+Avant appel de 'li_melt_paths'
+Wtt9->Fca9->Byw8->Sej2->Bqu4->G__3->S_x1->Du_6->Wpn7->Akk2->Pt_8length : 11ants : 77
+Wtt9->Chb5->Wwt7->Wdl4->Smh8->Bzd2->Dvw7->Srz4->Qsc1->B_m7->T_y5->Pbx5->Cgb0->Zyi1->S_s6->Cvu2->Wmi0->Xrl8->Pt_8length : 19ants : 68
+Wtt9->Oec6->G_q7->Kj_1->Yti6->Vjt7->Dub0->Eej2->Pv_0->Uaj1->Quu7->Ohd1->Ohj3->Rfh6->O_w5->Jeu6->Zwc2->Eer9->Tgw7->Pem3->Mm_4->Efs9->Dxb3->Mv_7->Hsl9->Tlz2->Ml_6->Dkt3->Wob1->Jrn1->Rdv0->W_g9->Pfd8->F_u8->H_y0->Qyo0->M_w2->Yal6->Gxy2->Cbk6->Qq_2->Qvs3->Pt_8length : 43ants : 44
+Wtt9->Ufn5->U_c7->Cms6->Kuj0->Ytr4->Ixd1->Hgm7->Fum7->Gek6->Hab1->Yet6->A_e2->Qop6->Qte0->Qmg0->Kop4->Cnu0->Ngi4->Fqj3->G__9->Tsd3->Vhd6->Rtx1->Vdx1->Yvz9->Vzn5->Fby2->V_s8->Ecd6->Yrs0->Dvd7->Yfj8->Ufh0->Rbu8->Izs0->Mue1->Uqz0->Pea3->Okp6->Ciy4->Aca1->Znz7->Je_3->Cav9->Xna3->Kgd2->Pt_8length : 48ants : 39
+Wtt9->Qws6->Qjn6->Vde9->Fjm9->Esr3->Gfl5->Qgd8->Zym8->Szu7->J_m9->Xbe3->Id_9->Uhj2->Fsy5->Dra0->Euz5->Tzi5->F_c3->Osq9->Kcb5->Ncb2->F_a2->Qcx2->Zde6->Fgk2->Jt_1->T_d7->Nme9->Ffq8->Vkb4->Pab5->Tli6->Fle0->Amo8->E_i7->Wjh1->W_g5->Vzr3->G_s4->Zde9->Oiv9->E_w7->Wub6->Vss5->Foa8->Qc_0->Pt_8length : 48ants : 39
+Wtt9->Emg0->Ukt0->Syp6->An_7->Kn_6->Glx6->Qgr9->Utq0->Itt4->Tbo5->Bzg5->Ti_6->Quo3->Bio8->Yzx0->Wdb6->Mex9->Tlz1->Irm6->Uus8->Y_t8->Qhh9->U_a4->Jkm1->Ysz4->Srb3->Prd6->Yfo9->Bv_0->Fuj8->Hga0->Wlo4->C_n0->Svc7->Zvv8->Wuq3->Grr5->Viv0->Iqo4->Pwr9->Peo7->Gz_3->Tgs8->Fdh3->Jdn9->Crq7->Uat9->Bil6->Fnv5->Iex2->Boz8->J_t6->Xph2->Xsn0->Dwo4->Xiw9->Pt_8length : 58ants : 29
+Wtt9->Uaw2->Zmx7->Ebp4->Tv_9->Ohr7->Vxd5->Yoy0->Dhy3->Kvu8->Qyt3->Pfh1->Fi_8->Zrf1->Tnz2->Wey7->Niw1->Tio0->Ata6->Ute1->Cvf6->Qwc0->Daz3->Cvb7->Uxw7->Rtx1->Vhd6->Tsd3->G__9->Fqj3->Ngi4->Cnu0->Kop4->Rkr5->Meu0->Vhi8->Ajv8->Rpg1->D_g3->Wyd6->Rsw5->Kdh2->Uih4->O_c7->Jai6->Xhr7->Kqg8->Use3->Nfy9->Jvn5->R_k6->Ftw3->Dwk5->Kai4->Emh5->Gzj0->Gti5->Y_t2->Xef5->Ff_0->Z_m7->B_s7->Est5->Bch9->Qha9->Tmk9->Vht6->Imc7->Js_4->Urc7->Ttt5->Pt_8length : 72ants : 0
+i vaut : 3
+j vaut : 23
+Rtx1
+route->height vaut : 6
+k vaut : 25
+Rtx1
+Avant appel de 'li_melt_paths'
+Wtt9->Fca9->Byw8->Sej2->Bqu4->G__3->S_x1->Du_6->Wpn7->Akk2->Pt_8length : 11ants : 72
+Wtt9->Chb5->Wwt7->Wdl4->Smh8->Bzd2->Dvw7->Srz4->Qsc1->B_m7->T_y5->Pbx5->Cgb0->Zyi1->S_s6->Cvu2->Wmi0->Xrl8->Pt_8length : 19ants : 64
+Wtt9->Oec6->G_q7->Kj_1->Yti6->Vjt7->Dub0->Eej2->Pv_0->Uaj1->Quu7->Ohd1->Ohj3->Rfh6->O_w5->Jeu6->Zwc2->Eer9->Tgw7->Pem3->Mm_4->Efs9->Dxb3->Mv_7->Hsl9->Tlz2->Ml_6->Dkt3->Wob1->Jrn1->Rdv0->W_g9->Pfd8->F_u8->H_y0->Qyo0->M_w2->Yal6->Gxy2->Cbk6->Qq_2->Qvs3->Pt_8length : 43ants : 40
+Wtt9->Qws6->Qjn6->Vde9->Fjm9->Esr3->Gfl5->Qgd8->Zym8->Szu7->J_m9->Xbe3->Id_9->Uhj2->Fsy5->Dra0->Euz5->Tzi5->F_c3->Osq9->Kcb5->Ncb2->F_a2->Qcx2->Zde6->Fgk2->Jt_1->T_d7->Nme9->Ffq8->Vkb4->Pab5->Tli6->Fle0->Amo8->E_i7->Wjh1->W_g5->Vzr3->G_s4->Zde9->Oiv9->E_w7->Wub6->Vss5->Foa8->Qc_0->Pt_8length : 48ants : 35
+Wtt9->Uaw2->Zmx7->Ebp4->Tv_9->Ohr7->Vxd5->Yoy0->Dhy3->Kvu8->Qyt3->Pfh1->Fi_8->Zrf1->Tnz2->Wey7->Niw1->Tio0->Ata6->Ute1->Cvf6->Qwc0->Daz3->Cvb7->Uxw7->Rtx1->Vdx1->Yvz9->Vzn5->Fby2->V_s8->Ecd6->Yrs0->Dvd7->Yfj8->Ufh0->Rbu8->Izs0->Mue1->Uqz0->Pea3->Okp6->Ciy4->Aca1->Znz7->Je_3->Cav9->Xna3->Kgd2->Pt_8length : 50ants : 33
+Wtt9->Ufn5->U_c7->Cms6->Kuj0->Ytr4->Ixd1->Hgm7->Fum7->Gek6->Hab1->Yet6->A_e2->Qop6->Qte0->Qmg0->Kop4->Rkr5->Meu0->Vhi8->Ajv8->Rpg1->D_g3->Wyd6->Rsw5->Kdh2->Uih4->O_c7->Jai6->Xhr7->Kqg8->Use3->Nfy9->Jvn5->R_k6->Ftw3->Dwk5->Kai4->Emh5->Gzj0->Gti5->Y_t2->Xef5->Ff_0->Z_m7->B_s7->Est5->Bch9->Qha9->Tmk9->Vht6->Imc7->Js_4->Urc7->Ttt5->Pt_8length : 56ants : 27
+Wtt9->Emg0->Ukt0->Syp6->An_7->Kn_6->Glx6->Qgr9->Utq0->Itt4->Tbo5->Bzg5->Ti_6->Quo3->Bio8->Yzx0->Wdb6->Mex9->Tlz1->Irm6->Uus8->Y_t8->Qhh9->U_a4->Jkm1->Ysz4->Srb3->Prd6->Yfo9->Bv_0->Fuj8->Hga0->Wlo4->C_n0->Svc7->Zvv8->Wuq3->Grr5->Viv0->Iqo4->Pwr9->Peo7->Gz_3->Tgs8->Fdh3->Jdn9->Crq7->Uat9->Bil6->Fnv5->Iex2->Boz8->J_t6->Xph2->Xsn0->Dwo4->Xiw9->Pt_8length : 58ants : 25
+Wtt9->Pkk0->Sbe1->Xxi5->Cke6->Uzw1->Pqg1->Trz1->Xjn1->Syt6->Bop9->Dgz1->Hmv2->Q_e9->Glz7->Rjp6->Hcj2->Ehx1->Vip4->Som6->Wap7->Mnu7->Jbp4->Hyi0->Qwg4->Xxr7->Cg_5->Vqe9->Fui2->Sid1->Tho4->Uuc9->Bwt5->Ykb2->Aos0->Jup3->J_n5->Re_3->Mbb5->Nqo6->Jjp8->Zyh6->F_t3->Mji8->Jiu5->Rbf7->Mte8->Rfb6->Pck7->Mck0->Jbf3->X_d0->Pfb4->Tt_8->Fdn9->Una8->Xna3->Cav9->Je_3->Znz7->Aca1->Ciy4->Okp6->Pea3->Uqz0->Mue1->Izs0->Rbu8->Ufh0->Yfj8->Dvd7->Yrs0->Wiv8->Pph9->Trf0->Wle9->She0->Mss5->Aoc1->Wem8->Jfy1->Fiw6->Tl_7->Bpt2->T_w0->Tyn5->Cgt4->Gvt8->Uki2->Ekn2->Wbs3->Pi_8->Mik6->Asu6->Vqj7->Efh7->X_s7->Ahf2->Ttx4->Ftp6->Bhr9->Klt9->Uhr1->Rfv5->M_q1->Qls2->Jml5->P_l9->Ows6->Pt_8length : 110ants : 0
+i vaut : 4
+j vaut : 47
+Xna3
+route->height vaut : 7
+k vaut : 56
+Xna3
+Avant appel de 'li_melt_paths'
+Wtt9->Fca9->Byw8->Sej2->Bqu4->G__3->S_x1->Du_6->Wpn7->Akk2->Pt_8length : 11ants : 72
+Wtt9->Chb5->Wwt7->Wdl4->Smh8->Bzd2->Dvw7->Srz4->Qsc1->B_m7->T_y5->Pbx5->Cgb0->Zyi1->S_s6->Cvu2->Wmi0->Xrl8->Pt_8length : 19ants : 64
+Wtt9->Oec6->G_q7->Kj_1->Yti6->Vjt7->Dub0->Eej2->Pv_0->Uaj1->Quu7->Ohd1->Ohj3->Rfh6->O_w5->Jeu6->Zwc2->Eer9->Tgw7->Pem3->Mm_4->Efs9->Dxb3->Mv_7->Hsl9->Tlz2->Ml_6->Dkt3->Wob1->Jrn1->Rdv0->W_g9->Pfd8->F_u8->H_y0->Qyo0->M_w2->Yal6->Gxy2->Cbk6->Qq_2->Qvs3->Pt_8length : 43ants : 40
+Wtt9->Qws6->Qjn6->Vde9->Fjm9->Esr3->Gfl5->Qgd8->Zym8->Szu7->J_m9->Xbe3->Id_9->Uhj2->Fsy5->Dra0->Euz5->Tzi5->F_c3->Osq9->Kcb5->Ncb2->F_a2->Qcx2->Zde6->Fgk2->Jt_1->T_d7->Nme9->Ffq8->Vkb4->Pab5->Tli6->Fle0->Amo8->E_i7->Wjh1->W_g5->Vzr3->G_s4->Zde9->Oiv9->E_w7->Wub6->Vss5->Foa8->Qc_0->Pt_8length : 48ants : 35
+Wtt9->Ufn5->U_c7->Cms6->Kuj0->Ytr4->Ixd1->Hgm7->Fum7->Gek6->Hab1->Yet6->A_e2->Qop6->Qte0->Qmg0->Kop4->Rkr5->Meu0->Vhi8->Ajv8->Rpg1->D_g3->Wyd6->Rsw5->Kdh2->Uih4->O_c7->Jai6->Xhr7->Kqg8->Use3->Nfy9->Jvn5->R_k6->Ftw3->Dwk5->Kai4->Emh5->Gzj0->Gti5->Y_t2->Xef5->Ff_0->Z_m7->B_s7->Est5->Bch9->Qha9->Tmk9->Vht6->Imc7->Js_4->Urc7->Ttt5->Pt_8length : 56ants : 27
+Wtt9->Emg0->Ukt0->Syp6->An_7->Kn_6->Glx6->Qgr9->Utq0->Itt4->Tbo5->Bzg5->Ti_6->Quo3->Bio8->Yzx0->Wdb6->Mex9->Tlz1->Irm6->Uus8->Y_t8->Qhh9->U_a4->Jkm1->Ysz4->Srb3->Prd6->Yfo9->Bv_0->Fuj8->Hga0->Wlo4->C_n0->Svc7->Zvv8->Wuq3->Grr5->Viv0->Iqo4->Pwr9->Peo7->Gz_3->Tgs8->Fdh3->Jdn9->Crq7->Uat9->Bil6->Fnv5->Iex2->Boz8->J_t6->Xph2->Xsn0->Dwo4->Xiw9->Pt_8length : 58ants : 24
+Wtt9->Pkk0->Sbe1->Xxi5->Cke6->Uzw1->Pqg1->Trz1->Xjn1->Syt6->Bop9->Dgz1->Hmv2->Q_e9->Glz7->Rjp6->Hcj2->Ehx1->Vip4->Som6->Wap7->Mnu7->Jbp4->Hyi0->Qwg4->Xxr7->Cg_5->Vqe9->Fui2->Sid1->Tho4->Uuc9->Bwt5->Ykb2->Aos0->Jup3->J_n5->Re_3->Mbb5->Nqo6->Jjp8->Zyh6->F_t3->Mji8->Jiu5->Rbf7->Mte8->Rfb6->Pck7->Mck0->Jbf3->X_d0->Pfb4->Tt_8->Fdn9->Una8->Xna3->Kgd2->Pt_8length : 59ants : 23
+Wtt9->Uaw2->Zmx7->Ebp4->Tv_9->Ohr7->Vxd5->Yoy0->Dhy3->Kvu8->Qyt3->Pfh1->Fi_8->Zrf1->Tnz2->Wey7->Niw1->Tio0->Ata6->Ute1->Cvf6->Qwc0->Daz3->Cvb7->Uxw7->Rtx1->Vdx1->Yvz9->Vzn5->Fby2->V_s8->Ecd6->Yrs0->Wiv8->Pph9->Trf0->Wle9->She0->Mss5->Aoc1->Wem8->Jfy1->Fiw6->Tl_7->Bpt2->T_w0->Tyn5->Cgt4->Gvt8->Uki2->Ekn2->Wbs3->Pi_8->Mik6->Asu6->Vqj7->Efh7->X_s7->Ahf2->Ttx4->Ftp6->Bhr9->Klt9->Uhr1->Rfv5->M_q1->Qls2->Jml5->P_l9->Ows6->Pt_8length : 71ants : 11
+Wtt9->Vwc9->Gpk6->Xju4->Ckl6->Olx3->Ebv9->E_g8->Oos3->Vkz2->Yla7->Rng6->V_q6->Yfm4->Znf4->Xzc7->C_h5->Rzp4->Jxp4->Rsj8->Rhy9->Ury8->Div2->W_d9->Iem6->S_e7->Smp5->Utg1->Dbc6->Puk4->Vkb7->Ols4->Gwb3->Ugc4->Bzd2->O_z2->P_a5->Yfn9->Jrl3->Ctu3->Skh1->Zm_2->Obl3->Mgu6->Xew0->Bsk9->Qnf9->Qbu4->Cxk7->Gil5->Of_9->Kd_5->Tjk4->Err2->Itf7->Msb1->Kgc6->Qyb0->Bdy9->Nbe3->Wos0->Dwv7->Pdh9->Fya7->Foa1->Baq8->Tdp2->Qqf1->Zxd4->Jey0->Hdp9->Pt_8length : 72ants : 0
+i vaut : 1
+j vaut : 5
+Bzd2
+route->height vaut : 8
+k vaut : 34
+Bzd2
+Avant appel de 'li_melt_paths'
+Wtt9->Fca9->Byw8->Sej2->Bqu4->G__3->S_x1->Du_6->Wpn7->Akk2->Pt_8length : 11ants : 72
+Wtt9->Vwc9->Gpk6->Xju4->Ckl6->Olx3->Ebv9->E_g8->Oos3->Vkz2->Yla7->Rng6->V_q6->Yfm4->Znf4->Xzc7->C_h5->Rzp4->Jxp4->Rsj8->Rhy9->Ury8->Div2->W_d9->Iem6->S_e7->Smp5->Utg1->Dbc6->Puk4->Vkb7->Ols4->Gwb3->Ugc4->Bzd2->O_z2->P_a5->Yfn9->Jrl3->Ctu3->Skh1->Zm_2->Obl3->Mgu6->Xew0->Bsk9->Qnf9->Qbu4->Cxk7->Gil5->Of_9->Kd_5->Tjk4->Err2->Itf7->Msb1->Kgc6->Qyb0->Bdy9->Nbe3->Wos0->Dwv7->Pdh9->Fya7->Foa1->Baq8->Tdp2->Qqf1->Zxd4->Jey0->Hdp9->Pt_8length : 48ants : 0
+Wtt9->Oec6->G_q7->Kj_1->Yti6->Vjt7->Dub0->Eej2->Pv_0->Uaj1->Quu7->Ohd1->Ohj3->Rfh6->O_w5->Jeu6->Zwc2->Eer9->Tgw7->Pem3->Mm_4->Efs9->Dxb3->Mv_7->Hsl9->Tlz2->Ml_6->Dkt3->Wob1->Jrn1->Rdv0->W_g9->Pfd8->F_u8->H_y0->Qyo0->M_w2->Yal6->Gxy2->Cbk6->Qq_2->Qvs3->Pt_8length : 43ants : 40
+Wtt9->Qws6->Qjn6->Vde9->Fjm9->Esr3->Gfl5->Qgd8->Zym8->Szu7->J_m9->Xbe3->Id_9->Uhj2->Fsy5->Dra0->Euz5->Tzi5->F_c3->Osq9->Kcb5->Ncb2->F_a2->Qcx2->Zde6->Fgk2->Jt_1->T_d7->Nme9->Ffq8->Vkb4->Pab5->Tli6->Fle0->Amo8->E_i7->Wjh1->W_g5->Vzr3->G_s4->Zde9->Oiv9->E_w7->Wub6->Vss5->Foa8->Qc_0->Pt_8length : 48ants : 35
+Wtt9->Ufn5->U_c7->Cms6->Kuj0->Ytr4->Ixd1->Hgm7->Fum7->Gek6->Hab1->Yet6->A_e2->Qop6->Qte0->Qmg0->Kop4->Rkr5->Meu0->Vhi8->Ajv8->Rpg1->D_g3->Wyd6->Rsw5->Kdh2->Uih4->O_c7->Jai6->Xhr7->Kqg8->Use3->Nfy9->Jvn5->R_k6->Ftw3->Dwk5->Kai4->Emh5->Gzj0->Gti5->Y_t2->Xef5->Ff_0->Z_m7->B_s7->Est5->Bch9->Qha9->Tmk9->Vht6->Imc7->Js_4->Urc7->Ttt5->Pt_8length : 56ants : 27
+Wtt9->Emg0->Ukt0->Syp6->An_7->Kn_6->Glx6->Qgr9->Utq0->Itt4->Tbo5->Bzg5->Ti_6->Quo3->Bio8->Yzx0->Wdb6->Mex9->Tlz1->Irm6->Uus8->Y_t8->Qhh9->U_a4->Jkm1->Ysz4->Srb3->Prd6->Yfo9->Bv_0->Fuj8->Hga0->Wlo4->C_n0->Svc7->Zvv8->Wuq3->Grr5->Viv0->Iqo4->Pwr9->Peo7->Gz_3->Tgs8->Fdh3->Jdn9->Crq7->Uat9->Bil6->Fnv5->Iex2->Boz8->J_t6->Xph2->Xsn0->Dwo4->Xiw9->Pt_8length : 58ants : 24
+Wtt9->Pkk0->Sbe1->Xxi5->Cke6->Uzw1->Pqg1->Trz1->Xjn1->Syt6->Bop9->Dgz1->Hmv2->Q_e9->Glz7->Rjp6->Hcj2->Ehx1->Vip4->Som6->Wap7->Mnu7->Jbp4->Hyi0->Qwg4->Xxr7->Cg_5->Vqe9->Fui2->Sid1->Tho4->Uuc9->Bwt5->Ykb2->Aos0->Jup3->J_n5->Re_3->Mbb5->Nqo6->Jjp8->Zyh6->F_t3->Mji8->Jiu5->Rbf7->Mte8->Rfb6->Pck7->Mck0->Jbf3->X_d0->Pfb4->Tt_8->Fdn9->Una8->Xna3->Kgd2->Pt_8length : 59ants : 23
+Wtt9->Uaw2->Zmx7->Ebp4->Tv_9->Ohr7->Vxd5->Yoy0->Dhy3->Kvu8->Qyt3->Pfh1->Fi_8->Zrf1->Tnz2->Wey7->Niw1->Tio0->Ata6->Ute1->Cvf6->Qwc0->Daz3->Cvb7->Uxw7->Rtx1->Vdx1->Yvz9->Vzn5->Fby2->V_s8->Ecd6->Yrs0->Wiv8->Pph9->Trf0->Wle9->She0->Mss5->Aoc1->Wem8->Jfy1->Fiw6->Tl_7->Bpt2->T_w0->Tyn5->Cgt4->Gvt8->Uki2->Ekn2->Wbs3->Pi_8->Mik6->Asu6->Vqj7->Efh7->X_s7->Ahf2->Ttx4->Ftp6->Bhr9->Klt9->Uhr1->Rfv5->M_q1->Qls2->Jml5->P_l9->Ows6->Pt_8length : 71ants : 11
+Wtt9->Chb5->Wwt7->Wdl4->Smh8->Bzd2->O_z2->P_a5->Yfn9->Jrl3->Ctu3->Skh1->Zm_2->Obl3->Mgu6->Xew0->Bsk9->Qnf9->Qbu4->Cxk7->Gil5->Of_9->Kd_5->Tjk4->Err2->Itf7->Msb1->Kgc6->Qyb0->Bdy9->Nbe3->Wos0->Dwv7->Pdh9->Fya7->Foa1->Baq8->Tdp2->Qqf1->Zxd4->Jey0->Hdp9->Pt_8length : 43ants : 64
+i vaut : 1
+j vaut : 34
+Bzd2
+route->height vaut : 8
+k vaut : 5
+Bzd2
