@@ -42,7 +42,9 @@ SRCS = ./srcs_lem_in/main_lem_in.c\
 				./srcs_lem_in/li_size_ttoa.c\
 				./srcs_lem_in/li_move_ants.c\
 				./srcs_lem_in/li_display_steps.c\
-				./srcs_lem_in/li_memory_liberator.c
+				./srcs_lem_in/li_memory_liberator.c\
+				./srcs_lem_in/li_swap_rooms.c\
+				./srcs_lem_in/li_epur.c
 
 OBJS = ./main_lem_in.o\
 				./li_options.o\
@@ -66,7 +68,9 @@ OBJS = ./main_lem_in.o\
 				./li_size_ttoa.o\
 				./li_move_ants.o\
 				./li_display_steps.o\
-				./li_memory_liberator.o
+				./li_memory_liberator.o\
+				./li_swap_rooms.o\
+				./li_epur.o
 
 all: $(NAME)
 

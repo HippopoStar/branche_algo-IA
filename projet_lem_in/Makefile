@@ -49,7 +49,9 @@ SRC_NAME = main_lem_in.c\
 			li_size_ttoa.c\
 			li_move_ants.c\
 			li_display_steps.c\
-			li_memory_liberator.c
+			li_memory_liberator.c\
+			li_swap_rooms.c\
+			li_epur.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
