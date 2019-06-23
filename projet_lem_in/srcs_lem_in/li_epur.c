@@ -43,6 +43,13 @@
 ** Repeter les etapes 2 et 3 autant de fois que necessaire
 */
 
+/*
+** Dans la fonction 'li_erase_alone', si une suite de liaisons
+** n'est pas reliee au reste de la fourmiliere,
+** la derniere salle se verra isolee mais non effacee
+** lors de cet appel
+*/
+
 void	li_erase_alone(t_data *data, size_t i, int *wit)
 {
 	size_t	tmp;
@@ -55,12 +62,44 @@ void	li_erase_alone(t_data *data, size_t i, int *wit)
 	{
 		while (!(i == 0 || i == data->size - 1) && (*(data->map + i))->nb_of_bonds == 1)
 		{
-			tmp = *((*(data->map + i))->bond_sum + 0) == i ? *((*(data->map + i))->bond_sum + 1) : *((*(data->map + i))->bond_sum + 0);
+			tmp = *((*(data->map + i))->bond_sum + 0);
 			li_erase_room(data, i);
 			i = tmp;
 		}
+		if ((*(data->map + i))->nb_of_bonds == 0 && !(i == 0 || i == data->size - 1))
+		{
+			li_erase_room(data, i);
+		}
 	}
 	*wit = 1;
+}
+
+size_t	li_forward(t_data *data, size_t i, size_t j)
+{
+	if ((*(data->map + j))->nb_of_bonds == 2)
+	{
+		if (*((*(data->map + j))->bond_sum + 0) == i)
+		{
+			return (*((*(data->map + j))->bond_sum + 1));
+		}
+		else
+		{
+			return (*((*(data->map + j))->bond_sum + 0));
+		}
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+int		aux_li_erase_more(t_data *data, size_t i, size_t tar_a, size_t tar_b)
+{
+	size_t	a;
+	size_t	b;
+
+	a = i;
+	b = i;
 }
 
 void	li_erase_more(t_data *data, size_t i, int *wit)
@@ -79,6 +118,10 @@ void	li_erase_more(t_data *data, size_t i, int *wit)
 			b = a + 1;
 			while (b < (*(data->map + i))->nb_of_bonds)
 			{
+				if ((*(data->map + tar_b))->nb_of_bonds == 2)
+				{
+					*wit = (*wit) + aux_li_erase_more(data, i, tar_a, tar_b);
+				}
 				b++;
 			}
 		}
@@ -93,7 +136,7 @@ void	li_epur(t_data *data)
 
 	data->eff = data->size - 1;
 	wit = 1;
-	while (wit == 1)
+	while (wit > 0)
 	{
 		wit = 0;
 		i = 1;
