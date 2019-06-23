@@ -43,17 +43,71 @@
 ** Repeter les etapes 2 et 3 autant de fois que necessaire
 */
 
+void	li_erase_alone(t_data *data, size_t i, int *wit)
+{
+	size_t	tmp;
+
+	if ((*(data->map + i))->nb_of_bonds == 0)
+	{
+		li_erase_room(data, i);
+	}
+	else
+	{
+		while (!(i == 0 || i == data->size - 1) && (*(data->map + i))->nb_of_bonds == 1)
+		{
+			tmp = *((*(data->map + i))->bond_sum + 0) == i ? *((*(data->map + i))->bond_sum + 1) : *((*(data->map + i))->bond_sum + 0);
+			li_erase_room(data, i);
+			i = tmp;
+		}
+	}
+	*wit = 1;
+}
+
+void	li_erase_more(t_data *data, size_t i, int *wit)
+{
+	size_t	a;
+	size_t	b;
+	size_t	tar_a;
+	size_t	tar_b;
+
+	a = 0;
+	while (a < (*(data->map + i))->nb_of_bonds - 1)
+	{
+		tar_a = *((*(data->map + i))->bond_sum + a);
+		if ((*(data->map + tar_a))->nb_of_bonds == 2)
+		{
+			b = a + 1;
+			while (b < (*(data->map + i))->nb_of_bonds)
+			{
+				b++;
+			}
+		}
+		a++;
+	}
+}
+
 void	li_epur(t_data *data)
 {
 	size_t	i;
 	int		wit;
 
-	i = 1;
 	data->eff = data->size - 1;
-	while (i < data->eff)
+	wit = 1;
+	while (wit == 1)
 	{
 		wit = 0;
-		if (li_erase_alone(
-		i++;
+		i = 1;
+		while (i < data->eff)
+		{
+			if ((*(data->map + i))->nb_of_bonds < 2)
+			{
+				li_erase_alone(data, i, &wit);
+			}
+			else
+			{
+				li_erase_more(data, i, &wit);
+			}
+			i++;
+		}
 	}
 }
