@@ -119,7 +119,7 @@ void	li_bellman_ford(t_data *data)
 	{
 		aux_li_bellman_ford(data, 0);
 		i = 1;
-		while (i < data->size)
+		while (i < data->size - 1)
 		{
 			if (!((*(data->map + i))->weight == (int)data->size))
 			{

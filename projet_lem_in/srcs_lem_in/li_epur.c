@@ -42,3 +42,18 @@
 **
 ** Repeter les etapes 2 et 3 autant de fois que necessaire
 */
+
+void	li_epur(t_data *data)
+{
+	size_t	i;
+	int		wit;
+
+	i = 1;
+	data->eff = data->size - 1;
+	while (i < data->eff)
+	{
+		wit = 0;
+		if (li_erase_alone(
+		i++;
+	}
+}
