@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/19 18:09:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:56:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 		(*(data->map + target))->weight = wei;
 		(*(data->map + target))->except = *((*(data->map + i))->pipes + target)
 			== (signed char)1 ? 0 : 1;
+		data->wit = 1;
 	}
 }
 
@@ -115,8 +116,10 @@ void	li_bellman_ford(t_data *data)
 	size_t	i;
 
 	iteration = 0;
-	while (iteration < data->size)
+	data->wit = 1;
+	while (iteration < data->size && data->wit == 1)
 	{
+		data->wit = 0;
 		aux_li_bellman_ford(data, 0);
 		i = 1;
 		while (i < data->size - 1)

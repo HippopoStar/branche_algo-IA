@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:02:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/19 18:36:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:58:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@
 
 int		lem_in(t_data *data)
 {
+	li_epur(data);
 	if (!li_bhandari(data))
 	{
 		return (0);

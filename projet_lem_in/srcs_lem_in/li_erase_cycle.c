@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:35:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 16:48:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:57:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	{
 		return (aux_li_determine_cycle(data, ref_a, ref_b));
 	}
-	else if ((*(data->map + ref_a[1]))->nb_of_pipes == 2)
+	else if ((*(data->map + ref_a[1]))->nb_of_bonds == 2)
 	{
 		li_erase_room(data, ref_a[1]);
 		return (6);
@@ -144,7 +144,7 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 	ref_b[1] = tar_b;
 	ref_a[2] = 0;
 	ref_b[2] = 0;
-	return (rec_li_erase_cycle(data, ref_a, ref_b));
+	rec_li_erase_cycle(data, ref_a, ref_b);
 }
 
 void	li_erase_cycle(t_data *data, size_t i)
@@ -163,6 +163,7 @@ void	li_erase_cycle(t_data *data, size_t i)
 			b = a + 1;
 			while (b < (*(data->map + i))->nb_of_bonds)
 			{
+				tar_b = *((*(data->map + i))->bond_sum + b);
 				if ((*(data->map + tar_b))->nb_of_bonds == 2)
 				{
 					aux_li_erase_cycle(data, i, tar_a, tar_b);

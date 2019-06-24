@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/21 16:53:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:54:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 void	li_swap_bonds(t_data *data, size_t i, size_t pos_a, size_t pos_b)
 {
 	size_t	j;
-	size_t	tmp;
 
 	j = 0;
 	while (j < (*(data->map + i))->nb_of_bonds)
 	{
 		if (*((*(data->map + i))->bond_sum + j) == pos_a)
 		{
-			*((*(data->map + i))->bond_sum + j) == pos_b;
+			*((*(data->map + i))->bond_sum + j) = pos_b;
 		}
 		else if (*((*(data->map + i))->bond_sum + j) == pos_b)
 		{
-			*((*(data->map + i))->bond_sum + j) == pos_a;
+			*((*(data->map + i))->bond_sum + j) = pos_a;
 		}
 		j++;
 	}
@@ -36,6 +35,7 @@ void	li_erase_room(t_data *data, size_t pos)
 {
 	size_t	i;
 	size_t	last_bond;
+	size_t	tmp;
 
 	if (!(pos == 0 || pos == data->size - 1))
 	{
@@ -52,9 +52,9 @@ void	li_erase_room(t_data *data, size_t pos)
 				*((*(data->map + i))->pipes + data->eff) = tmp;
 				if (*((*(data->map + i))->pipes + pos) == 1)
 				{
-					last_bond = *((*(data->map + i))->bond_sum + *((data->map + i))->nb_of_bonds - 1);
-					li_swap_bonds(data, pos, last_bond);
-					((*(data->map + i))->nb_bonds)--;
+					last_bond = *((*(data->map + i))->bond_sum + (*(data->map + i))->nb_of_bonds - 1);
+					li_swap_bonds(data, i, pos, last_bond);
+					((*(data->map + i))->nb_of_bonds)--;
 				}
 			}
 			i++;
