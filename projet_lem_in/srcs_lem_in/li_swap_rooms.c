@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 17:44:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 19:17:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ void	li_swap_bonds(t_data *data, size_t i, size_t pos_a, size_t pos_b)
 }
 
 /*
+** La fonction 'li_erase_room', appelee avec la salle 'S' :
+** - Pour chaque salle I, si la salle 'I' est reliee a la salle 'S' ou
+**   a l'avant-derniere salle 'Y' du tableau :
+**     - interverti dans le tableau des liaisons de 'I' les positions
+**       des salles 'S' et 'Y'
+**     - interverti dans le sommaire des liaisons de 'I' les positions
+**       des salles 'S' et 'Y'
+**     - si 'I' est liee a 'Y' (anciennement 'S') :
+**         - interverti dans le sommaire des liaisons de 'I' les positions
+**           de 'Y' et de la derniere liaison de ce sommaire
+**         - diminue la taille de ce sommaire de '1'
 **	ft_putstr("Appel de \"li_erase_room\"\n");
 **	li_display_room_info(data, pos);
 */
@@ -54,7 +65,7 @@ void	li_swap_bonds(t_data *data, size_t i, size_t pos_a, size_t pos_b)
 void	li_erase_room(t_data *data, size_t pos)
 {
 	size_t	i;
-	size_t	last_bond;
+	size_t	last_neighbour;
 	size_t	tmp;
 
 	ft_putstr("Appel de \"li_erase_room\"\n");
@@ -72,11 +83,12 @@ void	li_erase_room(t_data *data, size_t pos)
 				tmp = *((*(data->map + i))->pipes + pos);
 				*((*(data->map + i))->pipes + pos) = *((*(data->map + i))->pipes + data->eff);
 				*((*(data->map + i))->pipes + data->eff) = tmp;
-				if (*((*(data->map + i))->pipes + pos) == 1)
+				li_swap_bonds(data, i, pos, data->eff);
+				if (*((*(data->map + i))->pipes + data->eff) == 1)
 				{
-					last_bond = *((*(data->map + i))->bond_sum + (*(data->map + i))->nb_of_bonds - 1);
-					li_swap_bonds(data, i, pos, last_bond);
 					((*(data->map + i))->nb_of_bonds)--;
+					last_neighbour = *((*(data->map + i))->bond_sum + (*(data->map + i))->nb_of_bonds);
+					li_swap_bonds(data, i, data->eff, last_neighbour);
 				}
 			}
 			i++;
