@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/16 16:31:17 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/24 16:49:02 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,10 @@ SRC_NAME = main_lem_in.c\
 			li_size_ttoa.c\
 			li_move_ants.c\
 			li_display_steps.c\
-			li_memory_liberator.c\
 			li_swap_rooms.c\
-			li_epur.c
+			li_epur.c\
+			li_erase_cycle.c\
+			li_memory_liberator.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

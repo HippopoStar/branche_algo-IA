@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   li_epur.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/24 16:20:44 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/06/24 16:41:00 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 /*
@@ -92,111 +104,6 @@ size_t	li_forward(t_data *data, size_t i, size_t j)
 	}
 }
 
-/*
-** ref_a[0] = previous 'a'
-** ref_a[1] = 'a'
-** ref_a[2] = lenght to 'a'
-*/
-
-int		li_determine(t_data *data, size_t ref_a[3], size_t ref_b[3])
-{
-	if (!(ref_a[1] == ref_b[1]))
-	{
-		if ((*(data->map + ref_a[1]))->nb_of_bonds == 1)
-		{
-			li_erase_room(data, ref_a[1]);
-			return (2);
-		}
-		if ((*(data->map + ref_b[1]))->nb_of_bonds == 1)
-			return (3);
-		return (1);
-	}
-	else if ((*(data->map + ref_a[1]))->nb_of_pipes == 2)
-	{
-		li_erase_room(data, ref_a[1]);
-		return (6);
-	}
-	else if ((*(data->map + ref_a[1]))->nb_
-}
-
-int		rec_li_erase_more(t_data *data, size_t ref_a[3], size_t ref_b[3])
-{
-	size_t	a;
-	size_t	b;
-	int		ret_val;
-
-	a = ref_a[1];
-	b = ref_b[1];
-	if (a == (ref_a[1] = li_forward(data, ref_a[0], a)) && b == (ref_b[1] = li_forward(data, ref_b[0], b)))
-	{
-		return (li_determine(data, ref_a, ref_b));
-	}
-	else
-	{
-		if (!(a == ref_a[1]))
-		{
-			ref_a[0] = a;
-			(ref_a[2])++;
-		}
-		if (!(b == ref_b[1]))
-		{
-			ref_b[0] = b;
-			(ref_b[2])++;
-		}
-		ret_val = rec_li_erase_more(data, ref_a, ref_b);
-		if (ret_val % 2 == 0 && !(a == ref_a[1]))
-		{
-			li_erase_room(data, a);
-		}
-		if (ret_val % 3 == 0 && !(b == ref_b[1]))
-		{
-			li_erase_room(data, b);
-		}
-		return (ret_val);
-	}
-}
-
-int		aux_li_erase_more(t_data *data, size_t i, size_t tar_a, size_t tar_b)
-{
-	size_t	ref_a[3];
-	size_t	ref_b[3];
-
-	ref_a[0] = i;
-	ref_b[0] = i;
-	ref_a[1] = tar_a;
-	ref_b[1] = tar_b;
-	ref_a[2] = 0;
-	ref_b[2] = 0;
-	return (rec_li_erase_more(data, ref_a, ref_b));
-}
-
-void	li_erase_more(t_data *data, size_t i)
-{
-	size_t	a;
-	size_t	b;
-	size_t	tar_a;
-	size_t	tar_b;
-
-	a = 0;
-	while (a < (*(data->map + i))->nb_of_bonds - 1)
-	{
-		tar_a = *((*(data->map + i))->bond_sum + a);
-		if ((*(data->map + tar_a))->nb_of_bonds == 2)
-		{
-			b = a + 1;
-			while (b < (*(data->map + i))->nb_of_bonds)
-			{
-				if ((*(data->map + tar_b))->nb_of_bonds == 2)
-				{
-					aux_li_erase_more(data, i, tar_a, tar_b);
-				}
-				b++;
-			}
-		}
-		a++;
-	}
-}
-
 void	li_epur(t_data *data)
 {
 	size_t	i;
@@ -215,9 +122,11 @@ void	li_epur(t_data *data)
 			}
 			else
 			{
-				li_erase_more(data, i);
+				li_erase_cycle(data, i);
 			}
 			i++;
 		}
 	}
+	li_swap_rooms(data, data->size - 1, data->eff);
+	data->size = data->eff + 1;
 }

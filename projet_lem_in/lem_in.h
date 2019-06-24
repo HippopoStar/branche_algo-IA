@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/19 18:36:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 16:42:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct		s_data
 {
 	int				ants;
 	size_t			size;
+	size_t			eff;
+	int				wit;
 	size_t			bonds;
 	size_t			max_paths;
 	size_t			**paths;
@@ -218,6 +220,31 @@ size_t				li_steps_length(t_data *data);
 void				li_prepare_steps_str(t_data *data, char to_display[27]);
 void				li_display_steps(t_data *data, size_t step,\
 														char to_display[27]);
+/*
+** Dans le fichier 'li_swap_rooms.c'
+*/
+void				li_swap_bonds(t_data *data, size_t i,\
+													size_t pos_a, size_t pos_b);
+void				li_erase_room(t_data *data, size_t pos);
+void				li_swap_rooms(t_data *data, size_t pos_a, size_t pos_b);
+/*
+** Dans le fichier 'li_epur.c'
+*/
+void				li_erase_alone(t_data *data, size_t i);
+size_t				li_forward(t_data *data, size_t i, size_t j);
+void				li_epur(t_data *data);
+/*
+** Dans le fichier 'li_erase_cycle.c'
+*/
+int					aux_li_determine_cycle(t_data *data,\
+											size_t ref_a[3], size_t ref_b[3]);
+int					li_determine_cycle(t_data *data,\
+											size_t ref_a[3], size_t ref_b[3]);
+int					rec_li_erase_cycle(t_data *data,\
+											size_t ref_a[3], size_t ref_b[3]);
+void				aux_li_erase_cycle(t_data *data, size_t i,\
+													size_t tar_a, size_t tar_b);
+void				li_erase_cycle(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_memory_liberator.c'
 */
