@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 16:42:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 17:18:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,11 @@ void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
 void				li_print_route(t_route *current, size_t i);
 void				li_print_routes(t_data *data);
+/*
+** Dans le fichier 'li_display_room_info.c'
+*/
+void				li_display_room_bonds(t_data *data, size_t i);
+void				li_display_room_info(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_bellman_ford.c'
 */

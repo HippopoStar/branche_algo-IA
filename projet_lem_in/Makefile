@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/06/24 16:49:02 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/06/24 17:20:27 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_NAME = main_lem_in.c\
 			li_allocate_map.c\
 			li_match_pipe.c\
 			li_shorten_map_pipes.c\
+			li_display_room_info.c\
 			li_print_map.c\
 			li_bellman_ford.c\
 			li_bhandari.c\
