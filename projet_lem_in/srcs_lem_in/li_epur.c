@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:20:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 16:41:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 22:48:57 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@
 ** n'est pas reliee au reste de la fourmiliere,
 ** la derniere salle se verra isolee mais non effacee
 ** lors de cet appel
+**
+**			ft_putstr("li_erase_alone\n");
 */
 
 void	li_erase_alone(t_data *data, size_t i)
@@ -68,6 +70,7 @@ void	li_erase_alone(t_data *data, size_t i)
 
 	if ((*(data->map + i))->nb_of_bonds == 0)
 	{
+		ft_putstr("li_erase_alone\n");
 		li_erase_room(data, i);
 	}
 	else
@@ -75,11 +78,13 @@ void	li_erase_alone(t_data *data, size_t i)
 		while ((*(data->map + i))->nb_of_bonds == 1 && !(i == 0 || i == data->size - 1))
 		{
 			tmp = *((*(data->map + i))->bond_sum + 0);
+			ft_putstr("li_erase_alone\n");
 			li_erase_room(data, i);
 			i = tmp;
 		}
 		if ((*(data->map + i))->nb_of_bonds == 0)
 		{
+			ft_putstr("li_erase_alone\n");
 			li_erase_room(data, i);
 		}
 	}
@@ -127,6 +132,24 @@ void	li_epur(t_data *data)
 			i++;
 		}
 	}
+/*
+	ft_putstr("Dans 'li_epur' :\n");
+	li_print_map(data);
+	i = 0;
+	while (i <= data->eff)
+	{
+		li_display_room_info(data, i);
+		i++;
+	}
+*/
 	li_swap_rooms(data, data->size - 1, data->eff);
 	data->size = data->eff + 1;
+/*
+	i = 0;
+	while (i < data->size)
+	{
+		li_display_room_info(data, i);
+		i++;
+	}
+*/
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/13 18:32:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 21:12:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,20 @@ void	li_print_map(t_data *data)
 	size_t	j;
 
 	i = 0;
+	ft_putstr("    ");
+	while (i < data->size)
+	{
+		ft_putchar(*((*(data->map + i))->name + 0));
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putchar('\n');
+	i = 0;
 	while (i < data->size)
 	{
 		ft_putchar('(');
-		ft_putstr((*(data->map + i))->name);
-		ft_putchar(')');
+		ft_putchar(*((*(data->map + i))->name + 0));
+		ft_putstr(") ");
 		j = 0;
 		while (j < data->size)
 		{

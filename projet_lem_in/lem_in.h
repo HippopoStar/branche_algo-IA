@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 17:18:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 22:26:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,7 @@ void				li_display_steps(t_data *data, size_t step,\
 /*
 ** Dans le fichier 'li_swap_rooms.c'
 */
+void				li_swap_map(t_data *data, size_t pos_a, size_t pos_b);
 void				li_swap_bonds(t_data *data, size_t i,\
 													size_t pos_a, size_t pos_b);
 void				li_erase_room(t_data *data, size_t pos);
@@ -246,7 +247,7 @@ int					aux_li_determine_cycle(t_data *data,\
 int					li_determine_cycle(t_data *data,\
 											size_t ref_a[3], size_t ref_b[3]);
 int					rec_li_erase_cycle(t_data *data,\
-											size_t ref_a[3], size_t ref_b[3]);
+								size_t ref_a[3], size_t ref_b[3], size_t iter);
 void				aux_li_erase_cycle(t_data *data, size_t i,\
 													size_t tar_a, size_t tar_b);
 void				li_erase_cycle(t_data *data, size_t i);

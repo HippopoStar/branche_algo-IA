@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:35:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 16:57:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 22:47:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@
 ** ref_a[0] = previous 'a'
 ** ref_a[1] = 'a'
 ** ref_a[2] = lenght to 'a'
+**
+**		ft_putstr("aux_li_determine_cycle\n");
 */
 
 int		aux_li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
@@ -66,18 +68,26 @@ int		aux_li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	int		ret_val;
 
 	ret_val = 1;
-	if ((*(data->map + ref_a[1]))->nb_of_bonds == 1)
+	if ((*(data->map + ref_a[1]))->nb_of_bonds == 1 && !(ref_a[1] == 0 || ref_a[1] == data->size - 1))
 	{
+		ft_putstr("aux_li_determine_cycle\n");
 		li_erase_room(data, ref_a[1]);
 		ret_val = 2 * ret_val;
 	}
-	if ((*(data->map + ref_b[1]))->nb_of_bonds == 1)
+	if ((*(data->map + ref_b[1]))->nb_of_bonds == 1 && !(ref_b[1] == 0 || ref_b[1] == data->size - 1))
 	{
+		ft_putstr("aux_li_determine_cycle\n");
 		li_erase_room(data, ref_b[1]);
 		ret_val = 3 * ret_val;
 	}
 	return (ret_val);
 }
+
+/*
+**>	else if ((*(data->map + ref_a[1]))->nb_of_bonds < 4)< ?
+**
+**		ft_putstr("li_determine_cycle\n");
+*/
 
 int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 {
@@ -87,6 +97,7 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	}
 	else if ((*(data->map + ref_a[1]))->nb_of_bonds == 2)
 	{
+		ft_putstr("li_determine_cycle\n");
 		li_erase_room(data, ref_a[1]);
 		return (6);
 	}
@@ -96,7 +107,13 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	}
 }
 
-int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
+/*
+** La condition sur 'a == ref_b[0] || a == ref_b[1]' est probablement ameliorable
+**
+**			ft_putstr("rec_li_erase_cycle\n");
+*/
+
+int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t iter)
 {
 	size_t	a;
 	size_t	b;
@@ -104,7 +121,7 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 
 	a = ref_a[1];
 	b = ref_b[1];
-	if (a == (ref_a[1] = li_forward(data, ref_a[0], a)) && b == (ref_b[1] = li_forward(data, ref_b[0], b)))
+	if (a == ref_b[0] || a == ref_b[1] || (a == (ref_a[1] = li_forward(data, ref_a[0], a)) && b == (ref_b[1] = li_forward(data, ref_b[0], b))))
 	{
 		return (li_determine_cycle(data, ref_a, ref_b));
 	}
@@ -120,18 +137,32 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 			ref_b[0] = b;
 			(ref_b[2])++;
 		}
-		ret_val = rec_li_erase_cycle(data, ref_a, ref_b);
-		if (ret_val % 2 == 0 && !(a == ref_a[1]))
+		ret_val = rec_li_erase_cycle(data, ref_a, ref_b, iter + 1);
+		if (ret_val % 2 == 0 && !(a == ref_a[1]) && iter > 0)
 		{
+			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, a);
 		}
-		if (ret_val % 3 == 0 && !(b == ref_b[1]))
+		if (ret_val % 3 == 0 && !(b == ref_b[1]) && iter > 0)
 		{
+			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, b);
 		}
 		return (ret_val);
 	}
 }
+
+/*
+** (8 lignes)
+**	ft_putstr("Initialisation de \"rec_li_erase_cycle\" :\n");
+**	ft_putstr("salle de depart : ");
+**	ft_putstr((*(data->map + i))->name);
+**	ft_putstr("itineraire 'a' : ");
+**	ft_putstr((*(data->map + tar_a))->name);
+**	ft_putstr("itineraire 'b' : ");
+**	ft_putstr((*(data->map + tar_b))->name);
+**	ft_putchar('\n');
+*/
 
 void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 {
@@ -144,7 +175,15 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 	ref_b[1] = tar_b;
 	ref_a[2] = 0;
 	ref_b[2] = 0;
-	rec_li_erase_cycle(data, ref_a, ref_b);
+	ft_putstr("\033[34mInitialisation de \"rec_li_erase_cycle\" :\n");
+	ft_putstr("salle de depart : ");
+	ft_putstr((*(data->map + i))->name);
+	ft_putstr("\nitineraire 'a' : ");
+	ft_putstr((*(data->map + tar_a))->name);
+	ft_putstr("\nitineraire 'b' : ");
+	ft_putstr((*(data->map + tar_b))->name);
+	ft_putstr("\033[00m\n");
+	rec_li_erase_cycle(data, ref_a, ref_b, 0);
 }
 
 void	li_erase_cycle(t_data *data, size_t i)
