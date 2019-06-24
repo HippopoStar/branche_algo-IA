@@ -1,0 +1,291 @@
+li_erase_alone
+Appel de "li_erase_room"
+____________________________
+Index : 834
+Identifiant : Zvs3
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 2506
+Ordonnee : 2506
+Nombre de liaisons : 1
+liaisons :
+0. Iiu3 valeur : 1
+____________________________
+Initialisation de "rec_li_erase_cycle" :
+salle de depart : Bkz3
+itineraire 'a' : Zko1
+itineraire 'b' : Vhk7
+aux_li_determine_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 36
+Identifiant : Vcr5
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 118
+Ordonnee : 118
+Nombre de liaisons : 1
+liaisons :
+0. Zio7 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 16
+Identifiant : Zio7
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 5189
+Ordonnee : 5189
+Nombre de liaisons : 1
+liaisons :
+0. Hg_4 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 37
+Identifiant : Hg_4
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 123
+Ordonnee : 123
+Nombre de liaisons : 1
+liaisons :
+0. Aj_9 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 38
+Identifiant : Aj_9
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 127
+Ordonnee : 127
+Nombre de liaisons : 1
+liaisons :
+0. Iuv7 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 834
+Identifiant : Iuv7
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 5187
+Ordonnee : 5187
+Nombre de liaisons : 1
+liaisons :
+0. S_o7 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 39
+Identifiant : S_o7
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 130
+Ordonnee : 130
+Nombre de liaisons : 1
+liaisons :
+0. Jdt0 valeur : 1
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 1724
+Identifiant : Vcr5
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 118
+Ordonnee : 118
+Nombre de liaisons : 0
+liaisons :
+____________________________
+rec_li_erase_cycle
+Appel de "li_erase_room"
+____________________________
+Index : 1723
+Identifiant : Zio7
+Poids : -1094795586
+Variable 'allowed' : 1
+Variable 'exept' : -1094795586
+Abscisse : 5189
+Ordonnee : 5189
+Nombre de liaisons : -1
+liaisons :
+0. Hg_4 valeur : 1
+1. Mio5 valeur : 0
+2. Mio5 valeur : 0
+3. Vwg8 valeur : 0
+4. Kvf7 valeur : 0
+5. Kuq6 valeur : 0
+6. Obx7 valeur : 0
+7. Vwg8 valeur : 0
+8. Obx7 valeur : 0
+9. Slj8 valeur : 0
+10. Xyz4 valeur : 0
+11. Nyr0 valeur : 0
+12. Slj8 valeur : 0
+13. Iql1 valeur : 0
+14. Tt_8 valeur : 0
+15. Nyr0 valeur : 0
+16. Xzf1 valeur : 0
+17. Tt_8 valeur : 0
+18. Xzf1 valeur : 0
+19. Fgx2 valeur : 0
+20. Pba4 valeur : 0
+21. Kzs7 valeur : 0
+22. Pba4 valeur : 0
+23. Xfh3 valeur : 0
+24. Fkj0 valeur : 0
+25. P_a6 valeur : 0
+26. Qbl7 valeur : 0
+27. Xfh3 valeur : 0
+28. Qbl7 valeur : 0
+29. Wux6 valeur : 0
+30. Gyw9 valeur : 0
+31. Tp_4 valeur : 0
+32. Ikg8 valeur : 0
+33. Wux6 valeur : 0
+34. Axl4 valeur : 0
+35. Nzw6 valeur : 0
+36. Vqx8 valeur : 0
+37. Myx5 valeur : 0
+38. Nzw6 valeur : 0
+39. Ipv8 valeur : 0
+40. Bmn4 valeur : 0
+41. Myx5 valeur : 0
+42. Bmn4 valeur : 0
+43. Siw9 valeur : 0
+44. Vhy7 valeur : 0
+45. Wmh4 valeur : 0
+46. Siw9 valeur : 0
+47. Ndd5 valeur : 0
+48. Wmh4 valeur : 0
+49. Juf1 valeur : 0
+50. Ciu5 valeur : 0
+51. Pvz0 valeur : 0
+52. Fmh9 valeur : 0
+53. Ciu5 valeur : 0
+54. Rip6 valeur : 0
+55. Zif4 valeur : 0
+56. Fmh9 valeur : 0
+57. Mge6 valeur : 0
+58. H__5 valeur : 0
+59. Slm4 valeur : 0
+60. Qej7 valeur : 0
+61. Zcd0 valeur : 0
+62. Znb2 valeur : 0
+63. Ruh0 valeur : 0
+64. Erx0 valeur : 0
+65. Kbq3 valeur : 0
+66. Qml6 valeur : 0
+67. Omw5 valeur : 0
+68. R_a5 valeur : 0
+69. Eot6 valeur : 0
+70. Uuj0 valeur : 0
+71. K_k2 valeur : 0
+72. Bfa6 valeur : 0
+73. Ews8 valeur : 0
+74. Eve8 valeur : 0
+75. Wbd1 valeur : 0
+76. Glf7 valeur : 0
+77. Gu_0 valeur : 0
+78. R_j9 valeur : 0
+79. Nzt0 valeur : 0
+80. Slm4 valeur : 0
+81. Arh2 valeur : 0
+82. Bjh7 valeur : 0
+83. S_x7 valeur : 0
+84. Ysq0 valeur : 0
+85. Rzo3 valeur : 0
+86. Fbi2 valeur : 0
+87. Tz_1 valeur : 0
+88. Awi6 valeur : 0
+89. Tv_2 valeur : 0
+90. Jre3 valeur : 0
+91. Hun7 valeur : 0
+92. Mkv1 valeur : 0
+93. Rqo5 valeur : 0
+94. Zpa0 valeur : 0
+95. Mge6 valeur : 0
+96. Kri3 valeur : 0
+97. Kbt2 valeur : 0
+98. Dta4 valeur : 0
+99. Rip6 valeur : 0
+100. =================================================================
+==30824==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x62c000007330 at pc 0x000105c91050 bp 0x7fff59f710b0 sp 0x7fff59f710a8
+READ of size 8 at 0x62c000007330 thread T0
+    #0 0x105c9104f in li_display_room_bonds li_display_room_info.c:25
+    #1 0x105c91343 in li_display_room_info li_display_room_info.c:54
+    #2 0x105c9720d in li_erase_room li_swap_rooms.c:85
+    #3 0x105c98766 in rec_li_erase_cycle li_erase_cycle.c:144
+    #4 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #5 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #6 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #7 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #8 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #9 0x105c9872e in rec_li_erase_cycle li_erase_cycle.c:140
+    #10 0x105c98b2a in aux_li_erase_cycle li_erase_cycle.c:186
+    #11 0x105c98df9 in li_erase_cycle li_erase_cycle.c:208
+    #12 0x105c9809a in li_epur li_epur.c:130
+    #13 0x105c8e2cd in lem_in main_lem_in.c:211
+212 void¤---¤---¤---¤---li_size_ttoa(size_t ant, char to_print[24], int color);
+    #14 0x105c8e518 in main main_lem_in.c:249
+    #15 0x7fffe843b234 in start (libdyld.dylib:x86_64+0x5234)
+
+0x62c000007330 is located 0 bytes to the right of 28976-byte region [0x62c000000200,0x62c000007330)
+allocated by thread T0 here:
+    #0 0x105cfdf5c in wrap_malloc (libclang_rt.asan_osx_dynamic.dylib:x86_64+0x55f5c)
+    #1 0x105c90bb1 in li_shorten_map_pipes li_shorten_map_pipes.c:68
+    #2 0x105c8f1de in li_parse_input li_parse_input.c:120
+    #3 0x105c8e4d7 in main main_lem_in.c:247
+    #4 0x7fffe843b234 in start (libdyld.dylib:x86_64+0x5234)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow li_display_room_info.c:25 in li_display_room_bonds
+Shadow bytes around the buggy address:
+  0x1c5800000e10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1c5800000e20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1c5800000e30: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1c5800000e40: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x1c5800000e50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x1c5800000e60: 00 00 00 00 00 00[fa]fa fa fa fa fa fa fa fa fa
+  0x1c5800000e70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1c5800000e80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1c5800000e90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1c5800000ea0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x1c5800000eb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==30824==ABORTING
+Command terminated abnormally.
+        0.38 real         0.05 user         0.07 sys
