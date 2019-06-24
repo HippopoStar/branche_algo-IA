@@ -37,24 +37,28 @@ void	li_erase_room(t_data *data, size_t pos)
 	size_t	i;
 	size_t	last_bond;
 
-	(data->eff)--;
-	i = 0;
-	while (i < data->size)
+	if (!(pos == 0 || pos == data->size - 1))
 	{
-		if (*((*(data->map + i))->pipes + pos) == 1
-				|| *((*(data->map + i))->pipes + data->eff) == 1)
+		(data->eff)--;
+		data->wit = 1;
+		i = 0;
+		while (i < data->size)
 		{
-			tmp = *((*(data->map + i))->pipes + pos);
-			*((*(data->map + i))->pipes + pos) = *((*(data->map + i))->pipes + data->eff);
-			*((*(data->map + i))->pipes + data->eff) = tmp;
-			if (*((*(data->map + i))->pipes + pos) == 1)
+			if (*((*(data->map + i))->pipes + pos) == 1
+					|| *((*(data->map + i))->pipes + data->eff) == 1)
 			{
-				last_bond = *((*(data->map + i))->bond_sum + *((data->map + i))->nb_of_bonds - 1);
-				li_swap_bonds(data, pos, last_bond);
-				((*(data->map + i))->nb_bonds)--;
+				tmp = *((*(data->map + i))->pipes + pos);
+				*((*(data->map + i))->pipes + pos) = *((*(data->map + i))->pipes + data->eff);
+				*((*(data->map + i))->pipes + data->eff) = tmp;
+				if (*((*(data->map + i))->pipes + pos) == 1)
+				{
+					last_bond = *((*(data->map + i))->bond_sum + *((data->map + i))->nb_of_bonds - 1);
+					li_swap_bonds(data, pos, last_bond);
+					((*(data->map + i))->nb_bonds)--;
+				}
 			}
+			i++;
 		}
-		i++;
 	}
 }
 

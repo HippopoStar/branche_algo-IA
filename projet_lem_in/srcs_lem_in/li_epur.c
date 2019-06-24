@@ -50,7 +50,7 @@
 ** lors de cet appel
 */
 
-void	li_erase_alone(t_data *data, size_t i, int *wit)
+void	li_erase_alone(t_data *data, size_t i)
 {
 	size_t	tmp;
 
@@ -60,23 +60,22 @@ void	li_erase_alone(t_data *data, size_t i, int *wit)
 	}
 	else
 	{
-		while (!(i == 0 || i == data->size - 1) && (*(data->map + i))->nb_of_bonds == 1)
+		while ((*(data->map + i))->nb_of_bonds == 1 && !(i == 0 || i == data->size - 1))
 		{
 			tmp = *((*(data->map + i))->bond_sum + 0);
 			li_erase_room(data, i);
 			i = tmp;
 		}
-		if ((*(data->map + i))->nb_of_bonds == 0 && !(i == 0 || i == data->size - 1))
+		if ((*(data->map + i))->nb_of_bonds == 0)
 		{
 			li_erase_room(data, i);
 		}
 	}
-	*wit = 1;
 }
 
 size_t	li_forward(t_data *data, size_t i, size_t j)
 {
-	if ((*(data->map + j))->nb_of_bonds == 2)
+	if ((*(data->map + j))->nb_of_bonds == 2 && !(j == 0 || j == data->size - 1))
 	{
 		if (*((*(data->map + j))->bond_sum + 0) == i)
 		{
@@ -89,20 +88,89 @@ size_t	li_forward(t_data *data, size_t i, size_t j)
 	}
 	else
 	{
-		return (0);
+		return (j);
+	}
+}
+
+/*
+** ref_a[0] = previous 'a'
+** ref_a[1] = 'a'
+** ref_a[2] = lenght to 'a'
+*/
+
+int		li_determine(t_data *data, size_t ref_a[3], size_t ref_b[3])
+{
+	if (!(ref_a[1] == ref_b[1]))
+	{
+		if ((*(data->map + ref_a[1]))->nb_of_bonds == 1)
+		{
+			li_erase_room(data, ref_a[1]);
+			return (2);
+		}
+		if ((*(data->map + ref_b[1]))->nb_of_bonds == 1)
+			return (3);
+		return (1);
+	}
+	else if ((*(data->map + ref_a[1]))->nb_of_pipes == 2)
+	{
+		li_erase_room(data, ref_a[1]);
+		return (6);
+	}
+	else if ((*(data->map + ref_a[1]))->nb_
+}
+
+int		rec_li_erase_more(t_data *data, size_t ref_a[3], size_t ref_b[3])
+{
+	size_t	a;
+	size_t	b;
+	int		ret_val;
+
+	a = ref_a[1];
+	b = ref_b[1];
+	if (a == (ref_a[1] = li_forward(data, ref_a[0], a)) && b == (ref_b[1] = li_forward(data, ref_b[0], b)))
+	{
+		return (li_determine(data, ref_a, ref_b));
+	}
+	else
+	{
+		if (!(a == ref_a[1]))
+		{
+			ref_a[0] = a;
+			(ref_a[2])++;
+		}
+		if (!(b == ref_b[1]))
+		{
+			ref_b[0] = b;
+			(ref_b[2])++;
+		}
+		ret_val = rec_li_erase_more(data, ref_a, ref_b);
+		if (ret_val % 2 == 0 && !(a == ref_a[1]))
+		{
+			li_erase_room(data, a);
+		}
+		if (ret_val % 3 == 0 && !(b == ref_b[1]))
+		{
+			li_erase_room(data, b);
+		}
+		return (ret_val);
 	}
 }
 
 int		aux_li_erase_more(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 {
-	size_t	a;
-	size_t	b;
+	size_t	ref_a[3];
+	size_t	ref_b[3];
 
-	a = i;
-	b = i;
+	ref_a[0] = i;
+	ref_b[0] = i;
+	ref_a[1] = tar_a;
+	ref_b[1] = tar_b;
+	ref_a[2] = 0;
+	ref_b[2] = 0;
+	return (rec_li_erase_more(data, ref_a, ref_b));
 }
 
-void	li_erase_more(t_data *data, size_t i, int *wit)
+void	li_erase_more(t_data *data, size_t i)
 {
 	size_t	a;
 	size_t	b;
@@ -120,7 +188,7 @@ void	li_erase_more(t_data *data, size_t i, int *wit)
 			{
 				if ((*(data->map + tar_b))->nb_of_bonds == 2)
 				{
-					*wit = (*wit) + aux_li_erase_more(data, i, tar_a, tar_b);
+					aux_li_erase_more(data, i, tar_a, tar_b);
 				}
 				b++;
 			}
@@ -132,23 +200,22 @@ void	li_erase_more(t_data *data, size_t i, int *wit)
 void	li_epur(t_data *data)
 {
 	size_t	i;
-	int		wit;
 
 	data->eff = data->size - 1;
-	wit = 1;
-	while (wit > 0)
+	data->wit = 1;
+	while (data->wit > 0)
 	{
-		wit = 0;
+		data->wit = 0;
 		i = 1;
 		while (i < data->eff)
 		{
 			if ((*(data->map + i))->nb_of_bonds < 2)
 			{
-				li_erase_alone(data, i, &wit);
+				li_erase_alone(data, i);
 			}
 			else
 			{
-				li_erase_more(data, i, &wit);
+				li_erase_more(data, i);
 			}
 			i++;
 		}
