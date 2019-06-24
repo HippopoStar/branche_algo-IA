@@ -1,0 +1,2317 @@
+Appel de "li_erase_room"
+____________________________
+Index : 1
+Identifiant : Osm9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 8
+Ordonnee : 8
+Nombre de liaisons : 1
+liaisons :
+0. Xsn1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Osm9 | Jk_8
+____________________________
+Index : 1296
+Identifiant : Xsn1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3866
+Ordonnee : 3866
+Nombre de liaisons : 3
+liaisons :
+0. Osm9 valeur : 0
+1. Vwu3 valeur : 1
+2. Ibc8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Jk_8 | Ibc8
+____________________________
+Index : 1296
+Identifiant : Xsn1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3866
+Ordonnee : 3866
+Nombre de liaisons : 3
+liaisons :
+0. Jk_8 valeur : 1
+1. Vwu3 valeur : 1
+2. Ibc8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Osm9 | Jk_8
+____________________________
+Index : 1617
+Identifiant : Bjh7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4855
+Ordonnee : 4855
+Nombre de liaisons : 3
+liaisons :
+0. Hpa5 valeur : 1
+1. Unk9 valeur : 1
+2. Jk_8 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 2
+Identifiant : Mor4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 12
+Ordonnee : 12
+Nombre de liaisons : 1
+liaisons :
+0. Cwu4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Mor4 | Gtw3
+____________________________
+Index : 659
+Identifiant : Arh2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1973
+Ordonnee : 1973
+Nombre de liaisons : 3
+liaisons :
+0. Aot3 valeur : 1
+1. H_b9 valeur : 1
+2. Gtw3 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Mor4 | Gtw3
+____________________________
+Index : 1201
+Identifiant : Cwu4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3592
+Ordonnee : 3592
+Nombre de liaisons : 3
+liaisons :
+0. Mor4 valeur : 0
+1. Kbr2 valeur : 1
+2. Pmz9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Gtw3 | Pmz9
+____________________________
+Index : 1201
+Identifiant : Cwu4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3592
+Ordonnee : 3592
+Nombre de liaisons : 3
+liaisons :
+0. Gtw3 valeur : 1
+1. Kbr2 valeur : 1
+2. Pmz9 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 3
+Identifiant : Jri6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 15
+Ordonnee : 15
+Nombre de liaisons : 1
+liaisons :
+0. Gih7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Jri6 | Zrp9
+____________________________
+Index : 1042
+Identifiant : Slm4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3120
+Ordonnee : 3120
+Nombre de liaisons : 4
+liaisons :
+0. Suu1 valeur : 1
+1. Fc_4 valeur : 1
+2. Dmb4 valeur : 1
+3. Zrp9 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Jri6 | Zrp9
+____________________________
+Index : 1443
+Identifiant : Gih7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4322
+Ordonnee : 4322
+Nombre de liaisons : 3
+liaisons :
+0. Jri6 valeur : 0
+1. O_d6 valeur : 1
+2. Oon5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zrp9 | Oon5
+____________________________
+Index : 1443
+Identifiant : Gih7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4322
+Ordonnee : 4322
+Nombre de liaisons : 3
+liaisons :
+0. Zrp9 valeur : 1
+1. O_d6 valeur : 1
+2. Oon5 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 4
+Identifiant : Zvq3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 20
+Ordonnee : 20
+Nombre de liaisons : 1
+liaisons :
+0. Jrr2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zvq3 | Qxt4
+____________________________
+Index : 208
+Identifiant : Jrr2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 645
+Ordonnee : 645
+Nombre de liaisons : 3
+liaisons :
+0. Zvq3 valeur : 0
+1. Eip0 valeur : 1
+2. Wcj0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Qxt4 | Wcj0
+____________________________
+Index : 208
+Identifiant : Jrr2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 645
+Ordonnee : 645
+Nombre de liaisons : 3
+liaisons :
+0. Qxt4 valeur : 1
+1. Eip0 valeur : 1
+2. Wcj0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zvq3 | Qxt4
+____________________________
+Index : 1146
+Identifiant : Nzt0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3419
+Ordonnee : 3419
+Nombre de liaisons : 3
+liaisons :
+0. Vul4 valeur : 1
+1. X_q3 valeur : 1
+2. Qxt4 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 5
+Identifiant : Ghq0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 21
+Ordonnee : 21
+Nombre de liaisons : 1
+liaisons :
+0. Kfy7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ghq0 | Ce_6
+____________________________
+Index : 95
+Identifiant : Kfy7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 314
+Ordonnee : 314
+Nombre de liaisons : 3
+liaisons :
+0. Ghq0 valeur : 0
+1. Snr2 valeur : 1
+2. Rin6 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ce_6 | Rin6
+____________________________
+Index : 95
+Identifiant : Kfy7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 314
+Ordonnee : 314
+Nombre de liaisons : 3
+liaisons :
+0. Ce_6 valeur : 1
+1. Snr2 valeur : 1
+2. Rin6 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ghq0 | Ce_6
+____________________________
+Index : 1657
+Identifiant : R_j9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4977
+Ordonnee : 4977
+Nombre de liaisons : 3
+liaisons :
+0. Bt_0 valeur : 1
+1. Awi6 valeur : 1
+2. Ce_6 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 6
+Identifiant : Cwz2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 26
+Ordonnee : 26
+Nombre de liaisons : 1
+liaisons :
+0. Hd_4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Cwz2 | Ufv0
+____________________________
+Index : 245
+Identifiant : Gu_0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 754
+Ordonnee : 754
+Nombre de liaisons : 3
+liaisons :
+0. Vsa5 valeur : 1
+1. Esn3 valeur : 1
+2. Ufv0 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Cwz2 | Ufv0
+____________________________
+Index : 1697
+Identifiant : Hd_4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5108
+Ordonnee : 5108
+Nombre de liaisons : 3
+liaisons :
+0. Cwz2 valeur : 0
+1. Ydh6 valeur : 1
+2. Chw8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ufv0 | Chw8
+____________________________
+Index : 1697
+Identifiant : Hd_4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5108
+Ordonnee : 5108
+Nombre de liaisons : 3
+liaisons :
+0. Ufv0 valeur : 1
+1. Ydh6 valeur : 1
+2. Chw8 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 7
+Identifiant : Nr_2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 29
+Ordonnee : 29
+Nombre de liaisons : 1
+liaisons :
+0. Usj9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Nr_2 | Ige3
+____________________________
+Index : 121
+Identifiant : Usj9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 394
+Ordonnee : 394
+Nombre de liaisons : 3
+liaisons :
+0. Nr_2 valeur : 0
+1. Scy7 valeur : 1
+2. Prp8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ige3 | Prp8
+____________________________
+Index : 121
+Identifiant : Usj9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 394
+Ordonnee : 394
+Nombre de liaisons : 3
+liaisons :
+0. Ige3 valeur : 1
+1. Scy7 valeur : 1
+2. Prp8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Nr_2 | Ige3
+____________________________
+Index : 550
+Identifiant : Glf7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1658
+Ordonnee : 1658
+Nombre de liaisons : 3
+liaisons :
+0. Xle4 valeur : 1
+1. Wuz3 valeur : 1
+2. Ige3 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 8
+Identifiant : K_r2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 31
+Ordonnee : 31
+Nombre de liaisons : 1
+liaisons :
+0. Jdk3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+K_r2 | Ncd5
+____________________________
+Index : 197
+Identifiant : Jdk3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 613
+Ordonnee : 613
+Nombre de liaisons : 3
+liaisons :
+0. K_r2 valeur : 0
+1. Jv_5 valeur : 1
+2. Ybx7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ncd5 | Ybx7
+____________________________
+Index : 197
+Identifiant : Jdk3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 613
+Ordonnee : 613
+Nombre de liaisons : 3
+liaisons :
+0. Ncd5 valeur : 1
+1. Jv_5 valeur : 1
+2. Ybx7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+K_r2 | Ncd5
+____________________________
+Index : 791
+Identifiant : Wbd1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2377
+Ordonnee : 2377
+Nombre de liaisons : 5
+liaisons :
+0. Upc4 valeur : 1
+1. San6 valeur : 1
+2. Ukj2 valeur : 1
+3. Qvk6 valeur : 1
+4. Ncd5 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 9
+Identifiant : Ux_0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 33
+Ordonnee : 33
+Nombre de liaisons : 1
+liaisons :
+0. Qxv2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ux_0 | Vfq0
+____________________________
+Index : 1120
+Identifiant : Eve8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3346
+Ordonnee : 3346
+Nombre de liaisons : 3
+liaisons :
+0. Djc7 valeur : 1
+1. Opq9 valeur : 1
+2. Vfq0 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Ux_0 | Vfq0
+____________________________
+Index : 1609
+Identifiant : Qxv2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4827
+Ordonnee : 4827
+Nombre de liaisons : 3
+liaisons :
+0. Ux_0 valeur : 0
+1. Rzp2 valeur : 1
+2. Ppx8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Vfq0 | Ppx8
+____________________________
+Index : 1609
+Identifiant : Qxv2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4827
+Ordonnee : 4827
+Nombre de liaisons : 3
+liaisons :
+0. Vfq0 valeur : 1
+1. Rzp2 valeur : 1
+2. Ppx8 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 10
+Identifiant : Fdi5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 38
+Ordonnee : 38
+Nombre de liaisons : 1
+liaisons :
+0. Pbv5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fdi5 | Hgh4
+____________________________
+Index : 261
+Identifiant : Pbv5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 800
+Ordonnee : 800
+Nombre de liaisons : 3
+liaisons :
+0. Fdi5 valeur : 0
+1. Vcc3 valeur : 1
+2. Ftl8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Hgh4 | Ftl8
+____________________________
+Index : 261
+Identifiant : Pbv5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 800
+Ordonnee : 800
+Nombre de liaisons : 3
+liaisons :
+0. Hgh4 valeur : 1
+1. Vcc3 valeur : 1
+2. Ftl8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fdi5 | Hgh4
+____________________________
+Index : 773
+Identifiant : Ews8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2325
+Ordonnee : 2325
+Nombre de liaisons : 3
+liaisons :
+0. Wwq4 valeur : 1
+1. Hnl3 valeur : 1
+2. Hgh4 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 11
+Identifiant : X_f5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 41
+Ordonnee : 41
+Nombre de liaisons : 1
+liaisons :
+0. Jyj2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+X_f5 | Szh3
+____________________________
+Index : 523
+Identifiant : Jyj2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1578
+Ordonnee : 1578
+Nombre de liaisons : 3
+liaisons :
+0. X_f5 valeur : 0
+1. Qbb0 valeur : 1
+2. Omi5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Szh3 | Omi5
+____________________________
+Index : 523
+Identifiant : Jyj2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1578
+Ordonnee : 1578
+Nombre de liaisons : 3
+liaisons :
+0. Szh3 valeur : 1
+1. Qbb0 valeur : 1
+2. Omi5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+X_f5 | Szh3
+____________________________
+Index : 1376
+Identifiant : Bfa6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4117
+Ordonnee : 4117
+Nombre de liaisons : 3
+liaisons :
+0. Amd4 valeur : 1
+1. Jdt7 valeur : 1
+2. Szh3 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 12
+Identifiant : Czg4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 45
+Ordonnee : 45
+Nombre de liaisons : 1
+liaisons :
+0. Egf7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Czg4 | Omw5
+____________________________
+Index : 1708
+Identifiant : Egf7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5139
+Ordonnee : 5139
+Nombre de liaisons : 3
+liaisons :
+0. Czg4 valeur : 0
+1. Y_n8 valeur : 1
+2. Uum3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Omw5 | Uum3
+____________________________
+Index : 1708
+Identifiant : Egf7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5139
+Ordonnee : 5139
+Nombre de liaisons : 3
+liaisons :
+0. Omw5 valeur : 1
+1. Y_n8 valeur : 1
+2. Uum3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Czg4 | Omw5
+____________________________
+Index : 1763
+Identifiant : K_k2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5298
+Ordonnee : 5298
+Nombre de liaisons : 2
+liaisons :
+0. Qml6 valeur : 1
+1. Omw5 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 13
+Identifiant : Dpt3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 46
+Ordonnee : 46
+Nombre de liaisons : 1
+liaisons :
+0. Zmq8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Dpt3 | Fvs8
+____________________________
+Index : 726
+Identifiant : Uuj0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2187
+Ordonnee : 2187
+Nombre de liaisons : 3
+liaisons :
+0. Soq8 valeur : 1
+1. Igq6 valeur : 1
+2. Fvs8 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Dpt3 | Fvs8
+____________________________
+Index : 1716
+Identifiant : Zmq8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5160
+Ordonnee : 5160
+Nombre de liaisons : 3
+liaisons :
+0. Dpt3 valeur : 0
+1. Nhp4 valeur : 1
+2. Thg2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fvs8 | Thg2
+____________________________
+Index : 1716
+Identifiant : Zmq8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5160
+Ordonnee : 5160
+Nombre de liaisons : 3
+liaisons :
+0. Fvs8 valeur : 1
+1. Nhp4 valeur : 1
+2. Thg2 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 14
+Identifiant : Bwf8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 51
+Ordonnee : 51
+Nombre de liaisons : 1
+liaisons :
+0. Aqs4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Bwf8 | Pgj1
+____________________________
+Index : 42
+Identifiant : Eot6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 142
+Ordonnee : 142
+Nombre de liaisons : 3
+liaisons :
+0. Vhk7 valeur : 1
+1. Vqq4 valeur : 1
+2. Pgj1 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Bwf8 | Pgj1
+____________________________
+Index : 1181
+Identifiant : Aqs4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3524
+Ordonnee : 3524
+Nombre de liaisons : 3
+liaisons :
+0. Bwf8 valeur : 0
+1. Om_0 valeur : 1
+2. Blo1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Pgj1 | Blo1
+____________________________
+Index : 1181
+Identifiant : Aqs4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3524
+Ordonnee : 3524
+Nombre de liaisons : 3
+liaisons :
+0. Pgj1 valeur : 1
+1. Om_0 valeur : 1
+2. Blo1 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 15
+Identifiant : Wmx2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 55
+Ordonnee : 55
+Nombre de liaisons : 1
+liaisons :
+0. Oiz4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Wmx2 | Faz6
+____________________________
+Index : 132
+Identifiant : R_a5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 425
+Ordonnee : 425
+Nombre de liaisons : 3
+liaisons :
+0. Cim6 valeur : 1
+1. Mnm9 valeur : 1
+2. Faz6 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Wmx2 | Faz6
+____________________________
+Index : 1390
+Identifiant : Oiz4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4155
+Ordonnee : 4155
+Nombre de liaisons : 3
+liaisons :
+0. Wmx2 valeur : 0
+1. Vei9 valeur : 1
+2. Hzz4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Faz6 | Hzz4
+____________________________
+Index : 1390
+Identifiant : Oiz4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4155
+Ordonnee : 4155
+Nombre de liaisons : 3
+liaisons :
+0. Faz6 valeur : 1
+1. Vei9 valeur : 1
+2. Hzz4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 16
+Identifiant : Hfb9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 57
+Ordonnee : 57
+Nombre de liaisons : 1
+liaisons :
+0. X__7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Hfb9 | K_k2
+____________________________
+Index : 344
+Identifiant : X__7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1056
+Ordonnee : 1056
+Nombre de liaisons : 3
+liaisons :
+0. Hfb9 valeur : 0
+1. Ezi6 valeur : 1
+2. Dd_7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+K_k2 | Dd_7
+____________________________
+Index : 344
+Identifiant : X__7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1056
+Ordonnee : 1056
+Nombre de liaisons : 3
+liaisons :
+0. K_k2 valeur : 1
+1. Ezi6 valeur : 1
+2. Dd_7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Hfb9 | K_k2
+____________________________
+Index : 735
+Identifiant : Qml6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2215
+Ordonnee : 2215
+Nombre de liaisons : 3
+liaisons :
+0. Bf_0 valeur : 1
+1. Fs_2 valeur : 1
+2. K_k2 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Hfb9 | K_k2
+____________________________
+Index : 1767
+Identifiant : Omw5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5309
+Ordonnee : 5309
+Nombre de liaisons : 1
+liaisons :
+0. K_k2 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 17
+Identifiant : Dqg4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 60
+Ordonnee : 60
+Nombre de liaisons : 1
+liaisons :
+0. Gyt1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Dqg4 | Cwv4
+____________________________
+Index : 53
+Identifiant : Kbq3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 178
+Ordonnee : 178
+Nombre de liaisons : 3
+liaisons :
+0. Go_3 valeur : 1
+1. Thg2 valeur : 1
+2. Cwv4 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Dqg4 | Cwv4
+____________________________
+Index : 395
+Identifiant : Gyt1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1210
+Ordonnee : 1210
+Nombre de liaisons : 3
+liaisons :
+0. Dqg4 valeur : 0
+1. Pho0 valeur : 1
+2. Uqe0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Cwv4 | Uqe0
+____________________________
+Index : 395
+Identifiant : Gyt1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1210
+Ordonnee : 1210
+Nombre de liaisons : 3
+liaisons :
+0. Cwv4 valeur : 1
+1. Pho0 valeur : 1
+2. Uqe0 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 18
+Identifiant : Mff9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 63
+Ordonnee : 63
+Nombre de liaisons : 1
+liaisons :
+0. Jmv3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Mff9 | Jgo1
+____________________________
+Index : 1207
+Identifiant : Erx0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3607
+Ordonnee : 3607
+Nombre de liaisons : 3
+liaisons :
+0. Akt4 valeur : 1
+1. Irh1 valeur : 1
+2. Jgo1 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Mff9 | Jgo1
+____________________________
+Index : 1487
+Identifiant : Jmv3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4459
+Ordonnee : 4459
+Nombre de liaisons : 3
+liaisons :
+0. Mff9 valeur : 0
+1. Iwx4 valeur : 1
+2. Xz_4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Jgo1 | Xz_4
+____________________________
+Index : 1487
+Identifiant : Jmv3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4459
+Ordonnee : 4459
+Nombre de liaisons : 3
+liaisons :
+0. Jgo1 valeur : 1
+1. Iwx4 valeur : 1
+2. Xz_4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 19
+Identifiant : Xtx1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 68
+Ordonnee : 68
+Nombre de liaisons : 1
+liaisons :
+0. Hgl2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Xtx1 | Obk6
+____________________________
+Index : 586
+Identifiant : Ruh0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1758
+Ordonnee : 1758
+Nombre de liaisons : 3
+liaisons :
+0. Oi_1 valeur : 1
+1. Qvz6 valeur : 1
+2. Obk6 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Xtx1 | Obk6
+____________________________
+Index : 1379
+Identifiant : Hgl2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4125
+Ordonnee : 4125
+Nombre de liaisons : 3
+liaisons :
+0. Xtx1 valeur : 0
+1. Pho0 valeur : 1
+2. Yyy7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Obk6 | Yyy7
+____________________________
+Index : 1379
+Identifiant : Hgl2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4125
+Ordonnee : 4125
+Nombre de liaisons : 3
+liaisons :
+0. Obk6 valeur : 1
+1. Pho0 valeur : 1
+2. Yyy7 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 20
+Identifiant : Vhy7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 73
+Ordonnee : 73
+Nombre de liaisons : 1
+liaisons :
+0. Ddo5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Vhy7 | Fri4
+____________________________
+Index : 754
+Identifiant : Znb2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2277
+Ordonnee : 2277
+Nombre de liaisons : 3
+liaisons :
+0. Goq2 valeur : 1
+1. T_l7 valeur : 1
+2. Fri4 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Vhy7 | Fri4
+____________________________
+Index : 1747
+Identifiant : Ddo5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5251
+Ordonnee : 5251
+Nombre de liaisons : 3
+liaisons :
+0. Vhy7 valeur : 0
+1. Siw9 valeur : 1
+2. Bmn4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fri4 | Bmn4
+____________________________
+Index : 1747
+Identifiant : Ddo5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5251
+Ordonnee : 5251
+Nombre de liaisons : 3
+liaisons :
+0. Fri4 valeur : 1
+1. Siw9 valeur : 1
+2. Bmn4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 21
+Identifiant : Yel6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 76
+Ordonnee : 76
+Nombre de liaisons : 1
+liaisons :
+0. Nry5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Yel6 | Krv9
+____________________________
+Index : 420
+Identifiant : Nry5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1289
+Ordonnee : 1289
+Nombre de liaisons : 3
+liaisons :
+0. Yel6 valeur : 0
+1. B__4 valeur : 1
+2. Y_z5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Krv9 | Y_z5
+____________________________
+Index : 420
+Identifiant : Nry5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1289
+Ordonnee : 1289
+Nombre de liaisons : 3
+liaisons :
+0. Krv9 valeur : 1
+1. B__4 valeur : 1
+2. Y_z5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Yel6 | Krv9
+____________________________
+Index : 1277
+Identifiant : Zcd0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3809
+Ordonnee : 3809
+Nombre de liaisons : 3
+liaisons :
+0. Agc0 valeur : 1
+1. Ipt7 valeur : 1
+2. Krv9 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 22
+Identifiant : Ssh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 78
+Ordonnee : 78
+Nombre de liaisons : 1
+liaisons :
+0. As_2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ssh9 | Del9
+____________________________
+Index : 255
+Identifiant : As_2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 781
+Ordonnee : 781
+Nombre de liaisons : 3
+liaisons :
+0. Ssh9 valeur : 0
+1. T_c3 valeur : 1
+2. Ea_9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Del9 | Ea_9
+____________________________
+Index : 255
+Identifiant : As_2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 781
+Ordonnee : 781
+Nombre de liaisons : 3
+liaisons :
+0. Del9 valeur : 1
+1. T_c3 valeur : 1
+2. Ea_9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ssh9 | Del9
+____________________________
+Index : 1506
+Identifiant : Qej7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4523
+Ordonnee : 4523
+Nombre de liaisons : 3
+liaisons :
+0. Jcu7 valeur : 1
+1. Uid1 valeur : 1
+2. Del9 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 23
+Identifiant : Wk_2
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 81
+Ordonnee : 81
+Nombre de liaisons : 1
+liaisons :
+0. Ykh5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Wk_2 | Dmb4
+____________________________
+Index : 1042
+Identifiant : Slm4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 3120
+Ordonnee : 3120
+Nombre de liaisons : 4
+liaisons :
+0. Suu1 valeur : 1
+1. Fc_4 valeur : 1
+2. Dmb4 valeur : 0
+3. Jri6 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Wk_2 | Dmb4
+____________________________
+Index : 1441
+Identifiant : Ykh5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4317
+Ordonnee : 4317
+Nombre de liaisons : 3
+liaisons :
+0. Wk_2 valeur : 0
+1. Qjp0 valeur : 1
+2. Fbn5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Dmb4 | Fbn5
+____________________________
+Index : 1441
+Identifiant : Ykh5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4317
+Ordonnee : 4317
+Nombre de liaisons : 3
+liaisons :
+0. Dmb4 valeur : 1
+1. Qjp0 valeur : 1
+2. Fbn5 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 834
+Identifiant : Zvs3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2506
+Ordonnee : 2506
+Nombre de liaisons : 1
+liaisons :
+0. Iiu3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zvs3 | Yh_6
+____________________________
+Index : 446
+Identifiant : H__5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 1357
+Ordonnee : 1357
+Nombre de liaisons : 3
+liaisons :
+0. Pyt7 valeur : 1
+1. Tqm7 valeur : 1
+2. Yh_6 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Zvs3 | Yh_6
+____________________________
+Index : 995
+Identifiant : Iiu3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2989
+Ordonnee : 2989
+Nombre de liaisons : 3
+liaisons :
+0. Zvs3 valeur : 0
+1. Ahr5 valeur : 1
+2. Ea_0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Yh_6 | Ea_0
+____________________________
+Index : 995
+Identifiant : Iiu3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2989
+Ordonnee : 2989
+Nombre de liaisons : 3
+liaisons :
+0. Yh_6 valeur : 1
+1. Ahr5 valeur : 1
+2. Ea_0 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 841
+Identifiant : Jpw3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2527
+Ordonnee : 2527
+Nombre de liaisons : 1
+liaisons :
+0. Q_l9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Jpw3 | R_y4
+____________________________
+Index : 990
+Identifiant : Q_l9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2979
+Ordonnee : 2979
+Nombre de liaisons : 3
+liaisons :
+0. Tqd5 valeur : 1
+1. Jpw3 valeur : 0
+2. Tmy1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+R_y4 | Tmy1
+____________________________
+Index : 990
+Identifiant : Q_l9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2979
+Ordonnee : 2979
+Nombre de liaisons : 3
+liaisons :
+0. Tqd5 valeur : 1
+1. R_y4 valeur : 1
+2. Tmy1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Jpw3 | R_y4
+____________________________
+Index : 1597
+Identifiant : Mge6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 4790
+Ordonnee : 4790
+Nombre de liaisons : 3
+liaisons :
+0. Xmm1 valeur : 1
+1. R_y4 valeur : 0
+2. Zif4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 869
+Identifiant : Ioy8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2611
+Ordonnee : 2611
+Nombre de liaisons : 1
+liaisons :
+0. Ola6 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ioy8 | Rip6
+____________________________
+Index : 868
+Identifiant : Ola6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2610
+Ordonnee : 2610
+Nombre de liaisons : 3
+liaisons :
+0. Ioy8 valeur : 0
+1. Br_1 valeur : 1
+2. Xax2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Rip6 | Xax2
+____________________________
+Index : 868
+Identifiant : Ola6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2610
+Ordonnee : 2610
+Nombre de liaisons : 3
+liaisons :
+0. Rip6 valeur : 1
+1. Br_1 valeur : 1
+2. Xax2 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ioy8 | Rip6
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 2
+liaisons :
+0. Ciu5 valeur : 1
+1. Rip6 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Ioy8 | Rip6
+____________________________
+Index : 1779
+Identifiant : Zif4
+Poids : 0
+Variable allowed : 1
+Variable exept : 1902473760
+Abscisse : 3
+Ordonnee : 3
+Nombre de liaisons : 17
+liaisons :
+0. S_x7 valeur : 1
+1. Ysq0 valeur : 1
+2. Rzo3 valeur : 1
+3. Fbi2 valeur : 1
+4. Tz_1 valeur : 1
+5. Awi6 valeur : 1
+6. Tv_2 valeur : 1
+7. Jre3 valeur : 1
+8. Hun7 valeur : 1
+9. Mkv1 valeur : 1
+10. Rqo5 valeur : 1
+11. Zpa0 valeur : 1
+12. Mge6 valeur : 1
+13. Kri3 valeur : 1
+14. Kbt2 valeur : 1
+15. Dta4 valeur : 1
+16. Rip6 valeur : 0
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 983
+Identifiant : Zrg3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2960
+Ordonnee : 2960
+Nombre de liaisons : 1
+liaisons :
+0. Uvf8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zrg3 | Fmh9
+____________________________
+Index : 984
+Identifiant : Uvf8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2963
+Ordonnee : 2963
+Nombre de liaisons : 3
+liaisons :
+0. Krc3 valeur : 1
+1. Kwt2 valeur : 1
+2. Zrg3 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Fmh9 | Fmh9
+____________________________
+Index : 984
+Identifiant : Uvf8
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2963
+Ordonnee : 2963
+Nombre de liaisons : 3
+liaisons :
+0. Krc3 valeur : 1
+1. Kwt2 valeur : 1
+2. Fmh9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Zrg3 | Fmh9
+____________________________
+Index : 1751
+Identifiant : Ciu5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5262
+Ordonnee : 5262
+Nombre de liaisons : 2
+liaisons :
+0. Pvz0 valeur : 1
+1. Fmh9 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Zrg3 | Fmh9
+____________________________
+Index : 1753
+Identifiant : Rip6
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5269
+Ordonnee : 5269
+Nombre de liaisons : 2
+liaisons :
+0. Fmh9 valeur : 0
+1. Zif4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 985
+Identifiant : Eyu7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2966
+Ordonnee : 2966
+Nombre de liaisons : 1
+liaisons :
+0. Bpb3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Ciu5
+____________________________
+Index : 846
+Identifiant : Bpb3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2542
+Ordonnee : 2542
+Nombre de liaisons : 3
+liaisons :
+0. Kwt2 valeur : 1
+1. Eyu7 valeur : 0
+2. Wu_9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ciu5 | Wu_9
+____________________________
+Index : 846
+Identifiant : Bpb3
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2542
+Ordonnee : 2542
+Nombre de liaisons : 3
+liaisons :
+0. Kwt2 valeur : 1
+1. Ciu5 valeur : 1
+2. Wu_9 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Ciu5
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 2
+liaisons :
+0. Juf1 valeur : 1
+1. Ciu5 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Ciu5
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 2
+liaisons :
+0. Ciu5 valeur : 0
+1. Ioy8 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 985
+Identifiant : Eyu7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 2966
+Ordonnee : 2966
+Nombre de liaisons : 1
+liaisons :
+0. Bpb3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Pvz0
+____________________________
+Index : 24
+Identifiant : Juf1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 85
+Ordonnee : 85
+Nombre de liaisons : 2
+liaisons :
+0. Ndd5 valeur : 1
+1. Pvz0 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Pvz0
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 2
+liaisons :
+0. Juf1 valeur : 1
+1. Eyu7 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Pvz0
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 2
+liaisons :
+0. Juf1 valeur : 1
+1. Pvz0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Pvz0
+____________________________
+Index : 1751
+Identifiant : Ciu5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5262
+Ordonnee : 5262
+Nombre de liaisons : 2
+liaisons :
+0. Pvz0 valeur : 0
+1. Zrg3 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Eyu7 | Pvz0
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 2
+liaisons :
+0. Eyu7 valeur : 0
+1. Ioy8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Ioy8
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 2
+liaisons :
+0. Pvz0 valeur : 1
+1. Ioy8 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 1
+liaisons :
+0. Juf1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Fyd7
+____________________________
+Index : 25
+Identifiant : Ndd5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 87
+Ordonnee : 87
+Nombre de liaisons : 2
+liaisons :
+0. Juf1 valeur : 1
+1. Fyd7 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Fyd7
+____________________________
+Index : 26
+Identifiant : Wmh4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 91
+Ordonnee : 91
+Nombre de liaisons : 2
+liaisons :
+0. Hrk2 valeur : 1
+1. Fyd7 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Fyd7
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 1
+liaisons :
+0. Juf1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fyd7 | Juf1
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 1
+liaisons :
+0. Juf1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Pvz0 | Fyd7
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 1
+liaisons :
+0. Ioy8 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fyd7 | Ioy8
+____________________________
+Index : 1752
+Identifiant : Fmh9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5265
+Ordonnee : 5265
+Nombre de liaisons : 1
+liaisons :
+0. Ioy8 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 24
+Identifiant : Juf1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 85
+Ordonnee : 85
+Nombre de liaisons : 2
+liaisons :
+0. Ndd5 valeur : 1
+1. Eyu7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Juf1 | Hrk2
+____________________________
+Index : 25
+Identifiant : Ndd5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 87
+Ordonnee : 87
+Nombre de liaisons : 2
+liaisons :
+0. Juf1 valeur : 0
+1. Pvz0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Hrk2 | Pvz0
+____________________________
+Index : 25
+Identifiant : Ndd5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 87
+Ordonnee : 87
+Nombre de liaisons : 2
+liaisons :
+0. Hrk2 valeur : 1
+1. Pvz0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Juf1 | Hrk2
+____________________________
+Index : 26
+Identifiant : Wmh4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 91
+Ordonnee : 91
+Nombre de liaisons : 2
+liaisons :
+0. Hrk2 valeur : 0
+1. Pvz0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Juf1 | Hrk2
+____________________________
+Index : 27
+Identifiant : Siw9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 92
+Ordonnee : 92
+Nombre de liaisons : 2
+liaisons :
+0. Ddo5 valeur : 1
+1. Hrk2 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Juf1 | Hrk2
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 0
+liaisons :
+____________________________
+Appel de "li_swap_bonds"
+Hrk2 | Wmh4
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : 0
+liaisons :
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 25
+Identifiant : Ndd5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 87
+Ordonnee : 87
+Nombre de liaisons : 1
+liaisons :
+0. Pvz0 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ndd5 | Ddo5
+____________________________
+Index : 20
+Identifiant : Vhy7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 73
+Ordonnee : 73
+Nombre de liaisons : 1
+liaisons :
+0. Ddo5 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Ndd5 | Ddo5
+____________________________
+Index : 24
+Identifiant : Juf1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 85
+Ordonnee : 85
+Nombre de liaisons : 2
+liaisons :
+0. Ndd5 valeur : 0
+1. Eyu7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ddo5 | Eyu7
+____________________________
+Index : 24
+Identifiant : Juf1
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 85
+Ordonnee : 85
+Nombre de liaisons : 2
+liaisons :
+0. Ddo5 valeur : 1
+1. Eyu7 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ndd5 | Ddo5
+____________________________
+Index : 27
+Identifiant : Siw9
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 92
+Ordonnee : 92
+Nombre de liaisons : 2
+liaisons :
+0. Ddo5 valeur : 0
+1. Juf1 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ndd5 | Ddo5
+____________________________
+Index : 28
+Identifiant : Bmn4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 93
+Ordonnee : 93
+Nombre de liaisons : 2
+liaisons :
+0. Ipv8 valeur : 1
+1. Ddo5 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Ndd5 | Ddo5
+____________________________
+Index : 1749
+Identifiant : Fyd7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5256
+Ordonnee : 5256
+Nombre de liaisons : 2
+liaisons :
+0. Ndd5 valeur : 0
+1. Wmh4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Ddo5 | Wmh4
+____________________________
+Index : 1749
+Identifiant : Fyd7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5256
+Ordonnee : 5256
+Nombre de liaisons : 2
+liaisons :
+0. Ddo5 valeur : 1
+1. Wmh4 valeur : 1
+____________________________
+Appel de "li_erase_room"
+____________________________
+Index : 1749
+Identifiant : Fyd7
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5256
+Ordonnee : 5256
+Nombre de liaisons : 1
+liaisons :
+0. Wmh4 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fyd7 | Ipv8
+____________________________
+Index : 28
+Identifiant : Bmn4
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 93
+Ordonnee : 93
+Nombre de liaisons : 2
+liaisons :
+0. Ipv8 valeur : 0
+1. Ndd5 valeur : 1
+____________________________
+Appel de "li_swap_bonds"
+Fyd7 | Ipv8
+____________________________
+Index : 1745
+Identifiant : Myx5
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5244
+Ordonnee : 5244
+Nombre de liaisons : 2
+liaisons :
+0. Nzw6 valeur : 1
+1. Ipv8 valeur : 0
+____________________________
+Appel de "li_swap_bonds"
+Fyd7 | Ipv8
+____________________________
+Index : 1750
+Identifiant : Pvz0
+Poids : 0
+Variable allowed : 1
+Variable exept : 0
+Abscisse : 5259
+Ordonnee : 5259
+Nombre de liaisons : -1
+liaisons :
+0. Fyd7 valeur : 0
+1. Pvz0 valeur : 0
+2. Eyu7 valeur : 0
+3. Zrg3 valeur : 0
+4. Fyd7 valeur : 0
+5. Pvz0 valeur : 0
+6. Zrg3 valeur : 0
+7. Zif4 valeur : 0
+8. Mge6 valeur : 0
+9. H__5 valeur : 0
+10. Slm4 valeur : 0
+11. Qej7 valeur : 0
+12. Zcd0 valeur : 0
+13. Znb2 valeur : 0
+14. Ruh0 valeur : 0
+15. Erx0 valeur : 0
+16. Kbq3 valeur : 0
+17. Qml6 valeur : 0
+18. Czg4 valeur : 0
+19. R_a5 valeur : 0
+20. Eot6 valeur : 0
+21. Uuj0 valeur : 0
+22. Hfb9 valeur : 0
+23. Bfa6 valeur : 0
+24. Ews8 valeur : 0
+25. Eve8 valeur : 0
+26. Wbd1 valeur : 0
+27. Glf7 valeur : 0
+28. Gu_0 valeur : 0
+29. R_j9 valeur : 0
+30. Nzt0 valeur : 0
+31. Slm4 valeur : 0
+32. Arh2 valeur : 0
+33. Bjh7 valeur : 0
+34. S_x7 valeur : 0
+35. Ysq0 valeur : 0
+36. Rzo3 valeur : 0
+37. Fbi2 valeur : 0
+38. Tz_1 valeur : 0
+39. Awi6 valeur : 0
+40. Tv_2 valeur : 0
+41. Jre3 valeur : 0
+42. Hun7 valeur : 0
+43. Mkv1 valeur : 0
+44. Rqo5 valeur : 0
+45. Zpa0 valeur : 0
+46. Mge6 valeur : 0
+47. Kri3 valeur : 0
+48. Kbt2 valeur : 0
+49. Dta4 valeur : 0
+50. Ioy8 valeur : 0
+51. Psd7 valeur : 0
+52. Psd7 valeur : 0
+53. Psd7 valeur : 0
+54. Psd7 valeur : 0
+55. Psd7 valeur : 0
+56. Psd7 valeur : 0
+57. Psd7 valeur : 0
+58. Psd7 valeur : 0
+59. Psd7 valeur : 0
+60. Psd7 valeur : 0
