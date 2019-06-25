@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 22:26:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/25 19:54:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ void				li_swap_rooms(t_data *data, size_t pos_a, size_t pos_b);
 ** Dans le fichier 'li_epur.c'
 */
 void				li_erase_alone(t_data *data, size_t i);
-size_t				li_forward(t_data *data, size_t i, size_t j);
+void				li_forward_ref(t_data *data, size_t ref[3]);
 void				li_epur(t_data *data);
 /*
 ** Dans le fichier 'li_erase_cycle.c'

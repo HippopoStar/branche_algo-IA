@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:35:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 22:47:18 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/25 21:54:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@
 */
 
 /*
+** Rappel :
+** Les salles de depart et d'arrivee ne peuvent etre supprimees dans
+** l'appel de 'li_erase_room'
+**
+** Cependant, il est tout de meme preferable de ne pas betement supprimmer
+** l'evantuel seul chemin qui y mene !
+**
 ** ref_a[0] = previous 'a'
 ** ref_a[1] = 'a'
 ** ref_a[2] = lenght to 'a'
@@ -84,6 +91,10 @@ int		aux_li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 }
 
 /*
+** Rappel :
+** Les salles de depart et d'arrivee ne peuvent etre supprimees dans
+** l'appel de 'li_erase_room'
+**
 **>	else if ((*(data->map + ref_a[1]))->nb_of_bonds < 4)< ?
 **
 **		ft_putstr("li_determine_cycle\n");
@@ -95,15 +106,18 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	{
 		return (aux_li_determine_cycle(data, ref_a, ref_b));
 	}
-	else if ((*(data->map + ref_a[1]))->nb_of_bonds == 2)
-	{
-		ft_putstr("li_determine_cycle\n");
-		li_erase_room(data, ref_a[1]);
-		return (6);
-	}
 	else
 	{
-		return (ref_b[2] < ref_a[2] ? 2 : 3);
+		if ((*(data->map + ref_a[1]))->nb_of_bonds == 2)
+		{
+			ft_putstr("li_determine_cycle\n");
+			li_erase_room(data, ref_a[1]);
+			return (6);
+		}
+		else
+		{
+			return (ref_b[2] < ref_a[2] ? 2 : 3);
+		}
 	}
 }
 
@@ -111,6 +125,23 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 ** La condition sur 'a == ref_b[0] || a == ref_b[1]' est probablement ameliorable
 **
 **			ft_putstr("rec_li_erase_cycle\n");
+**
+** (15 lignes)
+**		ft_putstr("\"ret_val\" vaut : ");
+**		ft_putnbr(ret_val);
+**		ft_putchar('\n');
+**		ft_putstr("\"a\" vaut : ");
+**		ft_putstr((*(data->map + a))->name);
+**		ft_putchar('\n');
+**		ft_putstr("\"ref_a[1]\" vaut : ");
+**		ft_putstr((*(data->map + ref_a[1]))->name);
+**		ft_putchar('\n');
+**		ft_putstr("\"b\" vaut : ");
+**		ft_putstr((*(data->map + b))->name);
+**		ft_putchar('\n');
+**		ft_putstr("\"ref_b[1]\" vaut : ");
+**		ft_putstr((*(data->map + ref_b[1]))->name);
+**		ft_putchar('\n');
 */
 
 int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t iter)
@@ -119,36 +150,32 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t i
 	size_t	b;
 	int		ret_val;
 
-	a = ref_a[1];
-	b = ref_b[1];
-	if (a == ref_b[0] || a == ref_b[1] || (a == (ref_a[1] = li_forward(data, ref_a[0], a)) && b == (ref_b[1] = li_forward(data, ref_b[0], b))))
+	if (!(ref_a[1] == ref_b[1] || (ref_a[0] == ref_a[1] && ref_b[0] == ref_b[1])))
 	{
-		return (li_determine_cycle(data, ref_a, ref_b));
-	}
-	else
-	{
-		if (!(a == ref_a[1]))
+		a = ref_a[1];
+		b = ref_b[1];
+		li_forward_ref(data, ref_b);
+		if (!(ref_a[1] == ref_b[1]))
 		{
-			ref_a[0] = a;
-			(ref_a[2])++;
-		}
-		if (!(b == ref_b[1]))
-		{
-			ref_b[0] = b;
-			(ref_b[2])++;
+			li_forward_ref(data, ref_a);
 		}
 		ret_val = rec_li_erase_cycle(data, ref_a, ref_b, iter + 1);
-		if (ret_val % 2 == 0 && !(a == ref_a[1]) && iter > 0)
+		if (ret_val % 2 == 0 && !(a == ref_a[1]) && b < (data->eff - (ref_a[2] + ref_b[2]))) //TODO
 		{
 			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, a);
 		}
-		if (ret_val % 3 == 0 && !(b == ref_b[1]) && iter > 0)
+		if (ret_val % 3 == 0 && !(b == ref_b[1]) && b < (data->eff - (ref_a[2] + ref_b[2]))) //TODO
 		{
 			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, b);
 		}
+		li_print_map(data);
 		return (ret_val);
+	}
+	else
+	{
+		return (li_determine_cycle(data, ref_a, ref_b));
 	}
 }
 
@@ -186,6 +213,35 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 	rec_li_erase_cycle(data, ref_a, ref_b, 0);
 }
 
+/*
+** Remarque :
+**
+** Ne pas omettre, que si le nombre de liaisons de la salle d'index 'i' est au
+** depart superieur ou egale a '2', rien ne garanti que ca reste le cas apres
+** quelques appels de 'aux_li_erase_cycle' !
+**
+** Par ailleurs, n'omettons pas que la salle pointee par l'index 'i' peut
+** entre-temps avoir vu sa position etee intervertie avec une autre salle !
+**
+** En revanche, il semble acquis que la salle pointee par l'index 'i', quelle
+** qu'elle soit, sera toujours une salle a tester
+**
+** Cela, il n'est pas garanti que la liaison
+** '*((*(data->map + i))->bond_sum + a)'
+** designe une salle voisine possedant strictement 2 liaisons !
+**
+** Si une la position d'une salle devant etre effacee dans un certain appel
+** recursif, est intervertie avec celle de de l'avant-dernier element lors
+** d'un appel recursif plus haut dans la pile,
+** cela a pour effet de declencher en boucle l'effacement de cette salle
+**
+**		ft_putstr("(li_erase_cycle)");
+**		li_display_room_info(data, i);
+**		ft_putchar('\n');
+**		ft_putnbr((int)a);
+**		ft_putchar('\n');
+*/
+
 void	li_erase_cycle(t_data *data, size_t i)
 {
 	size_t	a;
@@ -194,10 +250,10 @@ void	li_erase_cycle(t_data *data, size_t i)
 	size_t	tar_b;
 
 	a = 0;
-	while (a < (*(data->map + i))->nb_of_bonds - 1)
+	while (a < (*(data->map + i))->nb_of_bonds)
 	{
 		tar_a = *((*(data->map + i))->bond_sum + a);
-		if ((*(data->map + tar_a))->nb_of_bonds == 2)
+		if ((*(data->map + tar_a))->nb_of_bonds == 2) //TODO
 		{
 			b = a + 1;
 			while (b < (*(data->map + i))->nb_of_bonds)

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:20:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 22:48:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/25 20:01:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,25 @@ void	li_erase_alone(t_data *data, size_t i)
 	}
 }
 
-size_t	li_forward(t_data *data, size_t i, size_t j)
+void	li_forward_ref(t_data *data, size_t ref[3])
 {
-	if ((*(data->map + j))->nb_of_bonds == 2 && !(j == 0 || j == data->size - 1))
+	if ((*(data->map + ref[1]))->nb_of_bonds == 2 && !(ref[1] == 0 || ref[1] == data->size - 1))
 	{
-		if (*((*(data->map + j))->bond_sum + 0) == i)
+		if (*((*(data->map + ref[1]))->bond_sum + 0) == ref[0])
 		{
-			return (*((*(data->map + j))->bond_sum + 1));
+			ref[0] = ref[1];
+			ref[1] = *((*(data->map + ref[1]))->bond_sum + 1);
 		}
 		else
 		{
-			return (*((*(data->map + j))->bond_sum + 0));
+			ref[0] = ref[1];
+			ref[1] = *((*(data->map + ref[1]))->bond_sum + 0);
 		}
+		(ref[2])++;
 	}
 	else
 	{
-		return (j);
+		ref[0] = ref[1];
 	}
 }
 
