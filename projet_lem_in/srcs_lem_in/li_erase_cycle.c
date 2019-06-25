@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:35:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/25 21:54:54 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/25 22:10:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,12 +160,12 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t i
 			li_forward_ref(data, ref_a);
 		}
 		ret_val = rec_li_erase_cycle(data, ref_a, ref_b, iter + 1);
-		if (ret_val % 2 == 0 && !(a == ref_a[1]) && b < (data->eff - (ref_a[2] + ref_b[2]))) //TODO
+		if (ret_val % 2 == 0 && !(a == ref_a[1]) && b < data->eff) //TODO
 		{
 			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, a);
 		}
-		if (ret_val % 3 == 0 && !(b == ref_b[1]) && b < (data->eff - (ref_a[2] + ref_b[2]))) //TODO
+		if (ret_val % 3 == 0 && !(b == ref_b[1]) && b < data->eff) //TODO
 		{
 			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, b);
@@ -230,10 +230,18 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 ** '*((*(data->map + i))->bond_sum + a)'
 ** designe une salle voisine possedant strictement 2 liaisons !
 **
+** / ! \
+**
 ** Si une la position d'une salle devant etre effacee dans un certain appel
 ** recursif, est intervertie avec celle de de l'avant-dernier element lors
 ** d'un appel recursif plus haut dans la pile,
 ** cela a pour effet de declencher en boucle l'effacement de cette salle
+**
+** 2 solutions a creuser :
+** - Soit n'appeler 'li_erase_room' que dans le cas ou l'index cible est
+**   encore '< data->eff' dans 'rec_li_erase_cycle'
+** - Soit n'intervertir les indexs dans que si l'index de la salle a effacer
+**   est '< data->eff' dans 'li_erase_room'
 **
 **		ft_putstr("(li_erase_cycle)");
 **		li_display_room_info(data, i);
