@@ -53,6 +53,15 @@
 ** de poids strictement negatifs, car pour arriver au depart de cette suite de
 ** liaisons, il aura fallut emprunter un itineraire de poids superieur a la
 ** valeur absolue de cet suite liaison
+**
+** (7 lignes)
+**				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
+**				{
+**					ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
+**					li_display_room_info(data, (*(data->map + i))->ancestor);
+**					li_display_room_info(data, i);
+**					li_display_room_info(data, target);
+**				}
 */
 
 void	li_ping_neighbour(t_data *data, size_t i, size_t target)
@@ -78,13 +87,20 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 	size_t	target;
 
 	j = 0;
-	if (!((*(data->map + i))->allowed || (*(data->map + i))->except))
+	if (!((*(data->map + i))->allowed || ((*(data->map + i))->except && *((*(data->map + (*(data->map + i))->ancestor))->pipes + i) == (signed char)(-1))))
 	{
 		while (j < (*(data->map + i))->nb_of_bonds)
 		{
 			target = *((*(data->map + i))->bond_sum + j);
 			if (*((*(data->map + i))->pipes + target) == (signed char)(-1))
 			{
+				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
+				{
+					ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
+					li_display_room_info(data, (*(data->map + i))->ancestor);
+					li_display_room_info(data, i);
+					li_display_room_info(data, target);
+				}
 				li_ping_neighbour(data, i, target);
 			}
 			j++;
@@ -95,6 +111,13 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 		while (j < (*(data->map + i))->nb_of_bonds)
 		{
 			target = *((*(data->map + i))->bond_sum + j);
+			if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
+			{
+				ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
+				li_display_room_info(data, (*(data->map + i))->ancestor);
+				li_display_room_info(data, i);
+				li_display_room_info(data, target);
+			}
 			li_ping_neighbour(data, i, target);
 			j++;
 		}

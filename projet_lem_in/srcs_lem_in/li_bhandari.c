@@ -73,6 +73,17 @@ void	li_initialise_weights(t_data *data)
 ** ainsi qu'a la suite de cette derniere :
 **		ft_putstr((*(data->map + i))->name);
 **		ft_putchar('\n');
+**
+** (9 lignes)
+**		if (!ft_strcmp((*(data->map + i))->name, "Bzd2"))
+**		{
+**			ft_putstr("\033[32mli_reverse_path\033[00m\n");
+**			ft_putstr("Ancestor :\n");
+**			li_display_room_info(data, (*(data->map + i))->ancestor);
+**			li_display_room_info(data, i);
+**			ft_putstr("Followed by :\n");
+**			li_display_room_info(data, j);
+**		}
 */
 
 int		li_reverse_path(t_data *data)
@@ -91,9 +102,18 @@ int		li_reverse_path(t_data *data)
 	{
 		(*(data->map + j))->allowed = 0;
 		i = (*(data->map + j))->ancestor;
-		*((*(data->map + i))->pipes + j) = (signed char)0;
+		if (!ft_strcmp((*(data->map + i))->name, "Bzd2"))
+		{
+			ft_putstr("\033[32mli_reverse_path\033[00m\n");
+			ft_putstr("Ancestor :\n");
+			li_display_room_info(data, (*(data->map + i))->ancestor);
+			li_display_room_info(data, i);
+			ft_putstr("Followed by :\n");
+			li_display_room_info(data, j);
+		}
 		*((*(data->map + j))->pipes + i) = (signed char)
-			(*((*(data->map + j))->pipes + i) == 1 ? -1 : 0);
+			(-(*((*(data->map + i))->pipes + j)));
+		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
 		j = i;
