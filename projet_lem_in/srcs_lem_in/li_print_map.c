@@ -12,59 +12,55 @@
 
 #include "lem_in.h"
 
-void	li_print_rooms(t_data *data)
+void	li_print_map_summary(t_data *data)
 {
-	t_room	*tmp;
+	char	room_letter[3];
+	size_t	i;
 
-	tmp = data->rooms;
-	while (tmp != NULL && tmp->name != NULL)
+	room_letter[0] = ' ';
+	room_letter[1] = ' ';
+	room_letter[2] = '\0';
+	li_get_output(data, (char *)"\n");
+	li_get_output(data, (char *)room_letter);
+	i = 0;
+	while (i < data->size)
 	{
-		ft_putchar('|');
-		ft_putstr(tmp->name);
-		ft_putchar(' ');
-		ft_putnbr(tmp->pos_x);
-		ft_putchar(' ');
-		ft_putnbr(tmp->pos_y);
-		ft_putchar('|');
-		if (tmp->next != NULL)
-		{
-			ft_putstr("->");
-		}
-		tmp = tmp->next;
+		room_letter[1] = *((*(data->map + i))->name + 0);
+		li_get_output(data, (char *)room_letter);
+		i++;
 	}
-	ft_putchar('\n');
+	li_get_output(data, (char *)"\n\n");
+	li_print_output(data);
 }
 
 void	li_print_map(t_data *data)
 {
+	char	room_letter[3];
+	char	bond_value[3];
 	size_t	i;
 	size_t	j;
 
+	li_print_map_summary(data);
+	room_letter[1] = ' ';
+	room_letter[2] = '\0';
+	bond_value[0] = ' ';
+	bond_value[2] = '\0';
 	i = 0;
-	ft_putstr("    ");
-	while (i < data->size)
+	while (i < data->size && !(j = 0))
 	{
-		ft_putchar(*((*(data->map + i))->name + 0));
-		ft_putchar(' ');
-		i++;
-	}
-	ft_putchar('\n');
-	i = 0;
-	while (i < data->size)
-	{
-		ft_putchar('(');
-		ft_putchar(*((*(data->map + i))->name + 0));
-		ft_putstr(") ");
+		room_letter[0] = *((*(data->map + i))->name + 0);
+		li_get_output(data, (char *)room_letter);
 		j = 0;
 		while (j < data->size)
 		{
-			ft_putchar('0' + *((*(data->map + i))->pipes + j));
-			ft_putchar(' ');
+			bond_value[1] = '0' + *((*(data->map + i))->pipes + j);
+			li_get_output(data, (char *)bond_value);
 			j++;
 		}
-		ft_putchar('\n');
+		li_get_output(data, (char *)"\n");
 		i++;
 	}
+	li_print_output(data);
 }
 
 /*

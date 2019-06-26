@@ -147,6 +147,7 @@ void	li_epur(t_data *data)
 */
 	li_swap_rooms(data, data->size - 1, data->eff);
 	data->size = data->eff + 1;
+	li_print_map(data);
 /*
 	i = 0;
 	while (i < data->size)

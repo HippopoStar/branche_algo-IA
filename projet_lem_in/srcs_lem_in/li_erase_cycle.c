@@ -170,7 +170,7 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t i
 			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, b);
 		}
-		li_print_map(data);
+		li_print_map_summary(data);
 		return (ret_val);
 	}
 	else

@@ -149,7 +149,7 @@ int					li_shorten_map_pipes(t_data *data);
 /*
 ** Dans le fichier 'li_print_map.c' (implementer options ?)
 */
-void				li_print_rooms(t_data *data);
+void				li_print_map_summary(t_data *data);
 void				li_print_map(t_data *data);
 void				li_print_paths(t_data *data);
 void				li_print_route(t_route *current, size_t i);
@@ -157,6 +157,7 @@ void				li_print_routes(t_data *data);
 /*
 ** Dans le fichier 'li_display_room_info.c'
 */
+void				li_print_rooms_linked_list(t_data *data);
 void				li_display_room_bonds(t_data *data, size_t i);
 void				li_display_room_info(t_data *data, size_t i);
 /*
