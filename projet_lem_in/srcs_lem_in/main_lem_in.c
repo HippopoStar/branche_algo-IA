@@ -228,6 +228,16 @@ int		lem_in(t_data *data)
 ** 'data.best_route' est initialisee dans 'li_eval_routes'
 */
 
+void	li_initialise_data(t_data *data)
+{
+	data->rooms = NULL;
+	data->map = NULL;
+	data->paths = NULL;
+	data->routes = NULL;
+	(data->output).index = 0;
+	data->ant_tab = NULL;
+}
+
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -237,7 +247,6 @@ int		main(int argc, char **argv)
 	data.map = NULL;
 	data.paths = NULL;
 	data.routes = NULL;
-	data.path_nb = 0;
 	(data.output).index = 0;
 	data.ant_tab = NULL;
 	if (!(ret_val = (!li_options(&data, argc, argv) || data.help) ? 0 : 1))
@@ -252,5 +261,6 @@ int		main(int argc, char **argv)
 	li_memory_liberator(&data);
 	if (ret_val)
 		li_print_output(&data);
+	li_stats(&data);
 	return (0);
 }

@@ -115,6 +115,7 @@ void	li_forward_ref(t_data *data, size_t ref[3])
 void	li_epur(t_data *data)
 {
 	size_t	i;
+	size_t	tmp;
 
 	data->eff = data->size - 1;
 	data->wit = 1;
@@ -146,7 +147,9 @@ void	li_epur(t_data *data)
 	}
 */
 	li_swap_rooms(data, data->size - 1, data->eff);
+	tmp = data->size;
 	data->size = data->eff + 1;
+	data->eff = tmp - data->size;
 //	li_print_map(data);
 /*
 	i = 0;

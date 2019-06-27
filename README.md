@@ -57,7 +57,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/1555/lem-in.fr.pdf)  
 [Video de l'e-learning](https://elearning.intra.42.fr/notions/lem_in/subnotions/video-de-presentation/videos/video-de-presentation)  
 Documentation :  
-[Algo' de chemins disjoints de Bhandari](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
+[Algo' de chemins disjoints de Bhandari / Suurballe](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
 [Algo' d'Edmonds-Karp & Maximum flow problem](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp)  
 - Enlever les flags 'sanitize' dans le Makefile
 - lors du parsing :

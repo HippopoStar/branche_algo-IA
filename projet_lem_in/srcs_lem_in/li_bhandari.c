@@ -86,6 +86,24 @@ void	li_initialise_weights(t_data *data)
 **		}
 */
 
+size_t	li_inversed_ancestor(t_data *data, size_t j)
+{
+	size_t	target;
+	size_t	i;
+
+	target = *((*(data->map + j))->bond_sum + 0);
+	i = 1;
+	while (!(*((*(data->map + j))->pipes + target) == 0))
+	{
+		target = *((*(data->map + j))->bond_sum + i);
+		i++;
+	}
+	return (target);
+}
+
+/*
+**		i = (!((*(data->map + j))->allowed == 0 && (*(data->map + (*(data->map + j))->ancestor))->allowed == 1)) ? (*(data->map + j))->ancestor : li_inversed_ancestor(data, j);
+*/
 int		li_reverse_path(t_data *data)
 {
 	size_t	i;
@@ -100,8 +118,8 @@ int		li_reverse_path(t_data *data)
 	pos = data->size - 1;
 	while (j > 0 && pos > 0)
 	{
-		(*(data->map + j))->allowed = 0;
 		i = (*(data->map + j))->ancestor;
+		(*(data->map + j))->allowed = 0;
 		if (!ft_strcmp((*(data->map + i))->name, "Bzd2"))
 		{
 			ft_putstr("\033[32mli_reverse_path\033[00m\n");

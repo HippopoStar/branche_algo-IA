@@ -75,6 +75,7 @@ typedef struct		s_data
 	int				color;
 	int				doublon;
 	int				coordinates;
+	int				stats;
 	size_t			display_steps;
 }					t_data;
 
@@ -90,6 +91,7 @@ typedef struct		s_route
 ** Dans le fichier 'main_lem_in.c'
 */
 int					lem_in(t_data *data);
+void				li_initialise_data(t_data *data);
 /*
 ** Dans le fichier 'li_options.c'
 */
@@ -97,6 +99,7 @@ int					li_options(t_data *data, int argc, char **argv);
 /*
 ** Dans le fichier 'li_error.c'
 */
+void				li_stats(t_data *data);
 void				li_help(void);
 void				li_usage(void);
 void				li_error(void);

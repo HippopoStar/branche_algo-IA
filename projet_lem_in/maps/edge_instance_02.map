@@ -1,0 +1,55 @@
+# Pour generer le contexte de 'edge_len == 0', on souhaite avoir :
+# - 'H' atteignant 'D'
+# - 'D' atteignant 'C'
+# - 'C' atteignant 'I'
+# - 'F' atteignant 'C', avec un poids inferieur a celui herite par 'D'
+#
+# La question est a present :
+# Peut-on rencontrer une situation semblable si les salles
+# sont au prealable triees selon l'ordre croissant de leur poids
+# au terme du premier parcours du graphe par Bellman-Ford ?
+#
+# M - N - O
+# |         \
+# |   F - G - H
+# | /   \     |
+# |/     \    |
+# A - B - C - D - E - Z
+#          \         /
+#           I - J - K
+20
+##start
+A 0 0
+M 0 0
+N 0 0
+O 0 0
+H 0 0
+D 0 0
+C 0 0
+B 0 0
+E 0 0
+F 0 0
+G 0 0
+I 0 0
+J 0 0
+K 0 0
+##end
+Z 0 0
+A-B
+A-F
+B-C
+C-D
+C-G
+C-I
+D-E
+D-H
+E-Z
+F-G
+G-H
+I-J
+J-K
+K-Z
+A-M
+M-N
+N-O
+O-H
