@@ -64,6 +64,35 @@
 **				}
 */
 
+void	li_suurballe(t_data *data, size_t i, size_t target)
+{
+	int		tmp_wit;
+	size_t	tmp_wei;
+	size_t	forced;
+	size_t	j;
+
+	j = 0;
+	while (j < (*(data->map + target))->nb_of_bonds)
+	{
+		forced = *((*(data->map + target))->bond_sum + j);
+		if (*((*(data->map + forced))->pipes + forced) == (signed char)(-1))
+		{
+			tmp_wit = data->wit;
+			data->wit = 0;
+			tmp_wei = (*(data->map + forced))->weight;
+			(*(data->map + forced))->weight = (*(data->map + i))->weight - 1;
+			li_ping_neighbour(data, target, forced);
+			(*(data->map + forced))->weight = tmp_wei;
+			if (data->wit == 1)
+			{
+				(*(data->map + target))->ancestor = i; //Hmmm...
+			}
+			data->wit = (tmp_wit || data->wit) ? 1 : 0;
+		}
+		j++;
+	}
+}
+
 void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 {
 	int		wei;
@@ -73,11 +102,18 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 					+ (int)(*((*(data->map + i))->pipes + target)))
 				< (*(data->map + target))->weight))
 	{
-		(*(data->map + target))->ancestor = i;
-		(*(data->map + target))->weight = wei;
-		(*(data->map + target))->except = *((*(data->map + i))->pipes + target)
-			== (signed char)1 ? 0 : 1;
-		data->wit = 1;
+		if ((*(data->map + i))->allowed == 0 || (*(data->map + target))->allowed == 1)
+		{
+			(*(data->map + target))->ancestor = i;
+			(*(data->map + target))->weight = wei;
+			(*(data->map + target))->except = *((*(data->map + i))->pipes + target)
+				== (signed char)1 ? 0 : 1;
+			data->wit = 1;
+		}
+		else
+		{
+			li_suurballe(data, i, target);
+		}
 	}
 }
 

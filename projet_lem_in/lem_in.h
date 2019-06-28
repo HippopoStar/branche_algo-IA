@@ -166,9 +166,10 @@ void				li_display_room_info(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_bellman_ford.c'
 */
-void				li_bellman_ford(t_data *data);
-void				aux_li_bellman_ford(t_data *data, size_t i);
+void				li_suurballe(t_data *data, size_t i, size_t target);
 void				li_ping_neighbour(t_data *data, size_t i, size_t target);
+void				aux_li_bellman_ford(t_data *data, size_t i);
+void				li_bellman_ford(t_data *data);
 /*
 ** Dans le fichier 'li_bhandari.c'
 */
