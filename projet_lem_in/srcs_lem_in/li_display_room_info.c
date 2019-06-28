@@ -65,8 +65,6 @@ void	li_display_room_info(t_data *data, size_t i)
 	ft_putnbr((int)(*(data->map + i))->weight);
 	ft_putstr("\nVariable 'allowed' : ");
 	ft_putnbr((int)(*(data->map + i))->allowed);
-	ft_putstr("\nVariable 'exept' : ");
-	ft_putnbr((int)(*(data->map + i))->except);
 	ft_putstr("\nAbscisse : ");
 	ft_putnbr((int)(*(data->map + i))->pos_x);
 	ft_putstr("\nOrdonnee : ");

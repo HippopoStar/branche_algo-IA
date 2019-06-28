@@ -75,14 +75,14 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 	while (j < (*(data->map + target))->nb_of_bonds)
 	{
 		forced = *((*(data->map + target))->bond_sum + j);
-		if (*((*(data->map + forced))->pipes + forced) == (signed char)(-1))
+		if (*((*(data->map + target))->pipes + forced) == (signed char)(-1))
 		{
 			tmp_wit = data->wit;
 			data->wit = 0;
-			tmp_wei = (*(data->map + forced))->weight;
-			(*(data->map + forced))->weight = (*(data->map + i))->weight - 1;
+			tmp_wei = (*(data->map + target))->weight;
+			(*(data->map + target))->weight = (*(data->map + i))->weight - 1;
 			li_ping_neighbour(data, target, forced);
-			(*(data->map + forced))->weight = tmp_wei;
+			(*(data->map + target))->weight = tmp_wei;
 			if (data->wit == 1)
 			{
 				(*(data->map + target))->ancestor = i; //Hmmm...
@@ -102,17 +102,16 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 					+ (int)(*((*(data->map + i))->pipes + target)))
 				< (*(data->map + target))->weight))
 	{
-		if ((*(data->map + i))->allowed == 0 || (*(data->map + target))->allowed == 1)
+		if ((*(data->map + target))->allowed == 0 && (*(data->map + i))->allowed == 1)
+		{
+			li_suurballe(data, i, target);
+		}
+//		if ((*(data->map + i))->allowed == 0 || (*(data->map + target))->allowed == 1)
+		else
 		{
 			(*(data->map + target))->ancestor = i;
 			(*(data->map + target))->weight = wei;
-			(*(data->map + target))->except = *((*(data->map + i))->pipes + target)
-				== (signed char)1 ? 0 : 1;
 			data->wit = 1;
-		}
-		else
-		{
-			li_suurballe(data, i, target);
 		}
 	}
 }
@@ -123,40 +122,18 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 	size_t	target;
 
 	j = 0;
-	if (!((*(data->map + i))->allowed || ((*(data->map + i))->except && *((*(data->map + (*(data->map + i))->ancestor))->pipes + i) == (signed char)(-1))))
+	while (j < (*(data->map + i))->nb_of_bonds)
 	{
-		while (j < (*(data->map + i))->nb_of_bonds)
+		target = *((*(data->map + i))->bond_sum + j);
+		if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
 		{
-			target = *((*(data->map + i))->bond_sum + j);
-			if (*((*(data->map + i))->pipes + target) == (signed char)(-1))
-			{
-				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
-				{
-					ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
-					li_display_room_info(data, (*(data->map + i))->ancestor);
-					li_display_room_info(data, i);
-					li_display_room_info(data, target);
-				}
-				li_ping_neighbour(data, i, target);
-			}
-			j++;
+			ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
+			li_display_room_info(data, (*(data->map + i))->ancestor);
+			li_display_room_info(data, i);
+			li_display_room_info(data, target);
 		}
-	}
-	else
-	{
-		while (j < (*(data->map + i))->nb_of_bonds)
-		{
-			target = *((*(data->map + i))->bond_sum + j);
-			if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
-			{
-				ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
-				li_display_room_info(data, (*(data->map + i))->ancestor);
-				li_display_room_info(data, i);
-				li_display_room_info(data, target);
-			}
-			li_ping_neighbour(data, i, target);
-			j++;
-		}
+		li_ping_neighbour(data, i, target);
+		j++;
 	}
 }
 
@@ -167,6 +144,10 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 ** Si le poids d'une salle vaut 'data->size',
 ** c'est qu'elle n'a pas encore ete atteinte depuis l'appel
 ** de 'li_initialise_weights'
+**
+** Avec l'arrivee de 'li_suurballe', la condition
+** 'if (!((*(data->map + i))->weight == data->size))'
+** est a mediter
 */
 
 void	li_bellman_ford(t_data *data)

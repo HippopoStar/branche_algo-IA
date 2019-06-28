@@ -43,7 +43,6 @@ typedef struct		s_room
 	int				weight;
 	size_t			ancestor;
 	int				allowed;
-	int				except;
 	int				pos_x;
 	int				pos_y;
 	int				role;

@@ -44,7 +44,6 @@ void	li_initialise_weights(t_data *data)
 	{
 		(*(data->map + i))->ancestor = data->size;
 		(*(data->map + i))->weight = (int)data->size;
-		(*(data->map + i))->except = 0;
 		i++;
 	}
 }
@@ -103,6 +102,9 @@ size_t	li_inversed_ancestor(t_data *data, size_t j)
 
 /*
 **		i = (!((*(data->map + j))->allowed == 0 && (*(data->map + (*(data->map + j))->ancestor))->allowed == 1)) ? (*(data->map + j))->ancestor : li_inversed_ancestor(data, j);
+**
+** Avec l'arrivee de 'li_suurballe', ca a a present une importance
+** de ne pas mettre la variable '(*(data->map + data->size - 1))->allowed' a '0'
 */
 int		li_reverse_path(t_data *data)
 {
@@ -119,7 +121,7 @@ int		li_reverse_path(t_data *data)
 	while (j > 0 && pos > 0)
 	{
 		i = (*(data->map + j))->ancestor;
-		(*(data->map + j))->allowed = 0;
+		(*(data->map + j))->allowed = (j == data->size - 1) ? 1 : 0;
 		if (!ft_strcmp((*(data->map + i))->name, "Bzd2"))
 		{
 			ft_putstr("\033[32mli_reverse_path\033[00m\n");
@@ -137,6 +139,9 @@ int		li_reverse_path(t_data *data)
 		j = i;
 	}
 	*(*(data->paths + data->path_nb) + data->size) = pos;
+	(data->path_nb)++; //TODO
+	li_print_paths(data); //TODO
+	(data->path_nb)--; //TODO
 	return (j == 0 ? 1 : 0);
 }
 
@@ -212,7 +217,9 @@ int		li_bhandari(t_data *data)
 //		if (data->path_nb == 1)
 //			li_order_rooms(data);
 		li_initialise_weights(data);
+		ft_putstr("Appel de 'li_bellman_ford'\n");
 		li_bellman_ford(data);
+		ft_putstr("Sortie de 'li_bellman_ford'\n");
 		if ((ret_val = li_reverse_path(data)) == 1)
 		{
 			li_build_route(data, data->path_nb);
