@@ -93,28 +93,89 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 	}
 }
 
+/*
+** L'appel de 'li_ping_neighbour' dans 'li_tunnel_back'
+** ne va pas changer la valeur de 'target_2->ancestor'
+** car a present 'li_ping_neighbour' n'impact que les
+** salles atteintes grace a une liaison de poids '1'
+**
+** Nul besoin de stocker le poids initial de 'target'
+**
+** Cependant, il est important que '(*(data->map + 0))->ancestor == 0'
+**
+** 'i'->'target' : wei++;
+** 'target'->'ancestor' : wei--;
+**	wei = (*(data->map + i))->weight;
+**
+** La fonction 'li_tunnel_back' necessite de ne pas remettre les
+** variables '(t_room *)->ancestor' a 'data->size' pour les
+** salles dont la variable 'allowed' est a '0',
+** dans le corps de la fonction 'li_initialise_weights'
+** De meme pour les variables '(t_room *)->weights' !
+*/
+
+void	li_tunnel_back(t_data *data, size_t i, size_t target)
+{
+	size_t	j;
+	size_t	target_2;
+	int		wei;
+	int		tmp;
+
+	ft_putstr("li_tunnel_back\n");
+	target = (*(data->map + target))->ancestor;
+	wei = (*(data->map + i))->weight;
+	while (!(target == 0))
+	{
+		ft_putstr("data->path_nb");
+		ft_putnbr((int)data->path_nb);
+		ft_putchar('\n');
+		li_display_room_info(data, target);
+		tmp = (*(data->map + target))->weight;
+		(*(data->map + target))->weight = wei;
+		j = 0;
+		while (j < (*(data->map + target))->nb_of_bonds)
+		{
+			target_2 = *((*(data->map + target))->bond_sum + j);
+			tmp = (*(data->map + target))->weight;
+			li_ping_neighbour(data, target, target_2);
+			j++;
+		}
+		(*(data->map + target))->weight = tmp;
+		target = (*(data->map + target))->ancestor;
+		wei--;
+	}
+	ft_putstr("Fin de li_tunnel_back\n");
+}
+
+/*
+** Il n'est pas cense etre possible de passer le poids de la salle de depart
+** en negatif, car cela impliquerait qu'on ait fait plus de trajet en remontant
+** un ancien chemin, que de trajet pour rejoindre la salle de depart de ce
+** roll-back, or cela impliquerait que s'ait ete par ce 2nd trajet en question
+** qu'il eut fallu passer lors de la decouvert du 1er afin d'obtenir l'itineraire
+** le plus court
+*/
+
 void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 {
 	int		wei;
 
-	if (!(*((*(data->map + i))->pipes + target) == 0)
-			&& ((wei = (*(data->map + i))->weight
-					+ (int)(*((*(data->map + i))->pipes + target)))
-				< (*(data->map + target))->weight))
+	wei = (*(data->map + i))->weight + 1;
+	if (wei	< (*(data->map + target))->weight)
 	{
-		if ((*(data->map + target))->allowed == 0 && (*(data->map + i))->allowed == 1)
-		{
-			li_suurballe(data, i, target);
-		}
-//		if ((*(data->map + i))->allowed == 0 || (*(data->map + target))->allowed == 1)
-		else
-		{
-			(*(data->map + target))->ancestor = i;
-			(*(data->map + target))->weight = wei;
-			data->wit = 1;
-		}
+		(*(data->map + target))->ancestor = i;
+		(*(data->map + target))->weight = wei;
+		data->wit = 1;
 	}
 }
+
+
+/*
+** Au vu de la condition d'appel de 'li_ping_neighbour',
+** il est important que la variable
+** '(*(data->map + data->size - 1))->allowed' ne soit pas
+** mise a '0' dans 'li_reverse_path'
+*/
 
 void	aux_li_bellman_ford(t_data *data, size_t i)
 {
@@ -125,14 +186,17 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 	while (j < (*(data->map + i))->nb_of_bonds)
 	{
 		target = *((*(data->map + i))->bond_sum + j);
-		if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
+		if (*((*(data->map + i))->pipes + target) == (signed char)1)
 		{
-			ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
-			li_display_room_info(data, (*(data->map + i))->ancestor);
-			li_display_room_info(data, i);
-			li_display_room_info(data, target);
+			if ((*(data->map + target))->allowed == 1)
+			{
+				li_ping_neighbour(data, i, target);
+			}
+			else
+			{
+				li_tunnel_back(data, i, target);
+			}
 		}
-		li_ping_neighbour(data, i, target);
 		j++;
 	}
 }
@@ -148,6 +212,12 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 ** Avec l'arrivee de 'li_suurballe', la condition
 ** 'if (!((*(data->map + i))->weight == data->size))'
 ** est a mediter
+**
+** L'appel initial 'aux_li_bellman_ford(data, 0)'
+** est place avant la boucle car il est pertinent de
+** le lancer une seule fois, etant donne que le poids de la
+** salle de depart ne va pas etre amene a changer,
+** et il permet d'initialiser la variable 'data->wit' a '1'
 */
 
 void	li_bellman_ford(t_data *data)
@@ -155,16 +225,15 @@ void	li_bellman_ford(t_data *data)
 	size_t	iteration;
 	size_t	i;
 
+	aux_li_bellman_ford(data, 0);
 	iteration = 0;
-	data->wit = 1;
 	while (iteration < data->size && data->wit == 1)
 	{
 		data->wit = 0;
-		aux_li_bellman_ford(data, 0);
 		i = 1;
 		while (i < data->size - 1)
 		{
-			if (!((*(data->map + i))->weight == (int)data->size))
+			if (!((*(data->map + i))->weight == (int)data->size || (*(data->map + i))->allowed) == 0)
 			{
 				aux_li_bellman_ford(data, i);
 			}

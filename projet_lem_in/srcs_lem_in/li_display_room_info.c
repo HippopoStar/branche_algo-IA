@@ -65,12 +65,16 @@ void	li_display_room_info(t_data *data, size_t i)
 	ft_putnbr((int)(*(data->map + i))->weight);
 	ft_putstr("\nVariable 'allowed' : ");
 	ft_putnbr((int)(*(data->map + i))->allowed);
+	ft_putstr("\nVariable 'except' : ");
+	ft_putnbr((int)(*(data->map + i))->except);
 	ft_putstr("\nAbscisse : ");
 	ft_putnbr((int)(*(data->map + i))->pos_x);
 	ft_putstr("\nOrdonnee : ");
 	ft_putnbr((int)(*(data->map + i))->pos_y);
 	ft_putstr("\nNombre de liaisons : ");
 	ft_putnbr((int)(*(data->map + i))->nb_of_bonds);
+	ft_putstr("\nAncestor : ");
+	ft_putstr((*(data->map + (*(data->map + i))->ancestor))->name);
 	ft_putchar('\n');
 	li_display_room_bonds(data, i);
 	ft_putstr("____________________________\n");

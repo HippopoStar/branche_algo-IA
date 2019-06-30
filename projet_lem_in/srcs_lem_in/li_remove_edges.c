@@ -99,11 +99,12 @@ size_t	li_edge_len(t_route *route, size_t i, size_t j, size_t k)
 ** la suite devant etre remplacee par des '0'
 */
 
-void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
+int		li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 {
 	size_t	edge_len;
 
-	edge_len = li_edge_len(route, i, j, k);
+	if (!(edge_len = li_edge_len(route, i, j, k)))
+		return (0);
 	while (j < route->width && k + edge_len < route->width)
 	{
 		*(*(route->field + i) + j - edge_len) = *(*(route->field
@@ -125,6 +126,7 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 		j++;
 		k++;
 	}
+	return (1);
 }
 
 /*
@@ -164,40 +166,46 @@ void	li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 **		li_print_route(route, route->height);
 */
 
-void	aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
+int		aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
 {
+	int		ret_val;
+
 	if ((*j) < *(*(route->field + (*i)) + route->width)
 			&& *(*(route->field + (*i)) + (*j)) == *(*(route->field
 					+ route->height) + (*k)))
 	{
-		li_melt_paths(route, (*i), (*j), (*k));
+		ret_val = li_melt_paths(route, (*i), (*j), (*k));
 		li_swap_paths(route, (*i), route->height);
 		*k = 1;
 		*j = route->width;
 		*i = route->height;
 	}
+	return (ret_val);
 }
 
-void	li_remove_edges(t_route *route)
+int		li_remove_edges(t_route *route)
 {
+	int		ret_val;
 	size_t	i;
 	size_t	j;
 	size_t	k;
 
+	ret_val = 1;
 	k = 1;
-	while (k + 1 < *(*(route->field + route->height) + route->width))
+	while (ret_val && k + 1 < *(*(route->field + route->height) + route->width))
 	{
 		j = 1;
-		while (j < route->width)
+		while (ret_val && j < route->width)
 		{
 			i = 0;
-			while (i < route->height)
+			while (ret_val && i < route->height)
 			{
-				aux_li_remove_edges(route, &i, &j, &k);
+				ret_val = aux_li_remove_edges(route, &i, &j, &k);
 				i++;
 			}
 			j++;
 		}
 		k++;
 	}
+	return (ret_val);
 }

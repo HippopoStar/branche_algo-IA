@@ -43,6 +43,7 @@ typedef struct		s_room
 	int				weight;
 	size_t			ancestor;
 	int				allowed;
+	int				except;
 	int				pos_x;
 	int				pos_y;
 	int				role;
@@ -166,6 +167,7 @@ void				li_display_room_info(t_data *data, size_t i);
 ** Dans le fichier 'li_bellman_ford.c'
 */
 void				li_suurballe(t_data *data, size_t i, size_t target);
+void				li_tunnel_back(t_data *data, size_t i, size_t target);
 void				li_ping_neighbour(t_data *data, size_t i, size_t target);
 void				aux_li_bellman_ford(t_data *data, size_t i);
 void				li_bellman_ford(t_data *data);
@@ -174,6 +176,8 @@ void				li_bellman_ford(t_data *data);
 */
 void				li_bhandari_max_iterations(t_data *data);
 void				li_initialise_weights(t_data *data);
+void				li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei);
+size_t				li_inversed_ancestor(t_data *data, size_t j);
 int					li_reverse_path(t_data *data);
 int					li_allocate_paths(t_data *data);
 int					li_bhandari(t_data *data);
@@ -184,7 +188,7 @@ void				aux_li_allocate_outes(t_data *data);
 int					li_allocate_routes(t_data *data);
 void				li_copy_previous_route(t_data *data, size_t index);
 void				li_copy_last_path(t_data *data, size_t i);
-void				li_build_route(t_data *data, size_t i);
+int					li_build_route(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_order_paths'
 */
@@ -192,12 +196,16 @@ void				li_swap_paths(t_route *route, size_t i, size_t j);
 void				li_order_paths(t_route *route);
 /*
 ** Dans le fichier 'li_remove_edges'
+** Note :
+** Passage des fonctions de ce fichier ainsi que de la fonction
+** 'li_build_route' du type 'void' au type 'int' afin d'avorter
+** les cas generant des boucles infinies ('edge_len' == 0)
 */
 size_t				li_edge_len(t_route *route, size_t i, size_t j, size_t k);
-void				li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
-void				aux_li_remove_edges(t_route *route, size_t *i, size_t *j,\
+int					li_melt_paths(t_route *route, size_t i, size_t j, size_t k);
+int					aux_li_remove_edges(t_route *route, size_t *i, size_t *j,\
 																	size_t *k);
-void				li_remove_edges(t_route *route);
+int					li_remove_edges(t_route *route);
 /*
 ** Dans le fichier 'li_get_routes_lengths' (caduque)
 */

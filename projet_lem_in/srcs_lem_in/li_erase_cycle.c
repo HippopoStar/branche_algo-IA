@@ -248,6 +248,25 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 **		ft_putchar('\n');
 **		ft_putnbr((int)a);
 **		ft_putchar('\n');
+**
+** Remplacer la condition 'a < (*(data->map + i))->nb_of_bonds - 1'
+** par 'a < (*(data->map + i))->nb_of_bonds' a pour effet de faire une
+** boucle de plus que necessaire, mais permet de s'affranchir du probleme
+** en cas de '!((*(data->map + i))->nb_of_bonds > 0)'
+** (ce qui peut arriver dans le cas d'une salle ayant strictement 2 liaisons,
+** et les effacants toutes 2 : par exemple le mileu d'une portion d'itineraire
+** isolee du reste du graphe)
+**
+** De meme, on verifie la condition 'i < data->eff' a chaque etape, par securite,
+** pour s'assurer que la salle 'i' n'ait pas ete echangee de place avec une autre,
+** (cas ou elle se retrouve a un moment donne en avant-derniere position alors
+** qu'une salle doit etre effacee),
+** cela doit pouvoir arriver, car bien que lors du premier appel de
+** 'li_erase_cycle', en partant de la salle 'i' on ne peut qu'effacer des salles
+** la suivant dans le graphe,
+** ca peut ne plus etre le cas lors de l'appel suivant, lorsqu'on incremente 'i'
+** mais qu'entre-temps le tableau repertoriant les salles du graphe s'est retrouve
+** tout melange
 */
 
 void	li_erase_cycle(t_data *data, size_t i)
@@ -258,21 +277,19 @@ void	li_erase_cycle(t_data *data, size_t i)
 	size_t	tar_b;
 
 	a = 0;
-	while (a < (*(data->map + i))->nb_of_bonds)
+	while (i < data->eff && a < (*(data->map + i))->nb_of_bonds)
 	{
 		tar_a = *((*(data->map + i))->bond_sum + a);
-		if ((*(data->map + tar_a))->nb_of_bonds == 2) //TODO
+		b = a + 1;
+		while (i < data->eff && b < (*(data->map + i))->nb_of_bonds
+				&& (*(data->map + tar_a))->nb_of_bonds == 2)
 		{
-			b = a + 1;
-			while (b < (*(data->map + i))->nb_of_bonds)
+			tar_b = *((*(data->map + i))->bond_sum + b);
+			if ((*(data->map + tar_b))->nb_of_bonds == 2)
 			{
-				tar_b = *((*(data->map + i))->bond_sum + b);
-				if ((*(data->map + tar_b))->nb_of_bonds == 2)
-				{
-					aux_li_erase_cycle(data, i, tar_a, tar_b);
-				}
-				b++;
+				aux_li_erase_cycle(data, i, tar_a, tar_b);
 			}
+			b++;
 		}
 		a++;
 	}

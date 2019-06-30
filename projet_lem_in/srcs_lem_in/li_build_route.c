@@ -212,8 +212,9 @@ void	li_copy_last_path(t_data *data, size_t i)
 ** correspont a la longueur de l'itineraire
 */
 
-void	li_build_route(t_data *data, size_t i)
+int		li_build_route(t_data *data, size_t i)
 {
+	int		ret_val;
 	t_route	to_build;
 
 	to_build.data_ptr = data;
@@ -222,6 +223,7 @@ void	li_build_route(t_data *data, size_t i)
 	li_copy_last_path(data, i);
 	to_build.height = i;
 	to_build.field = *(data->routes + i);
-	li_remove_edges(&to_build);
+	ret_val = li_remove_edges(&to_build);
 	li_order_paths(&to_build);
+	return (ret_val);
 }

@@ -42,8 +42,11 @@ void	li_initialise_weights(t_data *data)
 	i = 1;
 	while (i < data->size)
 	{
-		(*(data->map + i))->ancestor = data->size;
-		(*(data->map + i))->weight = (int)data->size;
+		if (!((*(data->map + i))->allowed == 0))
+		{
+			(*(data->map + i))->ancestor = data->size;
+			(*(data->map + i))->weight = (int)data->size;
+		}
 		i++;
 	}
 }
@@ -84,6 +87,66 @@ void	li_initialise_weights(t_data *data)
 **			li_display_room_info(data, j);
 **		}
 */
+/*
+** La fonction 'li_inversed_ancestor' est basee sur la confiance
+** concernant le fait qu'il existe bel et bien un tel ancetre,
+** car dans le cas contraire elle part dans les choux :
+**
+** Il est possible qu'un ancien itineraire inverse soit coupe
+** a l'occasion de sa fusion avec un autre itineraire,
+** il existerait alors une salle de jonction remplissant le 1er
+** de 2 criteres mais pas le 2nd, mais dans ce cas,
+** suivant l'implementation de 'li_tunnel_front' qui appelle
+** 'li_inversed_ancestor', une telle salle ne devrait pas etre appelee,
+** car la salle appartenant a l'itineraire recherche devrait avoir
+** ete trouvee anterieurement
+**
+** Fonctionnement :
+** On remonte dans le chemin inverse, puis :
+** Tant qu'on n'a pas trouve la salle entrante dans le chemin inverse :
+**     - On remonte dans le chemin inverse
+*/
+
+void	li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei)
+{
+	size_t	j;
+	size_t	target;
+	size_t	k;
+
+	data->wit = 0;
+	while (data->wit == 0)
+	{
+		j = (*i);
+		*i = li_inversed_ancestor(data, *i);
+		*((*(data->map + j))->pipes + (*i)) = (signed char)
+			(-(*((*(data->map + (*i)))->pipes + j)));
+		*((*(data->map + (*i)))->pipes + j) = (signed char)0;
+		*(*(data->paths + data->path_nb) + (*pos)) = j;
+		(*pos)--;
+		wei++;
+		k = 0;
+		while (data->wit == 0 && k < (*(data->map + (*i)))->nb_of_bonds)
+		{
+			target = *((*(data->map + (*i)))->bond_sum + k);
+			if (*((*(data->map + target))->pipes + (*i)) == (signed char)1 && (*(data->map + target))->weight == wei - 1)
+			{
+				data->wit = 1;
+			}
+			k++;
+		}
+	}
+	*i = target;
+	ft_putstr("En sortie de \"li_tunnel_front\"\n");
+	li_display_room_info(data, target);
+}
+
+/*
+** Dans cette fonction,
+** on pourrait faire usage des '(t_room *)->ancestor'
+** que la fonction 'li_tunnel_back' ne modifie pas,
+** a condition de ne pas le reset dans 'li_initialise_weights'
+** dans le cas des salles ayant leur variable 'allowed' a '0'
+*/
 
 size_t	li_inversed_ancestor(t_data *data, size_t j)
 {
@@ -92,7 +155,7 @@ size_t	li_inversed_ancestor(t_data *data, size_t j)
 
 	target = *((*(data->map + j))->bond_sum + 0);
 	i = 1;
-	while (!(*((*(data->map + j))->pipes + target) == 0))
+	while (!(*((*(data->map + j))->pipes + target) == (signed char)0 && *((*(data->map + target))->pipes + j) == (signed char)(-1)))
 	{
 		target = *((*(data->map + j))->bond_sum + i);
 		i++;
@@ -105,7 +168,38 @@ size_t	li_inversed_ancestor(t_data *data, size_t j)
 **
 ** Avec l'arrivee de 'li_suurballe', ca a a present une importance
 ** de ne pas mettre la variable '(*(data->map + data->size - 1))->allowed' a '0'
+**
+** La condition '&& pos > 0' repose sur le fait que l'allocation
+** du tableau 'data->paths' se fasse soit accompagnee d'une
+** mise des valeurs a '0',
+** et sert a prevenir certaines erreurs de boucles infinies
+** (idealement, il faudrait pouvoir l'enlever)
+**
+** Par ailleurs, la variable 'pos' a pour utilite initiale d'eviter d'avoir
+** a ecrire '*(*(data->paths + path_nb) + data->size)' un peu partout
+**
+** Il est necessaire de ne pas mettre la variable
+** '(*(data->map + data->size - 1))->allowed' a '0',
+** d'ou le 'j = i' avant l'entree dans la boucle conditionnelle, cependant,
+** il est egalement necessaire que
+** '*(*(data->paths + path_nb) + data->size - 1) == data->size - 1'
+**
+** 2 solutions :
+** - Soit enlever le 'j = i' precedant l'entree dans la boucle conditionnelle,
+**   en se servant alors d'un ternaire lors de l'assignation de
+**   '(*(data->map + i))->allowed'
+** - Soit l'assigner a l'allocation, car c'est une constante dans chaque
+**   ligne du tableau
+**
+** Sachant que la salle d'arrivee ne peut etre jointe en passant
+** par une liaison de poids '-1', on sait que le premier 'i', assigne
+** avant la boucle, est l'index d'une salle dont la variable 'allowed' vaut '1'
+**
+** A linstant 'T', je pense egalement qu'il n'est pas possible
+** qu'une salle ayant etee atteinte a travers une liaison inverse puisse
+** avoisiner la salle de sortie
 */
+
 int		li_reverse_path(t_data *data)
 {
 	size_t	i;
@@ -117,25 +211,26 @@ int		li_reverse_path(t_data *data)
 	{
 		return (0);
 	}
-	pos = data->size - 1;
+	pos = data->size - 2;
+	j = i;
 	while (j > 0 && pos > 0)
 	{
-		i = (*(data->map + j))->ancestor;
-		(*(data->map + j))->allowed = (j == data->size - 1) ? 1 : 0;
-		if (!ft_strcmp((*(data->map + i))->name, "Bzd2"))
+		if (j == 2)
 		{
-			ft_putstr("\033[32mli_reverse_path\033[00m\n");
-			ft_putstr("Ancestor :\n");
-			li_display_room_info(data, (*(data->map + i))->ancestor);
-			li_display_room_info(data, i);
-			ft_putstr("Followed by :\n");
+			ft_putstr("Dans 'li_reverse_paths'\n");
 			li_display_room_info(data, j);
 		}
+		i = (*(data->map + j))->ancestor;
+		(*(data->map + j))->allowed = 0;
 		*((*(data->map + j))->pipes + i) = (signed char)
 			(-(*((*(data->map + i))->pipes + j)));
 		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
+		if ((*(data->map + i))->allowed == 0)
+		{
+			li_tunnel_front(data, &i, &pos, (*(data->map + j))->weight);
+		}
 		j = i;
 	}
 	*(*(data->paths + data->path_nb) + data->size) = pos;
@@ -171,6 +266,7 @@ int		li_allocate_paths(t_data *data)
 			*(*(data->paths + i) + j) = 0;
 			j++;
 		}
+		*(*(data->paths + i) + data->size - 1) = data->size - 1;
 		*(*(data->paths + i) + data->size) = data->size;
 		i++;
 	}
@@ -220,7 +316,8 @@ int		li_bhandari(t_data *data)
 		ft_putstr("Appel de 'li_bellman_ford'\n");
 		li_bellman_ford(data);
 		ft_putstr("Sortie de 'li_bellman_ford'\n");
-		if ((ret_val = li_reverse_path(data)) == 1)
+		if ((ret_val = li_reverse_path(data))
+				&& (ret_val = li_build_route(data, data->path_nb)))
 		{
 			li_build_route(data, data->path_nb);
 			data->path_nb = data->path_nb
