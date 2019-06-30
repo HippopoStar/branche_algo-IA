@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 06:30:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/08 20:29:22 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 20:50:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ int				aux_3_gnl_bsz(const int fd, char **line,\
 	tab[0] = 0;
 	while (*((*line) + tab[0]) != '\0' || (tab[1] = 0) != 0)
 		tab[0]++;
-	while ((*(tmp = mai->buff + mai->bs_p + tab[1]) != '\n' && *tmp != '\0'
-				&& mai->bs_p + tab[1] < mai->r_v) || (tab[2] = 0) != 0)
+	while ((mai->bs_p + tab[1] < mai->r_v
+				&& *(tmp = mai->buff + mai->bs_p + tab[1]) != '\n'
+				&& *tmp != '\0') || (tab[2] = 0) != 0)
 		tab[1]++;
 	if (!(tmp = (char *)malloc((tab[0] + tab[1] + 1) * sizeof(char))))
 		return (-1);
