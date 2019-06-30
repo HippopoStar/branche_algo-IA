@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 17:02:38 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 17:52:53 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:34:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ void	li_display_room_bonds(t_data *data, size_t i)
 	}
 }
 
+/*
+**	ft_putstr("\nAncestor : ");
+**	ft_putnbr((int)(*(data->map + i))->ancestor);
+**	ft_putstr((*(data->map + (*(data->map + i))->ancestor))->name);
+*/
+
 void	li_display_room_info(t_data *data, size_t i)
 {
 	ft_putstr("____________________________\n");
@@ -71,10 +77,10 @@ void	li_display_room_info(t_data *data, size_t i)
 	ft_putnbr((int)(*(data->map + i))->pos_x);
 	ft_putstr("\nOrdonnee : ");
 	ft_putnbr((int)(*(data->map + i))->pos_y);
+	ft_putstr("\nAncestor : ");
+	ft_putnbr((int)(*(data->map + i))->ancestor);
 	ft_putstr("\nNombre de liaisons : ");
 	ft_putnbr((int)(*(data->map + i))->nb_of_bonds);
-	ft_putstr("\nAncestor : ");
-	ft_putstr((*(data->map + (*(data->map + i))->ancestor))->name);
 	ft_putchar('\n');
 	li_display_room_bonds(data, i);
 	ft_putstr("____________________________\n");

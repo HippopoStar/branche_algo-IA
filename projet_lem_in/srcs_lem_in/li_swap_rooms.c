@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 16:43:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 22:49:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:32:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,14 @@ void	li_erase_room(t_data *data, size_t pos)
 					|| *((*(data->map + i))->pipes + data->eff) == 1)
 			{
 				tmp = *((*(data->map + i))->pipes + pos);
-				*((*(data->map + i))->pipes + pos) = *((*(data->map + i))->pipes + data->eff);
+				*((*(data->map + i))->pipes + pos) = *((*(data->map + i))->pipes
+						+ data->eff);
 				*((*(data->map + i))->pipes + data->eff) = tmp;
 				li_swap_bonds(data, i, pos, data->eff);
 				if (*((*(data->map + i))->pipes + data->eff) == 1)
 				{
-					last_neighbour = *((*(data->map + i))->bond_sum + (*(data->map + i))->nb_of_bonds - 1);
+					last_neighbour = *((*(data->map + i))->bond_sum
+							+ (*(data->map + i))->nb_of_bonds - 1);
 					li_swap_bonds(data, i, data->eff, last_neighbour);
 					((*(data->map + i))->nb_of_bonds)--;
 				}
@@ -124,11 +126,6 @@ void	li_swap_rooms(t_data *data, size_t pos_a, size_t pos_b)
 	size_t	i;
 	size_t	tmp;
 
-	ft_putstr("Appel de \"\033[31mli_swap_rooms\033[00m\"\n");
-	ft_putstr((*(data->map + pos_a))->name);
-	ft_putstr(" | ");
-	ft_putstr((*(data->map + pos_b))->name);
-	ft_putchar('\n');
 	i = 0;
 	while (i < data->size)
 	{

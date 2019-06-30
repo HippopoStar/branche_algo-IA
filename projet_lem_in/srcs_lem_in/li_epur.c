@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:20:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/25 20:01:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:11:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@
 **         - Tant que les salles atteintes par chacun des 2 itineraires
 **           ne sont pas confondues (condition necessaire, voir [W-X-Y]),
 **           et qu'elles ne possedent qu'une seule autre liaison
-**             - Suivre ces liaisons [G->H->J ; G->I->J | S->M ; S->T->M | W[...]]
+**             - Suivre ces liaisons [G->H->J ; G->I->J | S->M ; S->T->M | W...]
 **         - Si elles rejoignent toutes 2 une meme salle
 **           ou qu'elle se sont toutes les 2 rejointes
-**             - Eliminer le plus long trajet vers cette meme salle [I | T | W[...]]
+**             - Eliminer le plus long trajet vers cette meme salle [I | T | W.]
 **
 ** Repeter les etapes 2 et 3 autant de fois que necessaire
 */
@@ -70,21 +70,19 @@ void	li_erase_alone(t_data *data, size_t i)
 
 	if ((*(data->map + i))->nb_of_bonds == 0)
 	{
-		ft_putstr("li_erase_alone\n");
 		li_erase_room(data, i);
 	}
 	else
 	{
-		while ((*(data->map + i))->nb_of_bonds == 1 && !(i == 0 || i == data->size - 1))
+		while ((*(data->map + i))->nb_of_bonds == 1
+				&& !(i == 0 || i == data->size - 1))
 		{
 			tmp = *((*(data->map + i))->bond_sum + 0);
-			ft_putstr("li_erase_alone\n");
 			li_erase_room(data, i);
 			i = tmp;
 		}
 		if ((*(data->map + i))->nb_of_bonds == 0)
 		{
-			ft_putstr("li_erase_alone\n");
 			li_erase_room(data, i);
 		}
 	}
@@ -92,7 +90,8 @@ void	li_erase_alone(t_data *data, size_t i)
 
 void	li_forward_ref(t_data *data, size_t ref[3])
 {
-	if ((*(data->map + ref[1]))->nb_of_bonds == 2 && !(ref[1] == 0 || ref[1] == data->size - 1))
+	if ((*(data->map + ref[1]))->nb_of_bonds == 2
+			&& !(ref[1] == 0 || ref[1] == data->size - 1))
 	{
 		if (*((*(data->map + ref[1]))->bond_sum + 0) == ref[0])
 		{

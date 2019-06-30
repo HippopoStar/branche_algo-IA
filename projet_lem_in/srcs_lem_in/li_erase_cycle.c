@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 16:35:30 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/25 22:10:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:30:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@
 **         - Tant que les salles atteintes par chacun des 2 itineraires
 **           ne sont pas confondues (condition necessaire, voir [W-X-Y]),
 **           et qu'elles ne possedent qu'une seule autre liaison
-**             - Suivre ces liaisons [G->H->J ; G->I->J | S->M ; S->T->M | W[...]]
+**             - Suivre ces liaisons [G->H->J ; G->I->J | S->M ; S->T->M | W...]
 **         - Si elles rejoignent toutes 2 une meme salle
 **           ou qu'elle se sont toutes les 2 rejointes
-**             - Eliminer le plus long trajet vers cette meme salle [I | T | W[...]]
+**             - Eliminer le plus long trajet vers cette meme salle [I | T | W.]
 **
 ** Repeter les etapes 2 et 3 autant de fois que necessaire
 */
@@ -75,15 +75,15 @@ int		aux_li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	int		ret_val;
 
 	ret_val = 1;
-	if ((*(data->map + ref_a[1]))->nb_of_bonds == 1 && !(ref_a[1] == 0 || ref_a[1] == data->size - 1))
+	if ((*(data->map + ref_a[1]))->nb_of_bonds == 1
+			&& !(ref_a[1] == 0 || ref_a[1] == data->size - 1))
 	{
-		ft_putstr("aux_li_determine_cycle\n");
 		li_erase_room(data, ref_a[1]);
 		ret_val = 2 * ret_val;
 	}
-	if ((*(data->map + ref_b[1]))->nb_of_bonds == 1 && !(ref_b[1] == 0 || ref_b[1] == data->size - 1))
+	if ((*(data->map + ref_b[1]))->nb_of_bonds == 1
+			&& !(ref_b[1] == 0 || ref_b[1] == data->size - 1))
 	{
-		ft_putstr("aux_li_determine_cycle\n");
 		li_erase_room(data, ref_b[1]);
 		ret_val = 3 * ret_val;
 	}
@@ -110,7 +110,6 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 	{
 		if ((*(data->map + ref_a[1]))->nb_of_bonds == 2)
 		{
-			ft_putstr("li_determine_cycle\n");
 			li_erase_room(data, ref_a[1]);
 			return (6);
 		}
@@ -122,7 +121,8 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 }
 
 /*
-** La condition sur 'a == ref_b[0] || a == ref_b[1]' est probablement ameliorable
+** La condition sur 'a == ref_b[0] || a == ref_b[1]'
+** est probablement ameliorable
 **
 **			ft_putstr("rec_li_erase_cycle\n");
 **
@@ -144,13 +144,15 @@ int		li_determine_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3])
 **		ft_putchar('\n');
 */
 
-int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t iter)
+int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3],\
+																	size_t iter)
 {
 	size_t	a;
 	size_t	b;
 	int		ret_val;
 
-	if (!(ref_a[1] == ref_b[1] || (ref_a[0] == ref_a[1] && ref_b[0] == ref_b[1])))
+	if (!(ref_a[1] == ref_b[1]
+				|| (ref_a[0] == ref_a[1] && ref_b[0] == ref_b[1])))
 	{
 		a = ref_a[1];
 		b = ref_b[1];
@@ -162,12 +164,10 @@ int		rec_li_erase_cycle(t_data *data, size_t ref_a[3], size_t ref_b[3], size_t i
 		ret_val = rec_li_erase_cycle(data, ref_a, ref_b, iter + 1);
 		if (ret_val % 2 == 0 && !(a == ref_a[1]) && b < data->eff) //TODO
 		{
-			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, a);
 		}
 		if (ret_val % 3 == 0 && !(b == ref_b[1]) && b < data->eff) //TODO
 		{
-			ft_putstr("rec_li_erase_cycle\n");
 			li_erase_room(data, b);
 		}
 //		li_print_map_summary(data);
@@ -202,14 +202,6 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 	ref_b[1] = tar_b;
 	ref_a[2] = 0;
 	ref_b[2] = 0;
-	ft_putstr("\033[34mInitialisation de \"rec_li_erase_cycle\" :\n");
-	ft_putstr("salle de depart : ");
-	ft_putstr((*(data->map + i))->name);
-	ft_putstr("\nitineraire 'a' : ");
-	ft_putstr((*(data->map + tar_a))->name);
-	ft_putstr("\nitineraire 'b' : ");
-	ft_putstr((*(data->map + tar_b))->name);
-	ft_putstr("\033[00m\n");
 	rec_li_erase_cycle(data, ref_a, ref_b, 0);
 }
 
@@ -257,16 +249,17 @@ void	aux_li_erase_cycle(t_data *data, size_t i, size_t tar_a, size_t tar_b)
 ** et les effacants toutes 2 : par exemple le mileu d'une portion d'itineraire
 ** isolee du reste du graphe)
 **
-** De meme, on verifie la condition 'i < data->eff' a chaque etape, par securite,
-** pour s'assurer que la salle 'i' n'ait pas ete echangee de place avec une autre,
+** De meme, on verifie la condition 'i < data->eff' a chaque etape,
+** par securite, pour s'assurer que la salle 'i' n'ait pas ete echangee de place
+** avec une autre,
 ** (cas ou elle se retrouve a un moment donne en avant-derniere position alors
 ** qu'une salle doit etre effacee),
 ** cela doit pouvoir arriver, car bien que lors du premier appel de
 ** 'li_erase_cycle', en partant de la salle 'i' on ne peut qu'effacer des salles
 ** la suivant dans le graphe,
 ** ca peut ne plus etre le cas lors de l'appel suivant, lorsqu'on incremente 'i'
-** mais qu'entre-temps le tableau repertoriant les salles du graphe s'est retrouve
-** tout melange
+** mais qu'entre-temps le tableau repertoriant les salles du graphe
+** s'est retrouve tout melange
 */
 
 void	li_erase_cycle(t_data *data, size_t i)

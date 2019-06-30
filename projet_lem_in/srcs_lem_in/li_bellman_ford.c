@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/24 16:56:14 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:07:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@
 ** liaisons, il aura fallut emprunter un itineraire de poids superieur a la
 ** valeur absolue de cet suite liaison
 **
-** (7 lignes)
-**				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2") || ft_strcmp((*(data->map + target))->name, "O_z2")))
+** (8 lignes)
+**				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2")
+					  || ft_strcmp((*(data->map + target))->name, "O_z2")))
 **				{
 **					ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
 **					li_display_room_info(data, (*(data->map + i))->ancestor);
@@ -87,6 +88,12 @@
 ** salles dont la variable 'allowed' est a '0',
 ** dans le corps de la fonction 'li_initialise_weights'
 ** De meme pour les variables '(t_room *)->weights' !
+**
+** Par ailleurs, pour le bon fonctionnement de 'li_tunnel_back',
+** il ne faut pas changer les variables '(t_room *)->ancestor' des salles
+** intervenants dans un chemin prealable, et par consequent ne pas appeler
+** 'li_ping_neighbour' dans le cas ou on atteint une salle dont la
+** variable '(t_room *)->allowed' est a '0'
 */
 
 /*
@@ -98,8 +105,8 @@
 ** en negatif, car cela impliquerait qu'on ait fait plus de trajet en remontant
 ** un ancien chemin, que de trajet pour rejoindre la salle de depart de ce
 ** roll-back, or cela impliquerait que s'ait ete par ce 2nd trajet en question
-** qu'il eut fallu passer lors de la decouvert du 1er afin d'obtenir l'itineraire
-** le plus court
+** qu'il eut fallu passer lors de la decouvert du 1er afin d'obtenir
+** l'itineraire le plus court
 */
 
 void	li_ping_neighbour(t_data *data, size_t i, size_t target)

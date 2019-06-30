@@ -83,7 +83,13 @@ Documentation :
 - Problème de boucle infinie dans le cas dans lequel 'lem-in' est lance sans arguments ('CTRL + D' 'CTRL + D')
 - Ameliorer 'get\_next\_line'
 - Ameliorer le Makefile
-- 2 logins necessaires dans le fichier auteur
+- 2 logins necessaires dans le fichier auteur  
+Changements depuis la precedente correction :  
+- la condition sur 'pos' dans la structure de controle de 'li\_reverse\_path'  
+	(precaution concernant les boucles infinies debouchant sur un SIGABORT)
+- la condition sur 'edge\_len' dans 'li\_melt\_paths', et le passage du type de  
+	'li\_build\_routes' de 'void' a 'int'  
+	(precaution concernant les boucles infinies)
 
 ## In '**mod1**'
 

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/19 18:37:08 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:09:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,10 @@ void	li_initialise_weights(t_data *data)
 */
 
 /*
-**		i = (!((*(data->map + j))->allowed == 0 && (*(data->map + (*(data->map + j))->ancestor))->allowed == 1)) ? (*(data->map + j))->ancestor : li_inversed_ancestor(data, j);
+**		i = (!((*(data->map + j))->allowed == 0
+**				&& (*(data->map + (*(data->map + j))->ancestor))->allowed == 1))
+**			? (*(data->map + j))->ancestor
+**			: li_inversed_ancestor(data, j);
 **
 ** Avec l'arrivee de 'li_suurballe', ca a a present une importance
 ** de ne pas mettre la variable '(*(data->map + data->size - 1))->allowed' a '0'
@@ -259,9 +262,9 @@ int		li_bhandari(t_data *data)
 //		if (data->path_nb == 1)
 //			li_order_rooms(data);
 		li_initialise_weights(data);
-		ft_putstr("Appel de 'li_bellman_ford'\n");
+//		ft_putstr("Appel de 'li_bellman_ford'\n");
 		li_bellman_ford(data);
-		ft_putstr("Sortie de 'li_bellman_ford'\n");
+//		ft_putstr("Sortie de 'li_bellman_ford'\n");
 		if ((ret_val = li_reverse_path(data))
 				&& (ret_val = li_build_route(data, data->path_nb)))
 		{

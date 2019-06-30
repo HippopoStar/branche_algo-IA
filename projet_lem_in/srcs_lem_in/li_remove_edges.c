@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/20 16:53:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:22:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,12 +164,20 @@ int		li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 ** Puis :
 **		ft_putstr("Apres appel de 'li_melt_paths'\n");
 **		li_print_route(route, route->height);
+**
+** Auparavant, la fonction 'aux_li_remove_edges' etait de type 'void'
+** Elle est a present de type 'int' afin de prevenir les eventuelles boucles
+** infinies lorsque 'edge_len' vaut '0'
+** L'initialisation de 'ret_val' au cas dans lequel on n'entre pas dans la
+** condition de la structure de controle doit se faire a '1' :
+** si on n'appelle pas 'li_melt_paths', on ne genere pas de variable 'edge_len'
 */
 
 int		aux_li_remove_edges(t_route *route, size_t *i, size_t *j, size_t *k)
 {
 	int		ret_val;
 
+	ret_val = 1;
 	if ((*j) < *(*(route->field + (*i)) + route->width)
 			&& *(*(route->field + (*i)) + (*j)) == *(*(route->field
 					+ route->height) + (*k)))
