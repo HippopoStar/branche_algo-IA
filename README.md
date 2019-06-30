@@ -59,6 +59,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 Documentation :  
 [Algo' de chemins disjoints de Bhandari / Suurballe](http://www.macfreek.nl/memory/Disjoint_Path_Finding)  
 [Algo' d'Edmonds-Karp & Maximum flow problem](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp)  
+`./generator --big-superposition > big_superposition.map && time ./lem-in -lcs < big_superposition.map && tail -n 1 big_superposition.map`
 - Enlever les flags 'sanitize' dans le Makefile
 - lors du parsing :
 	- comptabiliser le nombre de liaisons de chaque salle
