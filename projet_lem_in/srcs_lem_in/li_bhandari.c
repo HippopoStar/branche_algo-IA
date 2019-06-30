@@ -42,11 +42,9 @@ void	li_initialise_weights(t_data *data)
 	i = 1;
 	while (i < data->size)
 	{
-		if (!((*(data->map + i))->allowed == 0))
-		{
-			(*(data->map + i))->ancestor = data->size;
-			(*(data->map + i))->weight = (int)data->size;
-		}
+		(*(data->map + i))->ancestor = data->size;
+		(*(data->map + i))->weight = (int)data->size;
+		(*(data->map + i))->except = 0;
 		i++;
 	}
 }
@@ -107,38 +105,9 @@ void	li_initialise_weights(t_data *data)
 **     - On remonte dans le chemin inverse
 */
 
-void	li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei)
-{
-	size_t	j;
-	size_t	target;
-	size_t	k;
-
-	data->wit = 0;
-	while (data->wit == 0)
-	{
-		j = (*i);
-		*i = li_inversed_ancestor(data, *i);
-		*((*(data->map + j))->pipes + (*i)) = (signed char)
-			(-(*((*(data->map + (*i)))->pipes + j)));
-		*((*(data->map + (*i)))->pipes + j) = (signed char)0;
-		*(*(data->paths + data->path_nb) + (*pos)) = j;
-		(*pos)--;
-		wei++;
-		k = 0;
-		while (data->wit == 0 && k < (*(data->map + (*i)))->nb_of_bonds)
-		{
-			target = *((*(data->map + (*i)))->bond_sum + k);
-			if (*((*(data->map + target))->pipes + (*i)) == (signed char)1 && (*(data->map + target))->weight == wei - 1)
-			{
-				data->wit = 1;
-			}
-			k++;
-		}
-	}
-	*i = target;
-	ft_putstr("En sortie de \"li_tunnel_front\"\n");
-	li_display_room_info(data, target);
-}
+/*
+** void	li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei);
+*/
 
 /*
 ** Dans cette fonction,
@@ -148,20 +117,9 @@ void	li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei)
 ** dans le cas des salles ayant leur variable 'allowed' a '0'
 */
 
-size_t	li_inversed_ancestor(t_data *data, size_t j)
-{
-	size_t	target;
-	size_t	i;
-
-	target = *((*(data->map + j))->bond_sum + 0);
-	i = 1;
-	while (!(*((*(data->map + j))->pipes + target) == (signed char)0 && *((*(data->map + target))->pipes + j) == (signed char)(-1)))
-	{
-		target = *((*(data->map + j))->bond_sum + i);
-		i++;
-	}
-	return (target);
-}
+/*
+** size_t	li_inversed_ancestor(t_data *data, size_t j);
+*/
 
 /*
 **		i = (!((*(data->map + j))->allowed == 0 && (*(data->map + (*(data->map + j))->ancestor))->allowed == 1)) ? (*(data->map + j))->ancestor : li_inversed_ancestor(data, j);
@@ -215,11 +173,6 @@ int		li_reverse_path(t_data *data)
 	j = i;
 	while (j > 0 && pos > 0)
 	{
-		if (j == 2)
-		{
-			ft_putstr("Dans 'li_reverse_paths'\n");
-			li_display_room_info(data, j);
-		}
 		i = (*(data->map + j))->ancestor;
 		(*(data->map + j))->allowed = 0;
 		*((*(data->map + j))->pipes + i) = (signed char)
@@ -227,16 +180,9 @@ int		li_reverse_path(t_data *data)
 		*((*(data->map + i))->pipes + j) = (signed char)0;
 		*(*(data->paths + data->path_nb) + pos) = j;
 		pos--;
-		if ((*(data->map + i))->allowed == 0)
-		{
-			li_tunnel_front(data, &i, &pos, (*(data->map + j))->weight);
-		}
 		j = i;
 	}
 	*(*(data->paths + data->path_nb) + data->size) = pos;
-	(data->path_nb)++; //TODO
-	li_print_paths(data); //TODO
-	(data->path_nb)--; //TODO
 	return (j == 0 ? 1 : 0);
 }
 

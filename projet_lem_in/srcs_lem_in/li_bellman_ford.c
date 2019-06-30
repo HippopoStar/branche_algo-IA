@@ -64,34 +64,9 @@
 **				}
 */
 
-void	li_suurballe(t_data *data, size_t i, size_t target)
-{
-	int		tmp_wit;
-	size_t	tmp_wei;
-	size_t	forced;
-	size_t	j;
-
-	j = 0;
-	while (j < (*(data->map + target))->nb_of_bonds)
-	{
-		forced = *((*(data->map + target))->bond_sum + j);
-		if (*((*(data->map + target))->pipes + forced) == (signed char)(-1))
-		{
-			tmp_wit = data->wit;
-			data->wit = 0;
-			tmp_wei = (*(data->map + target))->weight;
-			(*(data->map + target))->weight = (*(data->map + i))->weight - 1;
-			li_ping_neighbour(data, target, forced);
-			(*(data->map + target))->weight = tmp_wei;
-			if (data->wit == 1)
-			{
-				(*(data->map + target))->ancestor = i; //Hmmm...
-			}
-			data->wit = (tmp_wit || data->wit) ? 1 : 0;
-		}
-		j++;
-	}
-}
+/*
+** void	li_suurballe(t_data *data, size_t i, size_t target);
+*/
 
 /*
 ** L'appel de 'li_ping_neighbour' dans 'li_tunnel_back'
@@ -114,38 +89,9 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 ** De meme pour les variables '(t_room *)->weights' !
 */
 
-void	li_tunnel_back(t_data *data, size_t i, size_t target)
-{
-	size_t	j;
-	size_t	target_2;
-	int		wei;
-	int		tmp;
-
-	ft_putstr("li_tunnel_back\n");
-	target = (*(data->map + target))->ancestor;
-	wei = (*(data->map + i))->weight;
-	while (!(target == 0))
-	{
-		ft_putstr("data->path_nb");
-		ft_putnbr((int)data->path_nb);
-		ft_putchar('\n');
-		li_display_room_info(data, target);
-		tmp = (*(data->map + target))->weight;
-		(*(data->map + target))->weight = wei;
-		j = 0;
-		while (j < (*(data->map + target))->nb_of_bonds)
-		{
-			target_2 = *((*(data->map + target))->bond_sum + j);
-			tmp = (*(data->map + target))->weight;
-			li_ping_neighbour(data, target, target_2);
-			j++;
-		}
-		(*(data->map + target))->weight = tmp;
-		target = (*(data->map + target))->ancestor;
-		wei--;
-	}
-	ft_putstr("Fin de li_tunnel_back\n");
-}
+/*
+** void	li_tunnel_back(t_data *data, size_t i, size_t target);
+*/
 
 /*
 ** Il n'est pas cense etre possible de passer le poids de la salle de depart
@@ -160,15 +106,18 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 {
 	int		wei;
 
-	wei = (*(data->map + i))->weight + 1;
-	if (wei	< (*(data->map + target))->weight)
+	if (!(*((*(data->map + i))->pipes + target) == (signed char)0)
+			&& ((wei = (*(data->map + i))->weight
+					+ (int)(*((*(data->map + i))->pipes + target)))
+				< (*(data->map + target))->weight))
 	{
 		(*(data->map + target))->ancestor = i;
 		(*(data->map + target))->weight = wei;
+		(*(data->map + target))->except = *((*(data->map + i))->pipes + target)
+			== (signed char)1 ? 0 : 1;
 		data->wit = 1;
 	}
 }
-
 
 /*
 ** Au vu de la condition d'appel de 'li_ping_neighbour',
@@ -183,21 +132,26 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 	size_t	target;
 
 	j = 0;
-	while (j < (*(data->map + i))->nb_of_bonds)
+	if (!((*(data->map + i))->allowed || (*(data->map + i))->except))
 	{
-		target = *((*(data->map + i))->bond_sum + j);
-		if (*((*(data->map + i))->pipes + target) == (signed char)1)
+		while (j < (*(data->map + i))->nb_of_bonds)
 		{
-			if ((*(data->map + target))->allowed == 1)
+			target = *((*(data->map + i))->bond_sum + j);
+			if (*((*(data->map + i))->pipes + target) == (signed char)(-1))
 			{
 				li_ping_neighbour(data, i, target);
 			}
-			else
-			{
-				li_tunnel_back(data, i, target);
-			}
+			j++;
 		}
-		j++;
+	}
+	else
+	{
+		while (j < (*(data->map + i))->nb_of_bonds)
+		{
+			target = *((*(data->map + i))->bond_sum + j);
+			li_ping_neighbour(data, i, target);
+			j++;
+		}
 	}
 }
 
@@ -233,7 +187,7 @@ void	li_bellman_ford(t_data *data)
 		i = 1;
 		while (i < data->size - 1)
 		{
-			if (!((*(data->map + i))->weight == (int)data->size || (*(data->map + i))->allowed) == 0)
+			if (!((*(data->map + i))->weight == (int)data->size))
 			{
 				aux_li_bellman_ford(data, i);
 			}

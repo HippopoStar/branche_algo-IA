@@ -166,8 +166,6 @@ void				li_display_room_info(t_data *data, size_t i);
 /*
 ** Dans le fichier 'li_bellman_ford.c'
 */
-void				li_suurballe(t_data *data, size_t i, size_t target);
-void				li_tunnel_back(t_data *data, size_t i, size_t target);
 void				li_ping_neighbour(t_data *data, size_t i, size_t target);
 void				aux_li_bellman_ford(t_data *data, size_t i);
 void				li_bellman_ford(t_data *data);
@@ -176,8 +174,6 @@ void				li_bellman_ford(t_data *data);
 */
 void				li_bhandari_max_iterations(t_data *data);
 void				li_initialise_weights(t_data *data);
-void				li_tunnel_front(t_data *data, size_t *i, size_t *pos, int wei);
-size_t				li_inversed_ancestor(t_data *data, size_t j);
 int					li_reverse_path(t_data *data);
 int					li_allocate_paths(t_data *data);
 int					li_bhandari(t_data *data);
