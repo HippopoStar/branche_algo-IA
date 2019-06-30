@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 10:08:16 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/17 19:16:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 19:13:58 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 ** - en premier lieu pour 'effective'
 ** - en second lieu pour 'effacees'
 ** (voir 'li_epur.c')
+*/
+/*
+**		ft_putstr("\nNumber of rooms erased before graph traversal : ");
+**		ft_putnbr((int)data->eff);
 */
 
 void	li_stats(t_data *data)
@@ -29,13 +33,15 @@ void	li_stats(t_data *data)
 		ft_putnbr((int)(data->size + data->eff));
 		ft_putstr("\nNumber of tubes : ");
 		ft_putnbr((int)data->bonds);
-		ft_putstr("\nNumber of rooms erased before graph traversal : ");
-		ft_putnbr((int)data->eff);
 		ft_putstr("\nNumber of disjoint paths passed through : ");
 		ft_putnbr((int)(data->best_route + 1));
 		ft_putchar('\n');
 	}
 }
+
+/*
+**	ft_putstr("-s\t: show map statistics\n");
+*/
 
 void	li_help(void)
 {
@@ -47,7 +53,6 @@ void	li_help(void)
 	ft_putstr("-l\t: enable step counting\n");
 	ft_putstr("-e\t: enable duplicates in connections declaration\n");
 	ft_putstr("-d\t: disable duplicates in rooms' coordinates\n");
-	ft_putstr("-s\t: show map statistics\n");
 	ft_putstr("\033[32mComplexity\033[00m:\n");
 	ft_putstr("O(nb_of_rooms * total_nb_of_tubes * max_simultaneous_paths)\n");
 }
