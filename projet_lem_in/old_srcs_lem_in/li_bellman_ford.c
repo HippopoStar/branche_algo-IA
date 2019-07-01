@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/01 12:11:48 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:07:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 **
 ** (8 lignes)
 **				if (!(ft_strcmp((*(data->map + i))->name, "Bzd2")
-**					  || ft_strcmp((*(data->map + target))->name, "O_z2")))
+					  || ft_strcmp((*(data->map + target))->name, "O_z2")))
 **				{
 **					ft_putstr("\033[33maux_li_bellman_ford\033[00m\n");
 **					li_display_room_info(data, (*(data->map + i))->ancestor);

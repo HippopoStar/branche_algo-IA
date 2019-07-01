@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 22:33:36 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/01 12:13:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:22:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,13 @@ int		li_melt_paths(t_route *route, size_t i, size_t j, size_t k)
 	while (j - edge_len < route->width || k < route->width)
 	{
 		if (j - edge_len < route->width)
+		{
 			*(*(route->field + i) + j - edge_len) = 0;
+		}
 		if (k < route->width)
+		{
 			*(*(route->field + route->height) + k) = 0;
+		}
 		j++;
 		k++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:34:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/01 12:13:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/24 21:12:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	li_print_map(t_data *data)
 	{
 		room_letter[0] = *((*(data->map + i))->name + 0);
 		li_get_output(data, (char *)room_letter);
+		j = 0;
 		while (j < data->size)
 		{
 			bond_value[1] = '0' + *((*(data->map + i))->pipes + j);

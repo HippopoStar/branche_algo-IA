@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:48:27 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:39 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/01 12:10:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,29 +236,35 @@ void				li_display_steps(t_data *data, size_t step,\
 /*
 ** Dans le fichier 'li_swap_rooms.c'
 */
-void				li_swap_map(t_data *data, size_t pos_a, size_t pos_b);
-void				li_swap_bonds(t_data *data, size_t i,\
-													size_t pos_a, size_t pos_b);
-void				li_erase_room(t_data *data, size_t pos);
-void				li_swap_rooms(t_data *data, size_t pos_a, size_t pos_b);
+/*
+** void				li_swap_map(t_data *data, size_t pos_a, size_t pos_b);
+** void				li_swap_bonds(t_data *data, size_t i,\
+**													size_t pos_a, size_t pos_b);
+** void				li_erase_room(t_data *data, size_t pos);
+** void				li_swap_rooms(t_data *data, size_t pos_a, size_t pos_b);
+*/
 /*
 ** Dans le fichier 'li_epur.c'
 */
-void				li_erase_alone(t_data *data, size_t i);
-void				li_forward_ref(t_data *data, size_t ref[3]);
-void				li_epur(t_data *data);
+/*
+** void				li_erase_alone(t_data *data, size_t i);
+** void				li_forward_ref(t_data *data, size_t ref[3]);
+** void				li_epur(t_data *data);
+*/
 /*
 ** Dans le fichier 'li_erase_cycle.c'
 */
-int					aux_li_determine_cycle(t_data *data,\
-											size_t ref_a[3], size_t ref_b[3]);
-int					li_determine_cycle(t_data *data,\
-											size_t ref_a[3], size_t ref_b[3]);
-int					rec_li_erase_cycle(t_data *data,\
-								size_t ref_a[3], size_t ref_b[3], size_t iter);
-void				aux_li_erase_cycle(t_data *data, size_t i,\
-													size_t tar_a, size_t tar_b);
-void				li_erase_cycle(t_data *data, size_t i);
+/*
+** int					aux_li_determine_cycle(t_data *data,\
+**											size_t ref_a[3], size_t ref_b[3]);
+** int					li_determine_cycle(t_data *data,\
+**											size_t ref_a[3], size_t ref_b[3]);
+** int					rec_li_erase_cycle(t_data *data,\
+**								size_t ref_a[3], size_t ref_b[3], size_t iter);
+** void				aux_li_erase_cycle(t_data *data, size_t i,\
+**													size_t tar_a, size_t tar_b);
+** void				li_erase_cycle(t_data *data, size_t i);
+*/
 /*
 ** Dans le fichier 'li_memory_liberator.c'
 */

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:13 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/01 12:12:20 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/06/30 18:09:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,8 +259,12 @@ int		li_bhandari(t_data *data)
 	ret_val = 1;
 	while (data->path_nb < data->max_paths && ret_val == 1)
 	{
+//		if (data->path_nb == 1)
+//			li_order_rooms(data);
 		li_initialise_weights(data);
+//		ft_putstr("Appel de 'li_bellman_ford'\n");
 		li_bellman_ford(data);
+//		ft_putstr("Sortie de 'li_bellman_ford'\n");
 		if ((ret_val = li_reverse_path(data))
 				&& (ret_val = li_build_route(data, data->path_nb)))
 		{
