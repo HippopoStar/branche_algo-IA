@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 17:33:06 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/06/30 18:07:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/01 11:52:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,14 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 			li_ping_neighbour(data, target, forced);
 			if (data->wit == 1)
 			{
+				if (data->path_nb == 1 && !(ft_strcmp((*(data->map + i))->name, "X_i5") || ft_strcmp((*(data->map + target))->name, "Quc5")))
+				{
+					ft_putstr("\033[33mli_suurballe\033[00m\n");
+					li_display_room_info(data, (*(data->map + i))->ancestor);
+					li_display_room_info(data, i);
+					li_display_room_info(data, target);
+					li_display_room_info(data, forced);
+				}
 				(*(data->map + target))->ancestor = i; //Hmmm...
 			}
 			data->wit = (tmp_wit || data->wit) ? 1 : 0;
@@ -154,6 +162,13 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 //		if ((*(data->map + i))->allowed == 0 || (*(data->map + target))->allowed == 1)
 		else
 		{
+			if (data->path_nb == 1 && !(ft_strcmp((*(data->map + i))->name, "Jb_7") || ft_strcmp((*(data->map + target))->name, "Quc5")))
+			{
+				ft_putstr("\033[33mli_ping_neighbour\033[00m\n");
+				li_display_room_info(data, (*(data->map + i))->ancestor);
+				li_display_room_info(data, i);
+				li_display_room_info(data, target);
+			}
 			(*(data->map + target))->ancestor = i;
 			(*(data->map + target))->weight = wei;
 			data->wit = 1;
