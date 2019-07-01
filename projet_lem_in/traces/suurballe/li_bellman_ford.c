@@ -76,6 +76,8 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 	size_t	forced;
 	size_t	j;
 
+	tmp_wei = (*(data->map + target))->weight;
+	(*(data->map + target))->weight = (*(data->map + i))->weight + 1;
 	j = 0;
 	while (j < (*(data->map + target))->nb_of_bonds)
 	{
@@ -84,10 +86,7 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 		{
 			tmp_wit = data->wit;
 			data->wit = 0;
-			tmp_wei = (*(data->map + target))->weight;
-			(*(data->map + target))->weight = (*(data->map + i))->weight - 1;
 			li_ping_neighbour(data, target, forced);
-			(*(data->map + target))->weight = tmp_wei;
 			if (data->wit == 1)
 			{
 				(*(data->map + target))->ancestor = i; //Hmmm...
@@ -96,6 +95,7 @@ void	li_suurballe(t_data *data, size_t i, size_t target)
 		}
 		j++;
 	}
+	(*(data->map + target))->weight = tmp_wei;
 }
 
 /*
@@ -147,7 +147,7 @@ void	li_ping_neighbour(t_data *data, size_t i, size_t target)
 					+ (int)(*((*(data->map + i))->pipes + target)))
 				< (*(data->map + target))->weight))
 	{
-		if ((*(data->map + target))->allowed == 0 && (*(data->map + i))->allowed == 1)
+		if ((*(data->map + target))->allowed == 0 && (*(data->map + i))->allowed == 1 && !(i == data->size - 1 || target == 0))
 		{
 			li_suurballe(data, i, target);
 		}
@@ -198,7 +198,7 @@ void	aux_li_bellman_ford(t_data *data, size_t i)
 ** de 'li_initialise_weights'
 **
 ** Avec l'arrivee de 'li_suurballe', la condition
-** 'if (!((*(data->map + i))->weight == data->size))'
+** 'if (!((*(data->map + i))->weight == (int)data->size))'
 ** est a mediter
 **
 ** L'appel initial 'aux_li_bellman_ford(data, 0)'
