@@ -58,6 +58,8 @@ get_corewar_vm_and_champs () {
 				fi
 			fi
 			tar -xvf "${VM_CHAMPS_ARCHIVE_FILE}" -C "${VM_CHAMPS_DIR}/vm_champs"
+			chmod u+x "${VM_CHAMPS_DIR}/vm_champs/asm"
+			chmod u+x "${VM_CHAMPS_DIR}/vm_champs/corewar"
 		fi
 	else
 		echo "Erreur : Le repertoire \"${VM_CHAMPS_DIR}\" est inexistant"
