@@ -81,6 +81,9 @@ remove_corewar_dependencies () {
 		rm -f "${VM_CHAMPS_ARCHIVE_FILE}"
 		# Le fait d'ecrire le nom de repertoire 'vm_champs' en dur apporte notamment une securite supplementaire dans la commande suivante
 		rm -rf "${VM_CHAMPS_DIR}/vm_champs"
+#		rm -f "${VM_CHAMPS_DIR}/vm_champs/asm"
+#		rm -f "${VM_CHAMPS_DIR}/vm_champs/corewar"
+#		rm -rf "${VM_CHAMPS_DIR}/vm_champs/champs"
 #		rm -f "${VM_CHAMPS_DIR}/vm_champs/._asm"
 #		rm -f "${VM_CHAMPS_DIR}/vm_champs/._corewar"
 #		rm -f "${VM_CHAMPS_DIR}/vm_champs/._champs"
