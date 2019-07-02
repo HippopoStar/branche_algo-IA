@@ -73,7 +73,7 @@ Documentation :
 		- sauvegarder quelque part son poids minimum ('room->weight' apres le premier passage)
 	- pour chaque itineraire :
 		- repertorier les salles impliquees (dans la stucture des salles elles-memes, en employant des nombres premiers ?)  
-			-> il est necessaire qu'il existe davantage de nombres premiers < INT_MAX que d'itineraires possibles
+			-> il est necessaire qu'il existe davantage de nombres premiers \< INT_MAX que d'itineraires possibles
 		- sauvegarder quelque part le poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - / ! \\ Attention au cas dans lequel 2 salles portant le meme nom sont declarees
@@ -84,12 +84,14 @@ Documentation :
 - Ameliorer 'get\_next\_line'
 - Ameliorer le Makefile
 - 2 logins necessaires dans le fichier auteur  
-Changements depuis la precedente correction :  
+__Changements depuis la precedente correction__ :  
+- Arret anticipe de 'Bellman\_Ford' grace a la variable 'data-\>wit'
 - la condition sur 'pos' dans la structure de controle de 'li\_reverse\_path'  
 	(precaution concernant les boucles infinies debouchant sur un SIGABORT)
 - la condition sur 'edge\_len' dans 'li\_melt\_paths', et le passage du type de  
 	'li\_build\_routes' de 'void' a 'int'  
 	(precaution concernant les boucles infinies)
+- Correction leak dans le cas '##start' ou '##end' suivis ni d'une commande (cas erreur) ni d'une salle (cas classique)
 
 ## In '**mod1**'
 
@@ -106,6 +108,7 @@ Changements depuis la precedente correction :
 [VM and champs](https://projects.intra.42.fr/uploads/document/document/391/vm_champs.tar)  
 Documentation :  
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
+[CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
