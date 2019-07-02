@@ -23,6 +23,8 @@ get_corewar_op_h () {
 		if test ! -e "${OP_H_FILE}" || test ! -f "${OP_H_FILE}" ; then
 			curl -o "${OP_H_FILE}" "${OP_H_URL}"
 		fi
+	else
+		echo "Erreur : Le repertoire \"${OP_H_DIR}\" est inexistant"
 	fi
 }
 
@@ -31,6 +33,8 @@ get_corewar_op_c () {
 		if test ! -e "${OP_C_FILE}" ; then
 			curl -o "${OP_C_FILE}" "${OP_C_URL}"
 		fi
+	else
+		echo "Erreur : Le repertoire \"${OP_C_DIR}\" est inexistant"
 	fi
 }
 
@@ -55,6 +59,8 @@ get_corewar_vm_and_champs () {
 			fi
 			tar -xvf "${VM_CHAMPS_ARCHIVE_FILE}" -C "${VM_CHAMPS_DIR}/vm_champs"
 		fi
+	else
+		echo "Erreur : Le repertoire \"${VM_CHAMPS_DIR}\" est inexistant"
 	fi
 }
 
@@ -73,10 +79,10 @@ remove_corewar_dependencies () {
 		rm -f "${VM_CHAMPS_ARCHIVE_FILE}"
 		# Le fait d'ecrire le nom de repertoire 'vm_champs' en dur apporte notamment une securite supplementaire dans la commande suivante
 		rm -rf "${VM_CHAMPS_DIR}/vm_champs"
-		# rm -f "${VM_CHAMPS_DIR}/vm_champs/._asm"
-		# rm -f "${VM_CHAMPS_DIR}/vm_champs/._corewar"
-		# rm -f "${VM_CHAMPS_DIR}/vm_champs/._champs"
-		# rm -df "${VM_CHAMPS_DIR}/vm_champs"
+#		rm -f "${VM_CHAMPS_DIR}/vm_champs/._asm"
+#		rm -f "${VM_CHAMPS_DIR}/vm_champs/._corewar"
+#		rm -f "${VM_CHAMPS_DIR}/vm_champs/._champs"
+#		rm -df "${VM_CHAMPS_DIR}/vm_champs"
 	fi
 }
 
