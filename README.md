@@ -108,6 +108,7 @@ __Changements depuis la precedente correction__ :
 [VM and champs](https://projects.intra.42.fr/uploads/document/document/391/vm_champs.tar)  
 Documentation :  
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
+[Un Google Doc](https://docs.google.com/spreadsheets/d/1pFwSCne-mh-u5ZLsjZS8VI9QvecYk-gWTyNaPstjpLE/htmlview#gid=0)  
 [CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
 
 ## In '**CoreWar Championship**'
