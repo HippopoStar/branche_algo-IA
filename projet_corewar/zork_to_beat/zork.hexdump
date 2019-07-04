@@ -98,7 +98,8 @@ _____AND_____
 ===== and r1, %0, r1
 #     Realise l'operation '&' avec le contenu de la variable 'r1' et le litteral '0',
 #     et stock le resultat dans 'r1'
-#     Concretement : met la variable contenue dans 'r1' a '0'
+#     Concretement : met la variable contenue dans 'r1' a '0' (inutile voire dangereux),
+#                    cependant, cela permet de faire passer le 'carry' a '1'
 
 _____LIVE_____
 
@@ -163,4 +164,9 @@ _____ZJMP_____
 #| 000008a0  00 00 00 01 09 ff fb                              |.......|
 
 ===== zjmp %:live
+#     Replace le curseur d'instructions sur la position du label 'live'
+#     (a ne pas confondre avec l'instruction 'live', bien qu'ici leurs positions soient confondues,
+#     car l'instruction 'live' est la 1ere insruction du label 'live')
+#     Note :
+#     S'execute avec succes car le carry est a '1' suite a l'execution de 'and'
 
