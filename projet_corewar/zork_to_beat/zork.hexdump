@@ -12,3 +12,155 @@
 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
 000008a0  00 00 00 01 09 ff fb                              |.......|
 000008a7
+
+# On decortique le binaire genere a partir du fichier 'zork.s'
+
+_____STI_____
+
+0x00000890 - 2 192
+
+#| '0x0b' = '11'
+#| correspond a l'identifiant de l'instruction 'sti'
+#|           |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x68' = '0b01101000'
+#| correspond a :
+#| - '01' : un registre
+#| - '10' : un direct
+#| - '10' : un direct
+#| - '00'
+#|              |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x01' = '1'
+#| correspond au registre 'r1'
+#|                 |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x000f' = '15'
+#| correspond a la position relative (en octets) de
+#| l'instruction 'live' (d'identifiant '0x01') par rapport
+#| au debut de l'instruction courante
+#| Concretement :
+#| - Se positionner sur '0x0b' (index '0')
+#| - Avancer octet par octet en incrementant l'index de '1' a chaque iteration, jusqu'a ce que cet index soit egal a '15'
+#| - On est a present sur l'octet '0x01', correspondant a l'identifiant de l'instruction 'live'
+#| Note :
+#| '0x000f' est decrit comme etant un direct, soit s'etalant sur 4 octets dans le cas general,
+#| cependant, etant donne qu'il s'agit en fait ici d'un label, par consequent d'une adresse,
+#| non pas d'un literal, il n'occupe que 2 octets
+#|                    |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x0001' = '1'
+#| correspond au litteral '1'
+#|                          |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+===== sti r1, %:live, %1
+#     Place la valeur contenue dans le registre 'r1' (int) dans les 'sizeof(r1)' = '4' octets suivant la position du label 'live'
+#     (a ne pas confondre avec l'instruction 'live', bien qu'ici leurs positions soient confondues,
+#     car l'instruction 'live' est la 1ere insruction du label 'live')
+
+_____AND_____
+
+0x00000897 = 2 199
+
+#| '0x06' = '6'
+#| correspond a l'identifiant de l'instruction 'and'
+#|                                |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x64' = '0b01100100' correspond a :
+#| - '01' : un registre
+#| - '10' : un direct
+#| - '01' : un registre
+#| - '00'
+#|                                    |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x01' = '1'
+#| correspond au registre 'r1'
+#|                                       |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x0000' = '0'
+#| correspond au litteral '0'
+#|                                          |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+#| '0x0001' = '1'
+#| correspond au registre 'r1'
+#|                                                   |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+===== and r1, %0, r1
+#     Realise l'operation '&' avec le contenu de la variable 'r1' et le litteral '0',
+#     et stock le resultat dans 'r1'
+#     Concretement : met la variable contenue dans 'r1' a '0'
+
+_____LIVE_____
+
+0x0000089f = 2 207
+
+#| '0x01' = '1'
+#| correspond a l'identifiant de l'instruction 'live'
+#|                                                         |
+#| 00000890  0b 68 01 00 0f 00 01 06  64 01 00 00 00 00 01 01  |.h......d.......|
+
+# FAUX : L'INSTRUCTION 'live' NE COMPORTE PAS D'OCTET D'ENCODAGE
+# '0x00' = '0b00000000'
+# correspond a :
+# - '00'
+# - '00'
+# - '00'
+# - '00'
+#           |
+# 000008a0  00 00 00 01 09 ff fb                              |.......|
+
+#| '0x00000001' = '1'
+#| correspond au litteral '1'
+#| Note :
+#| Telle quelle, l'instruction 'live' signale que le joueur '1' est en vie,
+#| ce qui n'est pas l'objectif lorsque 'zork' n'est pas le joueur '1'
+#| Cependant, pas d'inquietude : c'est le propos de l'instruction 'sti'
+#| appelee precedemment de remplacer cette valeur par le numero de joueur de 'zork' !
+#|           |
+#| 000008a0  00 00 00 01 09 ff fb                              |.......|
+
+===== live %1
+
+_____ZJMP_____
+
+0x000008a4 = 2 212
+
+#| '0x09' = '9'
+#| correspond a l'identifiant de l'instruction 'zjump'
+#|                       |
+#| 000008a0  00 00 00 01 09 ff fb                              |.......|
+
+# FAUX : L'INSTRUCTION 'zjump' NE COMPORTE PAS D'OCTET D'ENCODAGE
+# '0x00' = '0b00000000'
+# '0xff' = '0b11111111'
+# correspond a :
+# - '11' : un indirect
+# - '11' : un indirect
+# - '11' : un indirect
+# - '11' : un indirect
+#                          |
+# 000008a0  00 00 00 01 09 ff fb                              |.......|
+
+#| '0xff' = '0b11111111' = '255' (unsigned char) OU '-127' (signed char)
+#| '0xfffb' = '0b11111111 11111011' = '65 531' (unsigned short int) OU '-32 763' (signed short int)
+#| '2^16' = '65536'
+#|          '65536' - '65531' = '5'
+#|          Par consequent, '65531' % '4096' = '4091'
+#| '5' = '0b0000 0101'
+#|
+#| relative_label_pos = (unsigned short int)(-5);
+#|                          |
+#| 000008a0  00 00 00 01 09 ff fb                              |.......|
+
+===== zjmp %:live
+
