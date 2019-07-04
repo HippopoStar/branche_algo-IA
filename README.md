@@ -110,6 +110,7 @@ Documentation :
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
 [Un Google Doc](https://docs.google.com/spreadsheets/d/1pFwSCne-mh-u5ZLsjZS8VI9QvecYk-gWTyNaPstjpLE/htmlview#gid=0)  
 [CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
+[Youtube : CONF@42 - Advanced Tips and Tricks in C](https://www.youtube.com/watch?v=ghjFIRXjg7U)  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
