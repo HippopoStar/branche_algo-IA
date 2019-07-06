@@ -1,5 +1,11 @@
 #include "ft_asm.h"
 
+/*
+** Un autre endroit pour liberer la memoire associee
+** aux references a des labels serait dans la fonction
+** 'asm_check_labels' du fichier 'asm_parse_prog.c'
+*/
+
 static void	asm_liberate_label_refs(t_asm_data *data)
 {
 	t_lab_ref	*to_free;

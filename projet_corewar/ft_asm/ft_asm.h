@@ -35,9 +35,9 @@ typedef struct	s_lab_ref
 
 typedef struct	s_asm_inst
 {
+	size_t		op_code_pos;
 	char		op_code;
 	char		checksum;
-	size_t		op_code_pos;
 }				t_asm_inst;
 
 typedef struct	s_asm_data
@@ -96,9 +96,9 @@ int		asm_compile(t_asm_data *data);
 void	asm_create_output_file(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_allocate_label_ref.c'
-** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name, t_lab_ref **node, size_t i);
+** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name, t_lab_ref **node, size_t pos);
 */
-int		asm_allocate_label_ref(t_asm_data *data, char *label_name, size_t i);
+int		asm_allocate_label_ref(t_asm_data *data, char *label_name, size_t pos);
 /*
 ** Dans le fichier 'asm_liberate_memory.c'
 ** void	asm_liberate_label_refs(t_asm_data *data);
@@ -138,6 +138,18 @@ int		asm_parse_header(t_asm_data *data, t_header *h, char **line);
 ** static int	asm_check_labels(t_asm_data *data, char *prog);
 */
 int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog);
+/*
+** Dans le fichier 'asm_parse_line.c'
+*/
+int		asm_parse_line(t_asm_data *data, char **line, size_t *pos);
+/*
+** Dans le fichier 'asm_get_label_declaration.c'
+*/
+int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i, size_t pos);
+/*
+** Dans le fichier 'asm_parse_instruction.c'
+*/
+int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos);
 /*
 ** Dans le fichier 'asm_put_prog_output.c'
 */

@@ -45,10 +45,23 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 
 int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 {
-	(void)data;
-	(void)line;
-	(void)prog;
+	int		ret_gnl;
+	t_asm_inst	inst;
+	size_t	pos;
+
 	h->prog_size = 23;
-	asm_check_labels(data, prog);
-	return (1);
+	pos = 0;
+	inst.op_code_pos = 0;
+	data->current_inst = &inst;
+	while ((ret_gnl = asm_parse_line(data, line, &pos)) == 1)
+		;
+	if (ret_gnl == 0)
+	{
+		asm_check_labels(data, prog);
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

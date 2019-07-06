@@ -29,10 +29,11 @@ static int	asm_get_quote(char *line, char *to_fill, int size)
 
 static int	asm_parse_name(t_asm_data *data, t_header *h, char **line)
 {
+	int		ret_gnl;
 	size_t	i;
 
-	asm_gn_pertinent_l(data, line, &i);
-	if (!ft_strncmp(".name", &(*((*line) + i)), 5))
+	ret_gnl = asm_gn_pertinent_l(data, line, &i);
+	if (ret_gnl == 1 && !ft_strncmp(".name", &(*((*line) + i)), 5))
 	{
 		i = i + 5;
 		asm_skip_spacing_chars(*line, &i);
@@ -46,10 +47,11 @@ static int	asm_parse_name(t_asm_data *data, t_header *h, char **line)
 
 static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 {
+	int		ret_gnl;
 	size_t	i;
 
-	asm_gn_pertinent_l(data, line, &i);
-	if (!ft_strncmp(".comment", &(*((*line) + i)), 8))
+	ret_gnl = asm_gn_pertinent_l(data, line, &i);
+	if (ret_gnl == 1 && !ft_strncmp(".comment", &(*((*line) + i)), 8))
 	{
 		i = i + 8;
 		asm_skip_spacing_chars(*line, &i);
