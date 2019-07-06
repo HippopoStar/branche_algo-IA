@@ -86,6 +86,7 @@ int		asm_syntax_error(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_error_messages_03.c'
 */
+int		asm_two_labels_in_a_row(t_asm_data *data);
 int		asm_inexisting_label_reference(char *label_name);
 /*
 ** Dans le fichier 'asm_compile.c'
