@@ -7,11 +7,11 @@ int		asm_compile(t_asm_data *data)
 	char		prog[CHAMP_MAX_SIZE];
 
 	line = NULL;
-	if (asm_parse_header(data, &h, &line) && asm_parse_prog(data, &line, prog))
+	if (asm_parse_header(data, &h, &line) && asm_parse_prog(data, &h, &line, prog))
 	{
-		h.prog_size = (unsigned int)data->output_index - (unsigned int)FT_HEADER_LENGTH;
 		if (asm_put_header_output(data, &h) && asm_put_prog_output(data, &h, prog))
 		{
+			data->total_size = FT_HEADER_LENGTH + h.prog_size;
 			return (1);
 		}
 	}

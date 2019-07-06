@@ -38,7 +38,7 @@ static void	asm_initialize_data_output(t_asm_data *data)
 	size_t	i;
 
 	i = 0;
-	while (i < FT_CHAMP_LENGTH)
+	while (i < FT_MAX_CHAMP_LENGTH)
 	{
 		*(data->output + i) = '\0';
 		i++;
@@ -54,6 +54,7 @@ static void	asm_initialize_data_output(t_asm_data *data)
 
 void	asm_initialize_data(t_asm_data *data)
 {
+	data->total_size = 0;
 	data->input_fd = -1;
 	data->output_file_name = NULL;
 	data->output_fd = -1;

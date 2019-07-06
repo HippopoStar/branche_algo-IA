@@ -5,7 +5,7 @@
 ** h->prog_size < CHAMP_MAX_SIZE
 */
 
-int		asm_put_prog_output(t_data *data, t_header *h, char *prog)
+int		asm_put_prog_output(t_asm_data *data, t_header *h, char *prog)
 {
 	size_t	i;
 

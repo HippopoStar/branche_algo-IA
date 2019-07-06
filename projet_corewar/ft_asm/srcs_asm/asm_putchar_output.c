@@ -2,7 +2,7 @@
 
 int		asm_putchar_output(t_asm_data *data, char c)
 {
-	if (data->output_index < FT_CHAMP_LENGTH)
+	if (data->output_index < FT_MAX_CHAMP_LENGTH)
 	{
 		*(data->output + data->output_index) = c;
 		(data->output_index)++;
@@ -14,7 +14,7 @@ int		asm_putchar_output(t_asm_data *data, char c)
 	}
 }
 
-int		asm_putsuint_output(t_asm_data *data, unsigned short int s)
+int		asm_putusint_output(t_asm_data *data, unsigned short int s)
 {
 	if (asm_putchar_output(data, (char)(s >> 8))
 			&& asm_putchar_output(data, (char)s))

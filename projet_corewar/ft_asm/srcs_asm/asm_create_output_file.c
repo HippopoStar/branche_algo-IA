@@ -7,7 +7,7 @@ void	asm_create_output_file(t_asm_data *data)
 		ft_putstr("Creating \"");
 		ft_putstr(data->output_file_name);
 		ft_putstr("\"\n");
-		write(data->output_fd, data->output, FT_CHAMP_LENGTH);
+		write(data->output_fd, data->output, data->total_size);
 	}
 	else
 	{

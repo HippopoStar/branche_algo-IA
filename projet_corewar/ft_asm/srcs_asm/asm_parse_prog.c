@@ -1,13 +1,13 @@
 #include "ft_asm.h"
 
-static int	aux_asm_check_labels(t_asm_data *data, t_label_ref *label_ref, char *prog)
+static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref, char *prog)
 {
 	unsigned short int	indirect;
 	size_t		i;
 
 	i = 0;
 	while (i < CHAMP_MAX_SIZE && (*(data->label_tab + i) == NULL
-			|| ft_strcmp(tmp->label_name, *(data->label_tab + i))))
+			|| ft_strcmp(label_ref->label_name, *(data->label_tab + i))))
 	{
 		i++;
 	}
@@ -19,14 +19,12 @@ static int	aux_asm_check_labels(t_asm_data *data, t_label_ref *label_ref, char *
 			return (1);
 		}
 	}
-	return (0);
+	return (asm_inexisting_label_reference(label_ref->label_name));
 }
 
 static int	asm_check_labels(t_asm_data *data, char *prog)
 {
-	t_label_ref		*tmp;
-	unsigned short int	;
-	
+	t_lab_ref		*tmp;
 
 	tmp = data->label_refs;
 	while (!(tmp == NULL))
@@ -45,11 +43,12 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 ** (char *)prog est un tableau de char de dimension CHAMP_MAX_SIZE
 */
 
-int		asm_parse_prog(t_asm_data *data, char **line, char *prog)
+int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 {
 	(void)data;
 	(void)line;
 	(void)prog;
-	asm_check_labels(t_asm_data *data, char *prog);
+	h->prog_size = 23;
+	asm_check_labels(data, prog);
 	return (1);
 }

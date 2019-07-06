@@ -17,8 +17,8 @@
 # include "op.h"
 # include "libft.h"
 
-# define FT_HEADER_LENGTH (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH)
-# define FT_CHAMP_LENGTH (FT_HEADER_LENGTH + CHAMP_MAX_SIZE)
+# define FT_HEADER_LENGTH (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4)
+# define FT_MAX_CHAMP_LENGTH (FT_HEADER_LENGTH + CHAMP_MAX_SIZE)
 
 /*
 ** Dans 't_asm_data' :
@@ -42,12 +42,13 @@ typedef struct	s_asm_inst
 
 typedef struct	s_asm_data
 {
+	size_t		total_size;
 	char		*input_file_name;
 	char		*output_file_name;
 	int			input_fd;
 	int			output_fd;
 	int			current_line_nb;
-	char		output[FT_CHAMP_LENGTH];
+	char		output[FT_MAX_CHAMP_LENGTH];
 	size_t		output_index;
 	char		*label_tab[CHAMP_MAX_SIZE];
 	t_lab_ref	*label_refs;
@@ -82,6 +83,10 @@ int		asm_failed_to_get_prog_name(t_asm_data *data);
 int		asm_failed_to_get_comment(t_asm_data *data);
 int		asm_syntax_error(t_asm_data *data);
 /*
+** Dans le fichier 'asm_error_messages_03.c'
+*/
+int		asm_inexisting_label_reference(char *label_name);
+/*
 ** Dans le fichier 'asm_compile.c'
 */
 int		asm_compile(t_asm_data *data);
@@ -104,8 +109,14 @@ void	asm_liberate_memory(t_asm_data *data);
 ** Dans le fichier 'asm_putchar_output.c'
 */
 int		asm_putchar_output(t_asm_data *data, char c);
-int		asm_putsuint_output(t_asm_data *data, unsigned short int s);
+int		asm_putusint_output(t_asm_data *data, unsigned short int s);
 int		asm_putuint_output(t_asm_data *data, unsigned int s);
+/*
+** Dans le fichier 'asm_putchar_prog.c'
+*/
+int		asm_putchar_prog(char *prog, size_t *i, char c);
+int		asm_putusint_prog(char *prog, size_t *i, unsigned short int s);
+int		asm_putuint_prog(char *prog, size_t *i, unsigned int u);
 /*
 ** Dans le fichier 'asm_put_header_output.c'
 ** static int	asm_put_magic_output(t_asm_data *data, t_header *h);
@@ -126,7 +137,7 @@ int		asm_parse_header(t_asm_data *data, t_header *h, char **line);
 ** static int	aux_asm_check_labels(t_asm_data *data, t_label_ref *label_ref, char *prog);
 ** static int	asm_check_labels(t_asm_data *data, char *prog);
 */
-int		asm_parse_prog(t_asm_data *data, char **line);
+int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog);
 /*
 ** Dans le fichier 'asm_put_prog_output.c'
 */
