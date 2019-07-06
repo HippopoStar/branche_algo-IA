@@ -1,45 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 18:16:37 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/15 17:55:06 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+char	*ft_strnew(size_t size)
 {
-	t_asm_data	data;
+	size_t	i;
+	char	*emplacement;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	if (!(emplacement = (char *)malloc((size + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (i <= size)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		*(emplacement + i) = '\0';
+		i++;
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
-	}
-	return (0);
+	return (emplacement);
 }

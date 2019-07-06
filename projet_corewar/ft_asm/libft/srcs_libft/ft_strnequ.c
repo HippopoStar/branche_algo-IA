@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 17:27:34 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/28 01:34:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static int	aux_ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	t_asm_data	data;
+	size_t	i;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	i = 0;
+	while (*(s1 + i) == *(s2 + i) && i < n
+			&& *(s1 + i) != '\0' && *(s2 + i) != '\0')
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		i++;
 	}
-	asm_liberate_memory(&data);
+	if (*(s1 + i) == *(s2 + i) || i == n)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
-int		main(int argc, char **argv)
+int			ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int		i;
-
-	if (argc > 1)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
-	}
-	return (0);
+	return ((s1 != NULL && s2 != NULL) ? aux_ft_strnequ(s1, s2, n) : 0);
 }

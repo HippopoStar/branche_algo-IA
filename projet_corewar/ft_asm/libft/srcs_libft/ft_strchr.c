@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/17 04:44:21 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/17 06:03:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+char	*ft_strchr(const char *s, int c)
 {
-	t_asm_data	data;
+	size_t	i;
+	char	character;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	character = (char)c;
+	i = 0;
+	while (*(s + i) != '\0')
 	{
-		if (asm_compile(&data))
+		if (*(s + i) == character)
 		{
-			asm_create_output_file(&data);
+			return ((char *)(s + i));
 		}
+		i++;
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
+	if (*(s + i) == character)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		return ((char *)(s + i));
 	}
-	return (0);
+	else
+	{
+		return (NULL);
+	}
 }

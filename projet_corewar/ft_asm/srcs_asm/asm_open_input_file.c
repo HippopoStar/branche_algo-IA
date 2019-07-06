@@ -23,8 +23,9 @@ int		asm_open_input_file(t_asm_data *data)
 
 	name_length = ft_strlen(data->input_file_name);
 	if (name_length > 2\
+			&& !(*(data->input_file_name + name_length - 3) == '/')\
 			&& *(data->input_file_name + name_length - 2) == '.'\
-			&& *(data->input_file_name + name_length - 2) == 's')
+			&& *(data->input_file_name + name_length - 1) == 's')
 	{
 		if (!(data->output_file_name = (char *)malloc((name_length + 3)\
 						* sizeof(char))))
@@ -35,8 +36,8 @@ int		asm_open_input_file(t_asm_data *data)
 		*(data->output_file_name + name_length + 1) = 'r';
 		*(data->output_file_name + name_length + 2) = '\0';
 		if ((data->input_fd = open(data->input_file_name, O_RDONLY)) == -1)
-			return (asm_input_file_open_fail(data->input_file_name));
+			return (asm_input_file_open_fail(data));
 		return (1);
 	}
-	return (asm_incorrect_input_file_name());
+	return (asm_incorrect_input_file_name(data));
 }

@@ -24,18 +24,36 @@ static void	asm_initialize_data_label_tab(t_asm_data *data)
 	}
 }
 
+/*
+** Precedement, la taille du tableau de char
+** (t_asm_data *)->output
+** etait de ASM_CHAMP_LENGTH + 1,
+** la derniere instruction de la fonction
+** 'asm_initialize_data_output' etait
+**	*(data->output + FT_CHAMP_LENGTH) = EOF;
+*/
+
 static void	asm_initialize_data_output(t_asm_data *data)
 {
 	size_t	i;
 
-	i = 0;
-	while (i < ASM_CHAMP_LENGTH)
+	*(data->output + 0) = (char)0xea;
+	*(data->output + 1) = (char)0x83;
+	*(data->output + 2) = (char)0xf3;
+	i = 3;
+	while (i < FT_CHAMP_LENGTH)
 	{
 		*(data->output + i) = '\0';
 		i++;
 	}
-	*(data->output + ASM_CHAMP_LENGTH) = EOF;
 }
+
+/*
+** Etant donne que la variable (t_asm_data *)->current_inst
+** sera toujours declaree sur la stack,
+** il n'est pas veritablement necessaire de l'initialiser
+** a NULL
+*/
 
 void	asm_initialize_data(t_asm_data *data)
 {
@@ -45,4 +63,5 @@ void	asm_initialize_data(t_asm_data *data)
 	asm_initialize_data_output(data);
 	data->output_index = 0;
 	asm_initialize_data_label_tab(data);
+	data->label_refs = NULL;
 }

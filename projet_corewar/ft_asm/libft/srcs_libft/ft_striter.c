@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 16:23:21 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/28 01:45:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static void	aux_ft_striter(char *s, void (*f)(char *))
 {
-	t_asm_data	data;
+	size_t	i;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	i = 0;
+	while (*(s + i) != '\0')
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		f(&(*(s + i)));
+		i++;
 	}
-	asm_liberate_memory(&data);
 }
 
-int		main(int argc, char **argv)
+void		ft_striter(char *s, void (*f)(char *))
 {
-	int		i;
-
-	if (argc > 1)
+	if (s != NULL && f != NULL)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		aux_ft_striter(s, f);
 	}
-	return (0);
 }

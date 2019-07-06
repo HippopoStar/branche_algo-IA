@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/09 11:32:28 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/26 01:57:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_asm_data	data;
+	size_t			i;
+	unsigned char	*cast_s1;
+	unsigned char	*cast_s2;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	cast_s1 = (unsigned char *)s1;
+	cast_s2 = (unsigned char *)s2;
+	if (n == 0)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		return (0);
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
+	else
 	{
-		i = 1;
-		while (i < argc)
+		i = 0;
+		while (*(s1 + i) == *(s2 + i) && i < n - 1
+				&& *(s1 + i) != '\0' && *(s2 + i) != '\0')
 		{
-			ft_asm(*(argv + i));
 			i++;
 		}
+		return ((int)((*(cast_s1 + i) - *(cast_s2 + i))));
 	}
-	return (0);
 }

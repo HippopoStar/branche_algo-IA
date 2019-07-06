@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/09 10:44:50 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/28 01:51:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static void	aux_ft_putstr(char const *s)
 {
-	t_asm_data	data;
-
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
-	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
-	}
-	asm_liberate_memory(&data);
+	write(1, s, ft_strlen(s));
 }
 
-int		main(int argc, char **argv)
+void		ft_putstr(char const *s)
 {
-	int		i;
-
-	if (argc > 1)
+	if (s != NULL)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		aux_ft_putstr(s);
 	}
-	return (0);
 }

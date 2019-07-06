@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/07/08 05:06:23 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/08 05:06:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+/*
+** On a :
+** 46340^(2)	= 2 147 395 600
+** 46341^(2)	= 2 147 488 281
+*/
+
+int	ft_sqrt(int n)
 {
-	t_asm_data	data;
+	int	i;
+	int	i_square;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	if (n <= 0)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		return (0);
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
+	else if (2147395600 <= n)
+	{
+		return (46340);
+	}
+	else
 	{
 		i = 1;
-		while (i < argc)
+		while ((i_square = i * i) <= n)
 		{
-			ft_asm(*(argv + i));
 			i++;
 		}
+		return (i - 1);
 	}
-	return (0);
 }

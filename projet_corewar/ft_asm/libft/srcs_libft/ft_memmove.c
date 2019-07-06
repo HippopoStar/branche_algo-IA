@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/15 18:50:49 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/17 10:23:41 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_asm_data	data;
+	size_t			i;
+	unsigned char	*cast_dst;
+	unsigned char	*cast_src;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	cast_dst = (unsigned char *)dst;
+	cast_src = (unsigned char *)src;
+	if (dst < src)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		dst = ft_memcpy(dst, src, len);
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
+	else if (dst > src && len > 0)
 	{
-		i = 1;
-		while (i < argc)
+		i = len - 1;
+		while (i > 0)
 		{
-			ft_asm(*(argv + i));
-			i++;
+			*(cast_dst + i) = *(cast_src + i);
+			i--;
 		}
+		*(cast_dst + 0) = *(cast_src + 0);
 	}
-	return (0);
+	return (dst);
 }

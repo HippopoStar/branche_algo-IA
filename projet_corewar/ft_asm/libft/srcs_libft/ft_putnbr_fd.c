@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 17:49:14 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/25 20:57:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static void	aux_ft_putnbr_fd(int n, int fd)
 {
-	t_asm_data	data;
-
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	if (n != 0)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		aux_ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd('0' + (n % 10), fd);
 	}
-	asm_liberate_memory(&data);
 }
 
-int		main(int argc, char **argv)
+void		ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-
-	if (argc > 1)
+	if (n == 0)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		ft_putchar_fd('0', fd);
 	}
-	return (0);
+	else if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		aux_ft_putnbr_fd(-n, fd);
+	}
+	else
+	{
+		aux_ft_putnbr_fd(n, fd);
+	}
 }

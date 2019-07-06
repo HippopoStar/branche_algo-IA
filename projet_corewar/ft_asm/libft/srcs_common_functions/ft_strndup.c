@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2018/07/18 07:53:33 by lcabanes          #+#    #+#             */
+/*   Updated: 2018/07/18 08:02:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+char	*ft_strndup(const char *str, size_t n)
 {
-	t_asm_data	data;
+	size_t	i;
+	size_t	length;
+	char	*copy;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	if (str == NULL)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		return (NULL);
 	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
+	length = 0;
+	while (*(str + length) != '\0' && length < n)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		length++;
 	}
-	return (0);
+	if (!(copy = (char *)malloc((length + 1) * sizeof(char))))
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (i < length)
+	{
+		*(copy + i) = *(str + i);
+		i++;
+	}
+	*(copy + length) = '\0';
+	return (copy);
 }

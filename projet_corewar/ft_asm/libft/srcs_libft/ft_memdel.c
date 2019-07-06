@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 18:10:01 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/28 01:50:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static void	aux_ft_memdel(void **ap)
 {
-	t_asm_data	data;
-
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
-	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
-	}
-	asm_liberate_memory(&data);
+	free(*ap);
+	*ap = NULL;
 }
 
-int		main(int argc, char **argv)
+void		ft_memdel(void **ap)
 {
-	int		i;
-
-	if (argc > 1)
+	if (ap != NULL && *ap != NULL)
 	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
+		aux_ft_memdel(ap);
 	}
-	return (0);
 }

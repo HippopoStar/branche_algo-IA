@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/17 05:06:19 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/25 23:39:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	t_asm_data	data;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	i = 0;
+	while (*(haystack + i) != '\0')
 	{
-		if (asm_compile(&data))
+		j = i;
+		k = 0;
+		while (*(haystack + j) == *(needle + k) && *(needle + k) != '\0')
 		{
-			asm_create_output_file(&data);
+			j++;
+			k++;
 		}
-	}
-	asm_liberate_memory(&data);
-}
-
-int		main(int argc, char **argv)
-{
-	int		i;
-
-	if (argc > 1)
-	{
-		i = 1;
-		while (i < argc)
+		if (*(needle + k) == '\0')
 		{
-			ft_asm(*(argv + i));
-			i++;
+			return ((char *)(haystack + i));
 		}
+		i++;
 	}
-	return (0);
+	return ((*(needle + 0) == '\0') ? (char *)(haystack + 0) : NULL);
 }

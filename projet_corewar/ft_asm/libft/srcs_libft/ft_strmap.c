@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_asm.c                                         :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 15:23:50 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:07:27 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/10 16:35:14 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/28 01:23:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_asm.h"
+#include "libft.h"
 
-void	ft_asm(char *file_name)
+static char	*aux_ft_strmap(char const *s, char (*f)(char))
 {
-	t_asm_data	data;
+	size_t	i;
+	size_t	length;
+	char	*map;
 
-	data.input_file_name = file_name;
-	asm_initialize_data(&data);
-	if (asm_open_input_file(&data))
+	length = ft_strlen(s);
+	if (!(map = (char *)malloc((length + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (i < length)
 	{
-		if (asm_compile(&data))
-		{
-			asm_create_output_file(&data);
-		}
+		*(map + i) = f(*(s + i));
+		i++;
 	}
-	asm_liberate_memory(&data);
+	*(map + length) = '\0';
+	return (map);
 }
 
-int		main(int argc, char **argv)
+char		*ft_strmap(char const *s, char (*f)(char))
 {
-	int		i;
-
-	if (argc > 1)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			ft_asm(*(argv + i));
-			i++;
-		}
-	}
-	return (0);
+	return ((s != NULL) ? aux_ft_strmap(s, f) : NULL);
 }
