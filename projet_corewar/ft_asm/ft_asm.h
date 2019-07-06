@@ -96,9 +96,9 @@ int		asm_compile(t_asm_data *data);
 void	asm_create_output_file(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_allocate_label_ref.c'
-** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name, t_lab_ref **node);
+** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name, t_lab_ref **node, size_t i);
 */
-int		asm_allocate_label_ref(t_asm_data *data, char *label_name);
+int		asm_allocate_label_ref(t_asm_data *data, char *label_name, size_t i);
 /*
 ** Dans le fichier 'asm_liberate_memory.c'
 ** void	asm_liberate_label_refs(t_asm_data *data);
