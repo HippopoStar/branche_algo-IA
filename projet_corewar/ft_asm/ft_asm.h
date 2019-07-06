@@ -87,7 +87,7 @@ void	asm_create_output_file(t_asm_data *data);
 ** Dans le fichier 'asm_allocate_label_ref.c'
 ** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name, t_lab_ref **node);
 */
-int	asm_allocate_label_ref(t_asm_data *data, char *label_name);
+int		asm_allocate_label_ref(t_asm_data *data, char *label_name);
 /*
 ** Dans le fichier 'asm_liberate_memory.c'
 ** void	asm_liberate_label_refs(t_asm_data *data);
@@ -107,7 +107,19 @@ int		asm_putuint_output(t_asm_data *data, unsigned int s);
 int		asm_put_header_output(t_asm_data *data, t_header *h);
 /*
 ** Dans le fichier 'asm_parse_header.c'
+** static int	asm_parse_name(t_asm_data *data, t_header *h, char **line);
+** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
 */
-int		asm_parse_header(t_asm_data *data, t_header *h);
+int		asm_parse_header(t_asm_data *data, t_header *h, char **line);
+/*
+** Dans le fichier 'asm_skip_spacing_chars.c'
+*/
+void	asm_skip_spacing_chars(char *line, size_t *i);
+/*
+** Dans le fichier 'asm_gnl.c'
+** static int	asm_gnl(t_asm_data *data, char **line);
+** static int	aux_asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i);
+*/
+int		asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i);
 
 #endif
