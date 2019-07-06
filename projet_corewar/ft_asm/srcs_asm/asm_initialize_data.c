@@ -37,10 +37,7 @@ static void	asm_initialize_data_output(t_asm_data *data)
 {
 	size_t	i;
 
-	*(data->output + 0) = (char)0xea;
-	*(data->output + 1) = (char)0x83;
-	*(data->output + 2) = (char)0xf3;
-	i = 3;
+	i = 0;
 	while (i < FT_CHAMP_LENGTH)
 	{
 		*(data->output + i) = '\0';

@@ -94,5 +94,20 @@ int	asm_allocate_label_ref(t_asm_data *data, char *label_name);
 ** void	asm_liberate_labels(t_asm_data *data);
 */
 void	asm_liberate_memory(t_asm_data *data);
+/*
+** Dans le fichier 'asm_putchar_output.c'
+*/
+int		asm_putchar_output(t_asm_data *data, char c);
+int		asm_putsuint_output(t_asm_data *data, unsigned short int s);
+int		asm_putuint_output(t_asm_data *data, unsigned int s);
+/*
+** Dans le fichier 'asm_put_header_output.c'
+** static void	asm_put_magic_output(t_asm_data *data, t_header *h);
+*/
+int		asm_put_header_output(t_asm_data *data, t_header *h);
+/*
+** Dans le fichier 'asm_parse_header.c'
+*/
+int		asm_parse_header(t_asm_data *data, t_header *h);
 
 #endif

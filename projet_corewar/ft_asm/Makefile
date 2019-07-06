@@ -32,6 +32,9 @@ SRC_NAME = main_asm.c\
 			asm_initialize_data.c\
 			asm_open_input_file.c\
 			asm_compile.c\
+			asm_putchar_output.c\
+			asm_put_header_output.c\
+			asm_parse_header.c\
 			asm_create_output_file.c\
 			asm_allocate_label_ref.c\
 			asm_liberate_memory.c\
