@@ -41,6 +41,8 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 /*
 ** Rappel :
 ** (char *)prog est un tableau de char de dimension CHAMP_MAX_SIZE
+**
+**	ft_putstr("asm_parse_prog\n");
 */
 
 int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
@@ -49,6 +51,7 @@ int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 	t_asm_inst	inst;
 	size_t	pos;
 
+	ft_putstr("asm_parse_prog\n");
 	h->prog_size = 23;
 	pos = 0;
 	inst.op_code_pos = 0;

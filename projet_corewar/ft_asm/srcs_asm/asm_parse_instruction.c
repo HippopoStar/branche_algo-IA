@@ -1,10 +1,17 @@
 #include "ft_asm.h"
 
+/*
+**	ft_putstr("ams_parse_instruction\n");
+*/
+
 int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
 {
-	(void)data;
+	ft_putstr("ams_parse_instruction\n");
 	(void)line;
 	(void)i;
-	(void)pos;
+	if (!(*(line + i) == '\0' || *(line + i) == '#'))
+	{
+		(data->current_inst)->op_code_pos = *pos;
+	}
 	return (1);
 }
