@@ -17,7 +17,7 @@
 # include "op.h"
 # include "libft.h"
 
-# define FT_HEADER_LENGTH (4 + PROG_NAME_LENGTH + COMMENT_LENGTH)
+# define FT_HEADER_LENGTH (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH)
 # define FT_CHAMP_LENGTH (FT_HEADER_LENGTH + CHAMP_MAX_SIZE)
 
 /*
@@ -110,6 +110,7 @@ int		asm_putuint_output(t_asm_data *data, unsigned int s);
 ** Dans le fichier 'asm_put_header_output.c'
 ** static int	asm_put_magic_output(t_asm_data *data, t_header *h);
 ** static int	asm_put_name_output(t_asm_data *data, t_header *h);
+** static int	asm_put_prog_size_output(t_asm_data *data, t_header *h);
 ** static int	asm_put_comment_output(t_asm_data *data, t_header *h);
 */
 int		asm_put_header_output(t_asm_data *data, t_header *h);
@@ -120,6 +121,16 @@ int		asm_put_header_output(t_asm_data *data, t_header *h);
 ** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
 */
 int		asm_parse_header(t_asm_data *data, t_header *h, char **line);
+/*
+** Dans le fichier 'asm_parse_prog.c'
+** static int	aux_asm_check_labels(t_asm_data *data, t_label_ref *label_ref, char *prog);
+** static int	asm_check_labels(t_asm_data *data, char *prog);
+*/
+int		asm_parse_prog(t_asm_data *data, char **line);
+/*
+** Dans le fichier 'asm_put_prog_output.c'
+*/
+int		asm_put_prog_output(t_asm_data *data, t_header *h, char *prog);
 /*
 ** Dans le fichier 'asm_skip_spacing_chars.c'
 */

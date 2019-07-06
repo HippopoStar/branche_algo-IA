@@ -62,6 +62,7 @@ static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 }
 
 /*
+** Auparavant :
 ** L'assignation
 **	h->prog_size = (unsigned int)FT_CHAMP_LENGTH;
 ** n'a aucun interet dans le programme,
@@ -71,7 +72,6 @@ static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 int		asm_parse_header(t_asm_data *data, t_header *h, char **line)
 {
 	h->magic = (unsigned int)COREWAR_EXEC_MAGIC;
-	h->prog_size = (unsigned int)FT_CHAMP_LENGTH;
 	if (asm_parse_name(data, h, line)
 			&& asm_parse_comment(data, h, line))
 	{
