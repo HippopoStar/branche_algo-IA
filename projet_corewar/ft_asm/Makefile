@@ -40,7 +40,8 @@ SRC_NAME = main_asm.c\
 			asm_create_output_file.c\
 			asm_allocate_label_ref.c\
 			asm_liberate_memory.c\
-			asm_error_messages_01.c
+			asm_error_messages_01.c\
+			asm_error_messages_02.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

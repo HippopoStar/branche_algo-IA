@@ -76,6 +76,12 @@ int		asm_input_file_open_fail(t_asm_data *data);
 int		asm_incorrect_input_file_name(t_asm_data *data);
 void	asm_output_file_creation_fail(t_asm_data *data);
 /*
+** Dans le fichier 'asm_error_messages_02.c'
+*/
+int		asm_failed_to_get_prog_name(t_asm_data *data);
+int		asm_failed_to_get_comment(t_asm_data *data);
+int		asm_syntax_error(t_asm_data *data);
+/*
 ** Dans le fichier 'asm_compile.c'
 */
 int		asm_compile(t_asm_data *data);
@@ -102,11 +108,14 @@ int		asm_putsuint_output(t_asm_data *data, unsigned short int s);
 int		asm_putuint_output(t_asm_data *data, unsigned int s);
 /*
 ** Dans le fichier 'asm_put_header_output.c'
-** static void	asm_put_magic_output(t_asm_data *data, t_header *h);
+** static int	asm_put_magic_output(t_asm_data *data, t_header *h);
+** static int	asm_put_name_output(t_asm_data *data, t_header *h);
+** static int	asm_put_comment_output(t_asm_data *data, t_header *h);
 */
 int		asm_put_header_output(t_asm_data *data, t_header *h);
 /*
 ** Dans le fichier 'asm_parse_header.c'
+** static int	asm_get_quote(char *line, char *to_fill, int size);
 ** static int	asm_parse_name(t_asm_data *data, t_header *h, char **line);
 ** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
 */
