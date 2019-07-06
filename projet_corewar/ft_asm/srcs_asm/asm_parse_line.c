@@ -14,7 +14,10 @@ int		asm_parse_line(t_asm_data *data, char **line, size_t *pos)
 	ret_gnl = asm_gn_pertinent_l(data, line, &i);
 	if (ret_gnl == 1)
 	{
-		asm_get_label_declaration(data, *line, &i, *pos);
+		if (!asm_get_label_declaration(data, *line, &i, *pos))
+		{
+			return (-1);
+		}
 		return (asm_parse_instruction(data, *line, i, pos));
 	}
 	return (ret_gnl);

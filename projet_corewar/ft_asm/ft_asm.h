@@ -35,6 +35,7 @@ typedef struct	s_lab_ref
 
 typedef struct	s_asm_inst
 {
+	char		*prog;
 	size_t		op_code_pos;
 	char		op_code;
 	char		checksum;
