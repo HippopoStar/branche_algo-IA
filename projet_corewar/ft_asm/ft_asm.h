@@ -36,11 +36,19 @@ typedef struct	s_lab_ref
 typedef struct	s_asm_arg
 {
 	char		check;
+	size_t		size;
 	unsigned int	value;
 }				t_asm_arg;
 
+/*
+** Voir fichier 'asm_parse_prog.c'
+**	char		*prog;
+**	size_t		*pos;
+*/
+
 typedef struct	s_asm_inst
 {
+	char		*prog;
 	char		op_code;
 	size_t		op_code_pos;
 	size_t		nb_of_args;
@@ -182,12 +190,20 @@ int		asm_inst_arg_type_indirect(char *line, size_t *i);
 int		asm_inst_arg_type_label(char *line, size_t *i);
 /*
 ** Dans le fichier 'asm_parse_arg_types.c'
+** static size_t	asm_parse_arg_direct_size(t_asm_data *data);
 ** static size_t	asm_parse_arg_label_get_ref(t_asm_data *data, size_t arg_nb);
 */
 int		asm_parse_arg_register(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 int		asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
+/*
+** Dans le fichier 'asm_put_inst_prog.c'
+** static int	asm_put_checksum_prog(t_asm_inst *inst, size_t *pos);
+** static int	asm_put_op_code_checksum_prog(t_asm_inst *inst, size_t *pos);
+** static int	asm_put_arg_prog(t_asm_arg *arg, char *prog, size_t *pos);
+*/
+int		asm_put_inst_prog(t_asm_inst *inst, size_t *pos);
 /*
 ** Dans le fichier 'asm_put_prog_output.c'
 */

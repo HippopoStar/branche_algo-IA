@@ -4,7 +4,7 @@ static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i, size_t arg
 {
 	if (inst->nb_of_args > 0)
 	{
-		if (arg_nb < inst->nb_of_args - 1)
+		if (arg_nb < inst->nb_of_args)
 		{
 			if (*(line + (*i)) == SEPARATOR_CHAR)
 			{
@@ -26,6 +26,8 @@ static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i, size_t arg
 ** Quelque soit l'instruction, on a (int)inst->nb_of_args > 0
 **
 **	ft_putstr("asm_parse_inst_arg\n");
+**	ft_putstr(&(*(line + (*i))));
+**	ft_putchar('\n');
 */
 
 int		asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
@@ -33,6 +35,8 @@ int		asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	int		ret_val;
 
 	ft_putstr("asm_parse_inst_arg\n");
+	ft_putstr(&(*(line + (*i))));
+	ft_putchar('\n');
 	ret_val = 0;
 	if (asm_inst_arg_type_register(line, i))
 	{
