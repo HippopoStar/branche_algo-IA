@@ -87,19 +87,24 @@ static char	asm_op_code_three(t_asm_inst *inst, char *line, size_t *i)
 	return ('\0');
 }
 
+/*
+** On a remplace l'ordre des conditions pour verifier
+** 'lldi' avant 'lld'
+*/
+
 static char	asm_op_code_four(t_asm_inst *inst, char *line, size_t *i)
 {
-	if (!ft_strncmp(&(*(line + (*i))), "lld", 3))
-	{
-		inst->nb_of_args = 2;
-		*i = (*i) + 4;
-		return ((char)13);
-	}
-	else if (!ft_strncmp(&(*(line + (*i))), "lldi", 4))
+	if (!ft_strncmp(&(*(line + (*i))), "lldi", 4))
 	{
 		inst->nb_of_args = 3;
 		*i = (*i) + 5;
 		return ((char)14);
+	}
+	else if (!ft_strncmp(&(*(line + (*i))), "lld", 3))
+	{
+		inst->nb_of_args = 2;
+		*i = (*i) + 4;
+		return ((char)13);
 	}
 	else if (!ft_strncmp(&(*(line + (*i))), "lfork", 5))
 	{
@@ -119,14 +124,18 @@ static char	asm_op_code_four(t_asm_inst *inst, char *line, size_t *i)
 /*
 ** La viariable 'inst->checksum' est prealablement initialisee a '\0'
 ** dans le fichier 'asm_parse_instruction.c'
+**
+** On a remplace l'ordre d'appel des fonctions auxiliaires car
+** 'sti' et 'ldi' sont dans 'asm_op_code_three',
+** 'st' et 'ld' sont dans 'asm_op_code_one'
 */
 
 int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i)
 {
-	if ((inst->op_code = asm_op_code_one(inst, line, i))
-			|| (inst->op_code = asm_op_code_two(inst, line, i))
+	if ((inst->op_code = asm_op_code_four(inst, line, i))
 			|| (inst->op_code = asm_op_code_three(inst, line, i))
-			|| (inst->op_code = asm_op_code_four(inst, line, i)))
+			|| (inst->op_code = asm_op_code_two(inst, line, i))
+			|| (inst->op_code = asm_op_code_one(inst, line, i)))
 	{
 		if (!(*(line + (*i)) == '\0' || *(line + (*i)) == COMMENT_CHAR))
 		{

@@ -13,6 +13,7 @@ static int		asm_gnl(t_asm_data *data, char **line)
 	if (!((*line) == NULL))
 	{
 		free(*line);
+		(*line) = NULL;
 	}
 	if ((ret_gnl = get_next_line_backslash_zero(data->input_fd, line)) == 0
 			&& !((*line) == NULL))

@@ -17,6 +17,10 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 	char	character;
 
+	if ((char)c == '\0')
+	{
+		return (NULL);
+	}
 	character = (char)c;
 	i = 0;
 	while (*(s + i) != '\0')

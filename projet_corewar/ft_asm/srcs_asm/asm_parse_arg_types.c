@@ -94,8 +94,13 @@ static size_t	asm_parse_arg_label_get_ref_pos(t_asm_data *data, size_t arg_nb)
 }
 
 /*
+**	ft_putstr("Avant 'asm_parse_arg_label' : ");
 **	ft_putstr(&(*(line + (*i))));
 **	ft_putchar('\n');
+**		ft_putstr("Dans 'ft_strchr' : ");
+**		ft_putchar(*(line + (*i) + j));
+**		ft_putchar('\n');
+**		ft_putstr("Apres 'asm_parse_arg_label' : ");
 **		ft_putstr(&(*(line + (*i))));
 **		ft_putchar('\n');
 */
@@ -106,6 +111,7 @@ int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	char	c;
 	size_t	ref_pos;
 
+	ft_putstr("Avant 'asm_parse_arg_label' : ");
 	ft_putstr(&(*(line + (*i))));
 	ft_putchar('\n');
 	((data->current_inst)->arg + arg_nb)->check = (char)3;
@@ -113,6 +119,9 @@ int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	j = 0;
 	while (ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
 	{
+		ft_putstr("Dans 'ft_strchr' : ");
+		ft_putchar(*(line + (*i) + j));
+		ft_putchar('\n');
 		j++;
 	}
 	c = *(line + (*i) + j);
@@ -122,6 +131,7 @@ int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	{
 		*(line + (*i) + j) = c;
 		*i = (*i) + j;
+		ft_putstr("Apres 'asm_parse_arg_label' : ");
 		ft_putstr(&(*(line + (*i))));
 		ft_putchar('\n');
 		return (1);

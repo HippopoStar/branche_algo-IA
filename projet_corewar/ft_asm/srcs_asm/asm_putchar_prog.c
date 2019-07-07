@@ -1,7 +1,10 @@
 #include "ft_asm.h"
 
+#include <stdio.h>
+
 int		asm_putchar_prog(char *prog, size_t *pos, char c)
 {
+	printf("c : %hhx\n", c);
 	if ((*pos) < CHAMP_MAX_SIZE)
 	{
 		*(prog + (*pos)) = c;
@@ -16,6 +19,7 @@ int		asm_putchar_prog(char *prog, size_t *pos, char c)
 
 int		asm_putusint_prog(char *prog, size_t *pos, unsigned short int s)
 {
+	printf("s : %hx\n", s);
 	if (asm_putchar_prog(prog, pos, (char)(s >> 8))
 			&& asm_putchar_prog(prog, pos, (char)s))
 	{
@@ -29,6 +33,7 @@ int		asm_putusint_prog(char *prog, size_t *pos, unsigned short int s)
 
 int		asm_putuint_prog(char *prog, size_t *pos, unsigned int u)
 {
+	printf("u : %x\n", u);
 	if (asm_putchar_prog(prog, pos, (char)(u >> 24))
 			&& asm_putchar_prog(prog, pos, (char)(u >> 16))
 			&& asm_putchar_prog(prog, pos, (char)(u >> 8))

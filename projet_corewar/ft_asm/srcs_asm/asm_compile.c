@@ -15,6 +15,14 @@ int		asm_compile(t_asm_data *data)
 			return (1);
 		}
 	}
+//
+	ft_putstr("Erreur mais creation du fichier avec ce qu'on a\n");
+	if (asm_put_header_output(data, &h) && asm_put_prog_output(data, &h, prog))
+	{
+		data->total_size = FT_HEADER_LENGTH + h.prog_size;
+		return (1);
+	}
+//
 	if (!(line == NULL))
 	{
 		free(line);
