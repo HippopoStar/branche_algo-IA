@@ -11,7 +11,10 @@ int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
 	(void)i;
 	if (!(*(line + i) == '\0' || *(line + i) == '#'))
 	{
-		(data->current_inst)->op_code_pos = *pos;
+		if (asm_get_inst_op_code(data->current_inst, line, &i))
+		{
+			(data->current_inst)->op_code_pos = *pos;
+		}
 	}
 	return (1);
 }

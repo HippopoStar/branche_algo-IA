@@ -36,8 +36,9 @@ typedef struct	s_lab_ref
 typedef struct	s_asm_inst
 {
 	char		*prog;
-	size_t		op_code_pos;
 	char		op_code;
+	size_t		op_code_pos;
+	int		nb_of_args;
 	char		checksum;
 }				t_asm_inst;
 
@@ -152,6 +153,14 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i, size_t p
 ** Dans le fichier 'asm_parse_instruction.c'
 */
 int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos);
+/*
+** Dans le fichier 'asm_get_inst_op_code.c'
+** static char	asm_op_code_one(t_asm_inst *inst, char *line, size_t *i);
+** static char	asm_op_code_two(t_asm_inst *inst, char *line, size_t *i);
+** static char	asm_op_code_three(t_asm_inst *inst, char *line, size_t *i);
+** static char	asm_op_code_four(t_asm_inst *inst, char *line, size_t *i);
+*/
+int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i);
 /*
 ** Dans le fichier 'asm_put_prog_output.c'
 */
