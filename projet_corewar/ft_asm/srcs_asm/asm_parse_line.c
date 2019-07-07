@@ -2,7 +2,7 @@
 
 /*
 **	ft_putstr("asm_parse_line\n");
-		ft_putstr(&(*((*line) + i)));
+**		ft_putstr(&(*((*line) + i)));
 */
 
 int		asm_parse_line(t_asm_data *data, char **line, size_t *pos)
@@ -18,7 +18,7 @@ int		asm_parse_line(t_asm_data *data, char **line, size_t *pos)
 		{
 			return (-1);
 		}
-		return (asm_parse_instruction(data, *line, i, pos));
+		return (asm_parse_instruction(data, *line, i, pos) == 1 ? 1 : -1);
 	}
 	return (ret_gnl);
 }

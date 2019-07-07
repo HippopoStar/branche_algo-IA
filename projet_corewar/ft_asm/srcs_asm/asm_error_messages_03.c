@@ -4,7 +4,7 @@ int		asm_two_labels_in_a_row(t_asm_data *data)
 {
 	ft_putstr_fd("ERROR: two label declarations in a row - line ", 2);
 	ft_putnbr_fd(data->current_line_nb, 2);
-	ft_putstr_fd("\n", 2);
+	ft_putchar_fd('\n', 2);
 	return (0);
 }
 

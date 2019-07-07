@@ -42,20 +42,22 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 ** Rappel :
 ** (char *)prog est un tableau de char de dimension CHAMP_MAX_SIZE
 **
-** La variable 'ret_gnl' peut valoir '-1' pour 3 raisons :
-** - dans 'asm_parse_line/asm_gn_pertinent_l' :
+** La variable de retour de 'asm_parse_line' 'ret_val'
+** peut valoir '-1' pour 4 raisons :
+** - dans 'asm_gn_pertinent_l' :
 **     - un appel de 'gnl' a renvoye la valeur '-1'
-** - dans 'asm_parse_line/asm_get_label_declaration' :
+** - dans 'asm_get_label_declaration' :
 **     - la variable '*(data->label_tab + pos)' n'etait pas a NULL
 **       alors qu'un nouveau label a ete decouvert a la position 'pos'
 **     - 'ft_strdup' a renvoye NULL
+** - 'asm_parse_instruction' a renvoye '0'
 **
 **	ft_putstr("asm_parse_prog\n");
 */
 
 int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 {
-	int		ret_gnl;
+	int		ret_val;
 	t_asm_inst	inst;
 	size_t	pos;
 
@@ -64,9 +66,9 @@ int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 	pos = 0;
 	inst.prog = prog;
 	data->current_inst = &inst;
-	while ((ret_gnl = asm_parse_line(data, line, &pos)) == 1)
+	while ((ret_val = asm_parse_line(data, line, &pos)) == 1)
 		;
-	if (ret_gnl == 0)
+	if (ret_val == 0)
 	{
 		asm_check_labels(data, prog);
 		return (1);
