@@ -53,6 +53,7 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 ** - 'asm_parse_instruction' a renvoye '0'
 **
 **	ft_putstr("asm_parse_prog\n");
+**	h->prog_size = 23; // "zork"
 */
 
 int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
@@ -62,16 +63,17 @@ int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 	size_t	pos;
 
 	ft_putstr("asm_parse_prog\n");
-	h->prog_size = 23;
+	h->prog_size = 23; // "zork"
 	pos = 0;
-	inst.prog = prog;
+//	inst.prog = prog;
+//	inst.pos = &pos;
 	data->current_inst = &inst;
 	while ((ret_val = asm_parse_line(data, line, &pos)) == 1)
 		;
 	if (ret_val == 0)
 	{
-		asm_check_labels(data, prog);
-		return (1);
+		h->prog_size = pos;
+		return (asm_check_labels(data, prog));
 	}
 	else
 	{

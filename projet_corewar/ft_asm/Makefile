@@ -41,6 +41,8 @@ SRC_NAME = main_asm.c\
 			asm_parse_instruction.c\
 			asm_parse_inst_arg.c\
 			asm_get_inst_op_code.c\
+			asm_inst_arg_types.c\
+			asm_parse_arg_types.c\
 			asm_putchar_prog.c\
 			asm_put_prog_output.c\
 			asm_skip_spacing_chars.c\

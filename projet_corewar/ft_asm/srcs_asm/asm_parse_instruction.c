@@ -35,7 +35,7 @@ int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
 			asm_initialize_inst_struct(data, *pos);
 			arg_nb = 0;
 			while (arg_nb < (data->current_inst)->nb_of_args
-					&& asm_parse_inst_arg(data->current_inst, line, &i, arg_nb))
+					&& asm_parse_inst_arg(data, line, &i, arg_nb))
 			{
 				arg_nb++;
 			}

@@ -125,6 +125,13 @@ int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i)
 	{
 		if (!(*(line + (*i)) == '\0' || *(line + (*i)) == COMMENT_CHAR))
 		{
+			if (!(inst->op_code == (char)1
+					|| inst->op_code == (char)9
+					|| inst->op_code == (char)12
+					|| inst->op_code == (char)15))
+			{
+				inst->checksum = (char)1;
+			}
 			asm_skip_spacing_chars(line, i);
 			return (1);
 		}

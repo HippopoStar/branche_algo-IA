@@ -35,13 +35,12 @@ typedef struct	s_lab_ref
 
 typedef struct	s_asm_arg
 {
-	char		op_code;
+	char		check;
 	unsigned int	value;
 }				t_asm_arg;
 
 typedef struct	s_asm_inst
 {
-	char		*prog;
 	char		op_code;
 	size_t		op_code_pos;
 	size_t		nb_of_args;
@@ -165,7 +164,7 @@ int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos);
 ** Dans le fichier 'asm_parse_inst_arg.c'
 ** static int		asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i, size_t arg_nb);
 */
-int		asm_parse_inst_arg(t_asm_inst *inst, char *line, size_t *i, size_t arg_nb);
+int		asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 /*
 ** Dans le fichier 'asm_get_inst_op_code.c'
 ** static char	asm_op_code_one(t_asm_inst *inst, char *line, size_t *i);
@@ -174,6 +173,21 @@ int		asm_parse_inst_arg(t_asm_inst *inst, char *line, size_t *i, size_t arg_nb);
 ** static char	asm_op_code_four(t_asm_inst *inst, char *line, size_t *i);
 */
 int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i);
+/*
+** Dans le fichier 'asm_inst_arg_types.c'
+*/
+int		asm_inst_arg_type_register(char *line, size_t *i);
+int		asm_inst_arg_type_direct(char *line, size_t *i);
+int		asm_inst_arg_type_indirect(char *line, size_t *i);
+int		asm_inst_arg_type_label(char *line, size_t *i);
+/*
+** Dans le fichier 'asm_parse_arg_types.c'
+** static size_t	asm_parse_arg_label_get_ref(t_asm_data *data, size_t arg_nb);
+*/
+int		asm_parse_arg_register(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
+int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
+int		asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
+int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 /*
 ** Dans le fichier 'asm_put_prog_output.c'
 */
