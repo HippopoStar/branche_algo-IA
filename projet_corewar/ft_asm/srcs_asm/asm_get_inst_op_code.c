@@ -123,8 +123,9 @@ int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i)
 			|| (inst->op_code = asm_op_code_three(inst, line, i))
 			|| (inst->op_code = asm_op_code_four(inst, line, i)))
 	{
-		if (*(line + (*i)) == '\t' || *(line + (*i)) == ' ')
+		if (!(*(line + (*i)) == '\0' || *(line + (*i)) == COMMENT_CHAR))
 		{
+			asm_skip_spacing_chars(line, i);
 			return (1);
 		}
 	}

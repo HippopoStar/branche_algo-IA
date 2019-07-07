@@ -117,9 +117,9 @@ int		asm_putuint_output(t_asm_data *data, unsigned int s);
 /*
 ** Dans le fichier 'asm_putchar_prog.c'
 */
-int		asm_putchar_prog(char *prog, size_t *i, char c);
-int		asm_putusint_prog(char *prog, size_t *i, unsigned short int s);
-int		asm_putuint_prog(char *prog, size_t *i, unsigned int u);
+int		asm_putchar_prog(char *prog, size_t *pos, char c);
+int		asm_putusint_prog(char *prog, size_t *pos, unsigned short int s);
+int		asm_putuint_prog(char *prog, size_t *pos, unsigned int u);
 /*
 ** Dans le fichier 'asm_put_header_output.c'
 ** static int	asm_put_magic_output(t_asm_data *data, t_header *h);
@@ -130,6 +130,7 @@ int		asm_putuint_prog(char *prog, size_t *i, unsigned int u);
 int		asm_put_header_output(t_asm_data *data, t_header *h);
 /*
 ** Dans le fichier 'asm_parse_header.c'
+** static void	asm_initialize_header_struc(t_header *h);
 ** static int	asm_get_quote(char *line, char *to_fill, int size);
 ** static int	asm_parse_name(t_asm_data *data, t_header *h, char **line);
 ** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
