@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/01 12:10:55 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/08 18:50:59 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC_NAME = main_asm.c\
 			asm_parse_inst_arg.c\
 			asm_get_inst_op_code.c\
 			asm_inst_arg_types.c\
-			asm_parse_arg_types.c\
+			asm_parse_arg_types_01.c\
+			asm_parse_arg_types_02.c\
 			asm_check_inst_args.c\
 			asm_put_inst_prog.c\
 			asm_putchar_prog.c\

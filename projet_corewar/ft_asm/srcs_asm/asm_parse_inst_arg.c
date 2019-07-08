@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:05:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:44:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i,\
 }
 
 /*
+** Retrait ostentatoire d'accolades afin de satisfaire la Norme
+** (voir https://meta.intra.42.fr/articles/norm-norminette)
+**
 ** Note :
 ** Quelque soit l'instruction, on a (int)inst->nb_of_args > 0
 **
@@ -59,21 +62,13 @@ int			asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i,\
 
 	ret_val = 0;
 	if (asm_inst_arg_type_register(line, i))
-	{
 		ret_val = asm_parse_arg_register(data, line, i, arg_nb);
-	}
 	else if (asm_inst_arg_type_direct(line, i))
-	{
 		ret_val = asm_parse_arg_direct(data, line, i, arg_nb);
-	}
 	else if (asm_inst_arg_type_indirect(line, i))
-	{
 		ret_val = asm_parse_arg_indirect(data, line, i, arg_nb);
-	}
 	else if (asm_inst_arg_type_label(line, i))
-	{
 		ret_val = asm_parse_arg_label(data, line, i, arg_nb);
-	}
 	if (ret_val)
 	{
 		asm_skip_spacing_chars(line, i);

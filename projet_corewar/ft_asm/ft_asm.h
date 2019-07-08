@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:46:41 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:52:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,10 +214,8 @@ int						asm_inst_arg_type_direct(char *line, size_t *i);
 int						asm_inst_arg_type_indirect(char *line, size_t *i);
 int						asm_inst_arg_type_label(char *line, size_t *i);
 /*
-** Dans le fichier 'asm_parse_arg_types.c'
+** Dans le fichier 'asm_parse_arg_types_01.c'
 ** static size_t	asm_parse_arg_direct_size(t_asm_data *data);
-** static size_t	asm_parse_arg_label_get_ref(t_asm_data *data,\
-**																size_t arg_nb);
 */
 int						asm_parse_arg_register(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
@@ -225,6 +223,11 @@ int						asm_parse_arg_direct(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
 int						asm_parse_arg_indirect(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
+/*
+** Dans le fichier 'asm_parse_arg_types_02.c'
+** static size_t	asm_parse_arg_label_get_ref(t_asm_data *data,\
+**																size_t arg_nb);
+*/
 int						asm_parse_arg_label(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
 /*

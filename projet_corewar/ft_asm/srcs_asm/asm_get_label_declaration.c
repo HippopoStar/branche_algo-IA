@@ -6,13 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:27:55 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:59:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:45:47 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_asm.h"
 
 /*
+** Retrait ostentatoire d'accolades pour flatter la Norme
+** (voir https://meta.intra.42.fr/articles/norm-norminette)
+**
 **	ft_putstr("get_label_declaration\n");
 */
 
@@ -24,9 +27,7 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i,\
 	j = 0;
 	while (!(*(line + (*i) + j) == '\0')\
 							&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
-	{
 		j++;
-	}
 	if (*(line + (*i) + j) == LABEL_CHAR)
 	{
 		*(line + (*i) + j) = '\0';
