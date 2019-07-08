@@ -1,5 +1,20 @@
 #include "ft_asm.h"
 
+static void	asm_liberate_gnl_node(int fd, char **line)
+{
+	int		ret_gnl;
+
+	while ((ret_gnl = get_next_line_backslash_zero(fd, line)) == 1)
+	{
+		free(*line);
+		(*line) = NULL;
+	}
+	if (!((*line) == NULL))
+	{
+		free(*line);
+	}
+}
+
 /*
 ** //
 **	ft_putstr("Erreur mais creation du fichier avec ce qu'on a\n");
@@ -29,6 +44,8 @@ int		asm_compile(t_asm_data *data)
 	if (!(line == NULL))
 	{
 		free(line);
+		line = NULL;
+		asm_liberate_gnl_node(data->input_fd, &line);
 	}
 	return (asm_error_message_reading_stopped(data));
 }
