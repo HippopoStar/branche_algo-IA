@@ -16,18 +16,18 @@ static int	asm_check_register(char op_code, size_t i)
 		return (1);
 	}
 	else if (i == 1 && (op_code == (char)2 || op_code == (char)3
-				|| op_code == (char)4 || op_code == (char)6
-				|| op_code == (char)7 || op_code == (char)8
-				|| op_code == (char)10 || op_code == (char)11
-				|| op_code == (char)13 || op_code == (char)14))
+				|| op_code == (char)4 || op_code == (char)5
+				|| op_code == (char)6 || op_code == (char)7
+				|| op_code == (char)8 || op_code == (char)10
+				|| op_code == (char)11 || op_code == (char)13
+				|| op_code == (char)14))
 	{
 		return (1);
 	}
 	else if (i == 2 && (op_code == (char)4 || op_code == (char)5
-				|| op_code == (char)4 || op_code == (char)6
-				|| op_code == (char)7 || op_code == (char)8
-				|| op_code == (char)10 || op_code == (char)11
-				|| op_code == (char)14))
+				|| op_code == (char)6 || op_code == (char)7
+				|| op_code == (char)8 || op_code == (char)10
+				|| op_code == (char)11 || op_code == (char)14))
 	{
 		return (1);
 	}
