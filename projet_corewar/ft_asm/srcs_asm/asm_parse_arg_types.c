@@ -1,10 +1,18 @@
 #include "ft_asm.h"
 
+/*
+**	ft_putstr("'asm_parse_arg_types' : ");
+**	ft_putstr(&(*(line + (*i))));
+**	ft_putstr("\n'atoi' return : ");
+**	ft_putnbr((int)u);
+**	ft_putchar('\n');
+*/
+
 int		asm_parse_arg_register(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 {
 	unsigned int	u;
 
-	u = (unsigned int)ft_atoi(line);
+	u = (unsigned int)ft_atoi(&(*(line + (*i))));
 	((data->current_inst)->arg + arg_nb)->check = (char)1;
 	((data->current_inst)->arg + arg_nb)->size = 1;
 	if (u < 17)
@@ -43,7 +51,7 @@ int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb
 {
 	unsigned int	u;
 
-	u = (unsigned int)ft_atoi(line);
+	u = (unsigned int)ft_atoi(&(*(line + (*i))));
 	((data->current_inst)->arg + arg_nb)->check = (char)2;
 	((data->current_inst)->arg + arg_nb)->size = asm_parse_arg_direct_size(data);
 	((data->current_inst)->arg + arg_nb)->value = u;
@@ -62,7 +70,7 @@ int		asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i, size_t arg_
 {
 	unsigned int	u;
 
-	u = (unsigned int)ft_atoi(line);
+	u = (unsigned int)ft_atoi(&(*(line + (*i))));
 	((data->current_inst)->arg + arg_nb)->check = (char)3;
 	((data->current_inst)->arg + arg_nb)->size = 2;
 	((data->current_inst)->arg + arg_nb)->value = u;
