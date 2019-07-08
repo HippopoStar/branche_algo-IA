@@ -9,7 +9,7 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i, size_t p
 	size_t	j;
 
 	j = 0;
-	while (ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
+	while (!(*(line + (*i) + j) == '\0') && ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
 	{
 		j++;
 	}

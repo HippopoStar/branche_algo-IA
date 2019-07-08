@@ -236,5 +236,9 @@ void	asm_skip_spacing_chars(char *line, size_t *i);
 ** static int	aux_asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i);
 */
 int		asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i);
+/*
+** Dans le fichier 'asm_ft_atoi.c'
+*/
+int		asm_ft_atoi(const char *str);
 
 #endif
