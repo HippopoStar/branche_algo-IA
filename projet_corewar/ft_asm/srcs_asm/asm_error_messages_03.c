@@ -15,3 +15,13 @@ int		asm_inexisting_label_reference(char *label_name)
 	ft_putstr_fd("\"\n", 2);
 	return (0);
 }
+
+int		asm_error_message_reading_stopped(t_asm_data *data)
+{
+	ft_putstr_fd("- error - file \"", 2);
+	ft_putstr_fd(data->input_file_name, 2);
+	ft_putstr_fd("\" - reading stopped at line ", 2);
+	ft_putnbr_fd(data->current_line_nb, 2);
+	ft_putchar_fd('\n', 2);
+	return (0);
+}

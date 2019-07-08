@@ -62,11 +62,8 @@ int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
 	t_asm_inst	inst;
 	size_t	pos;
 
-	ft_putstr("asm_parse_prog\n");
-	h->prog_size = 23; // "zork"
 	pos = 0;
 	inst.prog = prog;
-//	inst.pos = &pos;
 	data->current_inst = &inst;
 	while ((ret_val = asm_parse_line(data, line, &pos)) == 1)
 		;

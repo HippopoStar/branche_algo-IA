@@ -41,5 +41,9 @@ int		main(int argc, char **argv)
 			i++;
 		}
 	}
+	else
+	{
+		ft_putstr("usage: ./asm <my_champ.s>\n");
+	}
 	return (0);
 }

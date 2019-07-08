@@ -8,7 +8,6 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i, size_t p
 {
 	size_t	j;
 
-	ft_putstr("get_label_declaration\n");
 	j = 0;
 	while (ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
 	{

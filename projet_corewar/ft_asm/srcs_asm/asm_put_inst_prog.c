@@ -1,7 +1,5 @@
 #include "ft_asm.h"
 
-#include <stdio.h>
-
 static int	asm_put_checksum_prog(t_asm_inst *inst, size_t *pos)
 {
 	size_t	i;
@@ -11,7 +9,6 @@ static int	asm_put_checksum_prog(t_asm_inst *inst, size_t *pos)
 	while (i < inst->nb_of_args)
 	{
 		inst->checksum = inst->checksum + ((inst->arg + i)->check << (6 - (i * 2)));
-		printf("checksum : %hhx\n", inst->checksum);
 		i++;
 	}
 	if (asm_putchar_prog(inst->prog, pos, inst->checksum))
@@ -36,12 +33,10 @@ static int	asm_put_op_code_checksum_prog(t_asm_inst *inst, size_t *pos)
 	{
 		if (inst->checksum == '\0')
 		{
-			ft_putstr("PAS DE CHECKSUM\n");
 			return (1);
 		}
 		else
 		{
-			ft_putstr("CHECKSUM\n");
 			return (asm_put_checksum_prog(inst, pos));
 		}
 	}
