@@ -37,6 +37,7 @@ int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
 				arg_nb++;
 			}
 			if (arg_nb == (data->current_inst)->nb_of_args
+					&& asm_check_inst_args(data->current_inst)
 					&& asm_put_inst_prog(data->current_inst, pos))
 			{
 				return (1);

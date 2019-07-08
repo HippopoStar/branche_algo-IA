@@ -199,6 +199,13 @@ int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb
 int		asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb);
 /*
+** Dans le fichier 'asm_check_inst_args.c'
+** static int	asm_check_register(char op_code, size_t i);
+** static int	asm_check_direct(char op_code, size_t i);
+** static int	asm_check_indirect(char op_code, size_t i);
+*/
+int		asm_check_inst_args(t_asm_inst *inst);
+/*
 ** Dans le fichier 'asm_put_inst_prog.c'
 ** static int	asm_put_checksum_prog(t_asm_inst *inst, size_t *pos);
 ** static int	asm_put_op_code_checksum_prog(t_asm_inst *inst, size_t *pos);
