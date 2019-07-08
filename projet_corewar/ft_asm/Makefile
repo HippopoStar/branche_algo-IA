@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/08 18:50:59 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/08 19:16:17 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ SRC_NAME = main_asm.c\
 			asm_ft_atoi.c\
 			asm_error_messages_01.c\
 			asm_error_messages_02.c\
-			asm_error_messages_03.c
+			asm_error_messages_03.c\
+			asm_error_messages_04.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

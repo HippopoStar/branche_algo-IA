@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:52:31 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 19:34:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ int						asm_two_labels_in_a_row(t_asm_data *data);
 int						asm_inexisting_label_reference(char *label_name);
 int						asm_error_message_reading_stopped(t_asm_data *data);
 /*
+** Das le fichier 'asm_error_messages_04.c'
+*/
+int						asm_name_does_not_fit(void);
+int						asm_comment_does_not_fit(void);
+int						asm_program_does_not_fit(void);
+/*
 ** Dans le fichier 'asm_compile.c'
 ** static void	asm_liberate_gnl_node(int fd, char **line);
 */
@@ -161,7 +167,7 @@ int						asm_put_header_output(t_asm_data *data, t_header *h);
 /*
 ** Dans le fichier 'asm_parse_header.c'
 ** static void	asm_initialize_header_struc(t_header *h);
-** static int	asm_get_quote(char *line, char *to_fill, int size);
+** static int	asm_get_quote(char *line, char *to_fill, int size, size_t *j);
 ** static int	asm_parse_name(t_asm_data *data, t_header *h, char **line);
 ** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
 */

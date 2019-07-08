@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:28:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:07:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 19:40:15 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,28 @@ static void	asm_initialize_header_struct(t_header *h)
 	}
 }
 
-static int	asm_get_quote(char *line, char *to_fill, int size)
-{
-	size_t	i;
+/*
+** Ajout de l'argument (size_t *)j pour l'appel de 'asm_'[...]'_does_not_fit
+*/
 
+static int	asm_get_quote(char *line, char *to_fill, int size, size_t *j)
+{
 	if (*(line + 0) == '"')
 	{
 		line++;
-		i = 0;
-		while (i < (size_t)size && !(*(line + i) == '"' || *(line + i) == '\0'))
+		*j = 0;
+		while ((*j) < (size_t)size\
+				&& !(*(line + (*j)) == '"' || *(line + (*j)) == '\0'))
 		{
-			*(to_fill + i) = *(line + i);
-			i++;
+			*(to_fill + (*j)) = *(line + (*j));
+			(*j)++;
 		}
-		*(to_fill + i) = '\0';
-		if (*(line + i) == '"')
+		*(to_fill + (*j)) = '\0';
+		if (*(line + (*j)) == '"')
 		{
-			i++;
-			asm_skip_spacing_chars(line, &i);
-			if (*(line + i) == '\0' || *(line + i) == COMMENT_CHAR)
+			(*j)++;
+			asm_skip_spacing_chars(line, j);
+			if (*(line + (*j)) == '\0' || *(line + (*j)) == COMMENT_CHAR)
 			{
 				return (1);
 			}
@@ -61,36 +64,43 @@ static int	asm_parse_name(t_asm_data *data, t_header *h, char **line)
 {
 	int		ret_gnl;
 	size_t	i;
+	size_t	j;
 
+	j = 0;
 	ret_gnl = asm_gn_pertinent_l(data, line, &i);
-	if (ret_gnl == 1 && !ft_strncmp(".name", &(*((*line) + i)), 5))
+	if (ret_gnl == 1 && !ft_strncmp(NAME_CMD_STRING, &(*((*line) + i)), 5))
 	{
 		i = i + 5;
 		asm_skip_spacing_chars(*line, &i);
-		if (asm_get_quote(&(*((*line) + i)), h->prog_name, PROG_NAME_LENGTH))
+		if (asm_get_quote(&(*((*line) + i)), h->prog_name, PROG_NAME_LENGTH,\
+					&j))
 		{
 			return (1);
 		}
 	}
-	return (asm_failed_to_get_prog_name(data));
+	return (j == PROG_NAME_LENGTH ? asm_name_does_not_fit()\
+			: asm_failed_to_get_prog_name(data));
 }
 
 static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 {
 	int		ret_gnl;
 	size_t	i;
+	size_t	j;
 
+	j = 0;
 	ret_gnl = asm_gn_pertinent_l(data, line, &i);
-	if (ret_gnl == 1 && !ft_strncmp(".comment", &(*((*line) + i)), 8))
+	if (ret_gnl == 1 && !ft_strncmp(COMMENT_CMD_STRING, &(*((*line) + i)), 8))
 	{
 		i = i + 8;
 		asm_skip_spacing_chars(*line, &i);
-		if (asm_get_quote(&(*((*line) + i)), h->comment, COMMENT_LENGTH))
+		if (asm_get_quote(&(*((*line) + i)), h->comment, COMMENT_LENGTH, &j))
 		{
 			return (1);
 		}
 	}
-	return (asm_failed_to_get_comment(data));
+	return (j == COMMENT_LENGTH ? asm_comment_does_not_fit()\
+			: asm_failed_to_get_comment(data));
 }
 
 /*

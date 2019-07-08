@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:31:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:31:09 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 19:33:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		asm_putchar_prog(char *prog, size_t *pos, char c)
 	}
 	else
 	{
-		return (0);
+		return (asm_program_does_not_fit());
 	}
 }
 
