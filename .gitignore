@@ -2,4 +2,8 @@ projet_corewar/op.h
 projet_corewar/op.c
 projet_corewar/vm_champs.tar
 projet_corewar/vm_champs/
+projet_corewar/ft_asm/zork.cor
+projet_corewar/ft_asm/asm
+projet_corewar/ft_asm/objs/
+projet_corewar/ft_asm/libft/libft.a
 

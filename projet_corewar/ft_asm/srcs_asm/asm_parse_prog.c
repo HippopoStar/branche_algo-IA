@@ -14,7 +14,7 @@ static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref, char *pr
 	if (i < CHAMP_MAX_SIZE)
 	{
 		indirect = (unsigned short int)(i - label_ref->op_code_pos);
-		if (asm_putuint_prog(prog, &(label_ref->ref_pos), indirect))
+		if (asm_putusint_prog(prog, &(label_ref->ref_pos), indirect))
 		{
 			return (1);
 		}

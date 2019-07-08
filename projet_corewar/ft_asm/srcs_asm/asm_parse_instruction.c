@@ -10,6 +10,7 @@ static void	asm_initialize_inst_struct(t_asm_data *data, size_t pos)
 {
 	(data->current_inst)->op_code_pos = pos;
 	(data->current_inst)->checksum = '\0';
+	ft_putstr("checksum remis a zero\n");
 }
 
 /*
@@ -30,9 +31,9 @@ int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
 	ft_putchar('\n');
 	if (!(*(line + i) == '\0' || *(line + i) == COMMENT_CHAR))
 	{
+		asm_initialize_inst_struct(data, *pos);
 		if (asm_get_inst_op_code(data->current_inst, line, &i))
 		{
-			asm_initialize_inst_struct(data, *pos);
 			arg_nb = 0;
 			while (arg_nb < (data->current_inst)->nb_of_args
 					&& asm_parse_inst_arg(data, line, &i, arg_nb))
