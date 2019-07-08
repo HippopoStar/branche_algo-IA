@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:23 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:29:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:06:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 /*
 ** (char *)(data->current_inst)->prog est initialisee dans 'asm_parse_prog'
-** (char)(data->current_inst)->op_code est initialisee dans 'asm_get_inst_op_code'
-** (int)(data->current_inst)->nb_of_args est initialisee dans 'asm_op_code_one/two/three/four'
+** (char)(data->current_inst)->op_code est initialisee dans
+**                                     'asm_get_inst_op_code'
+** (int)(data->current_inst)->nb_of_args est initialisee dans
+**                                       'asm_op_code_one/two/three/four'
 */
 
 static void	asm_initialize_inst_struct(t_asm_data *data, size_t pos)
@@ -30,10 +32,12 @@ static void	asm_initialize_inst_struct(t_asm_data *data, size_t pos)
 **	ft_putstr("ams_parse_instruction\n");
 **	ft_putstr(&(*(line + i)));
 **	ft_putchar('\n');
-**			asm_putchar_prog((data->current_inst)->prog, pos, (data->current_inst)->op_code);
+**			asm_putchar_prog((data->current_inst)->prog, pos,\
+**												(data->current_inst)->op_code);
 */
 
-int		asm_parse_instruction(t_asm_data *data, char *line, size_t i, size_t *pos)
+int			asm_parse_instruction(t_asm_data *data, char *line, size_t i,\
+																	size_t *pos)
 {
 	size_t	arg_nb;
 

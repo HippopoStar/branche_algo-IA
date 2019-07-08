@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:29:10 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:05:27 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 **	ft_putchar('\n');
 */
 
-static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i, size_t arg_nb)
+static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	if (inst->nb_of_args > 0)
 	{
@@ -51,7 +52,8 @@ static int	asm_inst_arg_fits(t_asm_inst *inst, char *line, size_t *i, size_t arg
 **	ft_putchar('\n');
 */
 
-int		asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
+int			asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	int		ret_val;
 
@@ -75,7 +77,9 @@ int		asm_parse_inst_arg(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	if (ret_val)
 	{
 		asm_skip_spacing_chars(line, i);
-		return (ret_val && asm_inst_arg_fits(data->current_inst, line, i, arg_nb) ? 1 : 0);
+		return (ret_val\
+				&& asm_inst_arg_fits(data->current_inst, line, i, arg_nb)\
+				? 1 : 0);
 	}
 	return (0);
 }

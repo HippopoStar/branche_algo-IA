@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 16:37:05 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:47:24 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:11:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		asm_incorrect_input_file_name(t_asm_data *data)
 	return (0);
 }
 
-void		asm_output_file_creation_fail(t_asm_data *data)
+void	asm_output_file_creation_fail(t_asm_data *data)
 {
 	ft_putstr_fd("ERROR: Unable to create \"", 2);
 	ft_putstr_fd(data->output_file_name, 2);

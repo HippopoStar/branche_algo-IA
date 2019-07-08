@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 16:06:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:20:30 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:01:37 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	asm_initialize_data_output(t_asm_data *data)
 ** a NULL
 */
 
-void	asm_initialize_data(t_asm_data *data)
+void		asm_initialize_data(t_asm_data *data)
 {
 	data->total_size = 0;
 	data->input_fd = -1;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:28:47 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:28:49 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:04:24 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 **	ft_putchar('\n');
 */
 
-int		asm_parse_arg_register(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
+int				asm_parse_arg_register(t_asm_data *data, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	unsigned int	u;
 
@@ -59,13 +60,15 @@ static size_t	asm_parse_arg_direct_size(t_asm_data *data)
 	}
 }
 
-int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
+int				asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	unsigned int	u;
 
 	u = (unsigned int)asm_ft_atoi(&(*(line + (*i))));
 	((data->current_inst)->arg + arg_nb)->check = (char)2;
-	((data->current_inst)->arg + arg_nb)->size = asm_parse_arg_direct_size(data);
+	((data->current_inst)->arg + arg_nb)->size = \
+												asm_parse_arg_direct_size(data);
 	((data->current_inst)->arg + arg_nb)->value = u;
 	if (*(line + (*i)) == '+' || *(line + (*i)) == '-')
 	{
@@ -78,7 +81,8 @@ int		asm_parse_arg_direct(t_asm_data *data, char *line, size_t *i, size_t arg_nb
 	return (1);
 }
 
-int		asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
+int				asm_parse_arg_indirect(t_asm_data *data, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	unsigned int	u;
 
@@ -125,7 +129,8 @@ static size_t	asm_parse_arg_label_get_ref_pos(t_asm_data *data, size_t arg_nb)
 **		ft_putchar('\n');
 */
 
-int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
+int				asm_parse_arg_label(t_asm_data *data, char *line, size_t *i,\
+																size_t arg_nb)
 {
 	size_t	j;
 	char	c;
@@ -134,7 +139,8 @@ int		asm_parse_arg_label(t_asm_data *data, char *line, size_t *i, size_t arg_nb)
 	((data->current_inst)->arg + arg_nb)->check = (char)2;
 	((data->current_inst)->arg + arg_nb)->size = 2;
 	j = 0;
-	while (!(*(line + (*i) + j) == '\0') && ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
+	while (!(*(line + (*i) + j) == '\0')\
+			&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
 	{
 		j++;
 	}

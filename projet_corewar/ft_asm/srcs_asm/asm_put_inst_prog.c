@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:30:26 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:30:28 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:10:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	asm_put_checksum_prog(t_asm_inst *inst, size_t *pos)
 	i = 0;
 	while (i < inst->nb_of_args)
 	{
-		inst->checksum = inst->checksum + ((inst->arg + i)->check << (6 - (i * 2)));
+		inst->checksum = inst->checksum\
+						+ ((inst->arg + i)->check << (6 - (i * 2)));
 		i++;
 	}
 	if (asm_putchar_prog(inst->prog, pos, inst->checksum))
@@ -64,11 +65,13 @@ static int	asm_put_arg_prog(t_asm_arg *arg, char *prog, size_t *pos)
 	{
 		return (1);
 	}
-	else if (arg->size == 2 && asm_putusint_prog(prog, pos, (unsigned short int)arg->value))
+	else if (arg->size == 2\
+			&& asm_putusint_prog(prog, pos, (unsigned short int)arg->value))
 	{
 		return (1);
 	}
-	else if (arg->size == 4 && asm_putuint_prog(prog, pos, (unsigned int)arg->value))
+	else if (arg->size == 4\
+			&& asm_putuint_prog(prog, pos, (unsigned int)arg->value))
 	{
 		return (1);
 	}
@@ -78,7 +81,7 @@ static int	asm_put_arg_prog(t_asm_arg *arg, char *prog, size_t *pos)
 	}
 }
 
-int		asm_put_inst_prog(t_asm_inst *inst, size_t *pos)
+int			asm_put_inst_prog(t_asm_inst *inst, size_t *pos)
 {
 	size_t	i;
 

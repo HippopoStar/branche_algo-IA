@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:27:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:27:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:01:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ static char	asm_op_code_four(t_asm_inst *inst, char *line, size_t *i)
 ** 'st' et 'ld' sont dans 'asm_op_code_one'
 */
 
-int		asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i)
+int			asm_get_inst_op_code(t_asm_inst *inst, char *line, size_t *i)
 {
 	if ((inst->op_code = asm_op_code_four(inst, line, i))
 			|| (inst->op_code = asm_op_code_three(inst, line, i))

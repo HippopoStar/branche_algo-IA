@@ -6,16 +6,17 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:48 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:29:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:08:56 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_asm.h"
 
-static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref, char *prog)
+static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
+																	char *prog)
 {
 	unsigned short int	indirect;
-	size_t		i;
+	size_t				i;
 
 	i = 0;
 	while (i < CHAMP_MAX_SIZE && (*(data->label_tab + i) == NULL
@@ -36,7 +37,7 @@ static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref, char *pr
 
 static int	asm_check_labels(t_asm_data *data, char *prog)
 {
-	t_lab_ref		*tmp;
+	t_lab_ref	*tmp;
 
 	tmp = data->label_refs;
 	while (!(tmp == NULL))
@@ -68,11 +69,12 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 **	h->prog_size = 23; // "zork"
 */
 
-int		asm_parse_prog(t_asm_data *data, t_header *h, char **line, char *prog)
+int			asm_parse_prog(t_asm_data *data, t_header *h, char **line,\
+																	char *prog)
 {
-	int		ret_val;
+	int			ret_val;
 	t_asm_inst	inst;
-	size_t	pos;
+	size_t		pos;
 
 	pos = 0;
 	inst.prog = prog;

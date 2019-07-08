@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:27:33 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:27:34 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 17:56:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 int		asm_ft_atoi(const char *str)
 {
 	unsigned int	n;
-	char		neg;
-	size_t		i;
+	char			neg;
+	size_t			i;
 
 	n = (char)0;
 	neg = 0;

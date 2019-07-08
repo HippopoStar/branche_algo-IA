@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:26:53 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:26:58 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 17:52:14 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	asm_create_output_file(t_asm_data *data)
 {
-	if (!((data->output_fd = open(data->output_file_name, O_CREAT|O_WRONLY|O_TRUNC, S_IRUSR|S_IWUSR)) == -1))
+	if (!((data->output_fd = open(data->output_file_name,\
+						O_CREAT | O_WRONLY | O_TRUNC,\
+						S_IRUSR | S_IWUSR)) == -1))
 	{
 		ft_putstr("Creating \"");
 		ft_putstr(data->output_file_name);

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:26:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:26:37 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 17:50:57 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 **		(*node)->ref_pos = data->output_index;
 */
 
-static void	aux_asm_allocate_label_ref(t_asm_data *data, char *label_name, t_lab_ref **node, size_t pos)
+static void	aux_asm_allocate_label_ref(t_asm_data *data, char *label_name,\
+												t_lab_ref **node, size_t pos)
 {
 	if (!(((*node) = (t_lab_ref *)malloc(sizeof(t_lab_ref))) == NULL))
 	{
@@ -33,7 +34,8 @@ static void	aux_asm_allocate_label_ref(t_asm_data *data, char *label_name, t_lab
 	}
 }
 
-int		asm_allocate_label_ref(t_asm_data *data, char *label_name, size_t pos)
+int			asm_allocate_label_ref(t_asm_data *data, char *label_name,\
+																	size_t pos)
 {
 	t_lab_ref	**node;
 

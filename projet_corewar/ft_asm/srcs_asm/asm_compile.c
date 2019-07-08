@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm_compile.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 17:54:59 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/07/08 17:55:51 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_asm.h"
 
 static void	asm_liberate_gnl_node(int fd, char **line)
@@ -26,16 +38,18 @@ static void	asm_liberate_gnl_node(int fd, char **line)
 ** //
 */
 
-int		asm_compile(t_asm_data *data)
+int			asm_compile(t_asm_data *data)
 {
 	char		*line;
 	t_header	h;
 	char		prog[CHAMP_MAX_SIZE];
 
 	line = NULL;
-	if (asm_parse_header(data, &h, &line) && asm_parse_prog(data, &h, &line, prog))
+	if (asm_parse_header(data, &h, &line)\
+			&& asm_parse_prog(data, &h, &line, prog))
 	{
-		if (asm_put_header_output(data, &h) && asm_put_prog_output(data, &h, prog))
+		if (asm_put_header_output(data, &h)\
+				&& asm_put_prog_output(data, &h, prog))
 		{
 			data->total_size = FT_HEADER_LENGTH + h.prog_size;
 			return (1);

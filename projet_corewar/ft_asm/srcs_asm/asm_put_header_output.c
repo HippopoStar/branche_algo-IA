@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:30:01 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:30:09 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:09:35 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ static int	asm_put_comment_output(t_asm_data *data, t_header *h)
 	return (1);
 }
 
-int		asm_put_header_output(t_asm_data *data, t_header *h)
+int			asm_put_header_output(t_asm_data *data, t_header *h)
 {
 	if (asm_put_magic_output(data, h) && asm_put_name_output(data, h))
 	{
 		data->output_index = 4 + PROG_NAME_LENGTH + 4;
-		if (asm_put_prog_size_output(data, h) && asm_put_comment_output(data, h))
+		if (asm_put_prog_size_output(data, h)\
+				&& asm_put_comment_output(data, h))
 		{
 			return (1);
 		}

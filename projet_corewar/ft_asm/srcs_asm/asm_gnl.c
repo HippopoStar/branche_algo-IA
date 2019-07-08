@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:28:04 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:28:06 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:00:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** a la suite de sa declaration, soit initialisee a NULL
 */
 
-static int		asm_gnl(t_asm_data *data, char **line)
+static int	asm_gnl(t_asm_data *data, char **line)
 {
 	int		ret_gnl;
 
@@ -52,7 +52,7 @@ static int		asm_gnl(t_asm_data *data, char **line)
 ** Ajouter le flag O_NOFOLLOW afin qu'il ne suive pas les liens symboliques ?
 */
 
-static int		aux_asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i)
+static int	aux_asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i)
 {
 	int		ret_gnl;
 
@@ -64,7 +64,7 @@ static int		aux_asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i)
 	return (ret_gnl);
 }
 
-int		asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i)
+int			asm_gn_pertinent_l(t_asm_data *data, char **line, size_t *i)
 {
 	int		ret_gnl;
 

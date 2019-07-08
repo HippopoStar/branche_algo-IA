@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 16:08:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/05 16:50:27 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:02:26 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int		asm_open_input_file(t_asm_data *data)
 		*(data->output_file_name + name_length) = 'o';
 		*(data->output_file_name + name_length + 1) = 'r';
 		*(data->output_file_name + name_length + 2) = '\0';
-		if ((data->input_fd = open(data->input_file_name, O_RDONLY|O_NOFOLLOW)) == -1)
+		if ((data->input_fd = open(data->input_file_name,\
+						O_RDONLY | O_NOFOLLOW)) == -1)
 			return (asm_input_file_open_fail(data));
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:28:56 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:28:58 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/08 18:07:32 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 ** mais est tres jolie
 */
 
-int		asm_parse_header(t_asm_data *data, t_header *h, char **line)
+int			asm_parse_header(t_asm_data *data, t_header *h, char **line)
 {
 	h->magic = (unsigned int)COREWAR_EXEC_MAGIC;
 	asm_initialize_header_struct(h);
