@@ -23,6 +23,15 @@
 /*
 ** Dans 't_asm_data' :
 ** - (t_asm_data *)->output_file_name
+**
+** Dans 'asm_compile.c', sont declarees :
+** (char *)line
+** (t_header)h;
+** (char *)prog;
+**
+** Dans 'asm_parse_prog.c', sont declarees :
+** (t_asm_inst)inst;
+** (size_t)pos;
 */
 
 typedef struct	s_lab_ref
