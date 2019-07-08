@@ -58,6 +58,7 @@ void	asm_initialize_data(t_asm_data *data)
 	data->input_fd = -1;
 	data->output_file_name = NULL;
 	data->output_fd = -1;
+	data->current_line_nb = 0;
 	asm_initialize_data_output(data);
 	data->output_index = 0;
 	asm_initialize_data_label_tab(data);
