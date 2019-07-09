@@ -111,6 +111,7 @@ int						asm_syntax_error(t_asm_data *data);
 ** Dans le fichier 'asm_error_messages_03.c'
 */
 int						asm_two_labels_in_a_row(t_asm_data *data);
+int						asm_label_name_already_exists(char *label_name);
 int						asm_inexisting_label_reference(char *label_name);
 int						asm_error_message_reading_stopped(t_asm_data *data);
 /*
@@ -188,6 +189,7 @@ int						asm_parse_line(t_asm_data *data, char **line,\
 																size_t *pos);
 /*
 ** Dans le fichier 'asm_get_label_declaration.c'
+** static int	asm_label_declaration_available(t_asm_data *data, char *label_name, size_t pos);
 */
 int						asm_get_label_declaration(t_asm_data *data, char *line,\
 														size_t *i, size_t pos);

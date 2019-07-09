@@ -12,6 +12,35 @@
 
 #include "ft_asm.h"
 
+static int	asm_label_declaration_available(t_asm_data *data, char *label_name, size_t pos)
+{
+	size_t	i;
+
+	if (*(data->label_tab + pos) == NULL)
+	{
+		if (pos > 0)
+		{
+			i = 0;
+			while (i < pos)
+			{
+				if (!(*(data->label_tab + i) == NULL) && !ft_strcmp(*(data->label_tab + i), label_name))
+				{
+					return (asm_label_name_already_exists(label_name));
+				}
+				else
+				{
+					i++;
+				}
+			}
+		}
+	}
+	else
+	{
+		return (asm_two_labels_in_a_row(data));
+	}
+	return (1);
+}
+
 /*
 ** Retrait ostentatoire d'accolades pour flatter la Norme
 ** (voir https://meta.intra.42.fr/articles/norm-norminette)
@@ -31,7 +60,7 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i,\
 	if (*(line + (*i) + j) == LABEL_CHAR)
 	{
 		*(line + (*i) + j) = '\0';
-		if (*(data->label_tab + pos) == NULL)
+		if (asm_label_declaration_available(data, &(*(line + (*i))), pos))
 		{
 			if (!((*(data->label_tab + pos) = ft_strdup(&(*(line + (*i)))))\
 						== NULL))
@@ -43,7 +72,7 @@ int		asm_get_label_declaration(t_asm_data *data, char *line, size_t *i,\
 				return (asm_memory_allocation_fail());
 		}
 		else
-			return (asm_two_labels_in_a_row(data));
+			return (0);
 	}
 	return (1);
 }
