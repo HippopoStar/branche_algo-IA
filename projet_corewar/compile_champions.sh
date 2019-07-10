@@ -16,8 +16,16 @@ ASM='ft_asm/asm'
 SRC_DIR='vm_champs/champs'
 DST_DIR='champs_binaries'
 
+# / ! \
+# Si on modifie les valeurs des variables SRC_DIR et DST_DIR,
+# il est grandement recommende de les modifier dans le script auxiliaire egalement
+
 # Dans le fichier 'aux_compile_champions.sh'
-#
+# (l'interet de ce script auxiliaire par rapport a
+# appeler l'executable de l'assembleur directement
+# dans la fonction 'compile_directory'
+# est de remettre en place les fichiers sources
+
 # compile_file () {
 #	if test -e ${1} && test -f ${1} ; then
 #		mv ${1} ${DST_DIR}
@@ -40,7 +48,7 @@ compile_directory () {
 		# sh -s
 		# aux_compile_champions.sh
 		# compile_file
-		ls -1 -R ${SRC_DIR}/*.s | awk '{ print "sh aux_compile_champions.sh " $0 }' | sh -s
+		ls -1 ${SRC_DIR}/*.s | awk -v asm="${ASM}" '{ print "sh aux_compile_champions.sh " asm " " $0 }' | sh -s
 	else
 		echo "Le repertoire \"${SRC_DIR}\" n'existe pas ou est un fichier"
 	fi
@@ -55,7 +63,11 @@ main () {
 		echo "Creation du repertoire \"${DST_DIR}\""
 		mkdir -p ${DST_DIR}
 	fi
-	compile_directory ${DST_DIR}
+	if test -e ${ASM} && test -f ${ASM} ; then
+		compile_directory ${DST_DIR}
+	else
+		echo "Le fichier \"${ASM}\" est introuvable. Avez-vous compile ?"
+	fi
 }
 
 main

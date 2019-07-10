@@ -16,15 +16,22 @@ ASM='ft_asm/asm'
 SRC_DIR='vm_champs/champs'
 DST_DIR='champs_binaries'
 
+# / ! \ La variable ASM n'est pas utilisee dans ce script auxiliaire,
+# pour modifier l'assembleur employer, modifier la valeur de cette variable
+# dans le script parent
+
+# / ! \ De meme, en cas de modification des variables SRC_DIR et DST_DIR,
+# il est grandement recommende de les modifier dans le script parent egalement
+
 compile_file () {
-	if test -e ${1} && test -f ${1} ; then
-		mv ${1} ${DST_DIR}
-		./${ASM} ${DST_DIR}/$(basename ${1})
-		mv ${DST_DIR}/$(basename ${1}) ${SRC_DIR}
+	if test -e ${2} && test -f ${2} ; then
+		mv ${2} ${DST_DIR}
+		./${1} ${DST_DIR}/$(basename ${2})
+		mv ${DST_DIR}/$(basename ${2}) ${SRC_DIR}
 		# Tel quel, les fichiers sources vont etres renvoyes
 		# a la racine de leur repertoire d'origine
 	else
-		echo "Le fichier \"${1}\" n'existe pas ou est un repertoire"
+		echo "Le fichier \"${2}\" n'existe pas ou est un repertoire"
 	fi
 }
 
@@ -38,8 +45,8 @@ compile_file () {
 #
 # main ${1}
 
-if test ${#} -gt 0 ; then
-	compile_file ${1}
+if test ${#} -gt 1 ; then
+	compile_file ${1} ${2}
 else
 	echo "${0}: aucun argument passe en parametre au programme"
 fi
