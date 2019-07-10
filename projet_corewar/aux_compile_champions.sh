@@ -28,33 +28,19 @@ compile_file () {
 	fi
 }
 
-compile_directory () {
-	if test -e ${SRC_DIR} && test -d ${SRC_DIR} ; then
-		# awk - exec
-		# awk - system
-		# xargs
-		# sh
-		# sh -c
-		# sh -s
-		# aux_compile_champions.sh
-		# compile_file
-		ls -1 -R ${SRC_DIR}/*.s | awk '{ print "sh aux_compile_champions.sh " $0 }' | bash -s
-	else
-		echo "Le repertoire \"${SRC_DIR}\" n'existe pas ou est un fichier"
-	fi
-}
+# main () {
+#	if test ${#} -gt 0 ; then
+#		compile_file ${1}
+#	else
+#		echo "${0}: aucun argument passe en parametre au programme"
+#	fi
+# }
+#
+# main ${1}
 
-main () {
-	if test -e ${DST_DIR} ; then
-		if test -f ${DST_DIR} ; then
-			echo "Un fichier portant le nom \"${DST_DIR}\" existe deja"
-		fi
-	else
-		echo "Creation du repertoire \"${DST_DIR}\""
-		mkdir -p ${DST_DIR}
-	fi
-	compile_directory ${DST_DIR}
-}
-
-main
+if test ${#} -gt 0 ; then
+	compile_file ${1}
+else
+	echo "${0}: aucun argument passe en parametre au programme"
+fi
 
