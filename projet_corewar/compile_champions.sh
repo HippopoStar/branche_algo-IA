@@ -3,6 +3,8 @@
 # Droits d'acces d'un fichier a '-rw-r--r--':
 # chmod 644 <file>
 
+# sh compile_champions.sh > compile_champions.log 2>&1
+
 # $> which ls
 # /bin/ls
 
@@ -22,6 +24,11 @@ DST_DIR='champs_binaries'
 # / ! \
 # Si on modifie les valeurs des variables SRC_DIR et DST_DIR,
 # il est grandement recommende de les modifier dans le script auxiliaire egalement
+
+# Compiler avec l'assembleur de Zaz :
+# ASM='vm_champs/asm'
+# Compiler avec l'assembleur personnel :
+# ASM='ft_asm/asm'
 
 # Dans le fichier 'aux_compile_champions.sh'
 # (l'interet de ce script auxiliaire par rapport a
