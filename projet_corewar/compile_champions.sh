@@ -50,7 +50,7 @@ DST_DIR='champs_binaries'
 
 compile_directory () {
 	if test -e ${SRC_DIR} && test -d ${SRC_DIR} ; then
-		# awk - exec
+		# find - exec
 		# awk - system
 		# xargs
 		# sh
@@ -58,7 +58,10 @@ compile_directory () {
 		# sh -s
 		# aux_compile_champions.sh
 		# compile_file
-		ls -1 ${SRC_DIR}/*.s | awk -v asm="${ASM}" '{ print "sh aux_compile_champions.sh " asm " " $0 }' | sh -s
+		ls -1 ${SRC_DIR}/*.s \
+			| awk -v asm="${ASM}" \
+				'{ print "sh aux_compile_champions.sh " asm " " $0 }' \
+			| sh -s
 	else
 		echo "Le repertoire \"${SRC_DIR}\" n'existe pas ou est un fichier"
 	fi
