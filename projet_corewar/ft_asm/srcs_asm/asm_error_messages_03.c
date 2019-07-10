@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:27:24 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:27:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/10 19:56:39 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		asm_inexisting_label_reference(char *label_name)
 
 int		asm_error_message_reading_stopped(t_asm_data *data)
 {
-	ft_putstr_fd("- error - file \"", 2);
+	ft_putstr_fd("- \033[33merror\033[00m - file \"", 2);
 	ft_putstr_fd(data->input_file_name, 2);
 	ft_putstr_fd("\" - reading stopped at line ", 2);
 	ft_putnbr_fd(data->current_line_nb, 2);

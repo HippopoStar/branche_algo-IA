@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:26:44 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:58:36 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/10 19:54:30 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static int	asm_check_register(char op_code, size_t i)
 {
-	ft_putstr("'asm_check_register'\n");
 	if (i == 0 && (op_code == (char)3 || op_code == (char)4\
 				|| op_code == (char)5 || op_code == (char)6\
 				|| op_code == (char)7 || op_code == (char)8\
@@ -52,7 +51,6 @@ static int	asm_check_register(char op_code, size_t i)
 
 static int	asm_check_direct(char op_code, size_t i)
 {
-	ft_putstr("'asm_check_direct'\n");
 	if (i == 0 && (op_code == (char)1 || op_code == (char)2\
 				|| op_code == (char)6 || op_code == (char)7\
 				|| op_code == (char)8 || op_code == (char)9\
@@ -81,7 +79,6 @@ static int	asm_check_direct(char op_code, size_t i)
 
 static int	asm_check_indirect(char op_code, size_t i)
 {
-	ft_putstr("'asm_check_indirect'\n");
 	if (i == 0 && (op_code == (char)2 || op_code == (char)6\
 				|| op_code == (char)7 || op_code == (char)8\
 				|| op_code == (char)10 || op_code == (char)13\
@@ -111,9 +108,6 @@ int			asm_check_inst_args(t_asm_inst *inst)
 	i = 0;
 	while (i < inst->nb_of_args)
 	{
-		ft_putstr("'asm_check_inst_args' : ");
-		ft_putnbr((int)i);
-		ft_putchar('\n');
 		if ((inst->arg + i)->check == (char)1\
 				&& !asm_check_register(inst->op_code, i))
 			return (0);

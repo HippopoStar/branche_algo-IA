@@ -13,7 +13,7 @@
 # /bin/ls -1 -R ${SRC_DIR} | grep -e '\.s'
 
 ASM='ft_asm/asm'
-SRC_DIR='vm_champs/champs'
+SRC_DIR='provided_champs'
 DST_DIR='champs_binaries'
 
 # / ! \ La variable ASM n'est pas utilisee dans ce script auxiliaire,

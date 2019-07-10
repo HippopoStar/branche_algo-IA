@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Droits d'acces d'un fichier a '-rw-r--r--':
+# chmod 644 <file>
+
 # $> which ls
 # /bin/ls
 
@@ -13,7 +16,7 @@
 # /bin/ls -1 -R ${SRC_DIR} | grep -e '\.s'
 
 ASM='ft_asm/asm'
-SRC_DIR='vm_champs/champs'
+SRC_DIR='provided_champs'
 DST_DIR='champs_binaries'
 
 # / ! \
