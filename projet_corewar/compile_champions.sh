@@ -16,17 +16,19 @@ ASM='ft_asm/asm'
 SRC_DIR='vm_champs/champs'
 DST_DIR='champs_binaries'
 
-compile_file () {
-	if test -e ${1} && test -f ${1} ; then
-		mv ${1} ${DST_DIR}
-		./${ASM} ${DST_DIR}/$(basename ${1})
-		mv ${DST_DIR}/$(basename ${1}) ${SRC_DIR}
-		# Tel quel, les fichiers sources vont etres renvoyes
-		# a la racine de leur repertoire d'origine
-	else
-		echo "Le fichier \"${1}\" n'existe pas ou est un repertoire"
-	fi
-}
+# Dans le fichier 'aux_compile_champions.sh'
+#
+# compile_file () {
+#	if test -e ${1} && test -f ${1} ; then
+#		mv ${1} ${DST_DIR}
+#		./${ASM} ${DST_DIR}/$(basename ${1})
+#		mv ${DST_DIR}/$(basename ${1}) ${SRC_DIR}
+#		# Tel quel, les fichiers sources vont etres renvoyes
+#		# a la racine de leur repertoire d'origine
+#	else
+#		echo "Le fichier \"${1}\" n'existe pas ou est un repertoire"
+#	fi
+# }
 
 compile_directory () {
 	if test -e ${SRC_DIR} && test -d ${SRC_DIR} ; then
@@ -38,7 +40,7 @@ compile_directory () {
 		# sh -s
 		# aux_compile_champions.sh
 		# compile_file
-		ls -1 -R ${SRC_DIR}/*.s | awk '{ print "sh aux_compile_champions.sh " $0 }' | bash -s
+		ls -1 -R ${SRC_DIR}/*.s | awk '{ print "sh aux_compile_champions.sh " $0 }' | sh -s
 	else
 		echo "Le repertoire \"${SRC_DIR}\" n'existe pas ou est un fichier"
 	fi
