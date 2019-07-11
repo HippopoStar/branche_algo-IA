@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 19:34:29 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 02:38:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,39 @@ typedef struct			s_asm_data
 	t_lab_ref			*label_refs;
 	t_asm_inst			*current_inst;
 }						t_asm_data;
+
+/*
+** Arborescence du programme :
+** | ft_asm
+**     | asm_initialise_data
+**     | asm_open_input_file
+**     | asm_compile
+**         | asm_parse_header
+**         | asm_parse_prog
+**             | asm_parse_line
+**                 | asm_gn_pertinent_l
+**                     | asm_skip_spacing_chars
+**                 | asm_get_label_declaration
+**                     | asm_skip_spacing_chars
+**                 | asm_parse_instruction
+**                     | asm_get_inst_op_code
+**                     | asm_parse_inst_arg
+**                         | asm_inst_arg_type_register
+**                         | asm parse_arg_register
+**                         | asm_inst_arg_type_direct
+**                         | asm_parse_arg_direct
+**                         | asm_inst_arg_type_indirect
+**                         | asm_parse_arg_indirect
+**                         | asm_inst_arg_type_label
+**                         | asm_parse_arg_label
+**                         | asm_skip_spacing_chars
+**                     | asm_check_inst_args
+**                     | asm_put_inst_prog
+**         | asm_put_header_output
+**         | asm_put_prog_output
+**     | asm_create_output_file
+**     | asm_liberate_memory
+*/
 
 /*
 ** Dans le fichier 'main_asm.c'
@@ -233,6 +266,8 @@ int						asm_parse_arg_indirect(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
 /*
 ** Dans le fichier 'asm_parse_arg_types_02.c'
+** static void		asm_parse_arg_label_get_type(t_asm_data *data, char *line,\
+**													size_t *i, size_t arg_nb);
 ** static size_t	asm_parse_arg_label_get_ref(t_asm_data *data,\
 **																size_t arg_nb);
 */

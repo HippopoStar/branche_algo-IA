@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:28:21 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 02:02:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,23 @@ int		asm_inst_arg_type_indirect(char *line, size_t *i)
 	return (0);
 }
 
+/*
+** On avance pas dans la chaine dans le cas d'un label, car on doit encore
+** pouvoir determiner s'il represente un direct ou un indirect
+** (voir 'asm_parse_arg_label')
+*/
+
 int		asm_inst_arg_type_label(char *line, size_t *i)
 {
-	if (*(line + (*i)) == DIRECT_CHAR
-			&& *(line + (*i) + 1) == LABEL_CHAR
+	if (*(line + (*i)) == DIRECT_CHAR \
+			&& *(line + (*i) + 1) == LABEL_CHAR \
 			&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + 2)))
 	{
-		*i = (*i) + 2;
+		return (1);
+	}
+	else if (*(line + (*i)) == LABEL_CHAR \
+			&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + 1)))
+	{
 		return (1);
 	}
 	else
