@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:26:35 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 17:50:57 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 06:22:10 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	aux_asm_allocate_label_ref(t_asm_data *data, char *label_name,\
 }
 
 int			asm_allocate_label_ref(t_asm_data *data, char *label_name,\
-																	size_t pos)
+														size_t pos, size_t size)
 {
 	t_lab_ref	**node;
 
@@ -45,5 +45,9 @@ int			asm_allocate_label_ref(t_asm_data *data, char *label_name,\
 		node = &((*node)->next);
 	}
 	aux_asm_allocate_label_ref(data, label_name, node, pos);
+	if (!((*node) == NULL))
+	{
+		(*node)->size = size;
+	}
 	return (!((*node) == NULL || (*node)->label_name == NULL) ? 1 : 0);
 }

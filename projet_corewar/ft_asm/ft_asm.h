@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 05:26:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 06:16:02 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@
 ** Dans 'asm_parse_prog.c', sont declarees :
 ** (t_asm_inst)inst;
 ** (size_t)pos;
+**
+**
+** OBSOLETE:
+** (t_lab_ref *)data->current_label_ref :
+** Initialisation a NULL dans 'asm_parse_instruction'
+** MaJ dans 'asm_allocate_label_ref'
+**
+** (size_t)(data->current_label_ref)->size :
+** Initialisation dans 'asm_put_inst_prog' //TODO
+**
+** (int)((data->current_inst)->arg + i)->is_lab_ref :
+** Initialisation a 0 dans 'asm_parse_instruction'
+** MaJ a 1 dans 'asm_parse_arg_label'
 */
 
 typedef struct			s_lab_ref
@@ -179,7 +192,7 @@ void					asm_create_output_file(t_asm_data *data);
 **												t_lab_ref **node, size_t pos);
 */
 int						asm_allocate_label_ref(t_asm_data *data,\
-												char *label_name, size_t pos);
+									char *label_name, size_t pos, size_t size);
 /*
 ** Dans le fichier 'asm_liberate_memory.c'
 ** void	asm_liberate_label_refs(t_asm_data *data);

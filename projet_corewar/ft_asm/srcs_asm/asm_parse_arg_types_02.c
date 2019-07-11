@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:50:11 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 05:26:30 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 06:14:18 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int				asm_parse_arg_label(t_asm_data *data, char *line, size_t *i,\
 	c = *(line + (*i) + j);
 	*(line + (*i) + j) = '\0';
 	ref_pos = asm_parse_arg_label_get_ref_pos(data, arg_nb);
-	if (asm_allocate_label_ref(data, &(*(line + (*i))), ref_pos))
+	if (asm_allocate_label_ref(data, &(*(line + (*i))), ref_pos, \
+				((data->current_inst)->arg + arg_nb)->size))
 	{
 		*(line + (*i) + j) = c;
 		*i = (*i) + j;

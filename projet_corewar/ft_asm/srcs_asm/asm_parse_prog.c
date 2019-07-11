@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:48 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:08:56 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 06:34:51 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 																	char *prog)
 {
-	unsigned short int	indirect;
+	unsigned int		relative;
 	size_t				i;
 
 	i = 0;
@@ -26,8 +26,12 @@ static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 	}
 	if (i < CHAMP_MAX_SIZE)
 	{
-		indirect = (unsigned short int)(i - label_ref->op_code_pos);
-		if (asm_putusint_prog(prog, &(label_ref->ref_pos), indirect))
+		relative = (unsigned int)(i - label_ref->op_code_pos);
+		if ((label_ref->size == 2\
+					&& asm_putusint_prog(prog, &(label_ref->ref_pos), \
+						(unsigned short int)relative))
+				|| (label_ref->size == 4\
+					&& asm_putuint_prog(prog, &(label_ref->ref_pos), relative)))
 		{
 			return (1);
 		}
