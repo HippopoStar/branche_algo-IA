@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:50:11 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 02:46:25 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 05:26:30 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@ static void		asm_parse_arg_label_get_type(t_asm_data *data, char *line,\
 	if (*(line + (*i)) == DIRECT_CHAR && *(line + (*i) + 1) == LABEL_CHAR)
 	{
 		((data->current_inst)->arg + arg_nb)->check = (char)2;
+		((data->current_inst)->arg + arg_nb)->size = \
+												asm_parse_arg_direct_size(data);
 		*i = (*i) + 2;
 	}
 	else if (*(line + (*i)) == LABEL_CHAR)
 	{
 		((data->current_inst)->arg + arg_nb)->check = (char)3;
+		((data->current_inst)->arg + arg_nb)->size = 2;
 		*i = (*i) + 1;
 	}
 }
@@ -74,7 +77,6 @@ int				asm_parse_arg_label(t_asm_data *data, char *line, size_t *i,\
 	size_t	ref_pos;
 
 	asm_parse_arg_label_get_type(data, line, i, arg_nb);
-	((data->current_inst)->arg + arg_nb)->size = 2;
 	j = 0;
 	while (!(*(line + (*i) + j) == '\0')\
 			&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))

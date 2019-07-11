@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:49:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:49:42 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 05:05:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				asm_parse_arg_register(t_asm_data *data, char *line, size_t *i,\
 	return (1);
 }
 
-static size_t	asm_parse_arg_direct_size(t_asm_data *data)
+size_t			asm_parse_arg_direct_size(t_asm_data *data)
 {
 	if ((data->current_inst)->op_code == 9\
 			|| (data->current_inst)->op_code == 10\

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 02:38:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/11 05:26:33 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct			s_lab_ref
 	char				*label_name;
 	size_t				op_code_pos;
 	size_t				ref_pos;
+	size_t				size;
 	struct s_lab_ref	*next;
 }						t_lab_ref;
 
@@ -81,6 +82,14 @@ typedef struct			s_asm_data
 }						t_asm_data;
 
 /*
+** La taille en octets des directs : voir 'asm_parse_arg_types_01.c'
+** Les references aux labels : voir 'asm_parse_arg_types_02.c'
+** La correspondances des parametres : voir 'asm_check_inst_args.c'
+** Ecriture des instructions : voir 'asm_put_inst_prog.c'
+** Remplacement des references a des labels : voir 'asm_parse_prog.c'
+*/
+
+/*
 ** Arborescence du programme :
 ** | ft_asm
 **     | asm_initialise_data
@@ -100,10 +109,12 @@ typedef struct			s_asm_data
 **                         | asm parse_arg_register
 **                         | asm_inst_arg_type_direct
 **                         | asm_parse_arg_direct
+**                             | asm_parse_arg_direct_size
 **                         | asm_inst_arg_type_indirect
 **                         | asm_parse_arg_indirect
 **                         | asm_inst_arg_type_label
 **                         | asm_parse_arg_label
+**                             | asm_parse_arg_direct_size
 **                         | asm_skip_spacing_chars
 **                     | asm_check_inst_args
 **                     | asm_put_inst_prog
@@ -222,7 +233,8 @@ int						asm_parse_line(t_asm_data *data, char **line,\
 																size_t *pos);
 /*
 ** Dans le fichier 'asm_get_label_declaration.c'
-** static int	asm_label_declaration_available(t_asm_data *data, char *label_name, size_t pos);
+** static int	asm_label_declaration_available(t_asm_data *data,\
+**												char *label_name, size_t pos);
 */
 int						asm_get_label_declaration(t_asm_data *data, char *line,\
 														size_t *i, size_t pos);
@@ -260,6 +272,7 @@ int						asm_inst_arg_type_label(char *line, size_t *i);
 */
 int						asm_parse_arg_register(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
+size_t					asm_parse_arg_direct_size(t_asm_data *data);
 int						asm_parse_arg_direct(t_asm_data *data, char *line,\
 													size_t *i, size_t arg_nb);
 int						asm_parse_arg_indirect(t_asm_data *data, char *line,\
