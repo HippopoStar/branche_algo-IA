@@ -12,6 +12,49 @@
 
 #include "ft_asm.h"
 
+static int	asm_allocate_lab_dec(t_asm_data *data, char *label_name, size_t pos)
+{
+	t_lab_dec	**tmp;
+
+	tmp = &(*(data->label_tab + pos));
+	while (!((*tmp) == NULL))
+	{
+		tmp = &((*tmp)->next);
+	}
+	if (!((*tmp) = (t_lab_dec *)malloc(sizeof(t_lab_dec)))
+			|| !((*tmp)->label_name = ft_strdup(label_name)))
+	{
+		return (0);
+	}
+	else
+	{
+		(*tmp)->next = NULL;
+		return (1);
+	}
+}
+
+static int	aux_asm_label_declaration_available(t_asm_data *data, size_t i,\
+															char *label_name)
+{
+	t_lab_dec	*tmp;
+
+	tmp = *(data->label_tab + i);
+	while (!(tmp == NULL || tmp->label_name == NULL))
+	{
+		if (!ft_strcmp(tmp->label_name, label_name))
+		{
+			return (0);
+		}
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+/*
+** A present, la fonction 'asm_label_declaration_available' renvoie toujours '1'
+** mais leve des 'Warning' dans certains cas
+*/
+
 static int	asm_label_declaration_available(t_asm_data *data, char *label_name,\
 																	size_t pos)
 {
@@ -25,7 +68,8 @@ static int	asm_label_declaration_available(t_asm_data *data, char *label_name,\
 			while (i < pos)
 			{
 				if (!(*(data->label_tab + i) == NULL) \
-						&& !ft_strcmp(*(data->label_tab + i), label_name))
+						&& !aux_asm_label_declaration_available(data, i, \
+							label_name))
 				{
 					return (asm_label_name_already_exists(label_name));
 				}
@@ -61,8 +105,7 @@ int			asm_get_label_declaration(t_asm_data *data, char *line, size_t *i,\
 		*(line + (*i) + j) = '\0';
 		if (asm_label_declaration_available(data, &(*(line + (*i))), pos))
 		{
-			if (!((*(data->label_tab + pos) = ft_strdup(&(*(line + (*i)))))\
-						== NULL))
+			if (asm_allocate_lab_dec(data, &(*(line + (*i))), pos))
 			{
 				*i = (*i) + j + 1;
 				asm_skip_spacing_chars(line, i);

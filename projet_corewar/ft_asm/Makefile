@@ -57,7 +57,8 @@ SRC_NAME = main_asm.c\
 			asm_error_messages_01.c\
 			asm_error_messages_02.c\
 			asm_error_messages_03.c\
-			asm_error_messages_04.c
+			asm_error_messages_04.c\
+			asm_warning_messages.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

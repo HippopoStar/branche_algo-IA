@@ -21,6 +21,15 @@
 # define FT_MAX_CHAMP_LENGTH (FT_HEADER_LENGTH + CHAMP_MAX_SIZE)
 
 /*
+** 2 methodes pour liberer la memoire associee a un file descriptor
+** (still reachable) :
+** - lire le fichier jusqu'a ce que 'get_next_line' renvoie '0'
+** - fermer le fichier, appeler 'get_next_line' qui liberera
+**   le maillon renverra '-1'
+**
+** Bonus :
+** Faire un convertisseur de chaines de caracteres en instructions 'aff'
+**
 ** Dans 't_asm_data' :
 ** - (t_asm_data *)->output_file_name
 **
@@ -46,6 +55,12 @@
 ** Initialisation a 0 dans 'asm_parse_instruction'
 ** MaJ a 1 dans 'asm_parse_arg_label'
 */
+
+typedef struct			s_lab_dec
+{
+	char				*label_name;
+	struct s_lab_dec	*next;
+}						t_lab_dec;
 
 typedef struct			s_lab_ref
 {
@@ -89,7 +104,7 @@ typedef struct			s_asm_data
 	int					current_line_nb;
 	char				output[FT_MAX_CHAMP_LENGTH];
 	size_t				output_index;
-	char				*label_tab[CHAMP_MAX_SIZE];
+	t_lab_dec			*label_tab[CHAMP_MAX_SIZE];
 	t_lab_ref			*label_refs;
 	t_asm_inst			*current_inst;
 }						t_asm_data;
@@ -167,16 +182,19 @@ int						asm_syntax_error(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_error_messages_03.c'
 */
-int						asm_two_labels_in_a_row(t_asm_data *data);
-int						asm_label_name_already_exists(char *label_name);
 int						asm_inexisting_label_reference(char *label_name);
 int						asm_error_message_reading_stopped(t_asm_data *data);
 /*
-** Das le fichier 'asm_error_messages_04.c'
+** Dans le fichier 'asm_error_messages_04.c'
 */
 int						asm_name_does_not_fit(void);
 int						asm_comment_does_not_fit(void);
 int						asm_program_does_not_fit(void);
+/*
+** Dans le fichier 'asm_warning_messages.c'
+*/
+int						asm_two_labels_in_a_row(t_asm_data *data);
+int						asm_label_name_already_exists(char *label_name);
 /*
 ** Dans le fichier 'asm_compile.c'
 ** static void	asm_liberate_gnl_node(int fd, char **line);
@@ -233,7 +251,8 @@ int						asm_parse_header(t_asm_data *data, t_header *h,\
 																char **line);
 /*
 ** Dans le fichier 'asm_parse_prog.c'
-** static int	aux_asm_check_labels(t_asm_data *data, t_label_ref *label_ref,\
+** static size_t	asm_match_label(t_asm_data *data, t_lab_ref *label_ref);
+** static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 **																	char *prog);
 ** static int	asm_check_labels(t_asm_data *data, char *prog);
 */
@@ -246,6 +265,10 @@ int						asm_parse_line(t_asm_data *data, char **line,\
 																size_t *pos);
 /*
 ** Dans le fichier 'asm_get_label_declaration.c'
+** static int	asm_allocate_lab_dec(t_asm_data *data, char *label_name,\
+**																	size_t pos);
+** static int	aux_asm_label_declaration_available(t_asm_data *data, size_t i,\
+**															char *label_name);
 ** static int	asm_label_declaration_available(t_asm_data *data,\
 **												char *label_name, size_t pos);
 */

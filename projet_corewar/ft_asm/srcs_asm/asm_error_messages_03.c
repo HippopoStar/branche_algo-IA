@@ -12,22 +12,6 @@
 
 #include "ft_asm.h"
 
-int		asm_two_labels_in_a_row(t_asm_data *data)
-{
-	ft_putstr_fd("ERROR: two label declarations in a row - line ", 2);
-	ft_putnbr_fd(data->current_line_nb, 2);
-	ft_putchar_fd('\n', 2);
-	return (0);
-}
-
-int		asm_label_name_already_exists(char *label_name)
-{
-	ft_putstr_fd("ERROR: two identical label declarations - \"", 2);
-	ft_putstr_fd(label_name, 2);
-	ft_putstr_fd("\"\n", 2);
-	return (0);
-}
-
 int		asm_inexisting_label_reference(char *label_name)
 {
 	ft_putstr_fd("ERROR: reference to an unexisting label \"", 2);
@@ -38,7 +22,7 @@ int		asm_inexisting_label_reference(char *label_name)
 
 int		asm_error_message_reading_stopped(t_asm_data *data)
 {
-	ft_putstr_fd("- \033[33merror\033[00m - file \"", 2);
+	ft_putstr_fd("- \033[31merror\033[00m - file \"", 2);
 	ft_putstr_fd(data->input_file_name, 2);
 	ft_putstr_fd("\" - reading stopped at line ", 2);
 	ft_putnbr_fd(data->current_line_nb, 2);

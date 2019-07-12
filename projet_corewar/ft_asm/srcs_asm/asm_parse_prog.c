@@ -12,18 +12,35 @@
 
 #include "ft_asm.h"
 
+static size_t	asm_match_label(t_asm_data *data, t_lab_ref *lab_ref)
+{
+	size_t		i;
+	t_lab_dec	*tmp;
+
+	i = 0;
+	while (i < CHAMP_MAX_SIZE)
+	{
+		tmp = *(data->label_tab + i);
+		while (!(tmp == NULL))
+		{
+			if (!ft_strcmp(tmp->label_name, lab_ref->label_name))
+			{
+				return (i);
+			}
+			tmp = tmp->next;
+		}
+		i++;
+	}
+	return (i);
+}
+
 static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 																	char *prog)
 {
 	unsigned int		relative;
 	size_t				i;
 
-	i = 0;
-	while (i < CHAMP_MAX_SIZE && (*(data->label_tab + i) == NULL
-			|| ft_strcmp(label_ref->label_name, *(data->label_tab + i))))
-	{
-		i++;
-	}
+	i = asm_match_label(data, label_ref);
 	if (i < CHAMP_MAX_SIZE)
 	{
 		relative = (unsigned int)(i - label_ref->op_code_pos);
@@ -38,6 +55,11 @@ static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 	}
 	return (asm_inexisting_label_reference(label_ref->label_name));
 }
+
+/*
+** On avait egalement le choix de liberer la memoire associee aux maillons de la
+** liste chainee et fur et a mesure du parcours de cette derniere
+*/
 
 static int	asm_check_labels(t_asm_data *data, char *prog)
 {
