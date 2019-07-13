@@ -50,6 +50,9 @@ static void	asm_initialize_data_output(t_asm_data *data)
 ** sera toujours declaree sur la stack,
 ** il n'est pas veritablement necessaire de l'initialiser
 ** a NULL
+**
+** Par ailleurs, (char *)data->current_line est initialisee a NULL
+** dans 'asm_compile', et n'est jamais utilisee en dehors de cette fonction
 */
 
 void		asm_initialize_data(t_asm_data *data)
@@ -58,6 +61,7 @@ void		asm_initialize_data(t_asm_data *data)
 	data->input_fd = -1;
 	data->output_file_name = NULL;
 	data->output_fd = -1;
+	data->current_line = NULL;
 	data->current_line_nb = 0;
 	asm_initialize_data_output(data);
 	data->output_index = 0;

@@ -28,6 +28,11 @@ static void	asm_liberate_gnl_node(int fd, char **line)
 }
 
 /*
+** Retrait de la variable '(char *)line' et remplacement
+** par '(char *)data->current_line'
+** Objectif : faciliter l'implementation de 'asm_get_quote' autorisant les '\n'
+**            et permettre une meilleure gestion d'erreur
+**
 ** //
 **	ft_putstr("Erreur mais creation du fichier avec ce qu'on a\n");
 **	if (asm_put_header_output(data, &h) && asm_put_prog_output(data, &h, prog))
@@ -40,13 +45,12 @@ static void	asm_liberate_gnl_node(int fd, char **line)
 
 int			asm_compile(t_asm_data *data)
 {
-	char		*line;
 	t_header	h;
 	char		prog[CHAMP_MAX_SIZE];
 
-	line = NULL;
-	if (asm_parse_header(data, &h, &line)\
-			&& asm_parse_prog(data, &h, &line, prog))
+	data->current_line = NULL;
+	if (asm_parse_header(data, &h, &(data->current_line))\
+			&& asm_parse_prog(data, &h, &(data->current_line), prog))
 	{
 		if (asm_put_header_output(data, &h)\
 				&& asm_put_prog_output(data, &h, prog))
@@ -55,11 +59,12 @@ int			asm_compile(t_asm_data *data)
 			return (1);
 		}
 	}
-	if (!(line == NULL))
+	asm_error_message_reading_stopped(data);
+	if (!(data->current_line == NULL))
 	{
-		free(line);
-		line = NULL;
-		asm_liberate_gnl_node(data->input_fd, &line);
+		free(data->current_line);
+		data->current_line = NULL;
+		asm_liberate_gnl_node(data->input_fd, &(data->current_line));
 	}
-	return (asm_error_message_reading_stopped(data));
+	return (0);
 }

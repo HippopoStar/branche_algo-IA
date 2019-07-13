@@ -51,7 +51,7 @@
 ** MaJ dans 'asm_allocate_label_ref'
 **
 ** (size_t)(data->current_label_ref)->size :
-** Initialisation dans 'asm_put_inst_prog' //TODO
+** Initialisation dans 'asm_put_inst_prog' (a faire)
 **
 ** (int)((data->current_inst)->arg + i)->is_lab_ref :
 ** Initialisation a 0 dans 'asm_parse_instruction'
@@ -103,6 +103,7 @@ typedef struct			s_asm_data
 	char				*output_file_name;
 	int					input_fd;
 	int					output_fd;
+	char				*current_line;
 	int					current_line_nb;
 	char				output[FT_MAX_CHAMP_LENGTH];
 	size_t				output_index;
@@ -172,7 +173,7 @@ void					asm_initialize_data(t_asm_data *data);
 ** Dans le fichier 'asm_error_messages_01.c'
 */
 void					asm_put_error(void);
-int						asm_error_message_reading_stopped(t_asm_data *data);
+void					asm_error_message_reading_stopped(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_error_messages_02.c'
 */
@@ -249,12 +250,18 @@ int						asm_put_header_output(t_asm_data *data, t_header *h);
 /*
 ** Dans le fichier 'asm_parse_header.c'
 ** static void	asm_initialize_header_struc(t_header *h);
-** static int	asm_get_quote(char *line, char *to_fill, int size, size_t *j);
 ** static int	asm_parse_name(t_asm_data *data, t_header *h, char **line);
 ** static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line);
 */
 int						asm_parse_header(t_asm_data *data, t_header *h,\
 																char **line);
+/*
+** Dans le fichier 'asm_get_quote.c'
+** static int	aux_asm_get_quote(t_asm_data *data, size_t *i, char *to_fill,\
+**																size_t size);
+*/
+int						asm_get_quote(t_asm_data *data, size_t i,\
+													char *to_fill, size_t size);
 /*
 ** Dans le fichier 'asm_parse_prog.c'
 ** static size_t	asm_match_label(t_asm_data *data, t_lab_ref *label_ref);

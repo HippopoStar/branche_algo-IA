@@ -35,6 +35,7 @@ SRC_NAME = main_asm.c\
 			asm_putchar_output.c\
 			asm_put_header_output.c\
 			asm_parse_header.c\
+			asm_get_quote.c\
 			asm_get_label_declaration.c\
 			asm_parse_prog.c\
 			asm_parse_line.c\

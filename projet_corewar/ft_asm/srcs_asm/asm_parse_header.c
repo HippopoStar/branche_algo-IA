@@ -31,76 +31,53 @@ static void	asm_initialize_header_struct(t_header *h)
 }
 
 /*
-** Ajout de l'argument (size_t *)j pour l'appel de 'asm_'[...]'_does_not_fit
+** A present, plutot que de transmettre 'line' a 'asm_get_quote'
+** dans 'asm_parse_name', on transmet 'data'
+** De cette maniere, 'asm_get_quote' a acces
+** a 'line' (au travers de 'data->current_line') ainsi qu'a 'data->input_fd'
 */
-
-static int	asm_get_quote(char *line, char *to_fill, int size, size_t *j)
-{
-	if (*(line + 0) == '"')
-	{
-		line++;
-		*j = 0;
-		while ((*j) < (size_t)size\
-				&& !(*(line + (*j)) == '"' || *(line + (*j)) == '\0'))
-		{
-			*(to_fill + (*j)) = *(line + (*j));
-			(*j)++;
-		}
-		*(to_fill + (*j)) = '\0';
-		if (*(line + (*j)) == '"')
-		{
-			(*j)++;
-			asm_skip_spacing_chars(line, j);
-			if (*(line + (*j)) == '\0' || *(line + (*j)) == COMMENT_CHAR)
-			{
-				return (1);
-			}
-		}
-	}
-	return (0);
-}
 
 static int	asm_parse_name(t_asm_data *data, t_header *h, char **line)
 {
 	int		ret_gnl;
 	size_t	i;
-	size_t	j;
 
-	j = 0;
 	ret_gnl = asm_gn_pertinent_l(data, line, &i);
 	if (ret_gnl == 1 && !ft_strncmp(NAME_CMD_STRING, &(*((*line) + i)), 5))
 	{
 		i = i + 5;
 		asm_skip_spacing_chars(*line, &i);
-		if (asm_get_quote(&(*((*line) + i)), h->prog_name, PROG_NAME_LENGTH,\
-					&j))
-		{
-			return (1);
-		}
+		return (asm_get_quote(data, i, h->prog_name, PROG_NAME_LENGTH));
 	}
-	return (j == PROG_NAME_LENGTH ? asm_name_does_not_fit()\
-			: asm_failed_to_get_prog_name(data));
+	else
+	{
+		return (asm_failed_to_get_prog_name(data));
+	}
 }
+
+/*
+** A present, plutot que de transmettre 'line' a 'asm_get_quote'
+** dans 'asm_parse_comment', on transmet 'data'
+** De cette maniere, 'asm_get_quote' a acces
+** a 'line' (au travers de 'data->current_line') ainsi qu'a 'data->input_fd'
+*/
 
 static int	asm_parse_comment(t_asm_data *data, t_header *h, char **line)
 {
 	int		ret_gnl;
 	size_t	i;
-	size_t	j;
 
-	j = 0;
 	ret_gnl = asm_gn_pertinent_l(data, line, &i);
 	if (ret_gnl == 1 && !ft_strncmp(COMMENT_CMD_STRING, &(*((*line) + i)), 8))
 	{
 		i = i + 8;
 		asm_skip_spacing_chars(*line, &i);
-		if (asm_get_quote(&(*((*line) + i)), h->comment, COMMENT_LENGTH, &j))
-		{
-			return (1);
-		}
+		return (asm_get_quote(data, i, h->comment, COMMENT_LENGTH));
 	}
-	return (j == COMMENT_LENGTH ? asm_comment_does_not_fit()\
-			: asm_failed_to_get_comment(data));
+	else
+	{
+		return (asm_failed_to_get_comment(data));
+	}
 }
 
 /*
