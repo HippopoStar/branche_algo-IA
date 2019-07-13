@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_error_messages_04.c                            :+:      :+:    :+:   */
+/*   asm_error_messages_03.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/08 19:08:12 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 19:14:38 by lcabanes         ###   ########.fr       */
+/*   Created: 2019/07/08 17:27:24 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/07/11 02:41:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_asm.h"
 
-int		asm_name_does_not_fit(void)
+int		asm_inexisting_label_reference(char *label_name)
 {
-	ft_putstr_fd("Error: 'name' section does not fit - PROG_NAME_LENGTH ", 2);
-	ft_putnbr_fd((int)PROG_NAME_LENGTH, 2);
-	ft_putchar_fd('\n', 2);
-	return (0);
-}
-
-int		asm_comment_does_not_fit(void)
-{
-	ft_putstr_fd("Error: 'comment' section does not fit - COMMENT_LENGTH ", 2);
-	ft_putnbr_fd((int)COMMENT_LENGTH, 2);
-	ft_putchar_fd('\n', 2);
-	return (0);
-}
-
-int		asm_program_does_not_fit(void)
-{
-	ft_putstr_fd("Error: 'program' section does not fit - CHAMP_MAX_SIZE ", 2);
-	ft_putnbr_fd((int)CHAMP_MAX_SIZE, 2);
-	ft_putchar_fd('\n', 2);
+	asm_put_error();
+	ft_putstr_fd("reference to an unexisting label \"", 2);
+	ft_putstr_fd(label_name, 2);
+	ft_putstr_fd("\"\n", 2);
 	return (0);
 }

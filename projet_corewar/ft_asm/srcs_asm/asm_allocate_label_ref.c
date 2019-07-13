@@ -22,14 +22,11 @@
 **		(*node)->ref_pos = data->output_index;
 */
 
-static void	aux_asm_allocate_label_ref(t_asm_data *data, char *label_name,\
-												t_lab_ref **node, size_t pos)
+static void	aux_asm_allocate_label_ref(t_lab_ref **node, char *label_name)
 {
 	if (!(((*node) = (t_lab_ref *)malloc(sizeof(t_lab_ref))) == NULL))
 	{
 		(*node)->label_name = ft_strdup(label_name);
-		(*node)->op_code_pos = (data->current_inst)->op_code_pos;
-		(*node)->ref_pos = pos;
 		(*node)->next = NULL;
 	}
 }
@@ -44,10 +41,14 @@ int			asm_allocate_label_ref(t_asm_data *data, char *label_name,\
 	{
 		node = &((*node)->next);
 	}
-	aux_asm_allocate_label_ref(data, label_name, node, pos);
+	aux_asm_allocate_label_ref(node, label_name);
 	if (!((*node) == NULL))
 	{
+		(*node)->op_code_pos = (data->current_inst)->op_code_pos;
+		(*node)->ref_pos = pos;
 		(*node)->size = size;
 	}
-	return (!((*node) == NULL || (*node)->label_name == NULL) ? 1 : 0);
+	return (!((*node) == NULL || (*node)->label_name == NULL)
+			? 1
+			: asm_memory_allocation_fail());
 }

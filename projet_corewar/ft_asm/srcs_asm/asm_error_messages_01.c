@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_error_messages_01.c                            :+:      :+:    :+:   */
+/*   asm_error_messages_03.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 16:37:05 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/08 18:11:12 by lcabanes         ###   ########.fr       */
+/*   Created: 2019/07/08 17:27:24 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/07/11 02:41:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_asm.h"
 
-int		asm_memory_allocation_fail(void)
+void	asm_put_error(void)
 {
-	ft_putstr_fd("ERROR: Memory allocation fail\n", 2);
-	return (0);
+	ft_putstr_fd("\033[31mERROR\033[00m: ", 2);
 }
 
-int		asm_input_file_open_fail(t_asm_data *data)
+int		asm_error_message_reading_stopped(t_asm_data *data)
 {
-	ft_putstr_fd("ERROR: Unable to open \"", 2);
+	ft_putstr_fd("- \033[31merror\033[00m - file \"", 2);
 	ft_putstr_fd(data->input_file_name, 2);
-	ft_putstr_fd("\"\n", 2);
+	ft_putstr_fd("\" - reading stopped at line ", 2);
+	ft_putnbr_fd(data->current_line_nb, 2);
+	ft_putchar_fd('\n', 2);
 	return (0);
-}
-
-int		asm_incorrect_input_file_name(t_asm_data *data)
-{
-	ft_putstr_fd("ERROR: Filename \"", 2);
-	ft_putstr_fd(data->input_file_name, 2);
-	ft_putstr_fd("\" does not match a champion's file name format\n", 2);
-	return (0);
-}
-
-void	asm_output_file_creation_fail(t_asm_data *data)
-{
-	ft_putstr_fd("ERROR: Unable to create \"", 2);
-	ft_putstr_fd(data->output_file_name, 2);
-	ft_putstr_fd("\"\n", 2);
 }

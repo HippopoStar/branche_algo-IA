@@ -36,14 +36,20 @@ static void	asm_liberate_label_refs(t_asm_data *data)
 
 static void	asm_liberate_labels(t_asm_data *data)
 {
-	size_t	i;
+	size_t		i;
+	t_lab_dec	*to_free;
 
 	i = 0;
 	while (i < CHAMP_MAX_SIZE)
 	{
-		if (!(*(data->label_tab + i) == NULL))
+		while (!((to_free = *(data->label_tab + i)) == NULL))
 		{
-			free(*(data->label_tab + i));
+			*(data->label_tab + i) = (*(data->label_tab + i))->next;
+			if (!(to_free->label_name == NULL))
+			{
+				free(to_free->label_name);
+			}
+			free(to_free);
 		}
 		i++;
 	}

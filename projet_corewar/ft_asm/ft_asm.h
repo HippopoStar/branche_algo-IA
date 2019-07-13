@@ -26,6 +26,8 @@
 ** - lire le fichier jusqu'a ce que 'get_next_line' renvoie '0'
 ** - fermer le fichier, appeler 'get_next_line' qui liberera
 **   le maillon renverra '-1'
+**   / ! \ Attention tout de meme a ne pas se retrouve face a une boucle inf'
+**         dans 'asm_gn_pertinent_l' dans le cas de /dev/zero
 **
 ** Bonus :
 ** Faire un convertisseur de chaines de caracteres en instructions 'aff'
@@ -169,29 +171,34 @@ void					asm_initialize_data(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_error_messages_01.c'
 */
+void					asm_put_error(void);
+int						asm_error_message_reading_stopped(t_asm_data *data);
+/*
+** Dans le fichier 'asm_error_messages_02.c'
+*/
 int						asm_memory_allocation_fail(void);
 int						asm_input_file_open_fail(t_asm_data *data);
 int						asm_incorrect_input_file_name(t_asm_data *data);
 void					asm_output_file_creation_fail(t_asm_data *data);
 /*
-** Dans le fichier 'asm_error_messages_02.c'
+** Dans le fichier 'asm_error_messages_03.c'
 */
 int						asm_failed_to_get_prog_name(t_asm_data *data);
 int						asm_failed_to_get_comment(t_asm_data *data);
 int						asm_syntax_error(t_asm_data *data);
 /*
-** Dans le fichier 'asm_error_messages_03.c'
+** Dans le fichier 'asm_error_messages_04.c'
 */
 int						asm_inexisting_label_reference(char *label_name);
-int						asm_error_message_reading_stopped(t_asm_data *data);
 /*
-** Dans le fichier 'asm_error_messages_04.c'
+** Dans le fichier 'asm_error_messages_05.c'
 */
 int						asm_name_does_not_fit(void);
 int						asm_comment_does_not_fit(void);
 int						asm_program_does_not_fit(void);
 /*
 ** Dans le fichier 'asm_warning_messages.c'
+** static void	asm_put_warning(void);
 */
 int						asm_two_labels_in_a_row(t_asm_data *data);
 int						asm_label_name_already_exists(char *label_name);
@@ -206,8 +213,7 @@ int						asm_compile(t_asm_data *data);
 void					asm_create_output_file(t_asm_data *data);
 /*
 ** Dans le fichier 'asm_allocate_label_ref.c'
-** static void	aux_asm_allocate_label_name(t_asm *data, char *label_name,\
-**												t_lab_ref **node, size_t pos);
+** static void	aux_asm_allocate_label_name(t_lab_ref **node, char *label_name);
 */
 int						asm_allocate_label_ref(t_asm_data *data,\
 									char *label_name, size_t pos, size_t size);
