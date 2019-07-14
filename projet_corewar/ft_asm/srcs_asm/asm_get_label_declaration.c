@@ -100,12 +100,14 @@ int			asm_get_label_declaration(t_asm_data *data, char *line, size_t *i,\
 	while (!(*(line + (*i) + j) == '\0')\
 							&& ft_strchr(LABEL_CHARS, (int)*(line + (*i) + j)))
 		j++;
-	if (*(line + (*i) + j) == LABEL_CHAR)
+	if (*(line + (*i) + j) == LABEL_CHAR && !(*(line + (*i) + j) = '\0'))
 	{
-		*(line + (*i) + j) = '\0';
-		if (asm_label_declaration_available(data, &(*(line + (*i))), pos))
+		if (asm_label_declaration_available(data, &(*(line + (*i))), pos)
+				|| !(*(line + (*i) + j) = LABEL_CHAR))
 		{
-			if (asm_allocate_lab_dec(data, &(*(line + (*i))), pos))
+			if ((asm_allocate_lab_dec(data, &(*(line + (*i))), pos)
+						&& (*(line + (*i) + j) = LABEL_CHAR))
+					|| !(*(line + (*i) + j) = LABEL_CHAR))
 			{
 				*i = (*i) + j + 1;
 				asm_skip_spacing_chars(line, i);

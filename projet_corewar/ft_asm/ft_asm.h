@@ -29,8 +29,17 @@
 **   / ! \ Attention tout de meme a ne pas se retrouve face a une boucle inf'
 **         dans 'asm_gn_pertinent_l' dans le cas de /dev/zero
 **
+** Dans 'asm_get_label_declaration', on pourrait relever la ligne complete
+** en cas d'erreur dans une instruction placee sur la meme ligne
+** qu'une declaration de label, grace a (char)*(line + (*i) + j) = LABEL_CHAR
+**
 ** Bonus :
 ** Faire un convertisseur de chaines de caracteres en instructions 'aff'
+**
+** Note :
+** Si on interrompt l'execution du programme avec 'CTRL + C',
+** notamment lors d'une utilisation conjointe avec Valgrind,
+** le fichier source <my_champ.s> est supprime O_O
 **
 ** Dans 't_asm_data' :
 ** - (t_asm_data *)->output_file_name

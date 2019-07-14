@@ -14,6 +14,7 @@ static int	aux_asm_get_quote(t_asm_data *data, size_t *i, char *to_fill,\
 	{
 		if (*((*line) + (*i)) == '\0')
 		{
+			free(*line);
 			ret_gnl = get_next_line_backslash_zero(data->input_fd, line);
 			*i = 0;
 			*(to_fill + j) = '\n';
