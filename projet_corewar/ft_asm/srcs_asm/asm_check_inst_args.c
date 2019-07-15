@@ -13,6 +13,53 @@
 #include "ft_asm.h"
 
 /*
+** Registre en premiere position : 0b01000000 0x40
+** Registre en deuxieme position : 0b00010000 0x10
+** Registre en troisieme position : 0b00000100 0x04
+**
+** Direct en premiere position : 0b10000000 0x80
+** Direct en deuxieme position : 0b00010000 0x20
+** Direct en troisieme position : 0b00001000 0x08
+**
+** Indirect en premiere position : 0b11000000 0xc0
+** Indirect en deuxieme position : 0b00110000 0x30
+** Indirect en troisieme position : 0b00001100 0x0c
+**
+** 01 live
+**		|          DIR          |                       |
+** 02 ld
+**		|          DIR      IND | REG                   |
+** 03 st
+**		| REG                   | REG               IND |
+** 04 add
+**		| REG                   | REG                   | REG
+** 05 sub
+**		| REG                   | REG                   | REG
+** 06 and
+**		| REG      DIR      IND | REG      DIR      IND | REG
+** 07 or
+**		| REG      DIR      IND | REG      DIR      IND | REG
+** 08 xor
+**		| REG      DIR      IND | REG      DIR      IND | REG
+** 09 zjmp
+**		|          DIR          |                       |
+** 10 ldi
+**		| REG      DIR      IND | REG      DIR          | REG
+** 11 sti
+**		| REG                   | REG      DIR      IND | REG      DIR
+** 12 fork
+**		|          DIR          |                       |
+** 13 lld
+**		|          DIR      IND | REG                   |
+** 14 lldi
+**		| REG      DIR      IND | REG      DIR          | REG
+** 15 lfork
+**		|          DIR          |                       |
+** 16 aff
+**		| REG
+*/
+
+/*
 **	ft_putstr("'asm_check_register'\n");
 */
 
