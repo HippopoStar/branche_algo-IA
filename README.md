@@ -108,9 +108,34 @@ __Changements depuis la precedente correction__ :
 [VM and champs](https://projects.intra.42.fr/uploads/document/document/391/vm_champs.tar)  
 Documentation :  
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
-[Un Google Doc](https://docs.google.com/spreadsheets/d/1pFwSCne-mh-u5ZLsjZS8VI9QvecYk-gWTyNaPstjpLE/htmlview#gid=0)  
+[Un Google Doc a propos des tables de parametres ASM](https://docs.google.com/spreadsheets/d/1pFwSCne-mh-u5ZLsjZS8VI9QvecYk-gWTyNaPstjpLE/htmlview#gid=0)  
 [CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
 [Youtube : CONF@42 - Advanced Tips and Tricks in C (demarrer a : 39:54)](https://youtu.be/ghjFIRXjg7U?t=2394)  
+Regles de la VM de ZaZ :  
+01. Charger le registre 'r1' d'un champion avec '(unsigned int)(-((int)token))'
+02. 'live' ajoute une vie aux champions partageant le token '-((int)live\_direct\_arg)'
+03. A chaque cycle, pour chaque champion :  
+	__Si__ 'CYCLES\_TO\_WAIT' > 0 :  
+		Ne rien faire  
+	__Sinon si__ une instruction est chargee :  
+		Executer l'instruction chargee  
+	__Sinon__ :  
+		__Si__ le 'PC' n'est pas positionne sur un 'OP\_CODE' valide :  
+			Incrementer le 'PC'  
+		__Sinon__ :  
+			'CYCLES\_TO\_WAIT' est ajuste en consequence  
+			__Si__ le 'CHECK\_SUM' est coherent (lorsqu'il est necessaire) avec l' 'OP\_CODE',  
+			et que les registres intervenants sont coherents :  
+				Charger l'instruction et positionner le 'PC' sur la case memoire  
+				suivant la fin de la description de l'instruction  
+			__Sinon__ :  
+				__Si__ un l' 'OP\_CODE' requierait un 'CHECK\_SUM' :  
+					Positionner le 'PC' sur la case memoire suivant le 'CHECK\_SUM'  
+				__Sinon__ :  
+					Positionner le 'PC'sur la case memoire suivant l' 'OP\_CODE'  
+04. Lors d'un 'fork', le 'fils' se voit attribuer un nouvel identifiant correspondant  
+a son ordre d'arrivee dans la partie, et placer dans la liste des champions en consequence (au debut),  
+cepandant il herite du 'token' de son 'pere'  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
