@@ -134,8 +134,8 @@ Regles de la VM de ZaZ :
 				__Sinon__ :  
 					Positionner le 'PC'sur la case memoire suivant l' 'OP\_CODE'  
 04. Lors d'un 'fork', le 'fils' se voit attribuer un nouvel identifiant correspondant  
-a son ordre d'arrivee dans la partie, et placer dans la liste des champions en consequence (au debut),  
-cepandant il herite du 'token' de son 'pere'  
+a son ordre d'arrivee dans la partie, et placer dans la pile (First In Last Out) des champions  
+en consequence (en haut), cepandant il partage le 'token' de son 'pere'  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
