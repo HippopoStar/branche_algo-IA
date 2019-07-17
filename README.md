@@ -110,6 +110,7 @@ Documentation :
 [Wiki de ce brave Samad](https://docs.google.com/document/d/1DT_47inyTLDEUMevdmsA4jqr3_FXGvgKhzpGv_rtuOo/edit?usp=sharing)  
 [Un Google Doc a propos des tables de parametres ASM](https://docs.google.com/spreadsheets/d/1pFwSCne-mh-u5ZLsjZS8VI9QvecYk-gWTyNaPstjpLE/htmlview#gid=0)  
 [CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
+[Convertisseur decimal/binaire/hexadecimal](https://www.ma-calculatrice.fr/convertir-binaire-hexadecimal.php)  
 [Youtube : CONF@42 - Advanced Tips and Tricks in C (demarrer a : 39:54)](https://youtu.be/ghjFIRXjg7U?t=2394)  
 Regles de la VM de ZaZ :  
 01. Charger le registre 'r1' d'un champion avec '(unsigned int)(-((int)token))'
@@ -129,7 +130,7 @@ Regles de la VM de ZaZ :
 				Charger l'instruction et positionner le 'PC' sur la case memoire  
 				suivant la fin de la description de l'instruction  
 			__Sinon__ :  
-				__Si__ un l' 'OP\_CODE' requierait un 'CHECK\_SUM' :  
+				__Si__ l' 'OP\_CODE' requierait un 'CHECK\_SUM' :  
 					Positionner le 'PC' sur la case memoire suivant le 'CHECK\_SUM'  
 				__Sinon__ :  
 					Positionner le 'PC'sur la case memoire suivant l' 'OP\_CODE'  

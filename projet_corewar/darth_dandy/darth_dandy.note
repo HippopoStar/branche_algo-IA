@@ -1,0 +1,13 @@
+La chaine a copier :
+	0x 0b 54 02 03 0f
+	sti r2 r3 r16
+		- pour le premier champion : r2 vaut 190 054 915 (=0x0b540203) ? r3 vaut 25 0x19
+		- pour le deuxieme champion : r2 vaut (65 536 * 3 841 (=0x0f01)) = 251 723 776 ? r3 vaut 29 0x1d
+		- pour le troisieme champion : r2 vaut (256 * token) + 9 ? r3 vaut 33 0x21
+		- pour le quatrieme champion : r2 vaut 13 0x0d ? r3 vaut 37 0x25
+
+	0x 01 ?
+	live ?
+
+	0x 09 00 00 00 0d
+	zjmp 13 - sauter a 25 - 8 = 13 0x0d
