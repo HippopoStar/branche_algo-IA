@@ -74,42 +74,73 @@ _____V2_____ (live %token - zjmp 4 lignes) (24 yy)
 												118 * 16 777 216 = 1 979 711 488 (=0x 76 00 00 00)
 										r3 vaut 396
 
-_____V3_____ (live %token - zjmp -3,5 lignes)
+_____V3_____ (live %token - zjmp -3,5 lignes) (41 yy)
 
 	sti r2, r3, r16
 		- pour le premier champion :
 										r2 vaut :
 												190 054 915 (=0x 0b 54 02 03)
-										r3 vaut -234
+										r3 vaut -224
 		- pour le deuxieme champion :
 										r2 vaut :
 												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
 												+ 65 535 (=0x ff ff)
 												= 251 789 311 (=0x 0f 01 ff ff)
-										r3 vaut -230
+										r3 vaut -220
 		- pour le troisieme champion :
 										r2 vaut :
 												(65 536 * token) (token decale de 16 bits)
 												+ ((256 * 9) = 2 304)
 												+ 255(=0x ff)
 												= (token << 16) + 2 559 (=0x ff f? 09 ff)
-										r3 vaut -226
+										r3 vaut -216
 		- pour le quatrieme champion :
 										r2 vaut :
-												201 326 592 (=0x 0c 00 00 00)
-										r3 vaut -222
+												369 098 752 (=0x 16 00 00 00)
+										r3 vaut -212
+
+	0x 16 00 00 00 = 369 098 752
+	0x ea 00 00 00 = 3 925 868 544
 
 	0x 09 00 0d (3 octets)
 		- 'zjmp' prend en parametre un direct sur 2 octets
-	zjmp (-224 -10) = -244
+	zjmp (-224 -10) = -234
 	(0x 00 01 00 00 = 65 536) - 234 = 65 302 (=0x ff 16)
 	0x ff = 255
 	0x 16 = 22
 
-	(0x 80 00 = 32 768) + 244 (=0x f4) = 33 002 (=0x 80 f4)
+	(0x 80 00 = 32 768) + 234 (=0x 16) = 33 002 (=0x 80 ea)
 	0x 80 = 128
-	0x f4 = 244
+	0x ea = 234
 
 	0x ff = 255
-	0x 0c = 12 (256 - 244)
+	0x 16 = 22 (256 - 234)
+
+_____V4_____ (live %token - zjmp -1,5 lignes)
+
+	sti r2, r3, r16
+		- pour le premier champion :
+										r2 vaut :
+												190 054 915 (=0x 0b 54 02 03)
+										r3 vaut -96
+		- pour le deuxieme champion :
+										r2 vaut :
+												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
+												+ 65 535 (=0x ff ff)
+												= 251 789 311 (=0x 0f 01 ff ff)
+										r3 vaut -92
+		- pour le troisieme champion :
+										r2 vaut :
+												(65 536 * token) (token decale de 16 bits)
+												+ ((256 * 9) = 2 304)
+												+ 255(=0x ff)
+												= (token << 16) + 2 559 (=0x ff f? 09 ff)
+										r3 vaut -88
+		- pour le quatrieme champion :
+										r2 vaut :
+												2 516 582 400
+										r3 vaut -84
+
+	256 - (96 + 10) = 150 (=0x 96)
+	0x 96 00 00 00 = 2 516 582 400
 
