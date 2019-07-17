@@ -116,7 +116,7 @@ _____V3_____ (live %token - zjmp -3,5 lignes) (41 yy)
 	0x ff = 255
 	0x 16 = 22 (256 - 234)
 
-_____V4_____ (live %token - zjmp -1,5 lignes)
+_____V4_____ (live %token - zjmp -1,5 lignes) (27 yy)
 
 	sti r2, r3, r16
 		- pour le premier champion :
@@ -143,4 +143,32 @@ _____V4_____ (live %token - zjmp -1,5 lignes)
 
 	256 - (96 + 10) = 150 (=0x 96)
 	0x 96 00 00 00 = 2 516 582 400
+
+_____V5_____ (live %token - zjmp -1,25 lignes) (27 yy)
+
+	sti r2, r3, r16
+		- pour le premier champion :
+										r2 vaut :
+												190 054 915 (=0x 0b 54 02 03)
+										r3 vaut -80
+		- pour le deuxieme champion :
+										r2 vaut :
+												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
+												+ 65 535 (=0x ff ff)
+												= 251 789 311 (=0x 0f 01 ff ff)
+										r3 vaut -76
+		- pour le troisieme champion :
+										r2 vaut :
+												(65 536 * token) (token decale de 16 bits)
+												+ ((256 * 9) = 2 304)
+												+ 255(=0x ff)
+												= (token << 16) + 2 559 (=0x ff f? 09 ff)
+										r3 vaut -72
+		- pour le quatrieme champion :
+										r2 vaut :
+												2 785 017 856
+										r3 vaut -68
+
+	256 - (80 + 10) = 166 (=0x a6)
+	0x a6 00 00 00 = 2 785 017 856
 
