@@ -38,28 +38,28 @@ wait4:
 	zjmp %:load4 # Le 4e process attend le 2e et va se preparer
 load1:
 	ld %190054915, r2
-	ld %384, r3
+	ld %-234, r3
 	and r16, r16, r16
 	zjmp %:adventure
 load2:
 	ld %251789311, r2
-	ld %388, r3
+	ld %-230, r3
 	and r16, r16, r16
 	zjmp %:adventure
 load3:
-	ld %2305, r2
+	ld %2559, r2
 	add r2, r4, r2
-	ld %392, r3
+	ld %-226, r3
 	and r16, r16, r16
 	zjmp %:adventure
 load4:
-	ld %1979711488, r2
-	ld %396, r3
+	ld %369098752, r2
+	ld %-222, r3
 	and r16, r16, r16
 	zjmp %:adventure
 adventure:
 	sti r2, r3, r16
 backpack:
 	live %42
-	zjmp %374
+	zjmp %-244
 

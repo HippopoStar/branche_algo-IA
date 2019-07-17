@@ -19,53 +19,87 @@ Decaler le token de 2 octets (16 bits) vers le bit de poids fort :
 	.              |
 	add r4, r4, r4 -
 
-_____V1_____
+_____V1_____ (live %0 - zjmp 4 lignes) (26 yy)
 
 La chaine a copier :
 	0x 0b 54 02 03 0f (5 octets)
 	sti r2, r3, r16
 		- pour le premier champion :
 										r2 vaut 190 054 915 (=0x 0b 54 02 03)
-										r3 vaut 25 0x19
+										r3 vaut 384
 		- pour le deuxieme champion :
 										r2 vaut (65 536 * 3 841 (=0x 0f 01)) = 251 723 776
-										r3 vaut 29 0x1d
+										r3 vaut 388
 		- pour le troisieme champion :
-										r2 vaut (65 536 * token) + ((256 * 9) + 1(=0x01) = 2 305)
-										r3 vaut 33 0x21
+										r2 vaut (65 536 * token) + ((256 * 9) + 1(=0x 01) = 2 305)
+										r3 vaut 392
 		- pour le quatrieme champion :
-										r2 vaut 118 * 16 777 216 = 1 979 711 488 (0x76 00 00 00)
-										r3 vaut 37 0x25
+										r2 vaut 118 * 16 777 216 = 1 979 711 488 (=0x 76 00 00 00)
+										r3 vaut 396
 
 	0x 01 00 00 00 2a ? (5 octets)
 	live ?
 
 	0x 09 00 0d (3 octets)
 		- 'zjmp' prend en parametre un direct sur 2 octets
-	zjmp 13 - sauter a (256 + 128 = 384) - 10 = 374 0x01 76
+	zjmp 374 - sauter a (256 + 128 = 384) - 10 = 374 (=0x 01 76)
+	0x 01 = 1
+	0x 76 = 118
 
-_____V2_____
+_____V2_____ (live %token - zjmp 4 lignes) (24 yy)
 
 	sti r2, r3, r16
 		- pour le premier champion :
 										r2 vaut :
 												190 054 915 (=0x 0b 54 02 03)
-										r3 vaut 25 (=0x 19)
+										r3 vaut 384
 		- pour le deuxieme champion :
 										r2 vaut :
 												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
 												+ 65 535 (=0x ff ff)
 												= 251 789 311 (=0x 0f 01 ff ff)
-										r3 vaut 29 (=0x 1d)
+										r3 vaut 388
 		- pour le troisieme champion :
 										r2 vaut :
 												(65 536 * token) (token decale de 16 bits)
 												+ ((256 * 9) = 2 304)
-												+ 1(=0x01)
+												+ 1(=0x 01)
 												= (token << 16) + 2 305 (=0x ff f? 09 01)
-										r3 vaut 33 0x21
+										r3 vaut 392
 		- pour le quatrieme champion :
 										r2 vaut :
-												118 * 16 777 216 = 1 979 711 488 (0x76 00 00 00)
-										r3 vaut 37 0x25
+												118 * 16 777 216 = 1 979 711 488 (=0x 76 00 00 00)
+										r3 vaut 396
+
+_____V3_____ (live %token - zjmp -3,5 lignes)
+
+	sti r2, r3, r16
+		- pour le premier champion :
+										r2 vaut :
+												190 054 915 (=0x 0b 54 02 03)
+										r3 vaut -234
+		- pour le deuxieme champion :
+										r2 vaut :
+												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
+												+ 65 535 (=0x ff ff)
+												= 251 789 311 (=0x 0f 01 ff ff)
+										r3 vaut -230
+		- pour le troisieme champion :
+										r2 vaut :
+												(65 536 * token) (token decale de 16 bits)
+												+ ((256 * 9) = 2 304)
+												+ 255(=0x ff)
+												= (token << 16) + 2 559 (=0x ff f? 09 ff)
+										r3 vaut -226
+		- pour le quatrieme champion :
+										r2 vaut :
+												22 * 16 777 216 = 369 098 752 (=0x 16 00 00 00)
+										r3 vaut -222
+
+	0x 09 00 0d (3 octets)
+		- 'zjmp' prend en parametre un direct sur 2 octets
+	zjmp (-224 -10) = -244
+	(0x 00 01 00 00 = 65 536 - 234 = 65 302 (=0x ff 16)
+	0x ff = 255
+	0x 16 = 22
 
