@@ -5,7 +5,7 @@ begin:
 	sti r1, %:live, %1
 	sti r1, %:backpack, %1
 decale:
-	add r4, r1, r1 # 01
+	add r1, r1, r4 # 01
 	add r4, r4, r4 # 02
 	add r4, r4, r4 # 03
 	add r4, r4, r4 # 04
@@ -48,7 +48,7 @@ load2:
 	zjmp %:adventure
 load3:
 	ld %2305, r2
-	add r2, r4, r16
+	add r2, r4, r2
 	ld %392, r3
 	and r16, r16, r16
 	zjmp %:adventure
