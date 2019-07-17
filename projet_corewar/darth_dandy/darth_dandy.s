@@ -35,7 +35,7 @@ load3:
 	and r16, r16, r16
 	zjmp %:adventure
 load4:
-	ld %1920711488, r2
+	ld %1979711488, r2
 	ld %396, r3
 	and r16, r16, r16
 	zjmp %:adventure

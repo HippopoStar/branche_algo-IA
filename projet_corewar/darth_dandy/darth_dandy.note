@@ -4,7 +4,7 @@ La chaine a copier :
 		- pour le premier champion : r2 vaut 190 054 915 (=0x 0b 54 02 03) ? r3 vaut 25 0x19
 		- pour le deuxieme champion : r2 vaut (65 536 * 3 841 (=0x 0f 01)) = 251 723 776 ? r3 vaut 29 0x1d
 		- pour le troisieme champion : r2 vaut (65 536 * token) + ((256 * 9) + 1(=0x01) = 2 305) ? r3 vaut 33 0x21
-		- pour le quatrieme champion : r2 vaut 118 * 16 277 216 = 1 920 711 488 (0x76 00 00 00) ? r3 vaut 37 0x25
+		- pour le quatrieme champion : r2 vaut 118 * 16 777 216 = 1 979 711 488 (0x76 00 00 00) ? r3 vaut 37 0x25
 
 	0x 01 00 00 00 2a ? (5 octets)
 	live ?
