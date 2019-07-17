@@ -2,7 +2,8 @@
 .comment "An evil lonely dandy, combing the countryside along with himself"
 
 begin:
-	sti r1, :live, %1
+	sti r1, %:live, %1
+	sti r1, %:backpack, %1
 live:
 	live %42
 carry:
@@ -19,23 +20,28 @@ wait3:
 wait4:
 	zjmp %:load4 # Le 4e process attend le 2e et va se preparer
 load1:
-	ld 190054915, r2
-	ld 25, r3
+	ld %190054915, r2
+	ld %25, r3
+	and r16, r16, r16
 	zjmp %:adventure
 load2:
-	ld 251723776, r2
-	ld 29, r3
+	ld %251723776, r2
+	ld %29, r3
+	and r16, r16, r16
 	zjmp %:adventure
 load3:
-	ld 9, r2
-	ld 33, r3
+	ld %9, r2
+	ld %33, r3
+	and r16, r16, r16
 	zjmp %:adventure
 load4:
-	ld 13, r2
-	ld 37, r3
+	ld %285212672, r2
+	ld %37, r3
+	and r16, r16, r16
 	zjmp %:adventure
 adventure:
 	sti r2, r3, r16
+backpack:
 	live %42
-	zjmp %13
+	zjmp %17
 
