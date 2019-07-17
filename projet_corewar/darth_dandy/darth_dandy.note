@@ -210,3 +210,65 @@ _____V6_____ 'LONG STRIDES' (live %token - zjmp -7,75 lignes) (29yy)
 	0x fe = 254
 	0x 06 00 00 00 = 100 663 296
 
+
+_____V7_____ 'LONG STRIDES' (live %token)
+
+	=traveller1= (zjmp -1 ligne) (30 yy)
+
+	sti r2, r3, r16
+		- pour le premier champion :
+										r2 vaut :
+												190 054 915 (=0x 0b 54 02 03)
+										r3 vaut -64
+		- pour le deuxieme champion :
+										r2 vaut :
+												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
+												+ 65 535 (=0x ff ff)
+												= 251 789 311 (=0x 0f 01 ff ff)
+										r3 vaut -60
+		- pour le troisieme champion :
+										r2 vaut :
+												(65 536 * token) (token decale de 16 bits)
+												+ ((256 * 9) = 2 304)
+												+ 254(=0x fe)
+												= (token << 16) + 2 558 (=0x ff f? 09 ff)
+										r3 vaut -56
+		- pour le quatrieme champion :
+										r2 vaut :
+												1 677 721 600
+										r3 vaut -52
+
+	
+	256 - (64 + 10) = 182 (=0x b6)
+	65536 - 182 = 65 354 (=0x ff 64)
+	0x ff = 255
+	0x 64 00 00 00 = 1 677 721 600
+
+	=traveler2= (zjmp 1 ligne) (27 yy)
+
+	sti r2, r3, r16
+		- pour le premier champion :
+										r2 vaut :
+												190 054 915 (=0x 0b 54 02 03)
+										r3 vaut 64
+		- pour le deuxieme champion :
+										r2 vaut :
+												(65 536 * 3 841 (=0x 0f 01)) = 251 723 776
+												+ 65 535 (=0x ff ff)
+												= 251 789 311 (=0x 0f 01 ff ff)
+										r3 vaut 68
+		- pour le troisieme champion :
+										r2 vaut :
+												(65 536 * token) (token decale de 16 bits)
+												+ ((256 * 9) = 2 304)
+												+ 0(=0x 00)
+												= (token << 16) + 2 304 (=0x ff f? 09 00)
+										r3 vaut 72
+		- pour le quatrieme champion :
+										r2 vaut :
+												905 969 644
+										r3 vaut 76
+
+	(64 - 10) = 54 (=0x 00 36)
+	0x 36 00 00 00 = 905 969 664
+
