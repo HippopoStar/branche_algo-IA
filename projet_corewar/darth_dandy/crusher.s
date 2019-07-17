@@ -144,6 +144,7 @@ live8:
 	zjmp %:adventure2
 
 adventure1:
+	zjump %3 # Wait 25 cycles
 	sti r2, r3, r16
 backpack1:
 	live %42
