@@ -65,7 +65,7 @@ load3:
 	and r16, r16, r16
 	zjmp %:adventure1
 load4:
-	ld %1677721600, r2
+	ld %3053453312, r2
 	ld %-52, r3
 	and r16, r16, r16
 	zjmp %:adventure1
@@ -73,10 +73,12 @@ load4:
 traveller2:
 	fork %:fork6 # Le 1er process du 2e voyageur se duplique une premiere fois
 live5and7:
+	live %42
 	fork %:wait7 # Le 1er process du 2e voyageur se duplique une seconde fois
 	zjmp %:load5 # Le 1er process du 2e voyageur se preparer a l'expedition
 fork6:
 live6and8:
+	live %42
 	fork %:wait8 # Le 2e process du 2e voyageur se duplique
 	zjmp %:load6 # Le 2e process du 2e voyageur va se preparer a l'expedition
 wait7:
@@ -118,3 +120,4 @@ adventure2:
 backpack2:
 	live %42
 	zjmp %54
+

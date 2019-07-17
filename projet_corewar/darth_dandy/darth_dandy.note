@@ -235,14 +235,14 @@ _____V7_____ 'LONG STRIDES' (live %token)
 										r3 vaut -56
 		- pour le quatrieme champion :
 										r2 vaut :
-												1 677 721 600
+												3 053 453 312
 										r3 vaut -52
 
 	
 	256 - (64 + 10) = 182 (=0x b6)
-	65536 - 182 = 65 354 (=0x ff 64)
+	(=0x ff b6)
 	0x ff = 255
-	0x 64 00 00 00 = 1 677 721 600
+	0x b6 00 00 00 = 3 053 453 312
 
 	=traveler2= (zjmp 1 ligne) (27 yy)
 
