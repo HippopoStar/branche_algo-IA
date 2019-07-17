@@ -230,8 +230,8 @@ _____V7_____ 'LONG STRIDES' (live %token)
 										r2 vaut :
 												(65 536 * token) (token decale de 16 bits)
 												+ ((256 * 9) = 2 304)
-												+ 254(=0x fe)
-												= (token << 16) + 2 558 (=0x ff f? 09 ff)
+												+ 255(=0x ff)
+												= (token << 16) + 2 559 (=0x ff f? 09 ff)
 										r3 vaut -56
 		- pour le quatrieme champion :
 										r2 vaut :
@@ -266,7 +266,7 @@ _____V7_____ 'LONG STRIDES' (live %token)
 										r3 vaut 72
 		- pour le quatrieme champion :
 										r2 vaut :
-												905 969 644
+												905 969 664
 										r3 vaut 76
 
 	(64 - 10) = 54 (=0x 00 36)

@@ -59,7 +59,7 @@ load2:
 	and r16, r16, r16
 	zjmp %:adventure1
 load3:
-	ld %2558, r2
+	ld %2559, r2
 	add r2, r4, r2
 	ld %-56, r3
 	and r16, r16, r16
@@ -104,7 +104,7 @@ load7:
 	and r16, r16, r16
 	zjmp %:adventure2
 load8:
-	ld %905969644, r2
+	ld %905969664, r2
 	ld %76, r3
 	and r16, r16, r16
 	zjmp %:adventure2
