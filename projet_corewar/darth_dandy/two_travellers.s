@@ -7,18 +7,8 @@ begin:
 	sti r1, %:live2and4, %1
 	sti r1, %:live5and7, %1
 	sti r1, %:live6and8, %1
-	sti r1, %:live1, %1
-	sti r1, %:live2, %1
-	sti r1, %:live3, %1
-	sti r1, %:live4, %1
-	sti r1, %:live5, %1
-	sti r1, %:live6, %1
-	sti r1, %:live7, %1
-	sti r1, %:live8, %1
 	sti r1, %:backpack1, %1
 	sti r1, %:backpack2, %1
-	sti r1, %:backpack3, %1
-	sti r1, %:backpack4, %1
 decale:
 	add r1, r1, r4 # 01
 	add r4, r4, r4 # 02
@@ -57,39 +47,27 @@ wait3:
 wait4:
 	zjmp %:load4 # Le 4e process attend le 2e et va se preparer
 
-# Traveller 1 & 3
+# Traveller 1
 load1:
 	ld %190054915, r2
 	ld %-64, r3
 	and r16, r16, r16
-live1:
-	live %42
-	fork %:adventure3
 	zjmp %:adventure1
 load2:
 	ld %251789311, r2
 	ld %-60, r3
 	and r16, r16, r16
-live2:
-	live %42
-	fork %:adventure3
 	zjmp %:adventure1
 load3:
 	ld %2559, r2
 	add r2, r4, r2
 	ld %-56, r3
 	and r16, r16, r16
-live3:
-	live %42
-	fork %:adventure3
 	zjmp %:adventure1
 load4:
 	ld %3053453312, r2
 	ld %-52, r3
 	and r16, r16, r16
-live4:
-	live %42
-	fork %:adventure3
 	zjmp %:adventure1
 
 traveller2:
@@ -108,39 +86,27 @@ wait7:
 wait8:
 	zjmp %:load8 # Le 4e process du 2e voyageur attend le 2e et va se preparer
 
-# Traveller 2 & 4
+# Traveller 2
 load5:
 	ld %190054915, r2
 	ld %64, r3
 	and r16, r16, r16
-live5:
-	live %42
-	fork %:adventure4
 	zjmp %:adventure2
 load6:
 	ld %251789311, r2
 	ld %68, r3
 	and r16, r16, r16
-live6:
-	live %42
-	fork %:adventure4
 	zjmp %:adventure2
 load7:
 	ld %2304, r2
 	add r2, r4, r2
 	ld %72, r3
 	and r16, r16, r16
-live7:
-	live %42
-	fork %:adventure4
 	zjmp %:adventure2
 load8:
 	ld %905969664, r2
 	ld %76, r3
 	and r16, r16, r16
-live8:
-	live %42
-	fork %:adventure4
 	zjmp %:adventure2
 
 adventure1:
@@ -148,25 +114,10 @@ adventure1:
 backpack1:
 	live %42
 	zjmp %-74
-	zjmp %42 # La pour le decalage de 3 octets
 
 adventure2:
 	sti r2, r3, r16
 backpack2:
-	live %42
-	zjmp %54
-	zjmp %42 # La pour le decalage de 3 octets
-
-adventure3:
-	sti r2, r3, r16
-backpack3:
-	live %42
-	zjmp %-74
-	zjmp %42 # La pour le decalage de 3 octets
-
-adventure4:
-	sti r2, r3, r16
-backpack4:
 	live %42
 	zjmp %54
 
