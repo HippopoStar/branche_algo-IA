@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 17:29:48 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 06:34:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/19 00:11:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static size_t	asm_match_label(t_asm_data *data, t_lab_ref *lab_ref)
 	return (i);
 }
 
-static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
+static int		aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 																	char *prog)
 {
 	unsigned int		relative;
@@ -61,7 +61,7 @@ static int	aux_asm_check_labels(t_asm_data *data, t_lab_ref *label_ref,\
 ** liste chainee et fur et a mesure du parcours de cette derniere
 */
 
-static int	asm_check_labels(t_asm_data *data, char *prog)
+static int		asm_check_labels(t_asm_data *data, char *prog)
 {
 	t_lab_ref	*tmp;
 
@@ -95,7 +95,7 @@ static int	asm_check_labels(t_asm_data *data, char *prog)
 **	h->prog_size = 23; // "zork"
 */
 
-int			asm_parse_prog(t_asm_data *data, t_header *h, char **line,\
+int				asm_parse_prog(t_asm_data *data, t_header *h, char **line,\
 																	char *prog)
 {
 	int			ret_val;

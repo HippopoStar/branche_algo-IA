@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm_get_quote.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/19 00:10:50 by lcabanes          #+#    #+#             */
+/*   Updated: 2019/07/19 00:11:01 by lcabanes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_asm.h"
 
 static int	aux_asm_get_quote(t_asm_data *data, size_t *i, char *to_fill,\
@@ -42,7 +54,7 @@ static int	aux_asm_get_quote(t_asm_data *data, size_t *i, char *to_fill,\
 **	size_t	remnant_size;
 */
 
-int		asm_get_quote(t_asm_data *data, size_t i, char *to_fill,\
+int			asm_get_quote(t_asm_data *data, size_t i, char *to_fill,\
 																	size_t size)
 {
 	char	**line;
