@@ -1,4 +1,4 @@
-.name "traveller"
+.name "strider"
 .comment "An evil lonely dandy, combing the countryside along with himself"
 
 begin:

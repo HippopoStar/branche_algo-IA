@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/19 11:41:26 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/19 14:14:52 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,8 @@ SRC2_NAME = main_asm.c\
 			asm_error_messages_03.c\
 			asm_error_messages_04.c\
 			asm_error_messages_05.c\
-			asm_warning_messages.c
+			asm_warning_messages.c\
+			get_next_line_backslash_zero.c
 
 SRC1 = $(addprefix $(SRC1_PATH)/,$(SRC1_NAME))
 SRC2 = $(addprefix $(SRC2_PATH)/,$(SRC2_NAME))

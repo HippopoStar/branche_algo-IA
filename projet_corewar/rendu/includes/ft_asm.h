@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 15:28:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2019/07/11 06:16:02 by lcabanes         ###   ########.fr       */
+/*   Updated: 2019/07/19 14:11:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include "op.h"
 # include "libft.h"
+# include "get_next_line_backslash_zero.h"
 
 # define FT_HEADER_LENGTH (4 + PROG_NAME_LENGTH + 4 + 4 + COMMENT_LENGTH + 4)
 # define FT_MAX_CHAMP_LENGTH (FT_HEADER_LENGTH + CHAMP_MAX_SIZE)
