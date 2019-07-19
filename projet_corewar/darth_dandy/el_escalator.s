@@ -1,4 +1,4 @@
-.name "darth dandy"
+.name "el escalator"
 .comment "An evil lonely dandy, combing the countryside along with himself"
 
 begin:

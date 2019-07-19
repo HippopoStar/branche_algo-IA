@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/19 11:11:17 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/19 11:41:26 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC1_NAME = add.c\
 			decode.c\
 			exit.c\
 			fork.c\
-			infos.c\
+			init.c\
 			input.c\
 			ld.c\
 			ldi.c\
@@ -48,6 +48,7 @@ SRC1_NAME = add.c\
 			lldi.c\
 			main.c\
 			or.c\
+			outputs.c\
 			play.c\
 			process.c\
 			st.c\
@@ -55,8 +56,7 @@ SRC1_NAME = add.c\
 			sub.c\
 			tools.c\
 			xor.c\
-			zjmp.c\
-			print_test.c
+			zjmp.c
 
 SRC2_NAME = main_asm.c\
 			asm_initialize_data.c\
