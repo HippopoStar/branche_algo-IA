@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/19 14:14:52 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/20 15:35:21 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,4 +161,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft $(NAME1) $(NAME2)
+# Ne pas ajouter $(NAME) dans le .PHONY, car ca provoque un re-link !
+.PHONY: all clean fclean re libft
