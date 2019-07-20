@@ -27,4 +27,5 @@ echo "1. \$(INC) de ./rendu/libft/Makefile"
 echo "2. La dependance 'libft.h' de ./rendu/libft/Makefile"
 echo "3. L'inclusion de header 'libft/libft.h' de ./rendu/includes/corewar.h"
 echo "4. La variable de la macro 'BUFF_SIZE' de ./rendu/libft/includes/libft.h"
+echo "5. ./rendu/libft/ft_strchr"
 
