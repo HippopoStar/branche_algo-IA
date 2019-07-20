@@ -1,0 +1,12 @@
+
+./vm champs/championships/2017/gnebie/ultima.cor champs/examples/helltrain.cor -v 4 -d 4840
+
+./corewar champs/championships/2017/gnebie/ultima.cor  champs/examples/helltrain.cor -v -dump 4840
+
+https://github.com/cmiran/corewar/commits/master
+
+OK au commit < 6c6764e0aaf6563de63c9cfe416b695ef327a094 >
+KO au commit suivant < 833b359502bd654b0ca3a3e877dad02fff61c73f >
+
+OK de nouveau a partir du commit < 26ffadfe0b9accc00c9e81623280d43571e9e960 >
+
