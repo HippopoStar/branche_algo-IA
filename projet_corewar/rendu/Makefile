@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2019/07/20 15:35:21 by lcabanes         ###   ########.fr        #
+#    Updated: 2019/07/20 16:30:13 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,12 +102,15 @@ OBJ2_PATH = ./objs_asm
 OBJ1_NAME = $(SRC1_NAME:.c=.o)
 OBJ2_NAME = $(SRC2_NAME:.c=.o)
 
+SRC1_PLIST = $(SRC1_NAME:.c=.plist)
+SRC2_PLIST = $(SRC2_NAME:.c=.plist)
+
 OBJ1 = $(addprefix $(OBJ1_PATH)/,$(OBJ1_NAME))
 OBJ2 = $(addprefix $(OBJ2_PATH)/,$(OBJ2_NAME))
 
 # Allez savoir pourquoi, meme lorque '$(NAME)' existe deja,
 # 'all' s'evertue a appeler la regle correspondante
-all: $(NAME1) $(NAME2)
+all: libft $(NAME1) $(NAME2)
 
 # L'appel de 'libft' permet d'actualiser '$(LIBFT)'
 # afin qu'eventuellement '$(NAME)' se lance lors du prochain appel de 'make'
@@ -145,6 +148,11 @@ $(OBJ1_PATH):
 $(OBJ2_PATH):
 	mkdir $(OBJ2_PATH)
 
+analyzer:
+	gcc -fsyntax-only $(CPPFLAGS) $(SRC1) $(SRC2)
+	gcc --analyze $(CPPFLAGS) $(SRC1) $(SRC2)
+	rm -f $(SRC1_PLIST) $(SRC2_PLIST)
+
 $(LIBFT): libft
 
 libft:
@@ -162,4 +170,4 @@ fclean: clean
 re: fclean all
 
 # Ne pas ajouter $(NAME) dans le .PHONY, car ca provoque un re-link !
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft analyzer
