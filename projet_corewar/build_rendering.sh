@@ -6,11 +6,13 @@ PATH_ASM="${PATH_WORKING_DIR}/ft_asm"
 PATH_COREWAR='/tmp/cmiran_corewar'
 PATH_LIBFT='/tmp/cmiran_libft'
 
+rm -rf ${PATH_COREWAR}
 mkdir -p ${PATH_RENDERING}/srcs_corewar
 git clone https://github.com/cmiran/corewar.git ${PATH_COREWAR}
 cp ${PATH_COREWAR}/*.c ${PATH_RENDERING}/srcs_corewar/
 cp ${PATH_COREWAR}/corewar.h ${PATH_RENDERING}/includes/
 
+rm -rf ${PATH_LIBFT}
 mkdir -p ${PATH_RENDERING}/libft
 mkdir -p ${PATH_RENDERING}/libft/includes
 git clone https://github.com/cmiran/libft.git ${PATH_LIBFT}
