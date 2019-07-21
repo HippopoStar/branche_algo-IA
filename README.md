@@ -40,7 +40,7 @@ Signe de verification : [✓](https://unicode-table.com/fr/#2713)
 - Rectifier les erreurs de Norme dans la 'libft' (presence d'operateurs en fin de ligne) [✓]
 - Ameliorer le Makefile [Intra - Comment faire un Makefile modulaire](https://forum.intra.42.fr/topics/85/messages) [ ]
 - Ameliorer 'get\_next\_line' (CTRL + D , CTRL + D) [ ]  
-	-> Ajouter les 2 lignes suivantes au debut de la fonction 'aux_2_gnl' :  
+	-\> Ajouter les 2 lignes suivantes au debut de la fonction 'aux_2_gnl' :  
 	(car autrement 'read' va vouloir se lancer une 2e fois apres avoir lu '0' caracteres)
 	```
 	if (maillon->r_v == 0)
@@ -70,10 +70,10 @@ Documentation :
 		implementer pour cela un algo' de backtracking ? (complexite ?)
 	- pour chaque salle :
 		- comptabiliser le nombre d'itineraires l'impliquant
-		- sauvegarder quelque part son poids minimum ('room->weight' apres le premier passage)
+		- sauvegarder quelque part son poids minimum ('room-\>weight' apres le premier passage)
 	- pour chaque itineraire :
 		- repertorier les salles impliquees (dans la stucture des salles elles-memes, en employant des nombres premiers ?)  
-			-> il est necessaire qu'il existe davantage de nombres premiers \< INT_MAX que d'itineraires possibles
+			-\> il est necessaire qu'il existe davantage de nombres premiers \< INT_MAX que d'itineraires possibles
 		- sauvegarder quelque part le poids
 - / ! \\ Attention au cas dans lequel '##start' ou '##end' precedent un commentaire
 - / ! \\ Attention au cas dans lequel 2 salles portant le meme nom sont declarees
@@ -112,11 +112,11 @@ Documentation :
 [CoreWar Folder teammate cmiran](https://github.com/cmiran/corewar)  
 [Convertisseur decimal/binaire/hexadecimal](https://www.ma-calculatrice.fr/convertir-binaire-hexadecimal.php)  
 [Youtube : CONF@42 - Advanced Tips and Tricks in C (demarrer a : 39:54)](https://youtu.be/ghjFIRXjg7U?t=2394)  
-Regles de la VM de ZaZ :  
+__Regles de la VM de ZaZ__ :  
 01. Charger le registre 'r1' d'un champion avec '(unsigned int)(-((int)token))'
-02. 'live' ajoute une vie aux champions partageant le token '-((int)live\_direct\_arg)'
+02. 'live' au process qui l'execute de rester en vie (quelque soit la valeur du parametre avec lequel il est execute), et si le parametre corespond au token d'un champion, actualise 'last\_champ\_alive' ayant le token '-((int)live\_direct\_arg)'
 03. A chaque cycle, pour chaque champion :  
-	__Si__ 'CYCLES\_TO\_WAIT' > 0 :  
+	__Si__ 'CYCLES\_TO\_WAIT' \> 0 :  
 		Ne rien faire  
 	__Sinon si__ une instruction est chargee :  
 		Executer l'instruction chargee  
@@ -136,7 +136,11 @@ Regles de la VM de ZaZ :
 					Positionner le 'PC'sur la case memoire suivant l' 'OP\_CODE'  
 04. Lors d'un 'fork', le 'fils' se voit attribuer un nouvel identifiant correspondant  
 a son ordre d'arrivee dans la partie, et placer dans la pile (First In Last Out) des champions  
-en consequence (en haut), cepandant il partage le 'token' de son 'pere'  
+en consequence (en haut), cepandant il n'a pas de 'token' associe  
+
+__Hypotheses__ :  
+- Les prochaines instructions de chaque process sont chargees lors du cycle de l'execution de l'instruction precedante ?  
+- Si le dernier 'live' a avoir ete execute, l'a ete avec pour parametre l'identifiant d'un process n'etant pas un des champions de depart, le champion parent de ce process remporte la partie ?  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
