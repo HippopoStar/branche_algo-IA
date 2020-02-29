@@ -141,6 +141,7 @@ en consequence (en haut), cepandant il n'a pas de 'token' associe
 __Hypotheses__ :  
 - Les prochaines instructions de chaque process sont chargees lors du cycle de l'execution de l'instruction precedante ?  
 - Si le dernier 'live' a avoir ete execute, l'a ete avec pour parametre l'identifiant d'un process n'etant pas un des champions de depart, le champion parent de ce process remporte la partie ?  
+- A chaque cycle, parcourir 2 fois la liste des process : 1 fois pour charger les instructions si aucune instruction n'est chargee, puis 1 fois pour executer les instructions pretes a etre executees  
 
 ## In '**CoreWar Championship**'
 [Sujet](https://cdn.intra.42.fr/pdf/pdf/995/corewar-championship.fr.pdf)  
